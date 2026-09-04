@@ -3,50 +3,42 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<meta name="theme-color" content="#050505">
+<meta name="description" content="Golden Honey Fusion — Premium Honey & Bee-Derived Products">
 <title>Golden Honey Fusion</title>
 
 <style>
-
-/* =========================================================
-   GOLDEN HONEY FUSION — LUXURY GALAXY GOLD
-   ========================================================= */
-
 :root{
-  --black:#020204;
-  --black2:#06060a;
-  --black3:#0b0b11;
+  --black:#030303;
+  --black2:#070707;
+  --black3:#0c0c0b;
 
-  --gold:#d6ad52;
-  --gold-light:#f3d98b;
-  --gold-bright:#fff0b3;
-  --gold-hot:#ffd66e;
-  --gold-dark:#6f4d17;
+  --gold-deep:#4a3007;
+  --gold-dark:#745014;
+  --gold:#c69a35;
+  --gold-mid:#d9b75d;
+  --gold-light:#f0d77f;
+  --gold-bright:#fff1ae;
 
-  --gold-line:rgba(231,193,93,.58);
-  --gold-soft:rgba(214,173,82,.14);
+  --ivory:#e5dfd2;
+  --ivory-soft:#c2bcaf;
+  --stone:#999287;
 
-  /* luxury ivory — NOT bright white */
-  --luxury-white:#e4dfd5;
-  --luxury-soft:#bcb6ac;
-  --luxury-muted:#99938a;
+  --line:rgba(214,177,82,.25);
+  --line-strong:rgba(225,190,96,.48);
 
-  --text:#e7e2d8;
-  --muted:#aaa398;
+  --royal:#24112e;
+  --special:#10182c;
+  --natural:#0d1b14;
+  --hive:#191208;
 
-  --royal:#24102f;
-
-  --special:#11152b;
-  --special2:#171c3b;
-
-  --natural:#101c14;
-  --natural2:#17271b;
-
-  --hive:#21180b;
+  --ease:cubic-bezier(.22,.61,.36,1);
 }
 
 *{
   box-sizing:border-box;
+  margin:0;
+  padding:0;
 }
 
 html{
@@ -54,460 +46,383 @@ html{
 }
 
 body{
-  margin:0;
-
   background:
-    radial-gradient(
-      circle at 50% 0%,
-      rgba(214,173,82,.035),
-      transparent 30%
-    ),
-    var(--black);
-
-  color:var(--text);
-
-  font-family:Arial,Tahoma,sans-serif;
-
+    radial-gradient(circle at 50% -10%,rgba(178,132,35,.10),transparent 28%),
+    linear-gradient(180deg,#020202 0%,#050505 40%,#020202 100%);
+  color:var(--ivory);
+  font-family:Arial,Helvetica,sans-serif;
   overflow-x:hidden;
 }
 
-/* =========================================================
-   SIDE GOLD LINES
-   ========================================================= */
-
-body:before,
-body:after{
-  content:"";
-
-  position:fixed;
-
-  top:0;
-  bottom:0;
-
-  width:1px;
-
-  background:
-    linear-gradient(
-      180deg,
-      transparent,
-      rgba(214,173,82,.35),
-      rgba(255,240,179,.65),
-      rgba(214,173,82,.25),
-      transparent
-    );
-
-  z-index:20;
-
-  pointer-events:none;
-}
-
 body:before{
-  left:11px;
-}
-
-body:after{
-  right:11px;
-}
-
-/* =========================================================
-   TOP BAR
-   ========================================================= */
-
-.topbar{
+  content:"";
   position:fixed;
-
-  top:0;
-  left:0;
-  right:0;
-
-  height:78px;
-
-  z-index:1000;
-
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-
-  padding:0 28px;
-
+  inset:0;
+  pointer-events:none;
+  z-index:9998;
   background:
-    linear-gradient(
-      180deg,
-      rgba(2,2,4,.97),
-      rgba(2,2,4,.72),
-      transparent
+    radial-gradient(circle at 50% 20%,transparent 20%,rgba(0,0,0,.25) 75%),
+    repeating-linear-gradient(
+      0deg,
+      rgba(255,255,255,.008) 0px,
+      rgba(255,255,255,.008) 1px,
+      transparent 1px,
+      transparent 4px
     );
-
-  backdrop-filter:blur(5px);
+  opacity:.45;
 }
 
-.brand-mini{
-  display:flex;
-  align-items:center;
-
+a{
+  color:inherit;
   text-decoration:none;
 }
 
+button{
+  font:inherit;
+}
+
+img{
+  max-width:100%;
+}
+
+section{
+  position:relative;
+}
+
+.container{
+  width:min(1180px,92%);
+  margin:auto;
+}
+
 /* =========================================================
-   GHF LUXURY MONOGRAM
-   ========================================================= */
+   SIDE LINES
+========================================================= */
+
+.side-line{
+  position:fixed;
+  top:0;
+  bottom:0;
+  width:1px;
+  background:linear-gradient(
+    180deg,
+    transparent,
+    rgba(206,165,64,.25) 15%,
+    rgba(224,190,99,.48) 50%,
+    rgba(206,165,64,.25) 85%,
+    transparent
+  );
+  z-index:50;
+  pointer-events:none;
+}
+
+.side-line.left{left:18px}
+.side-line.right{right:18px}
+
+/* =========================================================
+   TOP BAR
+========================================================= */
+
+.topbar{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  height:76px;
+  z-index:1000;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 34px;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(3,3,3,.96),
+      rgba(3,3,3,.70),
+      transparent
+    );
+  backdrop-filter:blur(10px);
+}
 
 .ghf-mark{
+  width:52px;
+  height:52px;
   position:relative;
-
-  width:50px;
-  height:50px;
-
   display:flex;
   align-items:center;
   justify-content:center;
-
-  background:none;
-
-  border:0;
-
-  transform:none;
-
-  box-shadow:none;
 }
 
 .ghf-mark:before{
   content:"";
-
   position:absolute;
-
-  inset:7px;
-
-  border:1px solid rgba(214,173,82,.55);
-
+  width:35px;
+  height:35px;
+  border:1px solid rgba(216,177,76,.58);
   transform:rotate(45deg);
-
   box-shadow:
-    0 0 12px rgba(214,173,82,.08);
+    0 0 18px rgba(214,173,82,.08),
+    inset 0 0 12px rgba(214,173,82,.04);
 }
 
 .ghf-mark span{
   position:relative;
-
   z-index:2;
-
-  display:block;
-
   font-family:Georgia,"Times New Roman",serif;
-
   font-size:11px;
-
   font-weight:700;
-
   letter-spacing:2px;
-
   background:
     linear-gradient(
       120deg,
-      #67430c,
-      #c99d3b,
+      #65430d,
+      #c69a35,
       #fff0a1,
-      #9c6d1d,
+      #a8781e,
       #e5c66d
     );
-
   -webkit-background-clip:text;
   background-clip:text;
-
   -webkit-text-fill-color:transparent;
-
-  text-shadow:
-    0 2px 5px rgba(0,0,0,.9);
+  text-shadow:0 2px 6px #000;
 }
 
-/* =========================================================
-   MENU BUTTON
-   ========================================================= */
-
-.menu-button{
+.menu-btn{
   width:48px;
   height:48px;
-
-  border:1px solid rgba(214,173,82,.4);
-
-  background:rgba(0,0,0,.35);
-
+  border:1px solid rgba(218,181,86,.28);
+  background:rgba(255,255,255,.015);
   display:flex;
-
   flex-direction:column;
-
-  align-items:center;
   justify-content:center;
-
+  align-items:center;
   gap:6px;
-
   cursor:pointer;
+  transition:.4s var(--ease);
 }
 
-.menu-button span{
-  display:block;
+.menu-btn:hover{
+  border-color:rgba(235,201,111,.7);
+  background:rgba(211,169,68,.05);
+}
 
-  width:21px;
+.menu-btn span{
+  width:20px;
   height:1px;
-
-  background:#ddd8cf;
-
+  background:#cbb271;
   transition:.3s;
-}
-
-.menu-button:hover{
-  border-color:rgba(214,173,82,.85);
-}
-
-.menu-button:hover span{
-  background:#f2eee5;
 }
 
 /* =========================================================
    FULL MENU
-   ========================================================= */
+========================================================= */
 
 .menu-overlay{
   position:fixed;
-
   inset:0;
-
-  z-index:900;
-
+  z-index:2000;
+  background:
+    radial-gradient(circle at 50% 40%,rgba(178,130,32,.09),transparent 30%),
+    rgba(3,3,3,.985);
   display:flex;
-
   align-items:center;
   justify-content:center;
-
-  background:
-    radial-gradient(
-      circle at 50% 40%,
-      rgba(214,173,82,.07),
-      transparent 40%
-    ),
-    rgba(2,2,4,.985);
-
   opacity:0;
-
   visibility:hidden;
-
-  transition:.45s;
+  transition:.5s var(--ease);
 }
 
-.menu-overlay.active{
+.menu-overlay.open{
   opacity:1;
-
   visibility:visible;
 }
 
 .menu-inner{
-  width:min(520px,86%);
-
   text-align:center;
+  width:min(600px,90%);
 }
 
-.menu-logo{
-  margin-bottom:40px;
+.menu-label{
+  font-size:10px;
+  letter-spacing:7px;
+  color:#81796d;
+  margin-bottom:35px;
 }
 
-.menu-logo-main{
-  font-family:Georgia,"Times New Roman",serif;
-
-  font-size:38px;
-
-  font-weight:700;
-
-  letter-spacing:5px;
-
-  background:
-    linear-gradient(
-      110deg,
-      #70490f,
-      #c99d3b,
-      #fff0a5,
-      #a8751d,
-      #efd27a,
-      #70490f
-    );
-
-  -webkit-background-clip:text;
-  background-clip:text;
-
-  -webkit-text-fill-color:transparent;
-
-  text-shadow:
-    0 3px 6px rgba(0,0,0,.9);
-}
-
-.menu-links a{
+.menu-link{
   display:block;
-
-  padding:20px 0;
-
-  border-bottom:1px solid rgba(214,173,82,.12);
-
-  color:#ddd8cf;
-
-  text-decoration:none;
-
+  padding:16px 0;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(27px,6vw,48px);
   letter-spacing:5px;
-
-  font-size:15px;
-
-  font-weight:500;
-
-  text-shadow:
-    0 2px 8px rgba(0,0,0,.9);
-
-  transition:.3s;
+  font-weight:400;
+  color:#d9d2c5;
+  transition:.4s var(--ease);
 }
 
-.menu-links a:hover{
-  color:#eee9df;
+.menu-link:hover{
+  color:#f0e8da;
+  letter-spacing:9px;
+  transform:scale(1.02);
+}
 
-  letter-spacing:6px;
-
-  text-shadow:
-    0 0 14px rgba(255,255,255,.12);
+.menu-close{
+  position:absolute;
+  top:25px;
+  right:30px;
+  width:45px;
+  height:45px;
+  border:1px solid rgba(214,173,82,.3);
+  background:none;
+  color:#c8b98d;
+  font-size:25px;
+  cursor:pointer;
 }
 
 /* =========================================================
    HERO
-   ========================================================= */
+========================================================= */
 
 .hero{
-  position:relative;
-
   min-height:100vh;
-
+  min-height:100svh;
   display:flex;
-
   align-items:center;
   justify-content:center;
-
-  text-align:center;
-
-  padding:130px 25px 90px;
-
   overflow:hidden;
-
+  padding:120px 20px 80px;
   background:
     radial-gradient(
-      circle at 50% 43%,
-      rgba(214,173,82,.085),
-      transparent 24%
+      ellipse at 50% 42%,
+      rgba(161,112,24,.16) 0%,
+      rgba(91,59,8,.08) 22%,
+      transparent 50%
     ),
     radial-gradient(
-      circle at 20% 30%,
-      rgba(255,255,255,.025),
-      transparent 20%
+      ellipse at 50% 75%,
+      rgba(191,145,43,.05),
+      transparent 42%
     ),
-    radial-gradient(
-      circle at 80% 70%,
-      rgba(214,173,82,.025),
-      transparent 22%
-    ),
-    #020204;
+    #030303;
 }
-
-/* galaxy dust */
 
 .hero:before{
   content:"";
-
   position:absolute;
-
-  inset:0;
-
-  background-image:
+  width:760px;
+  height:760px;
+  border-radius:50%;
+  background:
     radial-gradient(
       circle,
-      rgba(255,239,175,.5) 1px,
-      transparent 1.5px
-    ),
-    radial-gradient(
-      circle,
-      rgba(255,255,255,.22) 1px,
-      transparent 1.5px
+      rgba(214,173,82,.09) 0%,
+      rgba(214,173,82,.025) 38%,
+      transparent 70%
     );
+  filter:blur(20px);
+  pointer-events:none;
+}
 
-  background-size:
-    115px 137px,
-    173px 191px;
-
-  background-position:
-    15px 20px,
-    70px 100px;
-
-  opacity:.15;
-
+.hero-gold-floor{
+  position:absolute;
+  width:min(900px,90vw);
+  height:210px;
+  bottom:4%;
+  left:50%;
+  transform:translateX(-50%);
+  background:
+    radial-gradient(
+      ellipse,
+      rgba(182,137,39,.16),
+      rgba(116,78,14,.06) 40%,
+      transparent 72%
+    );
+  filter:blur(15px);
   pointer-events:none;
 }
 
 .hero-content{
   position:relative;
-
-  z-index:2;
-
-  width:100%;
+  z-index:3;
+  width:min(1100px,100%);
+  text-align:center;
 }
 
-/* =========================================================
-   LUXURY BEE EMBLEM
-   ========================================================= */
+/* ---------- luxury bee emblem ---------- */
 
-.luxury-bee{
-  width:108px;
-  height:108px;
-
-  margin:0 auto 30px;
-
+.luxury-bee-wrap{
+  width:145px;
+  height:145px;
+  margin:0 auto 34px;
+  position:relative;
   display:flex;
-
   align-items:center;
   justify-content:center;
+}
 
+.luxury-bee-wrap:before{
+  content:"";
+  position:absolute;
+  width:100px;
+  height:100px;
+  border:1px solid rgba(216,177,76,.15);
+  transform:rotate(45deg);
+  box-shadow:
+    0 0 40px rgba(202,156,44,.08),
+    inset 0 0 30px rgba(202,156,44,.025);
+}
+
+.luxury-bee-wrap:after{
+  content:"";
+  position:absolute;
+  inset:15px;
+  background:
+    radial-gradient(
+      circle,
+      rgba(227,187,79,.10),
+      transparent 65%
+    );
+  filter:blur(12px);
+}
+
+.luxury-bee{
+  position:relative;
+  z-index:3;
+  width:120px;
+  height:120px;
   filter:
-    drop-shadow(0 10px 7px rgba(0,0,0,.95))
-    drop-shadow(0 0 22px rgba(214,173,82,.25));
+    drop-shadow(0 10px 8px rgba(0,0,0,.9))
+    drop-shadow(0 0 17px rgba(232,190,75,.20));
+  animation:beeFloat 6s ease-in-out infinite;
 }
 
-.luxury-bee svg{
-  width:100%;
-  height:100%;
-
-  overflow:visible;
+@keyframes beeFloat{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-7px)}
 }
 
-/* =========================================================
-   MAIN BRAND — GALAXY GOLD 3D
-   ========================================================= */
+.hero-kicker{
+  font-size:10px;
+  letter-spacing:8px;
+  color:#8f887b;
+  margin-bottom:26px;
+  text-transform:uppercase;
+}
 
 .hero-title{
   position:relative;
-
-  margin:0;
-
-  font-size:clamp(58px,13vw,145px);
-
-  line-height:.8;
-
+  display:inline-block;
   font-family:Georgia,"Times New Roman",serif;
-
+  font-size:clamp(58px,13vw,150px);
+  line-height:.78;
   font-weight:900;
-
   letter-spacing:-5px;
-
   text-transform:uppercase;
-
   color:transparent;
-
   background:
     linear-gradient(
       112deg,
-
-      #321f05 0%,
-      #65430e 5%,
+      #302005 0%,
+      #62410d 5%,
       #b78325 12%,
       #f1d77e 19%,
       #fff6c7 26%,
@@ -521,2182 +436,1448 @@ body:after{
       #805615 91%,
       #3b2506 100%
     );
-
+  background-size:200% 100%;
   -webkit-background-clip:text;
   background-clip:text;
-
   -webkit-text-fill-color:transparent;
-
   text-shadow:
     1px 1px 0 #6b460e,
     2px 2px 0 #5a3a09,
     3px 3px 0 #432a06,
     4px 4px 0 #2c1b04,
     0 8px 9px rgba(0,0,0,.95),
-    0 0 14px rgba(255,222,119,.28),
-    0 0 35px rgba(214,173,82,.12);
-
-  filter:
-    drop-shadow(0 7px 5px rgba(0,0,0,.95));
+    0 0 14px rgba(255,222,119,.28);
+  filter:drop-shadow(0 7px 5px rgba(0,0,0,.95));
+  animation:
+    galaxyShift 9s ease-in-out infinite,
+    titleBreath 7s ease-in-out infinite;
 }
 
-/* moving metallic reflection */
+@keyframes galaxyShift{
+  0%,100%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+}
+
+@keyframes titleBreath{
+  0%,100%{filter:drop-shadow(0 7px 5px rgba(0,0,0,.95))}
+  50%{
+    filter:
+      drop-shadow(0 7px 5px rgba(0,0,0,.95))
+      drop-shadow(0 0 18px rgba(234,193,83,.12));
+  }
+}
 
 .hero-title:after{
   content:"";
-
   position:absolute;
-
-  left:5%;
-  right:5%;
-
+  left:4%;
+  right:4%;
   top:18%;
-
   height:9px;
-
   background:
     linear-gradient(
       90deg,
       transparent 0%,
       transparent 20%,
-      rgba(255,247,204,.05) 30%,
-      rgba(255,247,204,.9) 48%,
-      rgba(255,255,220,.15) 58%,
+      rgba(255,247,204,.03) 30%,
+      rgba(255,247,204,.95) 48%,
+      rgba(255,255,220,.13) 58%,
       transparent 78%
     );
-
   filter:blur(4px);
-
   opacity:.65;
-
-  animation:
-    goldenReflection 5.5s ease-in-out infinite;
-
   pointer-events:none;
+  animation:goldReflection 5.5s ease-in-out infinite;
 }
 
-@keyframes goldenReflection{
-
+@keyframes goldReflection{
   0%{
     transform:translateX(-35%);
     opacity:0;
   }
-
-  20%{
-    opacity:.25;
-  }
-
+  20%{opacity:.2}
   50%{
     transform:translateX(25%);
     opacity:.8;
   }
-
   80%{
+    transform:translateX(25%);
     opacity:.2;
   }
-
   100%{
     transform:translateX(35%);
     opacity:0;
   }
 }
 
-/* =========================================================
-   HONEY FUSION — ALSO GOLD, MORE SUBTLE
-   ========================================================= */
-
 .hero-subtitle{
-  position:relative;
-
-  margin-top:30px;
-
+  margin-top:32px;
   font-family:Georgia,"Times New Roman",serif;
-
-  font-size:clamp(20px,4.5vw,39px);
-
-  line-height:1;
-
+  font-size:clamp(18px,4vw,34px);
   font-weight:500;
-
-  letter-spacing:8px;
-
-  text-transform:uppercase;
-
+  letter-spacing:9px;
   color:transparent;
-
   background:
     linear-gradient(
       110deg,
-      #5a3b09,
-      #a87820,
-      #e1bd5f,
-      #fff0a4,
-      #b78327,
-      #e8c96b,
-      #69460d
+      #735016,
+      #bd9132,
+      #fff0a1,
+      #9c6d1d,
+      #e5c66d,
+      #735016
     );
-
   -webkit-background-clip:text;
   background-clip:text;
-
   -webkit-text-fill-color:transparent;
-
-  text-shadow:
-    1px 1px 0 #543508,
-    2px 2px 0 #332104,
-    0 5px 8px rgba(0,0,0,.95),
-    0 0 20px rgba(214,173,82,.12);
+  text-shadow:0 3px 7px rgba(0,0,0,.95);
 }
-
-/* =========================================================
-   ARABIC TAGLINE
-   ========================================================= */
 
 .hero-arabic{
-  margin-top:24px;
-
-  font-family:Arial,Tahoma,sans-serif;
-
-  font-size:17px;
-
-  font-weight:400;
-
-  color:#aaa49a;
-
-  letter-spacing:1px;
-
-  text-shadow:
-    0 2px 7px #000;
+  margin-top:19px;
+  color:#9f998d;
+  font-size:15px;
+  letter-spacing:2px;
 }
 
-/* =========================================================
-   GENERAL SECTION
-   ========================================================= */
-
-section{
-  position:relative;
-
-  padding:95px 25px;
-}
-
-.section-header{
-  text-align:center;
-
-  margin-bottom:55px;
-}
-
-.section-kicker{
-  margin-bottom:14px;
-
-  color:#918a7c;
-
-  font-size:10px;
-
-  letter-spacing:6px;
-
-  text-transform:uppercase;
-}
-
-.section-title{
-  margin:0;
-
-  color:var(--luxury-white);
-
-  font-family:Georgia,"Times New Roman",serif;
-
-  font-size:clamp(34px,7vw,58px);
-
-  font-weight:500;
-
-  letter-spacing:6px;
-
-  text-transform:uppercase;
-
-  text-shadow:
-    0 3px 12px rgba(0,0,0,.95);
-}
-
-.gold-divider{
-  width:min(420px,70%);
-
+.hero-line{
+  width:100px;
   height:1px;
-
-  margin:22px auto 0;
-
+  margin:38px auto 0;
   background:
     linear-gradient(
       90deg,
       transparent,
-      rgba(214,173,82,.75),
+      #b78a2d,
       transparent
     );
+}
+
+/* =========================================================
+   SECTION TITLES
+========================================================= */
+
+.section{
+  padding:130px 0;
+}
+
+.section-heading{
+  text-align:center;
+  margin-bottom:65px;
+}
+
+.section-eyebrow{
+  color:#777065;
+  font-size:9px;
+  letter-spacing:7px;
+  margin-bottom:18px;
+}
+
+.section-title{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(30px,6vw,55px);
+  font-weight:400;
+  letter-spacing:5px;
+  color:#dcd5c9;
+  text-shadow:0 3px 12px #000;
+}
+
+.section-title-line{
+  width:65px;
+  height:1px;
+  background:linear-gradient(90deg,transparent,#b99443,transparent);
+  margin:25px auto 0;
 }
 
 /* =========================================================
    COLLECTIONS
-   ========================================================= */
+========================================================= */
 
 .collections{
   background:
-    radial-gradient(
-      circle at 50% 0%,
-      rgba(214,173,82,.04),
-      transparent 35%
-    ),
-    #040406;
+    linear-gradient(180deg,#030303,#080807 50%,#030303);
 }
 
-.collections-wrap{
-  width:min(1100px,94%);
-
-  margin:auto;
+.collections-grid{
+  display:flex;
+  flex-direction:column;
+  gap:22px;
 }
 
 .collection{
   position:relative;
-
-  margin-bottom:30px;
-
-  padding:45px 25px 30px;
-
-  border:1px solid rgba(214,173,82,.23);
-
   overflow:hidden;
-
-  transition:.4s;
+  border:1px solid rgba(218,181,85,.16);
+  box-shadow:
+    0 20px 60px rgba(0,0,0,.42),
+    inset 0 0 50px rgba(255,255,255,.01);
+  transition:.55s var(--ease);
 }
 
 .collection:hover{
-  border-color:rgba(214,173,82,.42);
+  border-color:rgba(218,181,85,.30);
+  transform:translateY(-2px);
 }
-
-/* =========================================================
-   ROYAL
-   ========================================================= */
 
 .collection.royal{
   background:
-    radial-gradient(
-      circle at 50% 0%,
-      rgba(116,55,91,.25),
-      transparent 45%
-    ),
-    linear-gradient(
-      180deg,
-      #2a1233,
-      var(--royal),
-      #100713
-    );
+    radial-gradient(circle at 50% 0%,rgba(120,58,109,.19),transparent 45%),
+    linear-gradient(180deg,#28132f,#180b1e 80%,#0b070d);
 }
-
-/* =========================================================
-   SPECIAL — DARK NAVY
-   ========================================================= */
 
 .collection.special{
   background:
-    radial-gradient(
-      circle at 50% 0%,
-      rgba(49,91,105,.16),
-      transparent 42%
-    ),
-    linear-gradient(
-      180deg,
-      var(--special2),
-      var(--special),
-      #090b18
-    );
+    radial-gradient(circle at 50% 0%,rgba(40,83,117,.20),transparent 45%),
+    linear-gradient(180deg,#131d35,#0d1425 80%,#070a13);
 }
-
-/* =========================================================
-   NATURAL — DARK GREEN
-   ========================================================= */
 
 .collection.natural{
   background:
-    radial-gradient(
-      circle at 50% 0%,
-      rgba(43,92,61,.16),
-      transparent 42%
-    ),
-    linear-gradient(
-      180deg,
-      var(--natural2),
-      var(--natural),
-      #08100b
-    );
+    radial-gradient(circle at 50% 0%,rgba(43,103,68,.16),transparent 45%),
+    linear-gradient(180deg,#112219,#0b1811 80%,#050b08);
 }
-
-/* =========================================================
-   HIVE ESSENCE
-   ========================================================= */
 
 .collection.hive{
   background:
-    radial-gradient(
-      circle at 50% 0%,
-      rgba(153,111,31,.16),
-      transparent 42%
-    ),
-    linear-gradient(
-      180deg,
-      #2b200b,
-      var(--hive),
-      #0d0903
-    );
+    radial-gradient(circle at 50% 0%,rgba(147,103,30,.18),transparent 45%),
+    linear-gradient(180deg,#241a0b,#171006 80%,#080604);
 }
 
-/* =========================================================
-   COLLECTION NAMES — IVORY
-   ========================================================= */
-
-.collection-name{
-  position:relative;
-
-  display:block;
-
-  width:max-content;
-
-  max-width:100%;
-
-  margin:0 auto;
-
-  padding:8px 12px;
-
-  background:none;
-
-  border:0;
-
-  color:var(--luxury-white);
-
-  font-family:Georgia,"Times New Roman",serif;
-
-  font-size:clamp(24px,5vw,42px);
-
-  font-weight:500;
-
-  letter-spacing:4px;
-
-  text-transform:uppercase;
-
+.collection-header{
+  min-height:185px;
+  padding:38px 34px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:28px;
   cursor:pointer;
-
-  transition:
-    color .35s,
-    letter-spacing .35s,
-    transform .35s;
-
-  text-shadow:
-    0 3px 8px rgba(0,0,0,.95),
-    0 5px 16px rgba(0,0,0,.55);
+  user-select:none;
 }
-
-.collection-name:hover{
-  color:#eee9df;
-
-  letter-spacing:5px;
-
-  transform:translateY(-1px);
-}
-
-/* =========================================================
-   COLLECTION ICON
-   ========================================================= */
 
 .collection-icon{
-  width:90px;
-  height:72px;
-
-  margin:0 auto 24px;
-
+  width:70px;
+  height:70px;
+  flex:0 0 70px;
   display:flex;
-
   align-items:center;
   justify-content:center;
-
-  background:none;
+  color:#c6a24d;
 }
 
-.collection-icon:before{
+.collection-name{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(21px,4vw,34px);
+  font-weight:500;
+  letter-spacing:4px;
+  color:#e1dbcf;
+  text-shadow:
+    0 2px 6px rgba(0,0,0,.95),
+    0 5px 18px rgba(0,0,0,.7);
+  transition:.35s;
+}
+
+.collection-header:hover .collection-name{
+  color:#eee7dc;
+  letter-spacing:5px;
+}
+
+.collection-hint{
+  position:absolute;
+  bottom:18px;
+  left:0;
+  right:0;
+  text-align:center;
+  color:#777064;
+  font-size:8px;
+  letter-spacing:4px;
+  text-transform:uppercase;
+}
+
+.collection-grid{
   display:none;
+  grid-template-columns:repeat(2,1fr);
+  gap:1px;
+  background:rgba(218,181,85,.13);
+  animation:collectionOpen .55s var(--ease);
 }
 
-/* =========================================================
-   ROYAL CROWN
-   ========================================================= */
-
-.crown{
-  position:relative;
-
-  width:78px;
-  height:58px;
-
-  background:
-    linear-gradient(
-      135deg,
-      #6b4810 0%,
-      #b78327 18%,
-      #f8df8b 34%,
-      #fff2b0 47%,
-      #c19235 61%,
-      #805715 78%,
-      #e2bd62 92%,
-      #6a4710 100%
-    );
-
-  clip-path:polygon(
-    4% 12%,
-    22% 35%,
-    30% 4%,
-    50% 32%,
-    70% 4%,
-    78% 35%,
-    96% 12%,
-    88% 91%,
-    12% 91%
-  );
-
-  filter:
-    drop-shadow(0 8px 4px rgba(0,0,0,.9))
-    drop-shadow(0 0 12px rgba(214,173,82,.2));
-}
-
-.crown:before{
-  content:"";
-
-  position:absolute;
-
-  left:11%;
-  right:11%;
-  bottom:0;
-
-  height:13px;
-
-  background:
-    linear-gradient(
-      180deg,
-      #f1d37c,
-      #9b6c1c 45%,
-      #4e320b
-    );
-
-  clip-path:polygon(
-    0 0,
-    100% 0,
-    94% 100%,
-    6% 100%
-  );
-}
-
-.crown:after{
-  content:"";
-
-  position:absolute;
-
-  left:12%;
-  top:13px;
-
-  width:76%;
-  height:2px;
-
-  background:
-    linear-gradient(
-      90deg,
-      transparent,
-      #fff8cf,
-      transparent
-    );
-
-  box-shadow:
-    0 0 8px rgba(255,238,163,.8);
-}
-
-/* =========================================================
-   SPECIAL STAR
-   ========================================================= */
-
-.star{
-  width:66px;
-  height:66px;
-
-  position:relative;
-
-  background:
-    linear-gradient(
-      135deg,
-      #725016 0%,
-      #d2a94b 22%,
-      #fff0aa 42%,
-      #a87520 60%,
-      #f6d57b 78%,
-      #6a4914 100%
-    );
-
-  clip-path:polygon(
-    50% 0%,
-    61% 34%,
-    98% 35%,
-    69% 56%,
-    80% 92%,
-    50% 70%,
-    20% 92%,
-    31% 56%,
-    2% 35%,
-    39% 34%
-  );
-
-  filter:
-    drop-shadow(0 8px 5px rgba(0,0,0,.8));
-}
-
-.star:after{
-  content:"";
-
-  position:absolute;
-
-  inset:18px;
-
-  background:
-    radial-gradient(
-      circle,
-      rgba(255,247,196,.9),
-      rgba(255,214,110,.12) 55%,
-      transparent 70%
-    );
-
-  clip-path:inherit;
-}
-
-/* =========================================================
-   NATURAL LEAVES
-   ========================================================= */
-
-.leaves{
-  position:relative;
-
-  width:82px;
-  height:62px;
-}
-
-.leaf{
-  position:absolute;
-
-  width:43px;
-  height:22px;
-
-  border-radius:100% 0 100% 0;
-
-  background:
-    linear-gradient(
-      135deg,
-      #5c4617,
-      #d2ae50,
-      #fff0a8,
-      #6f5117
-    );
-
-  filter:
-    drop-shadow(0 6px 4px rgba(0,0,0,.8));
-}
-
-.leaf:first-child{
-  left:5px;
-  top:22px;
-
-  transform:rotate(-25deg);
-}
-
-.leaf:last-child{
-  right:5px;
-  top:12px;
-
-  transform:rotate(30deg);
-}
-
-/* =========================================================
-   HIVE SYMBOL
-   ========================================================= */
-
-.hive-symbol{
-  position:relative;
-
-  width:72px;
-  height:72px;
-
-  display:flex;
-
-  align-items:center;
-  justify-content:center;
-
-  color:#e9c86c;
-
-  filter:
-    drop-shadow(0 8px 5px rgba(0,0,0,.85));
-}
-
-.hive-symbol:before,
-.hive-symbol:after{
-  content:"";
-
-  position:absolute;
-
-  width:30px;
-  height:26px;
-
-  border:2px solid #d6ad52;
-
-  clip-path:polygon(
-    25% 0,
-    75% 0,
-    100% 50%,
-    75% 100%,
-    25% 100%,
-    0 50%
-  );
-}
-
-.hive-symbol:before{
-  transform:translateX(-18px);
-}
-
-.hive-symbol:after{
-  transform:translateX(18px);
-}
-
-.hive-bee{
-  position:relative;
-
-  z-index:2;
-
-  width:30px;
-  height:20px;
-
-  border-radius:50%;
-
-  background:
-    repeating-linear-gradient(
-      90deg,
-      #7b5517 0 5px,
-      #f0cd6e 5px 10px
-    );
-
-  box-shadow:
-    0 3px 5px rgba(0,0,0,.8);
-}
-
-/* =========================================================
-   COLLECTION PRODUCTS
-   ========================================================= */
-
-.collection-products{
-  max-width:950px;
-
-  margin:40px auto 0;
-
+.collection-grid.open{
   display:grid;
-
-  grid-template-columns:
-    repeat(2,minmax(0,1fr));
-
-  gap:18px;
-
-  transition:.4s;
 }
 
-.collection-products.hidden{
-  display:none;
+@keyframes collectionOpen{
+  from{
+    opacity:0;
+    transform:translateY(-12px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
 }
 
 /* =========================================================
    PRODUCT CARDS
-   ========================================================= */
+========================================================= */
 
 .product-card{
   position:relative;
-
-  padding:25px 22px;
-
+  min-height:275px;
+  padding:38px 28px;
   background:
     linear-gradient(
-      135deg,
-      rgba(255,255,255,.025),
-      rgba(0,0,0,.18)
+      145deg,
+      rgba(255,255,255,.035),
+      rgba(0,0,0,.14)
     );
-
-  border:1px solid rgba(214,173,82,.18);
-
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
   cursor:pointer;
-
-  transition:.35s;
+  transition:.45s var(--ease);
 }
 
 .product-card:hover{
-  transform:translateY(-4px);
-
-  border-color:rgba(214,173,82,.5);
-
-  box-shadow:
-    0 14px 35px rgba(0,0,0,.45);
-}
-
-/* PRODUCT NAMES = IVORY, NOT GOLD */
-
-.product-card h3{
-  margin:0 0 8px;
-
-  color:#dcd7ce;
-
-  font-family:Georgia,"Times New Roman",serif;
-
-  font-size:20px;
-
-  font-weight:500;
-
-  letter-spacing:1.5px;
-
-  text-shadow:
-    0 2px 6px rgba(0,0,0,.95);
-}
-
-.product-card .arabic{
-  color:#aaa49a;
-
-  font-size:13px;
-
-  direction:rtl;
-
-  margin-bottom:15px;
-}
-
-.product-card p{
-  margin:0;
-
-  color:#928e86;
-
-  font-size:12px;
-
-  line-height:1.8;
-}
-
-.product-line{
-  width:70px;
-
-  height:1px;
-
-  margin:12px 0;
-
   background:
     linear-gradient(
-      90deg,
-      var(--gold),
-      transparent
+      145deg,
+      rgba(255,255,255,.055),
+      rgba(202,155,48,.045)
     );
 }
 
+.product-card h3{
+  font-family:Georgia,"Times New Roman",serif;
+  color:#ddd7cc;
+  font-size:21px;
+  font-weight:500;
+  letter-spacing:1.5px;
+  line-height:1.3;
+  text-shadow:0 2px 7px rgba(0,0,0,.95);
+}
+
+.product-card .arabic{
+  margin-top:9px;
+  color:#9d968b;
+  font-size:13px;
+}
+
+.product-rule{
+  width:35px;
+  height:1px;
+  background:#a67d28;
+  margin:20px auto;
+  opacity:.65;
+}
+
+.product-meta{
+  color:#716b61;
+  font-size:9px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+}
+
 /* =========================================================
-   PRODUCT DETAIL
-   ========================================================= */
+   PRODUCT DETAILS
+========================================================= */
 
 .product-detail{
   display:none;
-
-  max-width:850px;
-
-  margin:45px auto 0;
-
-  padding:45px 25px;
-
+  margin-top:26px;
+  padding:45px 30px;
+  border:1px solid rgba(218,181,85,.22);
   background:
-    radial-gradient(
-      circle at 50% 0%,
-      rgba(214,173,82,.08),
-      transparent 42%
-    ),
-    rgba(0,0,0,.28);
-
-  border:1px solid rgba(214,173,82,.25);
-
+    radial-gradient(circle at 50% 0%,rgba(198,151,43,.09),transparent 42%),
+    linear-gradient(180deg,#0b0b09,#050505);
   text-align:center;
+  animation:detailIn .5s var(--ease);
 }
 
 .product-detail.active{
   display:block;
 }
 
-/* DETAIL TITLE = IVORY */
-
-.product-detail h2{
-  margin:0;
-
-  color:#ded9d0;
-
-  font-family:Georgia,"Times New Roman",serif;
-
-  font-size:clamp(30px,6vw,48px);
-
-  font-weight:500;
-
-  letter-spacing:2px;
-
-  text-shadow:
-    0 3px 9px rgba(0,0,0,.95);
+@keyframes detailIn{
+  from{
+    opacity:0;
+    transform:translateY(10px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
 }
 
-.product-detail .arabic-title{
-  margin-top:10px;
+.product-detail h2{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(25px,5vw,42px);
+  font-weight:400;
+  color:#e1dbcf;
+  letter-spacing:3px;
+}
 
-  color:#aaa49a;
-
-  direction:rtl;
+.product-detail .detail-ar{
+  color:#969086;
+  margin-top:9px;
 }
 
 .product-description{
-  max-width:650px;
-
-  margin:25px auto;
-
-  color:#a29e95;
-
+  width:min(700px,100%);
+  margin:28px auto 0;
+  color:#aaa399;
   line-height:1.9;
-
-  font-size:13px;
+  font-size:14px;
 }
 
 .size-label{
-  color:#9d927b;
-
-  font-size:10px;
-
-  letter-spacing:4px;
-
   margin-top:35px;
-}
-
-.size-select{
-  margin-top:12px;
-
-  padding:12px 18px;
-
-  min-width:210px;
-
-  color:#ded9d0;
-
-  background:#08080b;
-
-  border:1px solid rgba(214,173,82,.35);
-
-  outline:none;
-}
-
-.price-box{
-  margin-top:28px;
-}
-
-.price-label{
-  display:block;
-
-  color:#918a7d;
-
+  color:#777065;
   font-size:9px;
-
   letter-spacing:4px;
-
-  margin-bottom:8px;
 }
 
-.price-value{
-  color:#e7c96e;
-
-  font-family:Georgia,"Times New Roman",serif;
-
-  font-size:24px;
-
-  letter-spacing:1px;
+.sizes{
+  margin:17px auto;
+  display:flex;
+  justify-content:center;
+  gap:8px;
+  flex-wrap:wrap;
 }
 
-.back-button{
-  margin-top:30px;
-
-  padding:11px 22px;
-
-  color:#d5d0c7;
-
-  background:transparent;
-
-  border:1px solid rgba(214,173,82,.3);
-
+.size-btn{
+  border:1px solid rgba(218,181,85,.25);
+  background:rgba(255,255,255,.015);
+  color:#b7b0a4;
+  padding:11px 20px;
+  font-size:10px;
+  letter-spacing:2px;
   cursor:pointer;
-
-  letter-spacing:3px;
-
-  font-size:9px;
-
   transition:.3s;
 }
 
-.back-button:hover{
-  border-color:#d6ad52;
+.size-btn:hover,
+.size-btn.active{
+  border-color:#c5a14d;
+  color:#e8dfce;
+  background:rgba(190,146,44,.07);
+}
 
-  color:#e8e2d8;
+.price{
+  margin-top:20px;
+  color:#c5a55a;
+  font-size:10px;
+  letter-spacing:4px;
 }
 
 /* =========================================================
    OUR WORLD
-   ========================================================= */
+========================================================= */
 
-.world-section{
-  padding-top:110px;
+.world{
+  background:
+    radial-gradient(circle at 50% 20%,rgba(175,127,29,.06),transparent 40%),
+    #030303;
 }
 
 .world-box{
-  width:min(950px,94%);
-
-  margin:auto;
-
-  padding:65px 35px;
-
-  text-align:center;
-
-  border-top:1px solid rgba(214,173,82,.3);
-
-  border-bottom:1px solid rgba(214,173,82,.3);
-
+  position:relative;
+  padding:70px 45px;
+  border:1px solid rgba(218,181,85,.18);
   background:
-    radial-gradient(
-      circle at 50% 50%,
-      rgba(214,173,82,.05),
-      transparent 50%
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,.025),
+      transparent 40%,
+      rgba(204,156,48,.025)
     );
+  text-align:center;
+  overflow:hidden;
 }
 
-/* ONLY ONE OUR WORLD TITLE */
+.world-box:before,
+.world-box:after{
+  content:"";
+  position:absolute;
+  width:80px;
+  height:80px;
+  border-color:rgba(203,161,65,.28);
+}
+
+.world-box:before{
+  top:18px;
+  left:18px;
+  border-top:1px solid;
+  border-left:1px solid;
+}
+
+.world-box:after{
+  right:18px;
+  bottom:18px;
+  border-right:1px solid;
+  border-bottom:1px solid;
+}
 
 .world-box h2{
-  margin:0 0 28px;
-
-  color:#ded9d0;
-
   font-family:Georgia,"Times New Roman",serif;
-
-  font-size:clamp(34px,7vw,58px);
-
-  font-weight:500;
-
-  letter-spacing:6px;
-
-  text-shadow:
-    0 3px 12px rgba(0,0,0,.95);
+  font-weight:400;
+  color:#ded7cb;
+  font-size:clamp(26px,5vw,42px);
+  letter-spacing:4px;
 }
 
 .world-box p{
   max-width:760px;
-
-  margin:0 auto;
-
-  color:#aaa59a;
-
+  margin:28px auto 0;
+  color:#aaa399;
+  line-height:1.95;
   font-size:15px;
-
-  line-height:2;
 }
 
-.world-arabic{
-  margin-top:28px !important;
-
+.world-box .arabic-text{
+  color:#8e887e;
+  margin-top:22px;
   direction:rtl;
-
-  color:#b8b2a8 !important;
 }
 
 /* =========================================================
    ABOUT US
-   ========================================================= */
+========================================================= */
 
-.about-section{
+.about{
   background:
-    radial-gradient(
-      circle at 50% 0%,
-      rgba(214,173,82,.035),
-      transparent 35%
-    ),
-    #030305;
+    linear-gradient(180deg,#030303,#070706,#030303);
 }
 
-.about-card{
-  width:min(850px,94%);
-
-  margin:auto;
-
-  padding:55px 30px;
-
-  text-align:center;
-
-  border:1px solid rgba(214,173,82,.24);
-
-  cursor:pointer;
-
-  transition:.35s;
-}
-
-.about-card:hover{
-  border-color:rgba(214,173,82,.55);
-
-  box-shadow:
-    0 15px 40px rgba(0,0,0,.5);
-}
-
-.about-card-title{
-  color:#ddd8cf;
-
-  font-family:Georgia,"Times New Roman",serif;
-
-  font-size:30px;
-
-  letter-spacing:4px;
-}
-
-.about-card-sub{
-  margin-top:15px;
-
-  color:#8f897e;
-
-  font-size:10px;
-
-  letter-spacing:4px;
-}
-
-.about-content{
-  display:none;
-
-  width:min(850px,94%);
-
-  margin:25px auto 0;
-
-  padding:45px 30px;
-
-  border:1px solid rgba(214,173,82,.18);
-
-  background:rgba(0,0,0,.25);
-
-  text-align:center;
-}
-
-.about-content.active{
-  display:block;
-}
-
-.about-content p{
-  color:#aaa69c;
-
-  font-size:14px;
-
-  line-height:2;
-
-  margin:0;
-}
-
-.about-content p + p{
-  margin-top:25px;
-}
-
-.about-arabic{
-  direction:rtl;
-}
-
-/* =========================================================
-   CONTACT US
-   ========================================================= */
-
-.contact-section{
-  padding:110px 20px 100px;
-
-  background:
-    radial-gradient(
-      circle at 50% 20%,
-      rgba(214,173,82,.055),
-      transparent 42%
-    ),
-    #020204;
-}
-
-.contact-box{
-  width:min(720px,94%);
-
-  margin:auto;
-
-  text-align:center;
-}
-
-.contact-intro{
-  max-width:520px;
-
-  margin:25px auto 55px;
-
-  color:#aaa69d;
-
-  font-size:14px;
-
-  line-height:1.9;
-
-  letter-spacing:.6px;
-}
-
-.contact-details{
-  display:flex;
-
-  flex-direction:column;
-
-  gap:18px;
-
-  max-width:560px;
-
-  margin:auto;
-}
-
-.contact-item{
+.reveal-card{
   position:relative;
-
+  border:1px solid rgba(218,181,85,.18);
+  min-height:130px;
   display:flex;
-
   align-items:center;
-
-  gap:22px;
-
-  padding:23px 26px;
-
-  text-decoration:none;
-
-  text-align:left;
-
+  justify-content:center;
+  text-align:center;
+  cursor:pointer;
+  overflow:hidden;
   background:
     linear-gradient(
       135deg,
-      rgba(255,255,255,.035),
-      rgba(214,173,82,.025)
+      rgba(255,255,255,.025),
+      rgba(196,150,47,.025)
     );
+  transition:.5s var(--ease);
+}
 
-  border:1px solid rgba(214,173,82,.22);
+.reveal-card:hover{
+  border-color:rgba(218,181,85,.38);
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,.04),
+      rgba(196,150,47,.045)
+    );
+}
 
-  box-shadow:
-    inset 0 0 30px rgba(255,255,255,.012),
-    0 12px 35px rgba(0,0,0,.55);
+.reveal-card-title{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(23px,5vw,38px);
+  color:#ded8cd;
+  letter-spacing:6px;
+  font-weight:400;
+  transition:.4s;
+}
 
-  transition:
-    transform .35s ease,
-    border-color .35s ease,
-    box-shadow .35s ease;
+.reveal-card:hover .reveal-card-title{
+  letter-spacing:8px;
+}
+
+.reveal-arrow{
+  position:absolute;
+  right:28px;
+  font-size:17px;
+  color:#9d7a31;
+  transition:.4s;
+}
+
+.reveal-card.open .reveal-arrow{
+  transform:rotate(180deg);
+}
+
+.reveal-content{
+  display:none;
+  margin-top:18px;
+  border:1px solid rgba(218,181,85,.15);
+  padding:48px 40px;
+  background:#070706;
+  animation:reveal .5s var(--ease);
+}
+
+.reveal-content.open{
+  display:block;
+}
+
+@keyframes reveal{
+  from{
+    opacity:0;
+    transform:translateY(-10px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+.reveal-content p{
+  max-width:850px;
+  margin:auto;
+  color:#aaa399;
+  font-size:15px;
+  line-height:2;
+}
+
+.reveal-content p + p{
+  margin-top:25px;
+}
+
+.reveal-content .ar{
+  direction:rtl;
+  color:#8f897f;
+}
+
+/* =========================================================
+   CONTACT
+========================================================= */
+
+.contact{
+  background:
+    radial-gradient(circle at 50% 20%,rgba(184,137,36,.06),transparent 40%),
+    #030303;
+}
+
+.contact-reveal{
+  margin-bottom:18px;
+}
+
+.contact-content{
+  display:none;
+  border:1px solid rgba(218,181,85,.15);
+  background:#070706;
+  padding:42px 25px;
+  animation:reveal .5s var(--ease);
+}
+
+.contact-content.open{
+  display:block;
+}
+
+.contact-list{
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  flex-wrap:wrap;
+}
+
+.contact-item{
+  min-width:min(330px,100%);
+  padding:27px 30px;
+  border:1px solid rgba(218,181,85,.15);
+  background:rgba(255,255,255,.012);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:9px;
+  transition:.4s var(--ease);
 }
 
 .contact-item:hover{
+  border-color:rgba(218,181,85,.45);
+  background:rgba(192,147,42,.045);
   transform:translateY(-3px);
-
-  border-color:rgba(214,173,82,.58);
-
-  box-shadow:
-    inset 0 0 35px rgba(214,173,82,.025),
-    0 16px 45px rgba(0,0,0,.7),
-    0 0 25px rgba(214,173,82,.07);
-}
-
-.contact-symbol{
-  flex:0 0 58px;
-
-  width:58px;
-  height:58px;
-
-  display:flex;
-
-  align-items:center;
-  justify-content:center;
-
-  border:1px solid rgba(214,173,82,.45);
-
-  background:
-    radial-gradient(
-      circle,
-      rgba(214,173,82,.13),
-      rgba(214,173,82,.025) 65%,
-      transparent
-    );
-
-  box-shadow:
-    inset 0 0 18px rgba(214,173,82,.05),
-    0 5px 18px rgba(0,0,0,.7);
-}
-
-.contact-symbol span{
-  color:#d8ba68;
-
-  font-size:29px;
-
-  line-height:1;
-
-  text-shadow:
-    0 2px 2px #3d2808,
-    0 0 12px rgba(238,202,107,.35);
-}
-
-.contact-text{
-  display:flex;
-
-  flex-direction:column;
-
-  gap:5px;
-
-  min-width:0;
 }
 
 .contact-label{
-  color:#918a7b;
-
-  font-size:10px;
-
+  color:#716b61;
+  font-size:8px;
   letter-spacing:4px;
-
-  font-weight:500;
+  text-transform:uppercase;
 }
 
-.contact-number{
-  color:#ded9d0;
-
-  font-family:Georgia,"Times New Roman",serif;
-
-  font-size:clamp(20px,4vw,27px);
-
-  font-weight:500;
-
-  letter-spacing:1.5px;
-
-  text-shadow:
-    0 2px 7px rgba(0,0,0,.95);
-}
-
+.contact-number,
 .instagram-name{
-  color:#ded9d0;
-
-  font-family:Arial,Tahoma,sans-serif;
-
-  font-size:18px;
-
-  font-weight:500;
-
+  font-family:Georgia,"Times New Roman",serif;
+  color:#d9d2c5;
+  font-size:17px;
   letter-spacing:1px;
 }
 
-.contact-action{
-  color:#a88b4b;
-
-  font-size:8px;
-
-  letter-spacing:3px;
-
-  margin-top:2px;
+.contact-icon{
+  color:#b28a35;
+  font-size:21px;
 }
 
 /* =========================================================
    FOOTER
-   ========================================================= */
+========================================================= */
 
 footer{
-  padding:45px 20px 55px;
-
+  border-top:1px solid rgba(218,181,85,.10);
+  padding:50px 20px;
   text-align:center;
-
-  background:#010103;
-
-  border-top:1px solid rgba(214,173,82,.12);
+  background:#020202;
 }
 
-.footer-logo{
-  color:#d4b45f;
-
+.footer-brand{
   font-family:Georgia,"Times New Roman",serif;
-
-  font-size:17px;
-
-  letter-spacing:5px;
+  color:#a89465;
+  font-size:14px;
+  letter-spacing:4px;
 }
 
-.footer-small{
-  margin-top:12px;
-
-  color:#6f6b64;
-
-  font-size:9px;
-
+.footer-copy{
+  margin-top:15px;
+  color:#514d47;
+  font-size:8px;
   letter-spacing:3px;
 }
 
 /* =========================================================
    MOBILE
-   ========================================================= */
+========================================================= */
 
 @media(max-width:700px){
 
-  body:before{
-    left:6px;
-  }
-
-  body:after{
-    right:6px;
+  .side-line{
+    display:none;
   }
 
   .topbar{
-    padding:0 20px;
+    height:67px;
+    padding:0 18px;
+  }
+
+  .ghf-mark{
+    width:45px;
+    height:45px;
+  }
+
+  .ghf-mark:before{
+    width:31px;
+    height:31px;
+  }
+
+  .menu-btn{
+    width:44px;
+    height:44px;
   }
 
   .hero{
-    padding-top:120px;
+    padding-top:105px;
+  }
+
+  .luxury-bee-wrap{
+    width:125px;
+    height:125px;
+    margin-bottom:29px;
   }
 
   .luxury-bee{
-    width:92px;
-    height:92px;
+    width:105px;
+    height:105px;
+  }
 
-    margin-bottom:28px;
+  .hero-kicker{
+    font-size:8px;
+    letter-spacing:5px;
   }
 
   .hero-title{
-    font-size:clamp(54px,14vw,90px);
-
+    font-size:clamp(54px,16vw,95px);
     letter-spacing:-3px;
   }
 
   .hero-subtitle{
-    font-size:clamp(18px,5vw,28px);
-
-    letter-spacing:4px;
+    font-size:17px;
+    letter-spacing:5px;
+    line-height:1.5;
   }
 
   .hero-arabic{
-    font-size:16px;
+    font-size:13px;
   }
 
-  .collection{
-    padding:40px 16px 25px;
+  .section{
+    padding:95px 0;
+  }
+
+  .section-heading{
+    margin-bottom:42px;
+  }
+
+  .collection-header{
+    min-height:155px;
+    padding:32px 20px;
+    gap:16px;
+  }
+
+  .collection-icon{
+    width:52px;
+    height:52px;
+    flex-basis:52px;
   }
 
   .collection-name{
-    letter-spacing:3px;
+    font-size:19px;
+    letter-spacing:2px;
   }
 
-  .collection-name:hover{
-    letter-spacing:3px;
+  .collection-header:hover .collection-name{
+    letter-spacing:2px;
   }
 
-  .collection-products{
+  .collection-grid{
     grid-template-columns:1fr;
   }
 
   .product-card{
-    padding:23px 19px;
-  }
-
-  .contact-item{
-    padding:20px 17px;
-
-    gap:16px;
-  }
-
-  .contact-symbol{
-    flex-basis:52px;
-
-    width:52px;
-    height:52px;
-  }
-
-  .contact-symbol span{
-    font-size:25px;
-  }
-
-  .contact-label{
-    letter-spacing:3px;
-  }
-
-  .contact-number{
-    font-size:20px;
-
-    letter-spacing:1px;
-  }
-
-  .instagram-name{
-    font-size:16px;
+    min-height:220px;
   }
 
   .world-box{
-    padding:50px 20px;
+    padding:50px 25px;
   }
 
-  section{
-    padding-left:15px;
-    padding-right:15px;
+  .reveal-content{
+    padding:35px 23px;
   }
 
+  .contact-list{
+    flex-direction:column;
+  }
+
+  .contact-item{
+    width:100%;
+  }
 }
 
 /* =========================================================
-   REDUCE MOTION
-   ========================================================= */
+   REDUCED MOTION
+========================================================= */
 
 @media(prefers-reduced-motion:reduce){
-
   *,
   *:before,
   *:after{
     animation:none !important;
-
-    scroll-behavior:auto !important;
-
     transition:none !important;
+    scroll-behavior:auto !important;
   }
-
 }
-
 </style>
 </head>
 
 <body>
 
-<!-- =========================================================
+<div class="side-line left"></div>
+<div class="side-line right"></div>
+
+<!-- =======================================================
      TOP BAR
-     ========================================================= -->
+======================================================= -->
 
 <header class="topbar">
 
-  <a href="#home" class="brand-mini" aria-label="Golden Honey Fusion Home">
+  <div class="ghf-mark" aria-label="Golden Honey Fusion">
+    <span>GHF</span>
+  </div>
 
-    <div class="ghf-mark">
-      <span>GHF</span>
-    </div>
-
-  </a>
-
-  <button
-    class="menu-button"
-    onclick="toggleMenu()"
-    aria-label="Open menu">
-
+  <button class="menu-btn" onclick="openMenu()" aria-label="Open menu">
     <span></span>
     <span></span>
     <span></span>
-
   </button>
 
 </header>
 
-
-<!-- =========================================================
-     FULL MENU
-     ========================================================= -->
+<!-- =======================================================
+     MENU
+======================================================= -->
 
 <div class="menu-overlay" id="menuOverlay">
 
+  <button class="menu-close" onclick="closeMenu()" aria-label="Close menu">
+    ×
+  </button>
+
   <div class="menu-inner">
 
-    <div class="menu-logo">
+    <div class="menu-label">
+      GOLDEN HONEY FUSION
+    </div>
 
-      <div class="menu-logo-main">
-        GHF
+    <a class="menu-link" href="#home" onclick="closeMenu()">
+      HOME
+    </a>
+
+    <a class="menu-link" href="#collections" onclick="closeMenu()">
+      COLLECTIONS
+    </a>
+
+    <a class="menu-link" href="#world" onclick="closeMenu()">
+      OUR WORLD
+    </a>
+
+    <a class="menu-link" href="#about" onclick="closeMenu()">
+      ABOUT US
+    </a>
+
+    <a class="menu-link" href="#contact" onclick="closeMenu()">
+      CONTACT US
+    </a>
+
+  </div>
+</div>
+
+<!-- =======================================================
+     HERO
+======================================================= -->
+
+<section class="hero" id="home">
+
+  <div class="hero-gold-floor"></div>
+
+  <div class="hero-content">
+
+    <div class="luxury-bee-wrap">
+
+      <div class="luxury-bee">
+
+        <!-- LUXURY GEOMETRIC BEE EMBLEM -->
+        <svg viewBox="0 0 160 160"
+             xmlns="http://www.w3.org/2000/svg"
+             aria-label="Golden Honey Fusion emblem">
+
+          <defs>
+
+            <linearGradient id="beeGold"
+                            x1="0"
+                            y1="0"
+                            x2="1"
+                            y2="1">
+
+              <stop offset="0%" stop-color="#493006"/>
+              <stop offset="17%" stop-color="#95661a"/>
+              <stop offset="34%" stop-color="#f0d47a"/>
+              <stop offset="48%" stop-color="#fff0aa"/>
+              <stop offset="62%" stop-color="#b17d20"/>
+              <stop offset="80%" stop-color="#f1d174"/>
+              <stop offset="100%" stop-color="#513307"/>
+
+            </linearGradient>
+
+            <linearGradient id="wingGold"
+                            x1="0"
+                            y1="0"
+                            x2="1"
+                            y2="1">
+
+              <stop offset="0%" stop-color="#684712"/>
+              <stop offset="35%" stop-color="#d0a447"/>
+              <stop offset="57%" stop-color="#fff0a5"/>
+              <stop offset="76%" stop-color="#9b6d1d"/>
+              <stop offset="100%" stop-color="#4e3208"/>
+
+            </linearGradient>
+
+            <linearGradient id="edgeGold"
+                            x1="0"
+                            y1="0"
+                            x2="1"
+                            y2="0">
+
+              <stop offset="0%" stop-color="#765014"/>
+              <stop offset="50%" stop-color="#ffeaa0"/>
+              <stop offset="100%" stop-color="#765014"/>
+
+            </linearGradient>
+
+          </defs>
+
+          <!-- LEFT WING -->
+          <path
+            d="M67 63
+               C48 34 27 24 17 33
+               C5 44 17 65 38 73
+               C48 77 58 76 70 70
+               Z"
+            fill="url(#wingGold)"
+            stroke="url(#edgeGold)"
+            stroke-width="1.8"/>
+
+          <!-- RIGHT WING -->
+          <path
+            d="M93 63
+               C112 34 133 24 143 33
+               C155 44 143 65 122 73
+               C112 77 102 76 90 70
+               Z"
+            fill="url(#wingGold)"
+            stroke="url(#edgeGold)"
+            stroke-width="1.8"/>
+
+          <!-- INNER WING LINES -->
+          <path
+            d="M22 38 C38 43 49 53 60 67"
+            fill="none"
+            stroke="#f3d982"
+            stroke-opacity=".42"
+            stroke-width="1"/>
+
+          <path
+            d="M138 38 C122 43 111 53 100 67"
+            fill="none"
+            stroke="#f3d982"
+            stroke-opacity=".42"
+            stroke-width="1"/>
+
+          <!-- HEAD -->
+          <polygon
+            points="80,30 93,38 97,51 89,61 71,61 63,51 67,38"
+            fill="url(#beeGold)"
+            stroke="#efd17a"
+            stroke-width="1.5"/>
+
+          <!-- BODY -->
+          <path
+            d="M68 57
+               L92 57
+               L101 76
+               L96 103
+               L80 126
+               L64 103
+               L59 76
+               Z"
+            fill="url(#beeGold)"
+            stroke="#efd17a"
+            stroke-width="1.6"/>
+
+          <!-- BODY FACETS -->
+          <path
+            d="M62 73 L98 73"
+            stroke="#543506"
+            stroke-width="4"/>
+
+          <path
+            d="M60 88 L100 88"
+            stroke="#543506"
+            stroke-width="4"/>
+
+          <path
+            d="M64 102 L96 102"
+            stroke="#543506"
+            stroke-width="4"/>
+
+          <!-- CENTRAL LIGHT -->
+          <path
+            d="M80 59 L80 121"
+            stroke="#fff1ad"
+            stroke-opacity=".35"
+            stroke-width="1"/>
+
+          <!-- LOWER FACET -->
+          <polygon
+            points="64,103 80,126 96,103 88,109 80,113 72,109"
+            fill="url(#beeGold)"
+            opacity=".95"/>
+
+          <!-- ANTENNAE -->
+          <path
+            d="M70 36 C60 21 51 19 43 24"
+            fill="none"
+            stroke="#d7b45a"
+            stroke-width="1.6"/>
+
+          <path
+            d="M90 36 C100 21 109 19 117 24"
+            fill="none"
+            stroke="#d7b45a"
+            stroke-width="1.6"/>
+
+          <!-- NO CARTOON FACE / NO EYES -->
+          <!-- Minimal geometric emblem by design -->
+
+        </svg>
+
       </div>
 
     </div>
 
-    <nav class="menu-links">
-
-      <a href="#home" onclick="closeMenu()">
-        HOME
-      </a>
-
-      <a href="#collections" onclick="closeMenu()">
-        COLLECTIONS
-      </a>
-
-      <a href="#world" onclick="closeMenu()">
-        OUR WORLD
-      </a>
-
-      <a href="#about" onclick="openAbout();closeMenu()">
-        ABOUT US
-      </a>
-
-      <a href="#contact" onclick="closeMenu()">
-        CONTACT US
-      </a>
-
-    </nav>
-
-  </div>
-
-</div>
-
-
-<!-- =========================================================
-     HOME
-     ========================================================= -->
-
-<main id="home">
-
-<section class="hero">
-
-  <div class="hero-content">
-
-
-    <!-- =====================================================
-         LUXURY GOLD BEE EMBLEM
-         ===================================================== -->
-
-    <div class="luxury-bee">
-
-      <svg
-        viewBox="0 0 160 160"
-        xmlns="http://www.w3.org/2000/svg">
-
-        <defs>
-
-          <linearGradient
-            id="luxuryBeeGold"
-            x1="0"
-            y1="0"
-            x2="1"
-            y2="1">
-
-            <stop offset="0%" stop-color="#3b2506"/>
-            <stop offset="14%" stop-color="#8d6117"/>
-            <stop offset="28%" stop-color="#d6ad52"/>
-            <stop offset="40%" stop-color="#fff0a5"/>
-            <stop offset="50%" stop-color="#b78325"/>
-            <stop offset="64%" stop-color="#f4d77b"/>
-            <stop offset="78%" stop-color="#9a6b1c"/>
-            <stop offset="90%" stop-color="#e8c76b"/>
-            <stop offset="100%" stop-color="#432b07"/>
-
-          </linearGradient>
-
-          <linearGradient
-            id="wingLuxury"
-            x1="0"
-            y1="0"
-            x2="1"
-            y2="1">
-
-            <stop offset="0%" stop-color="#5c3d0b"/>
-            <stop offset="28%" stop-color="#c99d3b"/>
-            <stop offset="50%" stop-color="#fff0a4"/>
-            <stop offset="70%" stop-color="#c18f2d"/>
-            <stop offset="100%" stop-color="#533509"/>
-
-          </linearGradient>
-
-          <radialGradient
-            id="beeHeadGlow"
-            cx="50%"
-            cy="35%"
-            r="70%">
-
-            <stop offset="0%" stop-color="#fff5bf"/>
-            <stop offset="25%" stop-color="#f0d278"/>
-            <stop offset="58%" stop-color="#a87520"/>
-            <stop offset="100%" stop-color="#412a07"/>
-
-          </radialGradient>
-
-          <filter id="beeDepth">
-
-            <feDropShadow
-              dx="0"
-              dy="7"
-              stdDeviation="4"
-              flood-color="#000"
-              flood-opacity=".95"/>
-
-          </filter>
-
-        </defs>
-
-
-        <!-- LEFT WING -->
-
-        <path
-          d="
-            M70 62
-            C52 36 24 24 14 39
-            C4 54 22 76 58 78
-            L72 70
-            Z
-          "
-          fill="url(#wingLuxury)"
-          stroke="#e8c86e"
-          stroke-width="2"
-          filter="url(#beeDepth)"
-        />
-
-
-        <!-- RIGHT WING -->
-
-        <path
-          d="
-            M90 62
-            C108 36 136 24 146 39
-            C156 54 138 76 102 78
-            L88 70
-            Z
-          "
-          fill="url(#wingLuxury)"
-          stroke="#e8c86e"
-          stroke-width="2"
-          filter="url(#beeDepth)"
-        />
-
-
-        <!-- WING INNER LINES -->
-
-        <path
-          d="M24 45 C39 46 52 54 63 67"
-          fill="none"
-          stroke="rgba(255,245,190,.48)"
-          stroke-width="1.3"
-        />
-
-        <path
-          d="M136 45 C121 46 108 54 97 67"
-          fill="none"
-          stroke="rgba(255,245,190,.48)"
-          stroke-width="1.3"
-        />
-
-
-        <!-- BODY -->
-
-        <path
-          d="
-            M80 49
-            C61 49 51 65 51 91
-            C51 115 63 132 80 141
-            C97 132 109 115 109 91
-            C109 65 99 49 80 49
-            Z
-          "
-          fill="url(#luxuryBeeGold)"
-          stroke="#f3d77c"
-          stroke-width="2"
-          filter="url(#beeDepth)"
-        />
-
-
-        <!-- DARK BODY BANDS -->
-
-        <path
-          d="M54 72 Q80 82 106 72"
-          fill="none"
-          stroke="#432b07"
-          stroke-width="7"
-        />
-
-        <path
-          d="M52 89 Q80 99 108 89"
-          fill="none"
-          stroke="#432b07"
-          stroke-width="7"
-        />
-
-        <path
-          d="M57 106 Q80 115 103 106"
-          fill="none"
-          stroke="#432b07"
-          stroke-width="6"
-        />
-
-
-        <!-- HEAD -->
-
-        <circle
-          cx="80"
-          cy="43"
-          r="21"
-          fill="url(#beeHeadGlow)"
-          stroke="#f4da80"
-          stroke-width="2"
-          filter="url(#beeDepth)"
-        />
-
-
-        <!-- HEAD HIGHLIGHT -->
-
-        <ellipse
-          cx="73"
-          cy="36"
-          rx="6"
-          ry="4"
-          fill="rgba(255,248,210,.38)"
-        />
-
-
-        <!-- EYES -->
-
-        <circle
-          cx="72"
-          cy="44"
-          r="2.5"
-          fill="#171006"
-        />
-
-        <circle
-          cx="88"
-          cy="44"
-          r="2.5"
-          fill="#171006"
-        />
-
-
-        <!-- ANTENNA -->
-
-        <path
-          d="
-            M70 25
-            C61 10 50 8 40 16
-          "
-          fill="none"
-          stroke="#d6ad52"
-          stroke-width="2.2"
-        />
-
-        <path
-          d="
-            M90 25
-            C99 10 110 8 120 16
-          "
-          fill="none"
-          stroke="#d6ad52"
-          stroke-width="2.2"
-        />
-
-        <circle
-          cx="39"
-          cy="16"
-          r="3.2"
-          fill="#f0d27a"
-        />
-
-        <circle
-          cx="121"
-          cy="16"
-          r="3.2"
-          fill="#f0d27a"
-        />
-
-
-        <!-- TAIL -->
-
-        <path
-          d="
-            M70 129
-            L80 150
-            L90 129
-          "
-          fill="url(#luxuryBeeGold)"
-          stroke="#d6ad52"
-          stroke-width="1.5"
-        />
-
-      </svg>
-
+    <div class="hero-kicker">
+      PREMIUM HONEY · BEE-DERIVED PRODUCTS
     </div>
-
-
-    <!-- =====================================================
-         BRAND NAME
-         ===================================================== -->
 
     <h1 class="hero-title">
       GOLDEN
     </h1>
 
-
     <div class="hero-subtitle">
       HONEY FUSION
     </div>
 
-
     <div class="hero-arabic">
-      عسل أصلي فاخر
+      عسل فاخر · اختيار استثنائي · من لبنان إلى العالم
     </div>
 
-  </div>
+    <div class="hero-line"></div>
 
+  </div>
 </section>
 
-
-<!-- =========================================================
+<!-- =======================================================
      COLLECTIONS
-     ========================================================= -->
+======================================================= -->
 
-<section
-  class="collections"
-  id="collections">
+<section class="section collections" id="collections">
 
-  <div class="section-header">
+  <div class="container">
 
-    <div class="section-kicker">
-      DISCOVER OUR SELECTION
-    </div>
+    <div class="section-heading">
 
-    <h2 class="section-title">
-      COLLECTIONS
-    </h2>
-
-    <div class="gold-divider"></div>
-
-  </div>
-
-
-  <div class="collections-wrap">
-
-
-    <!-- =====================================================
-         ROYAL COLLECTION
-         ===================================================== -->
-
-    <div
-      class="collection royal"
-      id="royal">
-
-      <div class="collection-icon">
-
-        <div class="crown"></div>
-
+      <div class="section-eyebrow">
+        DISCOVER THE COLLECTIONS
       </div>
 
+      <h2 class="section-title">
+        COLLECTIONS
+      </h2>
 
-      <button
-        class="collection-name"
-        onclick="toggleCollection('royal')">
-
-        ROYAL COLLECTION
-
-      </button>
-
-
-      <div
-        class="collection-products"
-        id="royal-products">
-
-
-        <div
-          class="product-card"
-          onclick="showProduct('wild','royal')">
-
-          <h3>
-            WILD MOUNTAIN HONEY
-          </h3>
-
-          <div class="arabic">
-            عسل جبلي بري
-          </div>
-
-          <div class="product-line"></div>
-
-          <p>
-            Rare natural honey from high mountain
-            regions, selected for its distinctive
-            character and depth.
-          </p>
-
-        </div>
-
-
-        <div
-          class="product-card"
-          onclick="showProduct('blackseed','royal')">
-
-          <h3>
-            BLACK SEED HONEY
-          </h3>
-
-          <div class="arabic">
-            عسل حبة البركة
-          </div>
-
-          <div class="product-line"></div>
-
-          <p>
-            A distinctive honey selection associated
-            with the character of black seed.
-          </p>
-
-        </div>
-
-
-        <div
-          class="product-card"
-          onclick="showProduct('blacksidr','royal')">
-
-          <h3>
-            BLACK SIDR HONEY
-          </h3>
-
-          <div class="arabic">
-            عسل السدر الأسود
-          </div>
-
-          <div class="product-line"></div>
-
-          <p>
-            A dark and exceptionally distinctive
-            sidr honey selected for its rich character.
-          </p>
-
-        </div>
-
-
-        <div
-          class="product-card"
-          onclick="showProduct('blackmountain','royal')">
-
-          <h3>
-            BLACK MOUNTAIN HONEY
-          </h3>
-
-          <div class="arabic">
-            عسل جبلي أسود
-          </div>
-
-          <div class="product-line"></div>
-
-          <p>
-            Dark mountain honey with a powerful
-            natural character and distinctive depth.
-          </p>
-
-        </div>
-
-      </div>
+      <div class="section-title-line"></div>
 
     </div>
 
+    <div class="collections-grid">
 
-    <!-- =====================================================
-         SPECIAL COLLECTION
-         ===================================================== -->
+      <!-- ROYAL -->
 
-    <div
-      class="collection special"
-      id="special">
+      <div class="collection royal">
 
-      <div class="collection-icon">
+        <div class="collection-header"
+             onclick="toggleCollection('royalGrid')">
 
-        <div class="star"></div>
+          <div class="collection-icon">
 
-      </div>
+            <svg viewBox="0 0 80 80"
+                 width="60"
+                 height="60">
 
+              <path
+                d="M18 27 L29 45 L40 23 L51 45 L62 27 L58 58 L22 58 Z"
+                fill="none"
+                stroke="#c5a04b"
+                stroke-width="2"/>
 
-      <button
-        class="collection-name"
-        onclick="toggleCollection('special')">
+              <path
+                d="M23 58 H57"
+                stroke="#e0c16b"
+                stroke-width="2"/>
 
-        SPECIAL COLLECTION
+              <path
+                d="M28 63 H52"
+                stroke="#765516"
+                stroke-width="1"/>
 
-      </button>
+            </svg>
 
-
-      <div
-        class="collection-products hidden"
-        id="special-products">
-
-
-        <div class="product-card">
-
-          <h3>
-            GOLDEN BALANCE
-          </h3>
-
-          <div class="arabic">
-            جولدن بالانس
           </div>
 
-          <div class="product-line"></div>
+          <div class="collection-name">
+            ROYAL COLLECTION
+          </div>
 
-          <p>
-            A carefully selected honey composition
-            with a distinctive and balanced character.
-          </p>
+          <div class="collection-hint">
+            TAP TO EXPLORE
+          </div>
 
         </div>
 
+        <div class="collection-grid" id="royalGrid">
 
-        <div class="product-card">
+          <div class="product-card"
+               onclick="showProduct('wildMountain')">
 
-          <h3>
-            THYME HONEY
-          </h3>
+            <h3>WILD MOUNTAIN HONEY</h3>
+            <div class="arabic">عسل جبلي بري</div>
+            <div class="product-rule"></div>
+            <div class="product-meta">Premium Selection</div>
 
-          <div class="arabic">
-            عسل الزعتر
           </div>
 
-          <div class="product-line"></div>
+          <div class="product-card"
+               onclick="showProduct('blackSeed')">
 
-          <p>
-            Selected thyme honey with a naturally
-            rich and aromatic profile.
-          </p>
+            <h3>BLACK SEED HONEY</h3>
+            <div class="arabic">عسل حبة البركة</div>
+            <div class="product-rule"></div>
+            <div class="product-meta">Signature Selection</div>
 
-        </div>
-
-
-        <div class="product-card">
-
-          <h3>
-            GOLDEN SUN HONEY
-          </h3>
-
-          <div class="arabic">
-            عسل گز / شرف الشمس
           </div>
 
-          <div class="product-line"></div>
+          <div class="product-card"
+               onclick="showProduct('blackSidr')">
 
-          <p>
-            A distinctive mountain honey selection
-            with a unique golden character.
-          </p>
+            <h3>BLACK SIDR HONEY</h3>
+            <div class="arabic">عسل السدر الأسود</div>
+            <div class="product-rule"></div>
+            <div class="product-meta">Rare Selection</div>
 
-        </div>
-
-
-        <div class="product-card">
-
-          <h3>
-            CRIMSON SIDR HONEY
-          </h3>
-
-          <div class="arabic">
-            عسل السدر الأحمر
           </div>
 
-          <div class="product-line"></div>
+          <div class="product-card"
+               onclick="showProduct('blackMountain')">
 
-          <p>
-            A special sidr selection distinguished
-            by its rich color and character.
-          </p>
+            <h3>BLACK MOUNTAIN HONEY</h3>
+            <div class="arabic">عسل جبلي أسود</div>
+            <div class="product-rule"></div>
+            <div class="product-meta">Exceptional Selection</div>
+
+          </div>
 
         </div>
 
       </div>
 
-    </div>
+      <!-- SPECIAL -->
 
+      <div class="collection special">
 
-    <!-- =====================================================
-         NATURAL COLLECTION
-         ===================================================== -->
+        <div class="collection-header"
+             onclick="toggleCollection('specialGrid')">
 
-    <div
-      class="collection natural"
-      id="natural">
+          <div class="collection-icon">
 
-      <div class="collection-icon">
+            <svg viewBox="0 0 80 80"
+                 width="58"
+                 height="58">
 
-        <div class="leaves">
+              <path
+                d="M40 10 L44 32 L66 40 L44 45 L40 70 L36 45 L14 40 L36 32 Z"
+                fill="none"
+                stroke="#d2ad57"
+                stroke-width="1.7"/>
 
-          <div class="leaf"></div>
-          <div class="leaf"></div>
+              <circle
+                cx="40"
+                cy="40"
+                r="3"
+                fill="#e9ce7c"/>
+
+            </svg>
+
+          </div>
+
+          <div class="collection-name">
+            SPECIAL COLLECTION
+          </div>
+
+          <div class="collection-hint">
+            TAP TO EXPLORE
+          </div>
+
+        </div>
+
+        <div class="collection-grid" id="specialGrid">
+
+          <div class="product-card">
+
+            <h3>GOLDEN BALANCE</h3>
+            <div class="arabic">توازن ذهبي</div>
+            <div class="product-rule"></div>
+            <div class="product-meta">Signature Blend</div>
+
+          </div>
+
+          <div class="product-card">
+
+            <h3>THYME HONEY</h3>
+            <div class="arabic">عسل الزعتر</div>
+            <div class="product-rule"></div>
+            <div class="product-meta">Distinctive Origin</div>
+
+          </div>
+
+          <div class="product-card">
+
+            <h3>GOLDEN SUN HONEY</h3>
+            <div class="arabic">عسل شرف الشمس</div>
+            <div class="product-rule"></div>
+            <div class="product-meta">Golden Selection</div>
+
+          </div>
+
+          <div class="product-card">
+
+            <h3>CRIMSON SIDR HONEY</h3>
+            <div class="arabic">عسل السدر الأحمر</div>
+            <div class="product-rule"></div>
+            <div class="product-meta">Premium Selection</div>
+
+          </div>
 
         </div>
 
       </div>
 
+      <!-- NATURAL -->
 
-      <button
-        class="collection-name"
-        onclick="toggleCollection('natural')">
+      <div class="collection natural">
 
-        NATURAL COLLECTION
+        <div class="collection-header"
+             onclick="toggleCollection('naturalGrid')">
 
-      </button>
+          <div class="collection-icon">
 
+            <svg viewBox="0 0 80 80"
+                 width="62"
+                 height="62">
 
-      <div
-        class="collection-products hidden"
-        id="natural-products">
+              <path
+                d="M40 65 C39 47 34 30 22 17"
+                fill="none"
+                stroke="#597a5b"
+                stroke-width="2"/>
 
+              <path
+                d="M37 45 C23 43 15 35 14 23 C26 22 37 29 39 40"
+                fill="#31563a"
+                stroke="#75956e"
+                stroke-width="1"/>
 
-        <div class="product-card">
+              <path
+                d="M42 52 C54 49 63 41 65 30 C53 29 43 36 41 46"
+                fill="#284c33"
+                stroke="#708f68"
+                stroke-width="1"/>
 
-          <h3>
-            FORTY HERB HONEY
-          </h3>
+            </svg>
 
-          <div class="arabic">
-            عسل 40 نبتة
           </div>
 
-          <div class="product-line"></div>
+          <div class="collection-name">
+            NATURAL COLLECTION
+          </div>
 
-          <p>
-            A distinctive natural honey selection
-            inspired by wild herbs and flowers.
-          </p>
+          <div class="collection-hint">
+            TAP TO EXPLORE
+          </div>
 
         </div>
 
+        <div class="collection-grid" id="naturalGrid">
 
-        <div class="product-card">
+          <div class="product-card">
 
-          <h3>
-            THORN HONEY
-          </h3>
+            <h3>HONEYCOMB HONEY</h3>
+            <div class="arabic">عسل بشهده</div>
+            <div class="product-rule"></div>
+            <div class="product-meta">Pure Comb Selection</div>
 
-          <div class="arabic">
-            عسل الأشواك
           </div>
 
-          <div class="product-line"></div>
+          <div class="product-card">
 
-          <p>
-            Natural honey with a distinctive floral
-            and herbal character.
-          </p>
+            <h3>THORNS HONEY</h3>
+            <div class="arabic">عسل الأشواك</div>
+            <div class="product-rule"></div>
+            <div class="product-meta">Natural Origin</div>
+
+          </div>
+
+          <div class="product-card">
+
+            <h3>FORTY HERB HONEY</h3>
+            <div class="arabic">عسل 40 نبتة</div>
+            <div class="product-rule"></div>
+            <div class="product-meta">Botanical Selection</div>
+
+          </div>
+
+          <div class="product-card">
+
+            <h3>WILD FLOWER HONEY</h3>
+            <div class="arabic">عسل الزهور البرية</div>
+            <div class="product-rule"></div>
+            <div class="product-meta">Natural Selection</div>
+
+          </div>
 
         </div>
 
+      </div>
 
-        <div class="product-card">
+      <!-- HIVE ESSENCE -->
 
-          <h3>
-            LEMON HONEY
-          </h3>
+      <div class="collection hive">
 
-          <div class="arabic">
-            عسل الليمون
+        <div class="collection-header"
+             onclick="toggleCollection('hiveGrid')">
+
+          <div class="collection-icon">
+
+            <svg viewBox="0 0 80 80"
+                 width="60"
+                 height="60">
+
+              <polygon
+                points="40,9 57,19 57,39 40,49 23,39 23,19"
+                fill="none"
+                stroke="#c8a14b"
+                stroke-width="1.8"/>
+
+              <polygon
+                points="40,31 57,41 57,61 40,71 23,61 23,41"
+                fill="none"
+                stroke="#8c681e"
+                stroke-width="1.4"/>
+
+              <path
+                d="M34 25 L40 21 L46 25 L44 31 L36 31 Z"
+                fill="#d7b15b"/>
+
+            </svg>
+
           </div>
 
-          <div class="product-line"></div>
+          <div class="collection-name">
+            HIVE ESSENCE
+          </div>
 
-          <p>
-            A naturally fresh honey profile inspired
-            by lemon blossoms.
-          </p>
+          <div class="collection-hint">
+            TAP TO EXPLORE
+          </div>
 
         </div>
 
+        <div class="collection-grid" id="hiveGrid">
 
-        <div class="product-card">
+          <div class="product-card"
+               onclick="showProduct('pollen')">
 
-          <h3>
-            HONEYCOMB HONEY
-          </h3>
+            <h3>BEE POLLEN</h3>
+            <div class="arabic">حبوب اللقاح</div>
+            <div class="product-rule"></div>
+            <div class="product-meta">Bee-Derived Essence</div>
 
-          <div class="arabic">
-            عسل بشهده
           </div>
 
-          <div class="product-line"></div>
+          <div class="product-card"
+               onclick="showProduct('propolis')">
 
-          <p>
-            Pure honey presented naturally with
-            its original honeycomb.
-          </p>
+            <h3>PROPOLIS</h3>
+            <div class="arabic">العكبر</div>
+            <div class="product-rule"></div>
+            <div class="product-meta">Hive Essence</div>
+
+          </div>
 
         </div>
 
@@ -2704,721 +1885,263 @@ footer{
 
     </div>
 
+    <!-- PRODUCT DETAIL -->
 
-    <!-- =====================================================
-         HIVE ESSENCE
-         ===================================================== -->
+    <div class="product-detail" id="productDetail">
 
-    <div
-      class="collection hive"
-      id="hive">
+      <h2 id="detailTitle"></h2>
 
-      <div class="collection-icon">
+      <div class="detail-ar" id="detailArabic"></div>
 
-        <div class="hive-symbol">
+      <div class="product-description" id="detailDescription"></div>
 
-          <div class="hive-bee"></div>
+      <div class="size-label">
+        AVAILABLE SIZES
+      </div>
 
-        </div>
+      <div class="sizes">
+
+        <button class="size-btn active"
+                onclick="selectSize(this)">
+          30 G
+        </button>
+
+        <button class="size-btn"
+                onclick="selectSize(this)">
+          500 G
+        </button>
+
+        <button class="size-btn"
+                onclick="selectSize(this)">
+          1000 G
+        </button>
 
       </div>
 
-
-      <button
-        class="collection-name"
-        onclick="toggleCollection('hive')">
-
-        HIVE ESSENCE
-
-      </button>
-
-
-      <div
-        class="collection-products hidden"
-        id="hive-products">
-
-
-        <div
-          class="product-card"
-          onclick="showProduct('pollen','hive')">
-
-          <h3>
-            BEE POLLEN
-          </h3>
-
-          <div class="arabic">
-            حبوب اللقاح
-          </div>
-
-          <div class="product-line"></div>
-
-          <p>
-            Carefully selected bee pollen from
-            distinctive natural sources.
-          </p>
-
-        </div>
-
-
-        <div
-          class="product-card"
-          onclick="showProduct('propolis','hive')">
-
-          <h3>
-            PROPOLIS
-          </h3>
-
-          <div class="arabic">
-            العكبر
-          </div>
-
-          <div class="product-line"></div>
-
-          <p>
-            A premium bee-derived product selected
-            for its distinctive natural character.
-          </p>
-
-        </div>
-
+      <div class="price">
+        PRICE ON REQUEST
       </div>
 
     </div>
 
   </div>
-
 </section>
 
-
-<!-- =========================================================
-     PRODUCT DETAILS
-     ========================================================= -->
-
-<section id="product-details-section">
-
-
-  <!-- WILD MOUNTAIN -->
-
-  <div
-    class="product-detail"
-    id="wild">
-
-    <h2>
-      WILD MOUNTAIN HONEY
-    </h2>
-
-    <div class="arabic-title">
-      عسل جبلي بري
-    </div>
-
-    <p class="product-description">
-      A premium wild mountain honey selection,
-      carefully chosen for its natural character,
-      richness and distinctive origin.
-    </p>
-
-    <div class="size-label">
-      SELECT SIZE
-    </div>
-
-    <select
-      class="size-select"
-      onchange="updatePrice('wild',this.value)">
-
-      <option value="30g">
-        30 G
-      </option>
-
-      <option value="500g">
-        500 G
-      </option>
-
-      <option value="1000g">
-        1000 G
-      </option>
-
-    </select>
-
-    <div class="price-box">
-
-      <span class="price-label">
-        PRICE
-      </span>
-
-      <div
-        class="price-value"
-        id="wild-price">
-
-        PRICE ON REQUEST
-
-      </div>
-
-    </div>
-
-    <button
-      class="back-button"
-      onclick="backToCollection()">
-
-      BACK TO COLLECTION
-
-    </button>
-
-  </div>
-
-
-  <!-- BLACK SEED -->
-
-  <div
-    class="product-detail"
-    id="blackseed">
-
-    <h2>
-      BLACK SEED HONEY
-    </h2>
-
-    <div class="arabic-title">
-      عسل حبة البركة
-    </div>
-
-    <p class="product-description">
-      A distinctive honey selection inspired by
-      the natural character of black seed.
-    </p>
-
-    <div class="size-label">
-      SELECT SIZE
-    </div>
-
-    <select
-      class="size-select"
-      onchange="updatePrice('blackseed',this.value)">
-
-      <option value="30g">
-        30 G
-      </option>
-
-      <option value="500g">
-        500 G
-      </option>
-
-      <option value="1000g">
-        1000 G
-      </option>
-
-    </select>
-
-    <div class="price-box">
-
-      <span class="price-label">
-        PRICE
-      </span>
-
-      <div
-        class="price-value"
-        id="blackseed-price">
-
-        PRICE ON REQUEST
-
-      </div>
-
-    </div>
-
-    <button
-      class="back-button"
-      onclick="backToCollection()">
-
-      BACK TO COLLECTION
-
-    </button>
-
-  </div>
-
-
-  <!-- BLACK SIDR -->
-
-  <div
-    class="product-detail"
-    id="blacksidr">
-
-    <h2>
-      BLACK SIDR HONEY
-    </h2>
-
-    <div class="arabic-title">
-      عسل السدر الأسود
-    </div>
-
-    <p class="product-description">
-      A dark and distinctive sidr honey selected
-      for its depth, character and premium profile.
-    </p>
-
-    <div class="size-label">
-      SELECT SIZE
-    </div>
-
-    <select
-      class="size-select"
-      onchange="updatePrice('blacksidr',this.value)">
-
-      <option value="30g">
-        30 G
-      </option>
-
-      <option value="500g">
-        500 G
-      </option>
-
-      <option value="1000g">
-        1000 G
-      </option>
-
-    </select>
-
-    <div class="price-box">
-
-      <span class="price-label">
-        PRICE
-      </span>
-
-      <div
-        class="price-value"
-        id="blacksidr-price">
-
-        PRICE ON REQUEST
-
-      </div>
-
-    </div>
-
-    <button
-      class="back-button"
-      onclick="backToCollection()">
-
-      BACK TO COLLECTION
-
-    </button>
-
-  </div>
-
-
-  <!-- BLACK MOUNTAIN -->
-
-  <div
-    class="product-detail"
-    id="blackmountain">
-
-    <h2>
-      BLACK MOUNTAIN HONEY
-    </h2>
-
-    <div class="arabic-title">
-      عسل جبلي أسود
-    </div>
-
-    <p class="product-description">
-      A powerful dark mountain honey selection,
-      distinguished by its depth and natural character.
-    </p>
-
-    <div class="size-label">
-      SELECT SIZE
-    </div>
-
-    <select
-      class="size-select"
-      onchange="updatePrice('blackmountain',this.value)">
-
-      <option value="30g">
-        30 G
-      </option>
-
-      <option value="500g">
-        500 G
-      </option>
-
-      <option value="1000g">
-        1000 G
-      </option>
-
-    </select>
-
-    <div class="price-box">
-
-      <span class="price-label">
-        PRICE
-      </span>
-
-      <div
-        class="price-value"
-        id="blackmountain-price">
-
-        PRICE ON REQUEST
-
-      </div>
-
-    </div>
-
-    <button
-      class="back-button"
-      onclick="backToCollection()">
-
-      BACK TO COLLECTION
-
-    </button>
-
-  </div>
-
-
-  <!-- BEE POLLEN -->
-
-  <div
-    class="product-detail"
-    id="pollen">
-
-    <h2>
-      BEE POLLEN
-    </h2>
-
-    <div class="arabic-title">
-      حبوب اللقاح
-    </div>
-
-    <p class="product-description">
-      Carefully selected bee pollen from distinctive
-      natural sources.
-    </p>
-
-    <div class="size-label">
-      SELECT SIZE
-    </div>
-
-    <select
-      class="size-select"
-      onchange="updatePrice('pollen',this.value)">
-
-      <option value="30g">
-        30 G
-      </option>
-
-      <option value="500g">
-        500 G
-      </option>
-
-      <option value="1000g">
-        1000 G
-      </option>
-
-    </select>
-
-    <div class="price-box">
-
-      <span class="price-label">
-        PRICE
-      </span>
-
-      <div
-        class="price-value"
-        id="pollen-price">
-
-        PRICE ON REQUEST
-
-      </div>
-
-    </div>
-
-    <button
-      class="back-button"
-      onclick="backToCollection()">
-
-      BACK TO COLLECTION
-
-    </button>
-
-  </div>
-
-
-  <!-- PROPOLIS -->
-
-  <div
-    class="product-detail"
-    id="propolis">
-
-    <h2>
-      PROPOLIS
-    </h2>
-
-    <div class="arabic-title">
-      العكبر
-    </div>
-
-    <p class="product-description">
-      A premium bee-derived selection with a
-      distinctive natural character.
-    </p>
-
-    <div class="size-label">
-      SELECT SIZE
-    </div>
-
-    <select
-      class="size-select"
-      onchange="updatePrice('propolis',this.value)">
-
-      <option value="30g">
-        30 G
-      </option>
-
-      <option value="500g">
-        500 G
-      </option>
-
-      <option value="1000g">
-        1000 G
-      </option>
-
-    </select>
-
-    <div class="price-box">
-
-      <span class="price-label">
-        PRICE
-      </span>
-
-      <div
-        class="price-value"
-        id="propolis-price">
-
-        PRICE ON REQUEST
-
-      </div>
-
-    </div>
-
-    <button
-      class="back-button"
-      onclick="backToCollection()">
-
-      BACK TO COLLECTION
-
-    </button>
-
-  </div>
-
-</section>
-
-
-<!-- =========================================================
+<!-- =======================================================
      OUR WORLD
-     ========================================================= -->
+======================================================= -->
 
-<section
-  class="world-section"
-  id="world">
+<section class="section world" id="world">
 
-  <div class="world-box">
+  <div class="container">
 
-    <h2>
-      OUR WORLD
-    </h2>
+    <div class="section-heading">
 
-    <p>
-      From Lebanon to the world, Golden Honey Fusion
-      searches beyond borders for exceptional honey
-      and distinctive bee-derived products.
-      Our world is built around origin, selection
-      and character.
-    </p>
+      <div class="section-eyebrow">
+        OUR PHILOSOPHY
+      </div>
 
-    <p class="world-arabic">
-      من لبنان إلى العالم، تبحث Golden Honey Fusion
-      عبر الحدود عن أنواع عسل استثنائية ومنتجات مميزة
-      من عالم النحل. عالمنا يقوم على المصدر،
-      والاختيار، والطابع.
-    </p>
+      <h2 class="section-title">
+        OUR WORLD
+      </h2>
+
+      <div class="section-title-line"></div>
+
+    </div>
+
+    <div class="world-box">
+
+      <h2>
+        FROM LEBANON TO THE WORLD
+      </h2>
+
+      <p>
+        From Lebanon to the world, Golden Honey Fusion searches
+        beyond borders for exceptional honey and distinctive
+        bee-derived products. Our world is built around origin,
+        selection and character.
+      </p>
+
+      <p class="arabic-text">
+        من لبنان إلى العالم، تبحث Golden Honey Fusion عبر الحدود
+        عن أنواع عسل استثنائية ومنتجات مميزة من عالم النحل.
+        عالمنا يقوم على المصدر، والاختيار، والطابع.
+      </p>
+
+    </div>
 
   </div>
 
 </section>
 
-
-<!-- =========================================================
+<!-- =======================================================
      ABOUT US
-     ========================================================= -->
+======================================================= -->
 
-<section
-  class="about-section"
-  id="about">
+<section class="section about" id="about">
 
-  <div class="section-header">
+  <div class="container">
 
-    <div class="section-kicker">
-      OUR STORY
+    <div class="section-heading">
+
+      <div class="section-eyebrow">
+        THE STORY BEHIND THE BRAND
+      </div>
+
+      <h2 class="section-title">
+        ABOUT US
+      </h2>
+
+      <div class="section-title-line"></div>
+
     </div>
 
-    <h2 class="section-title">
-      ABOUT US
-    </h2>
+    <!-- ONLY THIS IS VISIBLE INITIALLY -->
 
-    <div class="gold-divider"></div>
+    <div class="reveal-card"
+         id="aboutCard"
+         onclick="toggleAbout()">
 
-  </div>
+      <div class="reveal-card-title">
+        ABOUT US
+      </div>
 
+      <div class="reveal-arrow">
+        ↓
+      </div>
 
-  <div
-    class="about-card"
-    onclick="openAbout()">
-
-    <div class="about-card-title">
-      GOLDEN HONEY FUSION
     </div>
 
-    <div class="about-card-sub">
-      DISCOVER OUR STORY
+    <!-- HIDDEN UNTIL CLICK -->
+
+    <div class="reveal-content" id="aboutContent">
+
+      <p>
+        Golden Honey Fusion is a Lebanese brand reaching from
+        Lebanon to the world, driven by a passion for discovering
+        and carefully selecting exceptional premium honey from
+        distinctive sources around the world.
+      </p>
+
+      <p>
+        We offer a complete range of products connected to premium
+        honey, guided by a vision that brings together product
+        distinction, careful selection and elegant presentation.
+      </p>
+
+      <p>
+        We do not look for the ordinary.
+        We look for the exceptional.
+      </p>
+
+      <p class="ar">
+        Golden Honey Fusion علامة لبنانية تنطلق من لبنان إلى العالم،
+        بشغف للبحث عن أجود أنواع العسل الفاخر وانتقائها بعناية من
+        مصادر مميزة حول العالم. نقدّم مجموعة متكاملة من المنتجات
+        المرتبطة بالعسل الفاخر، ضمن رؤية تجمع بين تميّز المنتج،
+        جودة الاختيار وأناقة التقديم.
+      </p>
+
+      <p class="ar">
+        عسلنا ليس كأي عسل، لأننا لا نبحث عن العادي، بل عن الاستثنائي.
+      </p>
+
     </div>
-
-  </div>
-
-
-  <div
-    class="about-content"
-    id="aboutContent">
-
-    <p>
-      Golden Honey Fusion is a Lebanese brand reaching
-      from Lebanon to the world, driven by a passion
-      for discovering and carefully selecting exceptional
-      premium honey from distinctive sources around the world.
-    </p>
-
-    <p>
-      We offer a complete range of products connected
-      to premium honey, guided by a vision that brings
-      together product distinction, careful selection
-      and elegant presentation.
-    </p>
-
-    <p>
-      We do not look for the ordinary.
-      We look for the exceptional.
-    </p>
-
-    <p class="about-arabic">
-      Golden Honey Fusion علامة لبنانية تنطلق من لبنان
-      إلى العالم، بشغف للبحث عن أجود أنواع العسل الفاخر
-      وانتقائها بعناية من مصادر مميزة حول العالم.
-      نقدّم مجموعة متكاملة من المنتجات المرتبطة بالعسل
-      الفاخر، ضمن رؤية تجمع بين تميّز المنتج، جودة
-      الاختيار وأناقة التقديم.
-    </p>
-
-    <p class="about-arabic">
-      عسلنا ليس كأي عسل، لأننا لا نبحث عن العادي،
-      بل عن الاستثنائي.
-    </p>
 
   </div>
 
 </section>
 
-
-<!-- =========================================================
+<!-- =======================================================
      CONTACT US
-     ========================================================= -->
+======================================================= -->
 
-<section
-  class="contact-section"
-  id="contact">
+<section class="section contact" id="contact">
 
-  <div class="contact-box">
+  <div class="container">
 
-    <div class="section-kicker">
-      GET IN TOUCH
+    <div class="section-heading">
+
+      <div class="section-eyebrow">
+        CONNECT WITH US
+      </div>
+
+      <h2 class="section-title">
+        CONTACT US
+      </h2>
+
+      <div class="section-title-line"></div>
+
     </div>
 
-    <h2 class="section-title">
-      CONTACT US
-    </h2>
+    <!-- ONLY TITLE VISIBLE INITIALLY -->
 
-    <div class="gold-divider"></div>
+    <div class="reveal-card contact-reveal"
+         id="contactCard"
+         onclick="toggleContact()">
 
+      <div class="reveal-card-title">
+        CONTACT US
+      </div>
 
-    <p class="contact-intro">
-      For inquiries, orders and premium honey selections,
-      we are always pleased to hear from you.
-    </p>
+      <div class="reveal-arrow">
+        ↓
+      </div>
 
+    </div>
 
-    <div class="contact-details">
+    <!-- CONTACT DETAILS HIDDEN -->
 
+    <div class="contact-content"
+         id="contactContent">
 
-      <!-- ===================================================
-           WHATSAPP
-           =================================================== -->
+      <div class="contact-list">
 
-      <a
-        href="https://wa.me/96171127840"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="contact-item"
-        aria-label="Contact Golden Honey Fusion on WhatsApp">
+        <!-- WHATSAPP -->
 
-        <div class="contact-symbol">
-          <span>◉</span>
-        </div>
+        <a href="https://wa.me/96171127840"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="contact-item"
+           aria-label="Contact Golden Honey Fusion on WhatsApp">
 
-        <div class="contact-text">
+          <div class="contact-icon">
+            ◇
+          </div>
 
-          <span class="contact-label">
+          <div class="contact-label">
             WHATSAPP
-          </span>
+          </div>
 
           <strong class="contact-number">
             +961 71 127 840
           </strong>
 
-          <span class="contact-action">
-            TAP TO CONTACT
-          </span>
+        </a>
 
-        </div>
+        <!-- INSTAGRAM -->
 
-      </a>
+        <a href="https://www.instagram.com/goldenhoneyfusion"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="contact-item"
+           aria-label="Visit Golden Honey Fusion on Instagram">
 
+          <div class="contact-icon">
+            ◎
+          </div>
 
-      <!-- ===================================================
-           INSTAGRAM
-           =================================================== -->
-
-      <a
-        href="https://www.instagram.com/goldenhoneyfusion"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="contact-item"
-        aria-label="Visit Golden Honey Fusion on Instagram">
-
-        <div class="contact-symbol">
-          <span>◎</span>
-        </div>
-
-        <div class="contact-text">
-
-          <span class="contact-label">
+          <div class="contact-label">
             INSTAGRAM
-          </span>
+          </div>
 
           <strong class="instagram-name">
             @goldenhoneyfusion
           </strong>
 
-          <span class="contact-action">
-            VISIT OUR INSTAGRAM
-          </span>
+        </a>
 
-        </div>
-
-      </a>
-
+      </div>
 
     </div>
 
@@ -3426,370 +2149,314 @@ footer{
 
 </section>
 
-</main>
-
-
-<!-- =========================================================
+<!-- =======================================================
      FOOTER
-     ========================================================= -->
+======================================================= -->
 
 <footer>
 
-  <div class="footer-logo">
+  <div class="footer-brand">
     GOLDEN HONEY FUSION
   </div>
 
-  <div class="footer-small">
-    PURE • RAW • PREMIUM
+  <div class="footer-copy">
+    PREMIUM HONEY · BEE-DERIVED PRODUCTS · LEBANON
   </div>
 
 </footer>
 
+<!-- =======================================================
+     JAVASCRIPT
+======================================================= -->
 
 <script>
 
 /* =========================================================
    MENU
-   ========================================================= */
+========================================================= */
 
-function toggleMenu(){
-
-  const menu =
-    document.getElementById("menuOverlay");
-
-  menu.classList.toggle("active");
-
+function openMenu(){
+  document.getElementById("menuOverlay").classList.add("open");
+  document.body.style.overflow="hidden";
 }
-
 
 function closeMenu(){
-
-  const menu =
-    document.getElementById("menuOverlay");
-
-  menu.classList.remove("active");
-
+  document.getElementById("menuOverlay").classList.remove("open");
+  document.body.style.overflow="";
 }
 
+document.addEventListener("keydown",function(e){
+
+  if(e.key==="Escape"){
+    closeMenu();
+  }
+
+});
 
 /* =========================================================
    COLLECTION TOGGLE
-   ========================================================= */
+========================================================= */
 
 function toggleCollection(id){
 
-  const collection =
-    document.getElementById(id);
+  const target=document.getElementById(id);
 
-  const grid =
-    document.getElementById(id + "-products");
+  const wasOpen=target.classList.contains("open");
 
-  if(!collection || !grid) return;
-
-
-  const isOpen =
-    !grid.classList.contains("hidden");
-
-
-  /*
-     Close every collection first.
-  */
-
-  document
-    .querySelectorAll(".collection-products")
-    .forEach(el => {
-
-      el.classList.add("hidden");
-
+  document.querySelectorAll(".collection-grid")
+    .forEach(function(grid){
+      grid.classList.remove("open");
     });
 
+  if(!wasOpen){
 
-  document
-    .querySelectorAll(".collection")
-    .forEach(el => {
+    target.classList.add("open");
 
-      el.classList.remove("open");
+    setTimeout(function(){
 
-    });
+      const header=target.parentElement
+        .querySelector(".collection-header");
 
+      if(window.innerWidth < 700){
 
-  /*
-     If selected collection was closed,
-     open it.
-  */
+        header.scrollIntoView({
+          behavior:"smooth",
+          block:"center"
+        });
 
-  if(!isOpen){
+      }
 
-    grid.classList.remove("hidden");
-
-    collection.classList.add("open");
-
-
-    setTimeout(() => {
-
-      collection.scrollIntoView({
-
-        behavior:"smooth",
-
-        block:"start"
-
-      });
-
-    },50);
+    },80);
 
   }
 
 }
 
-
 /* =========================================================
-   PRODUCT PRICES
-   ========================================================= */
+   PRODUCT DATA
+========================================================= */
 
-const productPrices = {
+const products={
 
-  wild:{
-    "30g":null,
-    "500g":null,
-    "1000g":null
+  wildMountain:{
+    title:"WILD MOUNTAIN HONEY",
+    arabic:"عسل جبلي بري",
+    description:
+      "A distinctive wild mountain honey selected for its character, depth and exceptional natural profile."
   },
 
-  blackseed:{
-    "30g":null,
-    "500g":null,
-    "1000g":null
+  blackSeed:{
+    title:"BLACK SEED HONEY",
+    arabic:"عسل حبة البركة",
+    description:
+      "A distinctive honey selection associated with black seed blossoms, chosen for its deep character and memorable profile."
   },
 
-  blacksidr:{
-    "30g":null,
-    "500g":null,
-    "1000g":null
+  blackSidr:{
+    title:"BLACK SIDR HONEY",
+    arabic:"عسل السدر الأسود",
+    description:
+      "A rare and powerful sidr selection with a deep character, refined profile and exceptional presence."
   },
 
-  blackmountain:{
-    "30g":null,
-    "500g":null,
-    "1000g":null
+  blackMountain:{
+    title:"BLACK MOUNTAIN HONEY",
+    arabic:"عسل جبلي أسود",
+    description:
+      "A bold mountain honey selected for its dark character, richness and distinctive natural identity."
   },
 
   pollen:{
-    "30g":null,
-    "500g":null,
-    "1000g":null
+    title:"BEE POLLEN",
+    arabic:"حبوب اللقاح",
+    description:
+      "A naturally collected bee-derived product selected as part of the HIVE ESSENCE collection."
   },
 
   propolis:{
-    "30g":null,
-    "500g":null,
-    "1000g":null
+    title:"PROPOLIS",
+    arabic:"العكبر",
+    description:
+      "A distinctive hive essence carefully selected as part of our collection of premium bee-derived products."
   }
 
 };
 
-
 /* =========================================================
-   PRODUCT DETAIL
-   ========================================================= */
+   SHOW PRODUCT
+========================================================= */
 
-let activeCollection = "royal";
+function showProduct(key){
 
+  const product=products[key];
 
-function showProduct(id,collectionId){
+  if(!product)return;
 
-  activeCollection = collectionId;
+  document.getElementById("detailTitle").textContent=
+    product.title;
 
+  document.getElementById("detailArabic").textContent=
+    product.arabic;
 
-  /*
-     Hide all product details.
-  */
+  document.getElementById("detailDescription").textContent=
+    product.description;
 
-  document
-    .querySelectorAll(".product-detail")
-    .forEach(el => {
+  document.getElementById("productDetail")
+    .classList.add("active");
 
-      el.classList.remove("active");
-
+  document.querySelectorAll(".size-btn")
+    .forEach(function(btn){
+      btn.classList.remove("active");
     });
 
+  document.querySelector(".size-btn")
+    .classList.add("active");
 
-  /*
-     Find selected product.
-  */
+  setTimeout(function(){
 
-  const product =
-    document.getElementById(id);
-
-
-  if(product){
-
-    product.classList.add("active");
-
-
-    setTimeout(() => {
-
-      product.scrollIntoView({
-
+    document.getElementById("productDetail")
+      .scrollIntoView({
         behavior:"smooth",
-
-        block:"start"
-
+        block:"center"
       });
 
-    },50);
-
-  }
+  },60);
 
 }
 
-
 /* =========================================================
-   BACK TO COLLECTION
-   ========================================================= */
+   SIZE
+========================================================= */
 
-function backToCollection(){
+function selectSize(button){
 
-  /*
-     Hide product details.
-  */
-
-  document
-    .querySelectorAll(".product-detail")
-    .forEach(el => {
-
-      el.classList.remove("active");
-
+  document.querySelectorAll(".size-btn")
+    .forEach(function(btn){
+      btn.classList.remove("active");
     });
 
-
-  /*
-     Restore selected collection.
-  */
-
-  const collection =
-    document.getElementById(activeCollection);
-
-
-  if(collection){
-
-    collection.classList.add("open");
-
-
-    const grid =
-      document.getElementById(
-        activeCollection + "-products"
-      );
-
-
-    if(grid){
-
-      grid.classList.remove("hidden");
-
-    }
-
-
-    setTimeout(() => {
-
-      collection.scrollIntoView({
-
-        behavior:"smooth",
-
-        block:"start"
-
-      });
-
-    },50);
-
-  }
+  button.classList.add("active");
 
 }
 
-
 /* =========================================================
-   PRICE
-   ========================================================= */
+   ABOUT
+========================================================= */
 
-function updatePrice(product,size){
+function toggleAbout(){
 
-  const price =
-    productPrices[product]?.[size];
+  const card=document.getElementById("aboutCard");
+  const content=document.getElementById("aboutContent");
 
+  const open=content.classList.contains("open");
 
-  const element =
-    document.getElementById(
-      product + "-price"
-    );
+  if(open){
 
-
-  if(!element) return;
-
-
-  if(price){
-
-    element.textContent = price;
+    content.classList.remove("open");
+    card.classList.remove("open");
 
   }else{
 
-    element.textContent =
-      "PRICE ON REQUEST";
+    content.classList.add("open");
+    card.classList.add("open");
+
+    setTimeout(function(){
+
+      content.scrollIntoView({
+        behavior:"smooth",
+        block:"center"
+      });
+
+    },70);
 
   }
 
 }
 
-
 /* =========================================================
-   ABOUT US
-   ========================================================= */
+   CONTACT
+========================================================= */
 
-function openAbout(){
+function toggleContact(){
 
-  const content =
-    document.getElementById("aboutContent");
+  const card=document.getElementById("contactCard");
+  const content=document.getElementById("contactContent");
 
+  const open=content.classList.contains("open");
 
-  if(!content) return;
+  if(open){
 
+    content.classList.remove("open");
+    card.classList.remove("open");
 
-  content.classList.toggle("active");
+  }else{
 
+    content.classList.add("open");
+    card.classList.add("open");
 
-  if(content.classList.contains("active")){
+    setTimeout(function(){
 
-    setTimeout(() => {
+      content.scrollIntoView({
+        behavior:"smooth",
+        block:"center"
+      });
 
-      document
-        .getElementById("about")
-        .scrollIntoView({
-
-          behavior:"smooth",
-
-          block:"start"
-
-        });
-
-    },50);
+    },70);
 
   }
 
 }
 
-
 /* =========================================================
-   CLOSE MENU WITH ESC
-   ========================================================= */
+   CLOSE MENU WHEN CLICKING OUTSIDE
+========================================================= */
 
-document.addEventListener(
-  "keydown",
-  function(e){
+document.getElementById("menuOverlay")
+  .addEventListener("click",function(e){
 
-    if(e.key === "Escape"){
-
+    if(e.target===this){
       closeMenu();
-
     }
 
-  }
-);
+  });
+
+/* =========================================================
+   INTERSECTION REVEAL
+========================================================= */
+
+const observer=
+  new IntersectionObserver(
+    function(entries){
+
+      entries.forEach(function(entry){
+
+        if(entry.isIntersecting){
+
+          entry.target.style.opacity="1";
+          entry.target.style.transform="translateY(0)";
+
+        }
+
+      });
+
+    },
+    {
+      threshold:.08
+    }
+  );
+
+document.querySelectorAll(
+  ".collection,.world-box,.reveal-card,.contact-reveal"
+).forEach(function(el){
+
+  el.style.opacity="0";
+  el.style.transform="translateY(20px)";
+  el.style.transition=
+    "opacity .8s ease, transform .8s cubic-bezier(.22,.61,.36,1)";
+
+  observer.observe(el);
+
+});
 
 </script>
 
