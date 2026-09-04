@@ -6,157 +6,225 @@
 <title>Golden Honey Fusion</title>
 
 <style>
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
 
-body {
-    background: #0b0b0b;
-    color: #d4af37;
-    font-family: Georgia, "Times New Roman", serif;
-    min-height: 100vh;
+body{
+    background:#080808;
+    color:#d8b65a;
+    font-family:Georgia,"Times New Roman",serif;
+    min-height:100vh;
 }
 
-.container {
-    width: 100%;
-    max-width: 500px;
-    margin: auto;
-    padding: 35px 20px 45px;
-    text-align: center;
+.page{
+    max-width:520px;
+    margin:auto;
+    padding:35px 18px 50px;
+    text-align:center;
 }
 
-.logo {
-    width: 95px;
-    height: 95px;
-    margin: 5px auto 20px;
-    border: 1px solid #d4af37;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 42px;
+.logo{
+    width:92px;
+    height:92px;
+    margin:0 auto 18px;
+    border:1px solid #8d7330;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:40px;
+    box-shadow:0 0 25px rgba(180,145,50,.12);
 }
 
-h1 {
-    font-size: 28px;
-    letter-spacing: 3px;
-    margin-bottom: 8px;
+h1{
+    font-size:27px;
+    letter-spacing:3px;
+    color:#e0c06a;
 }
 
-.subtitle {
-    color: #b9b9b9;
-    font-size: 14px;
-    letter-spacing: 2px;
-    margin-bottom: 45px;
+.tagline{
+    margin-top:8px;
+    margin-bottom:40px;
+    color:#8d8d8d;
+    font-size:12px;
+    letter-spacing:2px;
 }
 
-.collection {
-    display: block;
-    width: 100%;
-    background: linear-gradient(145deg, #151515, #0e0e0e);
-    border: 1px solid #5d4a17;
-    border-radius: 20px;
-    padding: 28px 15px;
-    margin-bottom: 20px;
-    text-decoration: none;
-    color: #d4af37;
-    transition: 0.3s;
+.collection,
+.product{
+    display:block;
+    text-decoration:none;
+    color:#d8b65a;
+    background:linear-gradient(145deg,#171717,#0c0c0c);
+    border:1px solid #51431e;
+    border-radius:20px;
+    margin-bottom:18px;
+    transition:.25s;
 }
 
-.collection:hover {
-    border-color: #d4af37;
-    transform: translateY(-3px);
+.collection{
+    padding:27px 15px;
 }
 
-.icon {
-    height: 75px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 15px;
+.collection:hover,
+.product:hover{
+    border-color:#c5a34c;
+    transform:translateY(-2px);
 }
 
-/* Crown */
-.crown {
-    font-size: 55px;
-}
-
-/* Star */
-.star {
-    font-size: 55px;
+.icon{
+    height:65px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin-bottom:12px;
+    font-size:48px;
 }
 
 /* Two upward leaves */
-.leaves {
-    position: relative;
-    width: 75px;
-    height: 65px;
+.leaves{
+    width:75px;
+    height:58px;
+    position:relative;
 }
 
-.leaf {
-    position: absolute;
-    width: 30px;
-    height: 52px;
-    border: 2px solid #d4af37;
-    border-radius: 100% 0 100% 0;
-    bottom: 0;
+.leaf{
+    position:absolute;
+    bottom:1px;
+    width:29px;
+    height:48px;
+    border:2px solid #c9a94f;
+    border-radius:100% 0 100% 0;
 }
 
-.leaf.left {
-    left: 13px;
-    transform: rotate(-38deg);
+.leaf.left{
+    left:10px;
+    transform:rotate(-38deg);
 }
 
-.leaf.right {
-    right: 13px;
-    transform: rotate(38deg) scaleX(-1);
+.leaf.right{
+    right:10px;
+    transform:scaleX(-1) rotate(-38deg);
 }
 
-.collection-title {
-    font-size: 20px;
-    letter-spacing: 2px;
-    margin-bottom: 7px;
+.collection-title{
+    font-size:19px;
+    letter-spacing:2px;
 }
 
-.collection-subtitle {
-    color: #999;
-    font-size: 12px;
-    letter-spacing: 1px;
+.collection-ar{
+    margin-top:7px;
+    font-family:Arial,sans-serif;
+    color:#b5b5b5;
+    font-size:14px;
 }
 
-.footer {
-    margin-top: 40px;
-    color: #666;
-    font-size: 10px;
-    letter-spacing: 2px;
+.collection-note{
+    margin-top:8px;
+    color:#777;
+    font-size:10px;
+    letter-spacing:1.5px;
+}
+
+.section{
+    display:none;
+}
+
+.section.active{
+    display:block;
+}
+
+.back{
+    display:inline-block;
+    margin-bottom:25px;
+    color:#aaa;
+    text-decoration:none;
+    font-family:Arial,sans-serif;
+    font-size:13px;
+}
+
+.section-title{
+    font-size:25px;
+    letter-spacing:3px;
+    color:#dfbd61;
+}
+
+.section-ar{
+    margin-top:8px;
+    margin-bottom:28px;
+    color:#aaa;
+    font-family:Arial,sans-serif;
+}
+
+.product{
+    padding:22px 16px;
+    text-align:center;
+}
+
+.product-icon{
+    width:72px;
+    height:72px;
+    margin:0 auto 14px;
+    border:1px solid #6a5727;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:31px;
+}
+
+.product-en{
+    font-size:17px;
+    letter-spacing:1.5px;
+    color:#d9b65b;
+}
+
+.product-ar{
+    margin-top:7px;
+    font-family:Arial,sans-serif;
+    font-size:15px;
+    color:#aaa;
+}
+
+.footer{
+    margin-top:38px;
+    color:#555;
+    font-size:9px;
+    letter-spacing:2px;
 }
 </style>
 </head>
 
 <body>
 
-<div class="container">
+<div class="page">
+
+<!-- HOME -->
+<div id="home" class="section active">
 
     <div class="logo">🍯</div>
 
     <h1>GOLDEN HONEY FUSION</h1>
 
-    <div class="subtitle">
+    <div class="tagline">
         THE ART OF EXCEPTIONAL HONEY
     </div>
 
-    <a href="#" class="collection">
-        <div class="icon crown">♛</div>
+    <a href="#" class="collection" onclick="showSection('royal');return false;">
+        <div class="icon">♛</div>
         <div class="collection-title">ROYAL COLLECTION</div>
-        <div class="collection-subtitle">EXCEPTIONAL • RARE • DISTINGUISHED</div>
+        <div class="collection-ar">المجموعة الملكية</div>
+        <div class="collection-note">EXCEPTIONAL • RARE • DISTINGUISHED</div>
     </a>
 
     <a href="#" class="collection">
-        <div class="icon star">★</div>
+        <div class="icon">★</div>
         <div class="collection-title">SPECIAL COLLECTION</div>
-        <div class="collection-subtitle">UNIQUE • SELECTED • SPECIAL</div>
+        <div class="collection-ar">المجموعة الخاصة</div>
+        <div class="collection-note">COMING SOON</div>
     </a>
 
     <a href="#" class="collection">
@@ -167,14 +235,76 @@ h1 {
             </div>
         </div>
         <div class="collection-title">NATURAL COLLECTION</div>
-        <div class="collection-subtitle">PURE • NATURAL • AUTHENTIC</div>
+        <div class="collection-ar">المجموعة الطبيعية</div>
+        <div class="collection-note">COMING SOON</div>
     </a>
 
-    <div class="footer">
-        GOLDEN HONEY FUSION
+</div>
+
+
+<!-- ROYAL COLLECTION -->
+<div id="royal" class="section">
+
+    <a href="#" class="back" onclick="showSection('home');return false;">
+        ← BACK
+    </a>
+
+    <div class="section-title">
+        ROYAL COLLECTION
     </div>
 
+    <div class="section-ar">
+        المجموعة الملكية
+    </div>
+
+    <a href="#" class="product">
+        <div class="product-icon">🍯</div>
+        <div class="product-en">WILD MOUNTAIN HONEY</div>
+        <div class="product-ar">عسل جبلي بري</div>
+    </a>
+
+    <a href="#" class="product">
+        <div class="product-icon">🍯</div>
+        <div class="product-en">BLACK SEED HONEY</div>
+        <div class="product-ar">عسل حبة البركة</div>
+    </a>
+
+    <a href="#" class="product">
+        <div class="product-icon">🍯</div>
+        <div class="product-en">ROYAL SIDR HONEY</div>
+        <div class="product-ar">عسل السدر الملكي</div>
+    </a>
+
+    <a href="#" class="product">
+        <div class="product-icon">🍯</div>
+        <div class="product-en">BLACK MOUNTAIN HONEY</div>
+        <div class="product-ar">عسل جبلي أسود</div>
+    </a>
+
 </div>
+
+<div class="footer">
+    GOLDEN HONEY FUSION
+</div>
+
+</div>
+
+
+<script>
+function showSection(sectionId){
+
+    document.querySelectorAll(".section").forEach(function(section){
+        section.classList.remove("active");
+    });
+
+    document.getElementById(sectionId).classList.add("active");
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+}
+</script>
 
 </body>
 </html>
