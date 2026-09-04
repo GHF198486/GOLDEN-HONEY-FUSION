@@ -7,53 +7,89 @@
     <title>Golden Honey Fusion</title>
 
     <meta name="description"
-          content="Golden Honey Fusion — Premium natural honey and bee-derived products.">
+          content="Golden Honey Fusion - Premium Natural Honey">
 
     <style>
+
+        /* =========================
+           RESET
+        ========================= */
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+
+        /* =========================
+           COLORS
+        ========================= */
+
         :root {
-            --black: #090909;
+            --black: #080808;
             --black-soft: #111111;
-            --gold: #d6b56a;
-            --gold-light: #f0d58a;
-            --gold-dark: #9b7838;
-            --cream: #f6f0df;
-            --text: #e8e1d2;
-            --muted: #aaa394;
+            --gold: #c9a85c;
+            --gold-light: #e8cf8a;
+            --gold-dark: #8d6d32;
+            --cream: #f4eddb;
+            --text: #ddd5c5;
+            --muted: #999387;
         }
+
+
+        /* =========================
+           BODY
+        ========================= */
 
         body {
             background:
-                radial-gradient(circle at top, #19150d 0%, #090909 45%);
+                radial-gradient(
+                    circle at top,
+                    #1a160d 0%,
+                    #0b0b0b 38%,
+                    #080808 100%
+                );
+
             color: var(--text);
-            font-family: Georgia, "Times New Roman", serif;
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
             line-height: 1.7;
+
+            min-height: 100vh;
         }
 
+
         /* =========================
-           SIDE DECORATION
+           DECORATIVE SIDE LINES
         ========================= */
 
         body::before,
         body::after {
             content: "";
+
             position: fixed;
+
             top: 0;
             bottom: 0;
+
             width: 1px;
-            background: linear-gradient(
-                to bottom,
-                transparent,
-                var(--gold-dark),
-                transparent
-            );
+
+            background:
+                linear-gradient(
+                    to bottom,
+                    transparent,
+                    var(--gold-dark),
+                    transparent
+                );
+
             opacity: 0.35;
-            z-index: -1;
+
+            z-index: 0;
         }
 
         body::before {
@@ -64,295 +100,540 @@
             right: 18px;
         }
 
+
         /* =========================
            HEADER
         ========================= */
 
         header {
+            position: relative;
+
             text-align: center;
-            padding: 70px 20px 50px;
+
+            padding:
+                75px
+                20px
+                60px;
+
+            z-index: 1;
         }
 
-        .brand-line {
-            width: 70px;
+        .top-line {
+            width: 65px;
+
             height: 1px;
+
             background: var(--gold);
-            margin: 0 auto 25px;
+
+            margin:
+                0 auto
+                25px;
         }
 
         .brand {
             color: var(--gold-light);
-            font-size: clamp(32px, 8vw, 58px);
-            letter-spacing: 4px;
+
+            font-size:
+                clamp(
+                    31px,
+                    8vw,
+                    60px
+                );
+
             font-weight: normal;
-            text-transform: uppercase;
-        }
 
-        .subtitle {
-            margin-top: 12px;
-            color: var(--muted);
-            font-size: 14px;
             letter-spacing: 4px;
+
             text-transform: uppercase;
         }
 
-        .header-ornament {
-            margin-top: 28px;
-            color: var(--gold);
-            font-size: 18px;
-            letter-spacing: 10px;
+        .tagline {
+            margin-top: 13px;
+
+            color: var(--muted);
+
+            font-family: Arial, sans-serif;
+
+            font-size: 11px;
+
+            letter-spacing: 5px;
+
+            text-transform: uppercase;
         }
+
+        .ornament {
+            margin-top: 27px;
+
+            color: var(--gold);
+
+            font-size: 14px;
+
+            letter-spacing: 9px;
+        }
+
 
         /* =========================
            MAIN
         ========================= */
 
         main {
-            width: min(1100px, calc(100% - 55px));
+            position: relative;
+
+            width:
+                min(
+                    1100px,
+                    calc(100% - 70px)
+                );
+
             margin: auto;
+
+            z-index: 1;
         }
+
 
         /* =========================
            COLLECTION
         ========================= */
 
         .collection {
-            margin: 80px 0;
+            margin-bottom: 95px;
         }
 
-        .collection-heading {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            margin-bottom: 40px;
-        }
-
-        .collection-heading::before,
-        .collection-heading::after {
-            content: "";
-            height: 1px;
-            flex: 1;
-            background: linear-gradient(
-                to right,
-                transparent,
-                var(--gold-dark)
-            );
-        }
-
-        .collection-heading::after {
-            background: linear-gradient(
-                to left,
-                transparent,
-                var(--gold-dark)
-            );
-        }
-
-        .collection-heading h2 {
-            color: var(--gold-light);
-            font-size: clamp(21px, 5vw, 31px);
-            font-weight: normal;
-            letter-spacing: 4px;
-            text-align: center;
-            white-space: nowrap;
-        }
 
         /* =========================
-           PRODUCTS
+           COLLECTION TITLE
+        ========================= */
+
+        .collection-title {
+            display: flex;
+
+            align-items: center;
+
+            gap: 20px;
+
+            margin-bottom: 42px;
+        }
+
+        .collection-title::before,
+        .collection-title::after {
+            content: "";
+
+            height: 1px;
+
+            flex: 1;
+
+            background:
+                linear-gradient(
+                    to right,
+                    transparent,
+                    var(--gold-dark)
+                );
+        }
+
+        .collection-title::after {
+            background:
+                linear-gradient(
+                    to left,
+                    transparent,
+                    var(--gold-dark)
+                );
+        }
+
+        .collection-title h2 {
+            color: var(--gold-light);
+
+            font-size:
+                clamp(
+                    20px,
+                    4vw,
+                    30px
+                );
+
+            font-weight: normal;
+
+            letter-spacing: 4px;
+
+            white-space: nowrap;
+
+            text-align: center;
+        }
+
+
+        /* =========================
+           PRODUCTS GRID
         ========================= */
 
         .products {
             display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 25px;
+
+            grid-template-columns:
+                repeat(
+                    2,
+                    minmax(0, 1fr)
+                );
+
+            gap: 26px;
         }
+
+
+        /* =========================
+           PRODUCT CARD
+        ========================= */
 
         .product-card {
             position: relative;
+
             background:
                 linear-gradient(
                     145deg,
-                    rgba(214, 181, 106, 0.08),
-                    rgba(255, 255, 255, 0.015)
+                    rgba(201,168,92,0.09),
+                    rgba(255,255,255,0.015)
                 );
 
-            border: 1px solid rgba(214, 181, 106, 0.27);
-            padding: 30px 27px 25px;
-            min-height: 230px;
+            border:
+                1px solid
+                rgba(201,168,92,0.28);
+
+            padding:
+                31px
+                28px
+                24px;
+
+            min-height: 245px;
 
             display: flex;
+
             flex-direction: column;
 
             transition:
-                transform 0.3s ease,
-                border-color 0.3s ease,
-                box-shadow 0.3s ease;
+                transform .3s ease,
+                border-color .3s ease,
+                box-shadow .3s ease;
         }
 
-        .product-card:hover {
-            transform: translateY(-4px);
-            border-color: var(--gold);
-            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.35);
-        }
+
+        /* top gold accent */
 
         .product-card::before {
             content: "";
+
             position: absolute;
+
             top: 0;
-            left: 25px;
-            width: 45px;
+            left: 28px;
+
+            width: 48px;
+
             height: 2px;
+
             background: var(--gold);
         }
 
+
+        /* hover */
+
+        .product-card:hover {
+            transform:
+                translateY(-4px);
+
+            border-color:
+                var(--gold);
+
+            box-shadow:
+                0 15px 35px
+                rgba(0,0,0,.4);
+        }
+
+
+        /* =========================
+           PRODUCT NAME
+        ========================= */
+
         .product-name {
             color: var(--cream);
+
             font-size: 21px;
-            letter-spacing: 1.5px;
+
             font-weight: normal;
+
+            letter-spacing: 1.5px;
+
             margin-bottom: 13px;
         }
 
+
+        /* =========================
+           DESCRIPTION
+        ========================= */
+
         .product-description {
             color: var(--muted);
+
             font-family: Arial, sans-serif;
+
             font-size: 13px;
+
             line-height: 1.8;
+
             flex: 1;
         }
 
+
         /* =========================
-           PREMIUM PRICE AREA
+           PRICE AREA
         ========================= */
 
-        .price-wrapper {
+        .price-area {
+
             margin-top: 25px;
+
             padding-top: 17px;
-            border-top: 1px solid rgba(214, 181, 106, 0.18);
+
+            border-top:
+                1px solid
+                rgba(201,168,92,0.20);
 
             display: flex;
+
             align-items: center;
+
             justify-content: space-between;
+
             gap: 15px;
         }
 
+
+        /* PRICE LABEL */
+
         .price-label {
-            color: var(--gold-dark);
-            font-family: Arial, sans-serif;
+
+            color:
+                var(--gold-dark);
+
+            font-family:
+                Arial,
+                sans-serif;
+
             font-size: 10px;
+
+            font-weight: bold;
+
             letter-spacing: 3px;
+
             text-transform: uppercase;
         }
 
-        .price {
-            display: inline-flex;
+
+        /* PRICE BOX */
+
+        .price-box {
+
+            min-width: 105px;
+
+            min-height: 43px;
+
+            padding:
+                8px
+                18px;
+
+            display: flex;
+
             align-items: center;
+
             justify-content: center;
 
-            min-width: 95px;
-            min-height: 42px;
-            padding: 7px 18px;
+            border:
+                1px solid
+                var(--gold);
 
-            border: 1px solid var(--gold);
             background:
                 linear-gradient(
                     135deg,
-                    rgba(214,181,106,0.20),
-                    rgba(214,181,106,0.05)
+                    rgba(201,168,92,.20),
+                    rgba(201,168,92,.05)
                 );
 
-            color: var(--gold-light);
+            color:
+                var(--gold-light);
 
-            font-family: Arial, sans-serif;
+            font-family:
+                Arial,
+                sans-serif;
+
             font-size: 14px;
+
             font-weight: bold;
+
             letter-spacing: 1px;
 
             box-shadow:
-                inset 0 0 15px rgba(214,181,106,0.05),
-                0 0 18px rgba(214,181,106,0.05);
+                inset 0 0 15px
+                rgba(201,168,92,.06),
+
+                0 0 15px
+                rgba(201,168,92,.05);
         }
 
+
         /* =========================
-           EMPTY COLLECTION
+           HIVE ESSENCE EMPTY
         ========================= */
 
         .empty-collection {
-            min-height: 80px;
-            border: 1px solid rgba(214,181,106,0.12);
+
+            min-height: 115px;
+
             display: flex;
+
             align-items: center;
+
             justify-content: center;
-            color: rgba(214,181,106,0.35);
-            font-family: Arial, sans-serif;
-            font-size: 11px;
-            letter-spacing: 3px;
+
+            border:
+                1px solid
+                rgba(201,168,92,.15);
+
+            color:
+                rgba(201,168,92,.35);
+
+            font-family:
+                Arial,
+                sans-serif;
+
+            font-size: 10px;
+
+            letter-spacing: 4px;
+
             text-transform: uppercase;
         }
 
+
         /* =========================
-           ABOUT
+           ABOUT US
         ========================= */
 
         .about {
-            margin: 110px 0 80px;
-            padding: 55px 35px;
+
+            margin-top: 110px;
+
+            padding:
+                65px
+                30px;
+
             text-align: center;
 
-            border-top: 1px solid rgba(214,181,106,0.25);
-            border-bottom: 1px solid rgba(214,181,106,0.25);
+            border-top:
+                1px solid
+                rgba(201,168,92,.25);
+
+            border-bottom:
+                1px solid
+                rgba(201,168,92,.25);
         }
 
+
         .section-title {
-            color: var(--gold-light);
+
+            color:
+                var(--gold-light);
+
             font-size: 28px;
+
             font-weight: normal;
+
             letter-spacing: 4px;
+
             margin-bottom: 25px;
+
             text-transform: uppercase;
         }
 
+
         .about p {
-            max-width: 760px;
+
+            max-width: 780px;
+
             margin: auto;
+
             color: var(--muted);
+
             font-size: 15px;
+
             line-height: 2;
         }
+
 
         /* =========================
            CONTACT
         ========================= */
 
         .contact {
+
             text-align: center;
-            padding: 40px 20px 90px;
+
+            padding:
+                70px
+                20px
+                90px;
         }
+
 
         .contact-info {
+
             margin-top: 25px;
-            color: var(--muted);
-            font-family: Arial, sans-serif;
+
+            font-family:
+                Arial,
+                sans-serif;
+
             font-size: 14px;
-            line-height: 2;
+
+            color: var(--muted);
+
+            line-height: 2.3;
         }
 
-        .contact-info span {
-            color: var(--gold-light);
+
+        .contact-info strong {
+
+            color:
+                var(--gold-light);
+
+            font-weight: normal;
         }
+
 
         /* =========================
            FOOTER
         ========================= */
 
         footer {
+
+            position: relative;
+
+            border-top:
+                1px solid
+                rgba(201,168,92,.15);
+
+            padding:
+                27px
+                20px;
+
             text-align: center;
-            border-top: 1px solid rgba(214,181,106,0.15);
-            padding: 25px 20px;
-            color: #706c62;
-            font-family: Arial, sans-serif;
-            font-size: 10px;
-            letter-spacing: 2px;
+
+            color: #6d695f;
+
+            font-family:
+                Arial,
+                sans-serif;
+
+            font-size: 9px;
+
+            letter-spacing: 3px;
+
+            z-index: 1;
         }
+
 
         /* =========================
            MOBILE
@@ -368,87 +649,179 @@
                 right: 8px;
             }
 
+
             header {
-                padding-top: 55px;
+                padding:
+                    55px
+                    18px
+                    45px;
             }
 
+
             .brand {
+                font-size: 31px;
+
                 letter-spacing: 2px;
             }
 
-            main {
-                width: min(100% - 35px, 600px);
+
+            .tagline {
+                font-size: 9px;
+
+                letter-spacing: 3px;
             }
+
+
+            main {
+
+                width:
+                    calc(100% - 38px);
+            }
+
 
             .collection {
-                margin: 60px 0;
+                margin-bottom: 70px;
             }
 
-            .collection-heading {
+
+            .collection-title {
                 gap: 10px;
             }
 
-            .collection-heading h2 {
-                font-size: 19px;
+
+            .collection-title h2 {
+
+                font-size: 18px;
+
                 letter-spacing: 2px;
             }
 
+
             .products {
+
                 grid-template-columns: 1fr;
+
+                gap: 20px;
             }
+
 
             .product-card {
-                min-height: 215px;
+
+                min-height: 225px;
+
+                padding:
+                    29px
+                    23px
+                    22px;
             }
+
+
+            .product-card::before {
+                left: 23px;
+            }
+
+
+            .product-name {
+                font-size: 20px;
+            }
+
+
+            .price-area {
+                margin-top: 21px;
+            }
+
+
+            .price-box {
+                min-width: 95px;
+            }
+
 
             .about {
-                padding: 45px 20px;
-                margin-top: 80px;
+
+                margin-top: 75px;
+
+                padding:
+                    50px
+                    20px;
             }
 
-            .price-wrapper {
-                margin-top: 20px;
+
+            .section-title {
+                font-size: 24px;
+
+                letter-spacing: 3px;
             }
+
+
+            .about p {
+                font-size: 14px;
+            }
+
+
+            .contact {
+                padding:
+                    55px
+                    15px
+                    70px;
+            }
+
         }
+
     </style>
 </head>
 
+
 <body>
+
+
+<!-- =========================================
+     HEADER
+========================================= -->
 
 <header>
 
-    <div class="brand-line"></div>
+    <div class="top-line"></div>
 
     <h1 class="brand">
         Golden Honey Fusion
     </h1>
 
-    <p class="subtitle">
+    <p class="tagline">
         Nature's Finest Honey
     </p>
 
-    <div class="header-ornament">
+    <div class="ornament">
         ✦ ✦ ✦
     </div>
 
 </header>
 
 
+
 <main>
 
-    <!-- =================================
+
+    <!-- =========================================
          COLLECTION 1
-         ================================= -->
+         ROYAL COLLECTION
+    ========================================= -->
 
     <section class="collection">
 
-        <div class="collection-heading">
-            <h2>ROYAL COLLECTION</h2>
+        <div class="collection-title">
+
+            <h2>
+                ROYAL COLLECTION
+            </h2>
+
         </div>
+
 
         <div class="products">
 
-            <!-- Product Example -->
+
+            <!-- ROYAL SIDR -->
+
             <article class="product-card">
 
                 <h3 class="product-name">
@@ -456,17 +829,19 @@
                 </h3>
 
                 <p class="product-description">
-                    Premium natural honey selected for its distinctive
-                    character and rich taste.
+                    Premium Sidr honey with a rich,
+                    refined and naturally distinctive
+                    character.
                 </p>
 
-                <div class="price-wrapper">
+
+                <div class="price-area">
 
                     <span class="price-label">
                         Price
                     </span>
 
-                    <span class="price">
+                    <span class="price-box">
                         —
                     </span>
 
@@ -474,6 +849,9 @@
 
             </article>
 
+
+
+            <!-- CRIMSON SIDR -->
 
             <article class="product-card">
 
@@ -482,17 +860,19 @@
                 </h3>
 
                 <p class="product-description">
-                    A distinguished honey with a rich character and
-                    naturally deep profile.
+                    A distinctive Sidr honey known
+                    for its deep character and rich
+                    natural profile.
                 </p>
 
-                <div class="price-wrapper">
+
+                <div class="price-area">
 
                     <span class="price-label">
                         Price
                     </span>
 
-                    <span class="price">
+                    <span class="price-box">
                         —
                     </span>
 
@@ -500,22 +880,33 @@
 
             </article>
 
+
         </div>
 
     </section>
 
 
-    <!-- =================================
+
+    <!-- =========================================
          COLLECTION 2
-         ================================= -->
+         NATURE'S COLLECTION
+    ========================================= -->
 
     <section class="collection">
 
-        <div class="collection-heading">
-            <h2>NATURE'S COLLECTION</h2>
+        <div class="collection-title">
+
+            <h2>
+                NATURE'S COLLECTION
+            </h2>
+
         </div>
 
+
         <div class="products">
+
+
+            <!-- BLACK SEED -->
 
             <article class="product-card">
 
@@ -524,17 +915,18 @@
                 </h3>
 
                 <p class="product-description">
-                    Natural honey infused with the distinctive character
-                    of black seed.
+                    Natural honey with the distinctive
+                    character of black seed.
                 </p>
 
-                <div class="price-wrapper">
+
+                <div class="price-area">
 
                     <span class="price-label">
                         Price
                     </span>
 
-                    <span class="price">
+                    <span class="price-box">
                         —
                     </span>
 
@@ -542,6 +934,9 @@
 
             </article>
 
+
+
+            <!-- GOLDEN SUN -->
 
             <article class="product-card">
 
@@ -550,17 +945,18 @@
                 </h3>
 
                 <p class="product-description">
-                    A naturally distinctive honey with a refined
-                    golden character.
+                    A naturally distinctive honey
+                    with a refined golden character.
                 </p>
 
-                <div class="price-wrapper">
+
+                <div class="price-area">
 
                     <span class="price-label">
                         Price
                     </span>
 
-                    <span class="price">
+                    <span class="price-box">
                         —
                     </span>
 
@@ -568,6 +964,9 @@
 
             </article>
 
+
+
+            <!-- FORTY HERB -->
 
             <article class="product-card">
 
@@ -576,17 +975,19 @@
                 </h3>
 
                 <p class="product-description">
-                    A unique natural honey inspired by a rich diversity
-                    of herbs and blossoms.
+                    A unique natural honey inspired
+                    by a rich diversity of herbs and
+                    blossoms.
                 </p>
 
-                <div class="price-wrapper">
+
+                <div class="price-area">
 
                     <span class="price-label">
                         Price
                     </span>
 
-                    <span class="price">
+                    <span class="price-box">
                         —
                     </span>
 
@@ -594,22 +995,33 @@
 
             </article>
 
+
         </div>
 
     </section>
 
 
-    <!-- =================================
+
+    <!-- =========================================
          COLLECTION 3
-         ================================= -->
+         WILD COLLECTION
+    ========================================= -->
 
     <section class="collection">
 
-        <div class="collection-heading">
-            <h2>WILD COLLECTION</h2>
+        <div class="collection-title">
+
+            <h2>
+                WILD COLLECTION
+            </h2>
+
         </div>
 
+
         <div class="products">
+
+
+            <!-- WILD MOUNTAIN -->
 
             <article class="product-card">
 
@@ -618,17 +1030,18 @@
                 </h3>
 
                 <p class="product-description">
-                    Naturally sourced mountain honey with a bold,
-                    authentic character.
+                    Naturally sourced mountain honey
+                    with an authentic and bold character.
                 </p>
 
-                <div class="price-wrapper">
+
+                <div class="price-area">
 
                     <span class="price-label">
                         Price
                     </span>
 
-                    <span class="price">
+                    <span class="price-box">
                         —
                     </span>
 
@@ -636,6 +1049,9 @@
 
             </article>
 
+
+
+            <!-- BLACK MOUNTAIN -->
 
             <article class="product-card">
 
@@ -644,17 +1060,18 @@
                 </h3>
 
                 <p class="product-description">
-                    A distinctive dark mountain honey with a powerful
-                    natural profile.
+                    A distinctive dark mountain honey
+                    with a powerful natural profile.
                 </p>
 
-                <div class="price-wrapper">
+
+                <div class="price-area">
 
                     <span class="price-label">
                         Price
                     </span>
 
-                    <span class="price">
+                    <span class="price-box">
                         —
                     </span>
 
@@ -662,6 +1079,9 @@
 
             </article>
 
+
+
+            <!-- THORN -->
 
             <article class="product-card">
 
@@ -670,17 +1090,18 @@
                 </h3>
 
                 <p class="product-description">
-                    Naturally harvested honey with a distinctive
-                    wild character.
+                    Naturally harvested honey with
+                    a distinctive wild character.
                 </p>
 
-                <div class="price-wrapper">
+
+                <div class="price-area">
 
                     <span class="price-label">
                         Price
                     </span>
 
-                    <span class="price">
+                    <span class="price-box">
                         —
                     </span>
 
@@ -688,32 +1109,46 @@
 
             </article>
 
+
         </div>
 
     </section>
 
 
-    <!-- =================================
+
+    <!-- =========================================
+         COLLECTION 4
          HIVE ESSENCE
-         EMPTY FOR NOW
-         ================================= -->
+         CURRENTLY EMPTY
+    ========================================= -->
 
-    <section class="collection" id="hive-essence">
+    <section
+        class="collection"
+        id="hive-essence"
+    >
 
-        <div class="collection-heading">
-            <h2>HIVE ESSENCE</h2>
+        <div class="collection-title">
+
+            <h2>
+                HIVE ESSENCE
+            </h2>
+
         </div>
+
 
         <div class="empty-collection">
+
             Coming Soon
+
         </div>
 
     </section>
 
 
-    <!-- =================================
+
+    <!-- =========================================
          ABOUT US
-         ================================= -->
+    ========================================= -->
 
     <section class="about">
 
@@ -721,20 +1156,24 @@
             About Us
         </h2>
 
+
         <p>
-            Golden Honey Fusion brings together carefully selected
-            natural honey and premium bee-derived products, celebrating
-            the richness, character and purity of nature through a
-            refined collection created for those who appreciate
-            exceptional quality.
+            Golden Honey Fusion brings together
+            carefully selected natural honey and
+            premium bee-derived products,
+            celebrating the richness, character
+            and purity of nature through a refined
+            collection created for those who
+            appreciate exceptional quality.
         </p>
 
     </section>
 
 
-    <!-- =================================
+
+    <!-- =========================================
          CONTACT US
-         ================================= -->
+    ========================================= -->
 
     <section class="contact">
 
@@ -742,31 +1181,48 @@
             Contact Us
         </h2>
 
+
         <div class="contact-info">
 
             <p>
-                <span>Phone:</span> ———————
+                <strong>Phone</strong>
+                <br>
+                —————————
             </p>
 
-            <p>
-                <span>WhatsApp:</span> ———————
-            </p>
 
             <p>
-                <span>Email:</span> ———————
+                <strong>WhatsApp</strong>
+                <br>
+                —————————
+            </p>
+
+
+            <p>
+                <strong>Email</strong>
+                <br>
+                —————————
             </p>
 
         </div>
 
     </section>
 
+
 </main>
 
+
+
+<!-- =========================================
+     FOOTER
+========================================= -->
 
 <footer>
 
     GOLDEN HONEY FUSION
-    <br>
+
+    <br><br>
+
     PURE • NATURAL • DISTINCTIVE
 
 </footer>
