@@ -240,10 +240,7 @@ section{
   font-size:clamp(27px,6vw,48px);
   letter-spacing:5px;
   font-weight:400;
-
-  /* WHITE MENU NAMES */
   color:#ffffff;
-
   text-shadow:
     0 2px 8px rgba(0,0,0,.95),
     0 0 18px rgba(210,174,83,.08);
@@ -355,106 +352,119 @@ section{
   justify-content:center;
 }
 
-/* GALAXY GOLD HONEYCOMB BORDER */
+/* COMPLETE SIX-SIDED GOLD HONEYCOMB */
 
 .luxury-bee-wrap:before{
   content:"";
   position:absolute;
-  width:142px;
-  height:142px;
+  width:146px;
+  height:146px;
 
   /*
-    The border is created through a masked gradient,
-    so the inside stays dark and only the hexagonal
-    edge receives the moving golden shine.
+    Full solid hexagon.
+    The second pseudo-element creates the darker
+    inner area, leaving six clearly visible golden sides.
   */
-  padding:1.7px;
-
   background:
     linear-gradient(
       115deg,
-      rgba(93,61,9,.72) 0%,
-      rgba(181,133,31,.92) 22%,
-      rgba(255,220,116,.95) 38%,
-      rgba(255,247,191,1) 47%,
-      rgba(226,181,69,.98) 55%,
-      rgba(110,72,11,.82) 72%,
-      rgba(247,210,100,.95) 86%,
-      rgba(93,61,9,.72) 100%
+      #795316 0%,
+      #c79b38 18%,
+      #ffe99a 34%,
+      #fff7ce 43%,
+      #d7ad4c 52%,
+      #8b6019 68%,
+      #f4d477 84%,
+      #9a6b1d 100%
     );
 
-  background-size:260% 100%;
+  background-size:320% 100%;
   background-position:0% 50%;
 
   clip-path:polygon(
-    25% 4%,
-    75% 4%,
+    25% 3%,
+    75% 3%,
     100% 50%,
-    75% 96%,
-    25% 96%,
+    75% 97%,
+    25% 97%,
     0 50%
   );
 
-  -webkit-mask:
-    linear-gradient(#000 0 0) content-box,
-    linear-gradient(#000 0 0);
+  filter:
+    drop-shadow(0 0 5px rgba(255,220,111,.30))
+    drop-shadow(0 0 18px rgba(211,163,51,.20));
 
-  -webkit-mask-composite:xor;
-  mask-composite:exclude;
-
-  box-shadow:
-    0 0 45px rgba(202,156,44,.14),
-    0 0 18px rgba(225,190,96,.13),
-    0 0 5px rgba(255,226,125,.18);
-
-  animation:honeycombGalaxyShine 5.2s ease-in-out infinite;
+  animation:honeycombGalaxyShine 5.5s ease-in-out infinite;
 }
 
-/* SOFT GOLDEN LIGHT INSIDE CELL */
+/* DARK INNER HEXAGON — LEAVES A CLEAR GOLD BORDER */
 
 .luxury-bee-wrap:after{
   content:"";
   position:absolute;
-  width:152px;
-  height:152px;
-  border-radius:50%;
+  width:139px;
+  height:139px;
+
   background:
     radial-gradient(
-      circle,
-      rgba(227,187,79,.14),
-      rgba(198,151,43,.035) 45%,
-      transparent 70%
+      circle at 50% 45%,
+      rgba(210,164,56,.10),
+      rgba(35,22,4,.72) 54%,
+      rgba(5,5,5,.96) 100%
     );
-  filter:blur(13px);
+
+  clip-path:polygon(
+    25% 3%,
+    75% 3%,
+    100% 50%,
+    75% 97%,
+    25% 97%,
+    0 50%
+  );
+
+  filter:
+    drop-shadow(0 0 8px rgba(202,156,44,.12));
+
+  z-index:2;
 }
 
-/* MOVING GALAXY GLINT ON HONEYCOMB EDGE */
+/* MOVING GALAXY GLINT AROUND THE HEXAGON */
 
 @keyframes honeycombGalaxyShine{
 
   0%{
     background-position:0% 50%;
-    filter:brightness(.92);
+    filter:
+      drop-shadow(0 0 4px rgba(255,220,111,.22))
+      drop-shadow(0 0 15px rgba(211,163,51,.14));
   }
 
   25%{
     background-position:45% 50%;
-    filter:brightness(1);
+    filter:
+      drop-shadow(0 0 7px rgba(255,224,122,.36))
+      drop-shadow(0 0 20px rgba(211,163,51,.22));
   }
 
   50%{
     background-position:100% 50%;
-    filter:brightness(1.16);
+    filter:
+      drop-shadow(0 0 11px rgba(255,235,151,.60))
+      drop-shadow(0 0 27px rgba(211,163,51,.28));
   }
 
   75%{
     background-position:55% 50%;
-    filter:brightness(1);
+    filter:
+      drop-shadow(0 0 7px rgba(255,224,122,.36))
+      drop-shadow(0 0 20px rgba(211,163,51,.22));
   }
 
   100%{
     background-position:0% 50%;
-    filter:brightness(.92);
+    filter:
+      drop-shadow(0 0 4px rgba(255,220,111,.22))
+      drop-shadow(0 0 15px rgba(211,163,51,.14));
   }
 
 }
@@ -662,7 +672,7 @@ section{
   }
 }
 
-/* HONEY FUSION — SLIGHTLY LARGER */
+/* HONEY FUSION */
 
 .hero-subtitle{
   margin-top:32px;
@@ -687,7 +697,7 @@ section{
   text-shadow:0 3px 7px rgba(0,0,0,.95);
 }
 
-/* ARABIC — LARGER */
+/* ARABIC */
 
 .hero-arabic{
   margin-top:19px;
@@ -696,19 +706,47 @@ section{
   letter-spacing:2px;
 }
 
-/* LONGER GOLD LINE */
+/* GOLD LINE UNDER ARABIC — MOVING GLINT */
 
 .hero-line{
+  position:relative;
   width:135px;
-  height:1px;
+  height:2px;
   margin:38px auto 0;
+  overflow:hidden;
+
   background:
     linear-gradient(
       90deg,
-      transparent,
-      #b78a2d,
-      transparent
+      transparent 0%,
+      #765014 12%,
+      #d0a747 28%,
+      #ffeaa0 45%,
+      #fff7cf 50%,
+      #d0a747 55%,
+      #765014 75%,
+      transparent 100%
     );
+
+  background-size:280% 100%;
+  animation:goldLineShine 4.2s ease-in-out infinite;
+  box-shadow:
+    0 0 5px rgba(225,190,96,.20),
+    0 0 13px rgba(198,151,43,.10);
+}
+
+@keyframes goldLineShine{
+
+  0%,100%{
+    background-position:130% 50%;
+    opacity:.72;
+  }
+
+  50%{
+    background-position:-30% 50%;
+    opacity:1;
+  }
+
 }
 
 /* SECTION TITLES */
@@ -741,29 +779,96 @@ section{
   position:relative;
 }
 
+/* SHORT LINE DIRECTLY UNDER COLLECTIONS — MOVING GLINT */
+
 .section-title:after{
   content:"";
   position:absolute;
   left:50%;
   bottom:-10px;
   width:46px;
-  height:1px;
+  height:2px;
   transform:translateX(-50%);
+
   background:
     linear-gradient(
       90deg,
-      transparent,
-      rgba(224,196,126,.65),
-      transparent
+      transparent 0%,
+      #765014 12%,
+      #d0a747 30%,
+      #ffeaa0 46%,
+      #fff7cf 50%,
+      #d0a747 55%,
+      #765014 78%,
+      transparent 100%
     );
-  opacity:.7;
+
+  background-size:300% 100%;
+  box-shadow:
+    0 0 5px rgba(225,190,96,.20),
+    0 0 12px rgba(198,151,43,.10);
+
+  opacity:.9;
+  animation:goldLineShineShort 4s ease-in-out infinite;
 }
 
+@keyframes goldLineShineShort{
+
+  0%,100%{
+    background-position:130% 50%;
+    opacity:.68;
+  }
+
+  50%{
+    background-position:-30% 50%;
+    opacity:1;
+  }
+
+}
+
+/* LONG LINE UNDER COLLECTIONS — MOVING GLINT */
+
 .section-title-line{
+  position:relative;
   width:65px;
-  height:1px;
-  background:linear-gradient(90deg,transparent,#b99443,transparent);
+  height:2px;
+  overflow:hidden;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent 0%,
+      #765014 12%,
+      #d0a747 28%,
+      #ffeaa0 45%,
+      #fff7cf 50%,
+      #d0a747 55%,
+      #765014 78%,
+      transparent 100%
+    );
+
+  background-size:300% 100%;
   margin:25px auto 0;
+
+  box-shadow:
+    0 0 5px rgba(225,190,96,.22),
+    0 0 14px rgba(198,151,43,.12);
+
+  animation:goldLineShineLong 4.6s ease-in-out infinite;
+}
+
+@keyframes goldLineShineLong{
+
+  0%,100%{
+    background-position:130% 50%;
+    opacity:.70;
+  }
+
+  50%{
+    background-position:-30% 50%;
+    opacity:1;
+  }
+
 }
 
 /* COLLECTIONS */
@@ -1431,21 +1536,17 @@ footer{
   }
 
   .luxury-bee-wrap:before{
-    width:128px;
-    height:128px;
-    padding:1.5px;
+    width:132px;
+    height:132px;
 
-    background-size:260% 100%;
+    background-size:320% 100%;
 
-    border-width:1.5px;
-    border-color:rgba(225,190,96,.58);
-
-    animation:honeycombGalaxyShine 5.2s ease-in-out infinite;
+    animation:honeycombGalaxyShine 5.5s ease-in-out infinite;
   }
 
   .luxury-bee-wrap:after{
-    width:138px;
-    height:138px;
+    width:125px;
+    height:125px;
   }
 
   .luxury-bee{
@@ -1484,6 +1585,14 @@ footer{
   .section-title{
     font-size:clamp(28px,7vw,44px);
     letter-spacing:4px;
+  }
+
+  .section-title:after{
+    width:42px;
+  }
+
+  .section-title-line{
+    width:60px;
   }
 
   .collection-header{
