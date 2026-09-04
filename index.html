@@ -31,8 +31,6 @@
   --special:#10182c;
   --natural:#0d1b14;
   --hive:#191208;
-
-  --ease:cubic-bezier(.22,.61,.36,1);
 }
 
 *{
@@ -81,10 +79,6 @@ button{
   font:inherit;
 }
 
-img{
-  max-width:100%;
-}
-
 section{
   position:relative;
 }
@@ -93,10 +87,6 @@ section{
   width:min(1180px,92%);
   margin:auto;
 }
-
-/* =========================================================
-   SIDE LINES
-========================================================= */
 
 .side-line{
   position:fixed;
@@ -118,9 +108,7 @@ section{
 .side-line.left{left:18px}
 .side-line.right{right:18px}
 
-/* =========================================================
-   TOP BAR
-========================================================= */
+/* TOP BAR */
 
 .topbar{
   position:fixed;
@@ -197,7 +185,7 @@ section{
   align-items:center;
   gap:6px;
   cursor:pointer;
-  transition:.4s var(--ease);
+  transition:.4s;
 }
 
 .menu-btn:hover{
@@ -209,12 +197,9 @@ section{
   width:20px;
   height:1px;
   background:#cbb271;
-  transition:.3s;
 }
 
-/* =========================================================
-   FULL MENU
-========================================================= */
+/* MENU */
 
 .menu-overlay{
   position:fixed;
@@ -228,7 +213,7 @@ section{
   justify-content:center;
   opacity:0;
   visibility:hidden;
-  transition:.5s var(--ease);
+  transition:.5s;
 }
 
 .menu-overlay.open{
@@ -256,7 +241,7 @@ section{
   letter-spacing:5px;
   font-weight:400;
   color:#d9d2c5;
-  transition:.4s var(--ease);
+  transition:.4s;
 }
 
 .menu-link:hover{
@@ -278,9 +263,7 @@ section{
   cursor:pointer;
 }
 
-/* =========================================================
-   HERO
-========================================================= */
+/* HERO */
 
 .hero{
   min-height:100vh;
@@ -319,7 +302,6 @@ section{
       transparent 70%
     );
   filter:blur(20px);
-  pointer-events:none;
 }
 
 .hero-gold-floor{
@@ -337,7 +319,6 @@ section{
       transparent 72%
     );
   filter:blur(15px);
-  pointer-events:none;
 }
 
 .hero-content{
@@ -347,7 +328,7 @@ section{
   text-align:center;
 }
 
-/* ---------- luxury bee emblem ---------- */
+/* LUXURY BEE */
 
 .luxury-bee-wrap{
   width:145px;
@@ -459,7 +440,9 @@ section{
 }
 
 @keyframes titleBreath{
-  0%,100%{filter:drop-shadow(0 7px 5px rgba(0,0,0,.95))}
+  0%,100%{
+    filter:drop-shadow(0 7px 5px rgba(0,0,0,.95));
+  }
   50%{
     filter:
       drop-shadow(0 7px 5px rgba(0,0,0,.95))
@@ -535,7 +518,7 @@ section{
 
 .hero-arabic{
   margin-top:19px;
-  color:#9f998d;
+  color:#a59f94;
   font-size:15px;
   letter-spacing:2px;
 }
@@ -553,9 +536,7 @@ section{
     );
 }
 
-/* =========================================================
-   SECTION TITLES
-========================================================= */
+/* SECTION TITLES */
 
 .section{
   padding:130px 0;
@@ -589,9 +570,7 @@ section{
   margin:25px auto 0;
 }
 
-/* =========================================================
-   COLLECTIONS
-========================================================= */
+/* COLLECTIONS */
 
 .collections{
   background:
@@ -611,7 +590,7 @@ section{
   box-shadow:
     0 20px 60px rgba(0,0,0,.42),
     inset 0 0 50px rgba(255,255,255,.01);
-  transition:.55s var(--ease);
+  transition:.55s;
 }
 
 .collection:hover{
@@ -698,7 +677,7 @@ section{
   grid-template-columns:repeat(2,1fr);
   gap:1px;
   background:rgba(218,181,85,.13);
-  animation:collectionOpen .55s var(--ease);
+  animation:collectionOpen .55s;
 }
 
 .collection-grid.open{
@@ -716,9 +695,7 @@ section{
   }
 }
 
-/* =========================================================
-   PRODUCT CARDS
-========================================================= */
+/* PRODUCTS */
 
 .product-card{
   position:relative;
@@ -736,7 +713,7 @@ section{
   align-items:center;
   text-align:center;
   cursor:pointer;
-  transition:.45s var(--ease);
+  transition:.45s;
 }
 
 .product-card:hover{
@@ -779,9 +756,46 @@ section{
   text-transform:uppercase;
 }
 
-/* =========================================================
-   PRODUCT DETAILS
-========================================================= */
+/* PRICE BOXES FOR SPECIAL + NATURAL */
+
+.product-price-box{
+  margin-top:20px;
+  padding:12px 14px;
+  border:1px solid rgba(218,181,85,.18);
+  background:rgba(0,0,0,.16);
+  width:min(230px,100%);
+}
+
+.product-price-title{
+  color:#756f65;
+  font-size:8px;
+  letter-spacing:3px;
+  margin-bottom:9px;
+}
+
+.product-price-sizes{
+  display:flex;
+  justify-content:center;
+  gap:5px;
+  flex-wrap:wrap;
+}
+
+.product-price-size{
+  color:#aaa296;
+  border:1px solid rgba(218,181,85,.14);
+  padding:6px 9px;
+  font-size:8px;
+  letter-spacing:1.5px;
+}
+
+.product-price-request{
+  margin-top:9px;
+  color:#b9974b;
+  font-size:8px;
+  letter-spacing:2px;
+}
+
+/* PRODUCT DETAIL */
 
 .product-detail{
   display:none;
@@ -792,7 +806,7 @@ section{
     radial-gradient(circle at 50% 0%,rgba(198,151,43,.09),transparent 42%),
     linear-gradient(180deg,#0b0b09,#050505);
   text-align:center;
-  animation:detailIn .5s var(--ease);
+  animation:detailIn .5s;
 }
 
 .product-detail.active{
@@ -871,9 +885,7 @@ section{
   letter-spacing:4px;
 }
 
-/* =========================================================
-   OUR WORLD
-========================================================= */
+/* OUR WORLD */
 
 .world{
   background:
@@ -941,13 +953,17 @@ section{
   direction:rtl;
 }
 
-/* =========================================================
-   ABOUT US
-========================================================= */
+/* ABOUT */
 
 .about{
   background:
     linear-gradient(180deg,#030303,#070706,#030303);
+}
+
+/* NO EXTRA ABOUT TITLE — ONLY CLICKABLE CARD */
+
+.about .section-heading{
+  display:none;
 }
 
 .reveal-card{
@@ -966,7 +982,7 @@ section{
       rgba(255,255,255,.025),
       rgba(196,150,47,.025)
     );
-  transition:.5s var(--ease);
+  transition:.5s;
 }
 
 .reveal-card:hover{
@@ -1010,7 +1026,7 @@ section{
   border:1px solid rgba(218,181,85,.15);
   padding:48px 40px;
   background:#070706;
-  animation:reveal .5s var(--ease);
+  animation:reveal .5s;
 }
 
 .reveal-content.open{
@@ -1045,14 +1061,18 @@ section{
   color:#8f897f;
 }
 
-/* =========================================================
-   CONTACT
-========================================================= */
+/* CONTACT */
+
+/* NO EXTRA CONTACT TITLE — ONLY CLICKABLE CARD */
 
 .contact{
   background:
     radial-gradient(circle at 50% 20%,rgba(184,137,36,.06),transparent 40%),
     #030303;
+}
+
+.contact .section-heading{
+  display:none;
 }
 
 .contact-reveal{
@@ -1064,7 +1084,7 @@ section{
   border:1px solid rgba(218,181,85,.15);
   background:#070706;
   padding:42px 25px;
-  animation:reveal .5s var(--ease);
+  animation:reveal .5s;
 }
 
 .contact-content.open{
@@ -1087,7 +1107,7 @@ section{
   flex-direction:column;
   align-items:center;
   gap:9px;
-  transition:.4s var(--ease);
+  transition:.4s;
 }
 
 .contact-item:hover{
@@ -1116,9 +1136,7 @@ section{
   font-size:21px;
 }
 
-/* =========================================================
-   FOOTER
-========================================================= */
+/* FOOTER */
 
 footer{
   border-top:1px solid rgba(218,181,85,.10);
@@ -1141,9 +1159,7 @@ footer{
   letter-spacing:3px;
 }
 
-/* =========================================================
-   MOBILE
-========================================================= */
+/* MOBILE */
 
 @media(max-width:700px){
 
@@ -1210,10 +1226,6 @@ footer{
     padding:95px 0;
   }
 
-  .section-heading{
-    margin-bottom:42px;
-  }
-
   .collection-header{
     min-height:155px;
     padding:32px 20px;
@@ -1240,7 +1252,7 @@ footer{
   }
 
   .product-card{
-    min-height:220px;
+    min-height:240px;
   }
 
   .world-box{
@@ -1260,11 +1272,8 @@ footer{
   }
 }
 
-/* =========================================================
-   REDUCED MOTION
-========================================================= */
-
 @media(prefers-reduced-motion:reduce){
+
   *,
   *:before,
   *:after{
@@ -1272,6 +1281,7 @@ footer{
     transition:none !important;
     scroll-behavior:auto !important;
   }
+
 }
 </style>
 </head>
@@ -1281,9 +1291,7 @@ footer{
 <div class="side-line left"></div>
 <div class="side-line right"></div>
 
-<!-- =======================================================
-     TOP BAR
-======================================================= -->
+<!-- TOP BAR -->
 
 <header class="topbar">
 
@@ -1291,21 +1299,25 @@ footer{
     <span>GHF</span>
   </div>
 
-  <button class="menu-btn" onclick="openMenu()" aria-label="Open menu">
+  <button class="menu-btn"
+          onclick="openMenu()"
+          aria-label="Open menu">
+
     <span></span>
     <span></span>
     <span></span>
+
   </button>
 
 </header>
 
-<!-- =======================================================
-     MENU
-======================================================= -->
+<!-- MENU -->
 
 <div class="menu-overlay" id="menuOverlay">
 
-  <button class="menu-close" onclick="closeMenu()" aria-label="Close menu">
+  <button class="menu-close"
+          onclick="closeMenu()"
+          aria-label="Close menu">
     ×
   </button>
 
@@ -1315,32 +1327,40 @@ footer{
       GOLDEN HONEY FUSION
     </div>
 
-    <a class="menu-link" href="#home" onclick="closeMenu()">
+    <a class="menu-link"
+       href="#home"
+       onclick="closeMenu()">
       HOME
     </a>
 
-    <a class="menu-link" href="#collections" onclick="closeMenu()">
+    <a class="menu-link"
+       href="#collections"
+       onclick="closeMenu()">
       COLLECTIONS
     </a>
 
-    <a class="menu-link" href="#world" onclick="closeMenu()">
+    <a class="menu-link"
+       href="#world"
+       onclick="closeMenu()">
       OUR WORLD
     </a>
 
-    <a class="menu-link" href="#about" onclick="closeMenu()">
+    <a class="menu-link"
+       href="#about"
+       onclick="closeMenu()">
       ABOUT US
     </a>
 
-    <a class="menu-link" href="#contact" onclick="closeMenu()">
+    <a class="menu-link"
+       href="#contact"
+       onclick="closeMenu()">
       CONTACT US
     </a>
 
   </div>
 </div>
 
-<!-- =======================================================
-     HERO
-======================================================= -->
+<!-- HERO -->
 
 <section class="hero" id="home">
 
@@ -1352,7 +1372,6 @@ footer{
 
       <div class="luxury-bee">
 
-        <!-- LUXURY GEOMETRIC BEE EMBLEM -->
         <svg viewBox="0 0 160 160"
              xmlns="http://www.w3.org/2000/svg"
              aria-label="Golden Honey Fusion emblem">
@@ -1403,7 +1422,6 @@ footer{
 
           </defs>
 
-          <!-- LEFT WING -->
           <path
             d="M67 63
                C48 34 27 24 17 33
@@ -1414,7 +1432,6 @@ footer{
             stroke="url(#edgeGold)"
             stroke-width="1.8"/>
 
-          <!-- RIGHT WING -->
           <path
             d="M93 63
                C112 34 133 24 143 33
@@ -1425,7 +1442,6 @@ footer{
             stroke="url(#edgeGold)"
             stroke-width="1.8"/>
 
-          <!-- INNER WING LINES -->
           <path
             d="M22 38 C38 43 49 53 60 67"
             fill="none"
@@ -1440,14 +1456,12 @@ footer{
             stroke-opacity=".42"
             stroke-width="1"/>
 
-          <!-- HEAD -->
           <polygon
             points="80,30 93,38 97,51 89,61 71,61 63,51 67,38"
             fill="url(#beeGold)"
             stroke="#efd17a"
             stroke-width="1.5"/>
 
-          <!-- BODY -->
           <path
             d="M68 57
                L92 57
@@ -1461,7 +1475,6 @@ footer{
             stroke="#efd17a"
             stroke-width="1.6"/>
 
-          <!-- BODY FACETS -->
           <path
             d="M62 73 L98 73"
             stroke="#543506"
@@ -1477,20 +1490,17 @@ footer{
             stroke="#543506"
             stroke-width="4"/>
 
-          <!-- CENTRAL LIGHT -->
           <path
             d="M80 59 L80 121"
             stroke="#fff1ad"
             stroke-opacity=".35"
             stroke-width="1"/>
 
-          <!-- LOWER FACET -->
           <polygon
             points="64,103 80,126 96,103 88,109 80,113 72,109"
             fill="url(#beeGold)"
             opacity=".95"/>
 
-          <!-- ANTENNAE -->
           <path
             d="M70 36 C60 21 51 19 43 24"
             fill="none"
@@ -1502,9 +1512,6 @@ footer{
             fill="none"
             stroke="#d7b45a"
             stroke-width="1.6"/>
-
-          <!-- NO CARTOON FACE / NO EYES -->
-          <!-- Minimal geometric emblem by design -->
 
         </svg>
 
@@ -1525,7 +1532,7 @@ footer{
     </div>
 
     <div class="hero-arabic">
-      عسل فاخر · اختيار استثنائي · من لبنان إلى العالم
+      عسل أصلي فاخر
     </div>
 
     <div class="hero-line"></div>
@@ -1533,9 +1540,7 @@ footer{
   </div>
 </section>
 
-<!-- =======================================================
-     COLLECTIONS
-======================================================= -->
+<!-- COLLECTIONS -->
 
 <section class="section collections" id="collections">
 
@@ -1607,8 +1612,12 @@ footer{
 
             <h3>WILD MOUNTAIN HONEY</h3>
             <div class="arabic">عسل جبلي بري</div>
+
             <div class="product-rule"></div>
-            <div class="product-meta">Premium Selection</div>
+
+            <div class="product-meta">
+              Premium Selection
+            </div>
 
           </div>
 
@@ -1617,8 +1626,12 @@ footer{
 
             <h3>BLACK SEED HONEY</h3>
             <div class="arabic">عسل حبة البركة</div>
+
             <div class="product-rule"></div>
-            <div class="product-meta">Signature Selection</div>
+
+            <div class="product-meta">
+              Signature Selection
+            </div>
 
           </div>
 
@@ -1627,8 +1640,12 @@ footer{
 
             <h3>BLACK SIDR HONEY</h3>
             <div class="arabic">عسل السدر الأسود</div>
+
             <div class="product-rule"></div>
-            <div class="product-meta">Rare Selection</div>
+
+            <div class="product-meta">
+              Rare Selection
+            </div>
 
           </div>
 
@@ -1637,8 +1654,12 @@ footer{
 
             <h3>BLACK MOUNTAIN HONEY</h3>
             <div class="arabic">عسل جبلي أسود</div>
+
             <div class="product-rule"></div>
-            <div class="product-meta">Exceptional Selection</div>
+
+            <div class="product-meta">
+              Exceptional Selection
+            </div>
 
           </div>
 
@@ -1691,8 +1712,32 @@ footer{
 
             <h3>GOLDEN BALANCE</h3>
             <div class="arabic">توازن ذهبي</div>
+
             <div class="product-rule"></div>
-            <div class="product-meta">Signature Blend</div>
+
+            <div class="product-meta">
+              Signature Blend
+            </div>
+
+            <div class="product-price-box">
+
+              <div class="product-price-title">
+                AVAILABLE SIZES
+              </div>
+
+              <div class="product-price-sizes">
+
+                <span class="product-price-size">30 G</span>
+                <span class="product-price-size">500 G</span>
+                <span class="product-price-size">1000 G</span>
+
+              </div>
+
+              <div class="product-price-request">
+                PRICE ON REQUEST
+              </div>
+
+            </div>
 
           </div>
 
@@ -1700,8 +1745,32 @@ footer{
 
             <h3>THYME HONEY</h3>
             <div class="arabic">عسل الزعتر</div>
+
             <div class="product-rule"></div>
-            <div class="product-meta">Distinctive Origin</div>
+
+            <div class="product-meta">
+              Distinctive Origin
+            </div>
+
+            <div class="product-price-box">
+
+              <div class="product-price-title">
+                AVAILABLE SIZES
+              </div>
+
+              <div class="product-price-sizes">
+
+                <span class="product-price-size">30 G</span>
+                <span class="product-price-size">500 G</span>
+                <span class="product-price-size">1000 G</span>
+
+              </div>
+
+              <div class="product-price-request">
+                PRICE ON REQUEST
+              </div>
+
+            </div>
 
           </div>
 
@@ -1709,8 +1778,32 @@ footer{
 
             <h3>GOLDEN SUN HONEY</h3>
             <div class="arabic">عسل شرف الشمس</div>
+
             <div class="product-rule"></div>
-            <div class="product-meta">Golden Selection</div>
+
+            <div class="product-meta">
+              Golden Selection
+            </div>
+
+            <div class="product-price-box">
+
+              <div class="product-price-title">
+                AVAILABLE SIZES
+              </div>
+
+              <div class="product-price-sizes">
+
+                <span class="product-price-size">30 G</span>
+                <span class="product-price-size">500 G</span>
+                <span class="product-price-size">1000 G</span>
+
+              </div>
+
+              <div class="product-price-request">
+                PRICE ON REQUEST
+              </div>
+
+            </div>
 
           </div>
 
@@ -1718,8 +1811,32 @@ footer{
 
             <h3>CRIMSON SIDR HONEY</h3>
             <div class="arabic">عسل السدر الأحمر</div>
+
             <div class="product-rule"></div>
-            <div class="product-meta">Premium Selection</div>
+
+            <div class="product-meta">
+              Premium Selection
+            </div>
+
+            <div class="product-price-box">
+
+              <div class="product-price-title">
+                AVAILABLE SIZES
+              </div>
+
+              <div class="product-price-sizes">
+
+                <span class="product-price-size">30 G</span>
+                <span class="product-price-size">500 G</span>
+                <span class="product-price-size">1000 G</span>
+
+              </div>
+
+              <div class="product-price-request">
+                PRICE ON REQUEST
+              </div>
+
+            </div>
 
           </div>
 
@@ -1778,8 +1895,32 @@ footer{
 
             <h3>HONEYCOMB HONEY</h3>
             <div class="arabic">عسل بشهده</div>
+
             <div class="product-rule"></div>
-            <div class="product-meta">Pure Comb Selection</div>
+
+            <div class="product-meta">
+              Pure Comb Selection
+            </div>
+
+            <div class="product-price-box">
+
+              <div class="product-price-title">
+                AVAILABLE SIZES
+              </div>
+
+              <div class="product-price-sizes">
+
+                <span class="product-price-size">30 G</span>
+                <span class="product-price-size">500 G</span>
+                <span class="product-price-size">1000 G</span>
+
+              </div>
+
+              <div class="product-price-request">
+                PRICE ON REQUEST
+              </div>
+
+            </div>
 
           </div>
 
@@ -1787,8 +1928,32 @@ footer{
 
             <h3>THORNS HONEY</h3>
             <div class="arabic">عسل الأشواك</div>
+
             <div class="product-rule"></div>
-            <div class="product-meta">Natural Origin</div>
+
+            <div class="product-meta">
+              Natural Origin
+            </div>
+
+            <div class="product-price-box">
+
+              <div class="product-price-title">
+                AVAILABLE SIZES
+              </div>
+
+              <div class="product-price-sizes">
+
+                <span class="product-price-size">30 G</span>
+                <span class="product-price-size">500 G</span>
+                <span class="product-price-size">1000 G</span>
+
+              </div>
+
+              <div class="product-price-request">
+                PRICE ON REQUEST
+              </div>
+
+            </div>
 
           </div>
 
@@ -1796,17 +1961,32 @@ footer{
 
             <h3>FORTY HERB HONEY</h3>
             <div class="arabic">عسل 40 نبتة</div>
+
             <div class="product-rule"></div>
-            <div class="product-meta">Botanical Selection</div>
 
-          </div>
+            <div class="product-meta">
+              Botanical Selection
+            </div>
 
-          <div class="product-card">
+            <div class="product-price-box">
 
-            <h3>WILD FLOWER HONEY</h3>
-            <div class="arabic">عسل الزهور البرية</div>
-            <div class="product-rule"></div>
-            <div class="product-meta">Natural Selection</div>
+              <div class="product-price-title">
+                AVAILABLE SIZES
+              </div>
+
+              <div class="product-price-sizes">
+
+                <span class="product-price-size">30 G</span>
+                <span class="product-price-size">500 G</span>
+                <span class="product-price-size">1000 G</span>
+
+              </div>
+
+              <div class="product-price-request">
+                PRICE ON REQUEST
+              </div>
+
+            </div>
 
           </div>
 
@@ -1864,8 +2044,12 @@ footer{
 
             <h3>BEE POLLEN</h3>
             <div class="arabic">حبوب اللقاح</div>
+
             <div class="product-rule"></div>
-            <div class="product-meta">Bee-Derived Essence</div>
+
+            <div class="product-meta">
+              Bee-Derived Essence
+            </div>
 
           </div>
 
@@ -1874,8 +2058,12 @@ footer{
 
             <h3>PROPOLIS</h3>
             <div class="arabic">العكبر</div>
+
             <div class="product-rule"></div>
-            <div class="product-meta">Hive Essence</div>
+
+            <div class="product-meta">
+              Hive Essence
+            </div>
 
           </div>
 
@@ -1891,9 +2079,11 @@ footer{
 
       <h2 id="detailTitle"></h2>
 
-      <div class="detail-ar" id="detailArabic"></div>
+      <div class="detail-ar"
+           id="detailArabic"></div>
 
-      <div class="product-description" id="detailDescription"></div>
+      <div class="product-description"
+           id="detailDescription"></div>
 
       <div class="size-label">
         AVAILABLE SIZES
@@ -1925,11 +2115,10 @@ footer{
     </div>
 
   </div>
+
 </section>
 
-<!-- =======================================================
-     OUR WORLD
-======================================================= -->
+<!-- OUR WORLD -->
 
 <section class="section world" id="world">
 
@@ -1974,29 +2163,13 @@ footer{
 
 </section>
 
-<!-- =======================================================
-     ABOUT US
-======================================================= -->
+<!-- ABOUT US -->
 
 <section class="section about" id="about">
 
   <div class="container">
 
-    <div class="section-heading">
-
-      <div class="section-eyebrow">
-        THE STORY BEHIND THE BRAND
-      </div>
-
-      <h2 class="section-title">
-        ABOUT US
-      </h2>
-
-      <div class="section-title-line"></div>
-
-    </div>
-
-    <!-- ONLY THIS IS VISIBLE INITIALLY -->
+    <!-- ONLY ONE ABOUT US BOX -->
 
     <div class="reveal-card"
          id="aboutCard"
@@ -2012,9 +2185,8 @@ footer{
 
     </div>
 
-    <!-- HIDDEN UNTIL CLICK -->
-
-    <div class="reveal-content" id="aboutContent">
+    <div class="reveal-content"
+         id="aboutContent">
 
       <p>
         Golden Honey Fusion is a Lebanese brand reaching from
@@ -2052,29 +2224,13 @@ footer{
 
 </section>
 
-<!-- =======================================================
-     CONTACT US
-======================================================= -->
+<!-- CONTACT US -->
 
 <section class="section contact" id="contact">
 
   <div class="container">
 
-    <div class="section-heading">
-
-      <div class="section-eyebrow">
-        CONNECT WITH US
-      </div>
-
-      <h2 class="section-title">
-        CONTACT US
-      </h2>
-
-      <div class="section-title-line"></div>
-
-    </div>
-
-    <!-- ONLY TITLE VISIBLE INITIALLY -->
+    <!-- ONLY ONE CONTACT US BOX -->
 
     <div class="reveal-card contact-reveal"
          id="contactCard"
@@ -2090,14 +2246,10 @@ footer{
 
     </div>
 
-    <!-- CONTACT DETAILS HIDDEN -->
-
     <div class="contact-content"
          id="contactContent">
 
       <div class="contact-list">
-
-        <!-- WHATSAPP -->
 
         <a href="https://wa.me/96171127840"
            target="_blank"
@@ -2118,8 +2270,6 @@ footer{
           </strong>
 
         </a>
-
-        <!-- INSTAGRAM -->
 
         <a href="https://www.instagram.com/goldenhoneyfusion"
            target="_blank"
@@ -2149,9 +2299,7 @@ footer{
 
 </section>
 
-<!-- =======================================================
-     FOOTER
-======================================================= -->
+<!-- FOOTER -->
 
 <footer>
 
@@ -2165,15 +2313,9 @@ footer{
 
 </footer>
 
-<!-- =======================================================
-     JAVASCRIPT
-======================================================= -->
-
 <script>
 
-/* =========================================================
-   MENU
-========================================================= */
+/* MENU */
 
 function openMenu(){
   document.getElementById("menuOverlay").classList.add("open");
@@ -2193,9 +2335,7 @@ document.addEventListener("keydown",function(e){
 
 });
 
-/* =========================================================
-   COLLECTION TOGGLE
-========================================================= */
+/* COLLECTIONS */
 
 function toggleCollection(id){
 
@@ -2212,29 +2352,11 @@ function toggleCollection(id){
 
     target.classList.add("open");
 
-    setTimeout(function(){
-
-      const header=target.parentElement
-        .querySelector(".collection-header");
-
-      if(window.innerWidth < 700){
-
-        header.scrollIntoView({
-          behavior:"smooth",
-          block:"center"
-        });
-
-      }
-
-    },80);
-
   }
 
 }
 
-/* =========================================================
-   PRODUCT DATA
-========================================================= */
+/* PRODUCTS */
 
 const products={
 
@@ -2282,9 +2404,7 @@ const products={
 
 };
 
-/* =========================================================
-   SHOW PRODUCT
-========================================================= */
+/* SHOW PRODUCT */
 
 function showProduct(key){
 
@@ -2324,9 +2444,7 @@ function showProduct(key){
 
 }
 
-/* =========================================================
-   SIZE
-========================================================= */
+/* SIZE */
 
 function selectSize(button){
 
@@ -2339,9 +2457,7 @@ function selectSize(button){
 
 }
 
-/* =========================================================
-   ABOUT
-========================================================= */
+/* ABOUT */
 
 function toggleAbout(){
 
@@ -2373,9 +2489,7 @@ function toggleAbout(){
 
 }
 
-/* =========================================================
-   CONTACT
-========================================================= */
+/* CONTACT */
 
 function toggleContact(){
 
@@ -2407,9 +2521,7 @@ function toggleContact(){
 
 }
 
-/* =========================================================
-   CLOSE MENU WHEN CLICKING OUTSIDE
-========================================================= */
+/* CLOSE MENU OUTSIDE */
 
 document.getElementById("menuOverlay")
   .addEventListener("click",function(e){
@@ -2419,44 +2531,6 @@ document.getElementById("menuOverlay")
     }
 
   });
-
-/* =========================================================
-   INTERSECTION REVEAL
-========================================================= */
-
-const observer=
-  new IntersectionObserver(
-    function(entries){
-
-      entries.forEach(function(entry){
-
-        if(entry.isIntersecting){
-
-          entry.target.style.opacity="1";
-          entry.target.style.transform="translateY(0)";
-
-        }
-
-      });
-
-    },
-    {
-      threshold:.08
-    }
-  );
-
-document.querySelectorAll(
-  ".collection,.world-box,.reveal-card,.contact-reveal"
-).forEach(function(el){
-
-  el.style.opacity="0";
-  el.style.transform="translateY(20px)";
-  el.style.transition=
-    "opacity .8s ease, transform .8s cubic-bezier(.22,.61,.36,1)";
-
-  observer.observe(el);
-
-});
 
 </script>
 
