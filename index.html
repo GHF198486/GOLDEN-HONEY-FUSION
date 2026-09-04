@@ -240,7 +240,10 @@ section{
   font-size:clamp(27px,6vw,48px);
   letter-spacing:5px;
   font-weight:400;
-  color:#d8c58f;
+
+  /* WHITE MENU NAMES */
+  color:#ffffff;
+
   text-shadow:
     0 2px 8px rgba(0,0,0,.95),
     0 0 18px rgba(210,174,83,.08);
@@ -248,7 +251,7 @@ section{
 }
 
 .menu-link:hover{
-  color:#f2dfa4;
+  color:#ffffff;
   letter-spacing:9px;
   transform:scale(1.02);
   text-shadow:
@@ -352,14 +355,37 @@ section{
   justify-content:center;
 }
 
-/* CLEARER GOLD HONEYCOMB */
+/* GALAXY GOLD HONEYCOMB BORDER */
 
 .luxury-bee-wrap:before{
   content:"";
   position:absolute;
   width:142px;
   height:142px;
-  border:1.5px solid rgba(225,190,96,.58);
+
+  /*
+    The border is created through a masked gradient,
+    so the inside stays dark and only the hexagonal
+    edge receives the moving golden shine.
+  */
+  padding:1.7px;
+
+  background:
+    linear-gradient(
+      115deg,
+      rgba(93,61,9,.72) 0%,
+      rgba(181,133,31,.92) 22%,
+      rgba(255,220,116,.95) 38%,
+      rgba(255,247,191,1) 47%,
+      rgba(226,181,69,.98) 55%,
+      rgba(110,72,11,.82) 72%,
+      rgba(247,210,100,.95) 86%,
+      rgba(93,61,9,.72) 100%
+    );
+
+  background-size:260% 100%;
+  background-position:0% 50%;
+
   clip-path:polygon(
     25% 4%,
     75% 4%,
@@ -368,17 +394,20 @@ section{
     25% 96%,
     0 50%
   );
-  background:
-    radial-gradient(
-      circle at 50% 48%,
-      rgba(210,164,56,.09),
-      rgba(94,61,9,.03) 55%,
-      transparent 75%
-    );
+
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+
+  -webkit-mask-composite:xor;
+  mask-composite:exclude;
+
   box-shadow:
     0 0 45px rgba(202,156,44,.14),
-    0 0 12px rgba(225,190,96,.08),
-    inset 0 0 35px rgba(202,156,44,.045);
+    0 0 18px rgba(225,190,96,.13),
+    0 0 5px rgba(255,226,125,.18);
+
+  animation:honeycombGalaxyShine 5.2s ease-in-out infinite;
 }
 
 /* SOFT GOLDEN LIGHT INSIDE CELL */
@@ -397,6 +426,37 @@ section{
       transparent 70%
     );
   filter:blur(13px);
+}
+
+/* MOVING GALAXY GLINT ON HONEYCOMB EDGE */
+
+@keyframes honeycombGalaxyShine{
+
+  0%{
+    background-position:0% 50%;
+    filter:brightness(.92);
+  }
+
+  25%{
+    background-position:45% 50%;
+    filter:brightness(1);
+  }
+
+  50%{
+    background-position:100% 50%;
+    filter:brightness(1.16);
+  }
+
+  75%{
+    background-position:55% 50%;
+    filter:brightness(1);
+  }
+
+  100%{
+    background-position:0% 50%;
+    filter:brightness(.92);
+  }
+
 }
 
 /* BEE FLIGHT */
@@ -1373,8 +1433,14 @@ footer{
   .luxury-bee-wrap:before{
     width:128px;
     height:128px;
+    padding:1.5px;
+
+    background-size:260% 100%;
+
     border-width:1.5px;
     border-color:rgba(225,190,96,.58);
+
+    animation:honeycombGalaxyShine 5.2s ease-in-out infinite;
   }
 
   .luxury-bee-wrap:after{
