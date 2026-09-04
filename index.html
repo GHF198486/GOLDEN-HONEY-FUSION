@@ -340,30 +340,60 @@ section{
   justify-content:center;
 }
 
+/* REAL HONEYCOMB CELL */
+
 .luxury-bee-wrap:before{
   content:"";
   position:absolute;
-  width:100px;
-  height:100px;
-  border:1px solid rgba(216,177,76,.15);
-  transform:rotate(45deg);
-  box-shadow:
-    0 0 40px rgba(202,156,44,.08),
-    inset 0 0 30px rgba(202,156,44,.025);
+  width:116px;
+  height:134px;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(224,190,96,.50),
+      rgba(131,91,20,.22),
+      rgba(239,208,119,.42),
+      rgba(102,69,13,.20)
+    );
+  clip-path:polygon(
+    25% 0%,
+    75% 0%,
+    100% 50%,
+    75% 100%,
+    25% 100%,
+    0% 50%
+  );
+  filter:
+    drop-shadow(0 0 16px rgba(202,156,44,.10))
+    drop-shadow(0 0 35px rgba(202,156,44,.05));
+  opacity:.75;
 }
+
+/* INNER HONEYCOMB */
 
 .luxury-bee-wrap:after{
   content:"";
   position:absolute;
-  inset:15px;
+  width:110px;
+  height:128px;
   background:
     radial-gradient(
-      circle,
-      rgba(227,187,79,.10),
-      transparent 65%
+      circle at 50% 42%,
+      rgba(227,187,79,.13),
+      rgba(4,4,3,.75) 62%,
+      rgba(4,4,3,.96) 100%
     );
-  filter:blur(12px);
+  clip-path:polygon(
+    25% 0%,
+    75% 0%,
+    100% 50%,
+    75% 100%,
+    25% 100%,
+    0% 50%
+  );
 }
+
+/* BEE */
 
 .luxury-bee{
   position:relative;
@@ -373,12 +403,54 @@ section{
   filter:
     drop-shadow(0 10px 8px rgba(0,0,0,.9))
     drop-shadow(0 0 17px rgba(232,190,75,.20));
-  animation:beeFloat 6s ease-in-out infinite;
+  animation:beeFloat 5s ease-in-out infinite;
 }
 
 @keyframes beeFloat{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-7px)}
+  0%,100%{
+    transform:translate(0,0) rotate(0deg);
+  }
+  25%{
+    transform:translate(-4px,-3px) rotate(-1deg);
+  }
+  50%{
+    transform:translate(4px,-7px) rotate(1deg);
+  }
+  75%{
+    transform:translate(-3px,-4px) rotate(-.5deg);
+  }
+}
+
+/* FAST WING FLAP */
+
+.bee-wing-left{
+  transform-box:fill-box;
+  transform-origin:100% 72%;
+  animation:wingLeft .16s ease-in-out infinite alternate;
+}
+
+.bee-wing-right{
+  transform-box:fill-box;
+  transform-origin:0% 72%;
+  animation:wingRight .16s ease-in-out infinite alternate;
+}
+
+@keyframes wingLeft{
+  from{
+    transform:rotate(0deg) scaleY(1);
+  }
+  to{
+    transform:rotate(-9deg) scaleY(.82);
+  }
+}
+
+@keyframes wingRight{
+  from{
+    transform:rotate(0deg) scaleY(1);
+  }
+  to{
+    transform:rotate(9deg) scaleY(.82);
+  }
 }
 
 .hero-kicker{
@@ -667,18 +739,18 @@ section{
 .collection-name{
   font-family:Georgia,"Times New Roman",serif;
   font-size:clamp(21px,4vw,34px);
-  font-weight:500;
-  letter-spacing:4px;
-  color:#d7d0c3;
+  font-weight:400;
+  letter-spacing:4.5px;
+  color:#cfc4b0;
   text-shadow:
-    0 2px 5px rgba(0,0,0,.98),
-    0 5px 18px rgba(0,0,0,.75);
+    0 2px 6px rgba(0,0,0,.95),
+    0 5px 18px rgba(0,0,0,.7);
   transition:.35s;
 }
 
 .collection-header:hover .collection-name{
-  color:#e5ded1;
-  letter-spacing:5px;
+  color:#ddd2bd;
+  letter-spacing:5.5px;
 }
 
 .collection-hint{
@@ -734,7 +806,10 @@ section{
   align-items:center;
   text-align:center;
   cursor:pointer;
-  transition:.45s;
+  transition:
+    min-height .45s,
+    background .45s,
+    transform .45s;
 }
 
 .product-card:hover{
@@ -743,6 +818,23 @@ section{
       145deg,
       rgba(255,255,255,.055),
       rgba(202,155,48,.045)
+    );
+}
+
+/* ROYAL PRODUCT CARD WHEN OPEN */
+
+.collection.royal .product-card.open{
+  min-height:360px;
+  background:
+    radial-gradient(
+      circle at 50% 100%,
+      rgba(201,154,55,.08),
+      transparent 48%
+    ),
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.055),
+      rgba(0,0,0,.18)
     );
 }
 
@@ -762,6 +854,14 @@ section{
   font-size:13px;
 }
 
+/* LARGER ARABIC FOR ROYAL */
+
+.collection.royal .product-card .arabic{
+  font-size:16px;
+  color:#b3aa9d;
+  margin-top:11px;
+}
+
 .product-rule{
   width:35px;
   height:1px;
@@ -777,46 +877,82 @@ section{
   text-transform:uppercase;
 }
 
-/* PRICE BOXES — ROYAL ONLY */
+/* ROYAL INLINE PRICING */
 
-.product-price-box{
+.royal-inline-detail{
+  width:min(330px,100%);
+  max-height:0;
+  overflow:hidden;
+  opacity:0;
+  margin-top:0;
+  transition:
+    max-height .45s ease,
+    opacity .35s ease,
+    margin-top .45s ease;
+}
+
+.product-card.open .royal-inline-detail{
+  max-height:220px;
+  opacity:1;
   margin-top:20px;
-  padding:12px 14px;
-  border:1px solid rgba(218,181,85,.18);
-  background:rgba(0,0,0,.16);
-  width:min(230px,100%);
 }
 
-.product-price-title{
-  color:#756f65;
-  font-size:8px;
-  letter-spacing:3px;
-  margin-bottom:9px;
+.royal-size-price-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:1px;
+  background:rgba(218,181,85,.18);
+  border:1px solid rgba(218,181,85,.20);
 }
 
-.product-price-sizes{
+.royal-size-price{
+  min-height:66px;
+  padding:10px 5px;
+  background:rgba(0,0,0,.20);
   display:flex;
+  flex-direction:column;
+  align-items:center;
   justify-content:center;
-  gap:5px;
-  flex-wrap:wrap;
 }
 
-.product-price-size{
-  color:#aaa296;
-  border:1px solid rgba(218,181,85,.14);
-  padding:6px 9px;
-  font-size:8px;
-  letter-spacing:1.5px;
-}
-
-.product-price-request{
-  margin-top:9px;
-  color:#b9974b;
-  font-size:8px;
+.royal-size{
+  color:#bcb4a7;
+  font-size:12px;
+  font-weight:500;
   letter-spacing:2px;
 }
 
-/* PRODUCT DETAIL */
+.royal-price{
+  margin-top:7px;
+  color:#d6b65d;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:16px;
+  font-weight:600;
+  letter-spacing:1px;
+}
+
+.royal-request{
+  margin-top:11px;
+  color:#8f7850;
+  font-size:8px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+}
+
+.royal-open-hint{
+  margin-top:14px;
+  color:#776b59;
+  font-size:7px;
+  letter-spacing:2.5px;
+  text-transform:uppercase;
+  transition:.3s;
+}
+
+.product-card.open .royal-open-hint{
+  color:#a38b5b;
+}
+
+/* OLD SHARED PRODUCT DETAIL — KEPT FOR HIVE ESSENCE */
 
 .product-detail{
   display:none;
@@ -1218,6 +1354,16 @@ footer{
     margin-bottom:29px;
   }
 
+  .luxury-bee-wrap:before{
+    width:100px;
+    height:116px;
+  }
+
+  .luxury-bee-wrap:after{
+    width:95px;
+    height:110px;
+  }
+
   .luxury-bee{
     width:105px;
     height:105px;
@@ -1279,6 +1425,26 @@ footer{
 
   .product-card{
     min-height:240px;
+  }
+
+  .collection.royal .product-card.open{
+    min-height:350px;
+  }
+
+  .collection.royal .product-card .arabic{
+    font-size:16px;
+  }
+
+  .royal-inline-detail{
+    width:min(310px,100%);
+  }
+
+  .royal-size{
+    font-size:11px;
+  }
+
+  .royal-price{
+    font-size:15px;
   }
 
   .world-box{
@@ -1448,45 +1614,61 @@ footer{
 
           </defs>
 
-          <path
-            d="M67 63
-               C48 34 27 24 17 33
-               C5 44 17 65 38 73
-               C48 77 58 76 70 70
-               Z"
-            fill="url(#wingGold)"
-            stroke="url(#edgeGold)"
-            stroke-width="1.8"/>
+          <!-- LEFT WING -->
 
-          <path
-            d="M93 63
-               C112 34 133 24 143 33
-               C155 44 143 65 122 73
-               C112 77 102 76 90 70
-               Z"
-            fill="url(#wingGold)"
-            stroke="url(#edgeGold)"
-            stroke-width="1.8"/>
+          <g class="bee-wing-left">
 
-          <path
-            d="M22 38 C38 43 49 53 60 67"
-            fill="none"
-            stroke="#f3d982"
-            stroke-opacity=".42"
-            stroke-width="1"/>
+            <path
+              d="M67 63
+                 C48 34 27 24 17 33
+                 C5 44 17 65 38 73
+                 C48 77 58 76 70 70
+                 Z"
+              fill="url(#wingGold)"
+              stroke="url(#edgeGold)"
+              stroke-width="1.8"/>
 
-          <path
-            d="M138 38 C122 43 111 53 100 67"
-            fill="none"
-            stroke="#f3d982"
-            stroke-opacity=".42"
-            stroke-width="1"/>
+            <path
+              d="M22 38 C38 43 49 53 60 67"
+              fill="none"
+              stroke="#f3d982"
+              stroke-opacity=".42"
+              stroke-width="1"/>
+
+          </g>
+
+          <!-- RIGHT WING -->
+
+          <g class="bee-wing-right">
+
+            <path
+              d="M93 63
+                 C112 34 133 24 143 33
+                 C155 44 143 65 122 73
+                 C112 77 102 76 90 70
+                 Z"
+              fill="url(#wingGold)"
+              stroke="url(#edgeGold)"
+              stroke-width="1.8"/>
+
+            <path
+              d="M138 38 C122 43 111 53 100 67"
+              fill="none"
+              stroke="#f3d982"
+              stroke-opacity=".42"
+              stroke-width="1"/>
+
+          </g>
+
+          <!-- HEAD -->
 
           <polygon
             points="80,30 93,38 97,51 89,61 71,61 63,51 67,38"
             fill="url(#beeGold)"
             stroke="#efd17a"
             stroke-width="1.5"/>
+
+          <!-- BODY -->
 
           <path
             d="M68 57
@@ -1526,6 +1708,8 @@ footer{
             points="64,103 80,126 96,103 88,109 80,113 72,109"
             fill="url(#beeGold)"
             opacity=".95"/>
+
+          <!-- ANTENNA -->
 
           <path
             d="M70 36 C60 21 51 19 43 24"
@@ -1633,11 +1817,17 @@ footer{
 
         <div class="collection-grid" id="royalGrid">
 
+          <!-- WILD MOUNTAIN -->
+
           <div class="product-card"
+               data-product="wildMountain"
                onclick="showProduct('wildMountain')">
 
             <h3>WILD MOUNTAIN HONEY</h3>
-            <div class="arabic">عسل جبلي بري</div>
+
+            <div class="arabic">
+              عسل جبلي بري
+            </div>
 
             <div class="product-rule"></div>
 
@@ -1645,33 +1835,46 @@ footer{
               Premium Selection
             </div>
 
-            <div class="product-price-box">
+            <div class="royal-inline-detail">
 
-              <div class="product-price-title">
-                AVAILABLE SIZES
-              </div>
+              <div class="royal-size-price-grid">
 
-              <div class="product-price-sizes">
+                <div class="royal-size-price">
+                  <div class="royal-size">30 G</div>
+                  <div class="royal-price">$3</div>
+                </div>
 
-                <span class="product-price-size">30 G</span>
-                <span class="product-price-size">500 G</span>
-                <span class="product-price-size">1000 G</span>
+                <div class="royal-size-price">
+                  <div class="royal-size">500 G</div>
+                  <div class="royal-price">$35</div>
+                </div>
 
-              </div>
+                <div class="royal-size-price">
+                  <div class="royal-size">1000 G</div>
+                  <div class="royal-price">$75</div>
+                </div>
 
-              <div class="product-price-request">
-                PRICE ON REQUEST
               </div>
 
             </div>
 
+            <div class="royal-open-hint">
+              TAP TO VIEW PRICES
+            </div>
+
           </div>
 
+          <!-- BLACK SEED -->
+
           <div class="product-card"
+               data-product="blackSeed"
                onclick="showProduct('blackSeed')">
 
             <h3>BLACK SEED HONEY</h3>
-            <div class="arabic">عسل حبة البركة</div>
+
+            <div class="arabic">
+              عسل حبة البركة
+            </div>
 
             <div class="product-rule"></div>
 
@@ -1679,33 +1882,50 @@ footer{
               Signature Selection
             </div>
 
-            <div class="product-price-box">
+            <div class="royal-inline-detail">
 
-              <div class="product-price-title">
-                AVAILABLE SIZES
+              <div class="royal-size-price-grid">
+
+                <div class="royal-size-price">
+                  <div class="royal-size">30 G</div>
+                  <div class="royal-price">ON REQUEST</div>
+                </div>
+
+                <div class="royal-size-price">
+                  <div class="royal-size">500 G</div>
+                  <div class="royal-price">ON REQUEST</div>
+                </div>
+
+                <div class="royal-size-price">
+                  <div class="royal-size">1000 G</div>
+                  <div class="royal-price">ON REQUEST</div>
+                </div>
+
               </div>
 
-              <div class="product-price-sizes">
-
-                <span class="product-price-size">30 G</span>
-                <span class="product-price-size">500 G</span>
-                <span class="product-price-size">1000 G</span>
-
-              </div>
-
-              <div class="product-price-request">
+              <div class="royal-request">
                 PRICE ON REQUEST
               </div>
 
             </div>
 
+            <div class="royal-open-hint">
+              TAP TO VIEW PRICES
+            </div>
+
           </div>
 
+          <!-- BLACK SIDR -->
+
           <div class="product-card"
+               data-product="blackSidr"
                onclick="showProduct('blackSidr')">
 
             <h3>BLACK SIDR HONEY</h3>
-            <div class="arabic">عسل السدر الأسود</div>
+
+            <div class="arabic">
+              عسل السدر الأسود
+            </div>
 
             <div class="product-rule"></div>
 
@@ -1713,33 +1933,50 @@ footer{
               Rare Selection
             </div>
 
-            <div class="product-price-box">
+            <div class="royal-inline-detail">
 
-              <div class="product-price-title">
-                AVAILABLE SIZES
+              <div class="royal-size-price-grid">
+
+                <div class="royal-size-price">
+                  <div class="royal-size">30 G</div>
+                  <div class="royal-price">ON REQUEST</div>
+                </div>
+
+                <div class="royal-size-price">
+                  <div class="royal-size">500 G</div>
+                  <div class="royal-price">ON REQUEST</div>
+                </div>
+
+                <div class="royal-size-price">
+                  <div class="royal-size">1000 G</div>
+                  <div class="royal-price">ON REQUEST</div>
+                </div>
+
               </div>
 
-              <div class="product-price-sizes">
-
-                <span class="product-price-size">30 G</span>
-                <span class="product-price-size">500 G</span>
-                <span class="product-price-size">1000 G</span>
-
-              </div>
-
-              <div class="product-price-request">
+              <div class="royal-request">
                 PRICE ON REQUEST
               </div>
 
             </div>
 
+            <div class="royal-open-hint">
+              TAP TO VIEW PRICES
+            </div>
+
           </div>
 
+          <!-- BLACK MOUNTAIN -->
+
           <div class="product-card"
+               data-product="blackMountain"
                onclick="showProduct('blackMountain')">
 
             <h3>BLACK MOUNTAIN HONEY</h3>
-            <div class="arabic">عسل جبلي أسود</div>
+
+            <div class="arabic">
+              عسل جبلي أسود
+            </div>
 
             <div class="product-rule"></div>
 
@@ -1747,24 +1984,35 @@ footer{
               Exceptional Selection
             </div>
 
-            <div class="product-price-box">
+            <div class="royal-inline-detail">
 
-              <div class="product-price-title">
-                AVAILABLE SIZES
+              <div class="royal-size-price-grid">
+
+                <div class="royal-size-price">
+                  <div class="royal-size">30 G</div>
+                  <div class="royal-price">ON REQUEST</div>
+                </div>
+
+                <div class="royal-size-price">
+                  <div class="royal-size">500 G</div>
+                  <div class="royal-price">ON REQUEST</div>
+                </div>
+
+                <div class="royal-size-price">
+                  <div class="royal-size">1000 G</div>
+                  <div class="royal-price">ON REQUEST</div>
+                </div>
+
               </div>
 
-              <div class="product-price-sizes">
-
-                <span class="product-price-size">30 G</span>
-                <span class="product-price-size">500 G</span>
-                <span class="product-price-size">1000 G</span>
-
-              </div>
-
-              <div class="product-price-request">
+              <div class="royal-request">
                 PRICE ON REQUEST
               </div>
 
+            </div>
+
+            <div class="royal-open-hint">
+              TAP TO VIEW PRICES
             </div>
 
           </div>
@@ -2039,7 +2287,7 @@ footer{
 
     </div>
 
-    <!-- PRODUCT DETAIL -->
+    <!-- PRODUCT DETAIL — HIVE ESSENCE ONLY -->
 
     <div class="product-detail" id="productDetail">
 
@@ -2280,13 +2528,21 @@ footer{
 /* MENU */
 
 function openMenu(){
-  document.getElementById("menuOverlay").classList.add("open");
+
+  document.getElementById("menuOverlay")
+    .classList.add("open");
+
   document.body.style.overflow="hidden";
+
 }
 
 function closeMenu(){
-  document.getElementById("menuOverlay").classList.remove("open");
+
+  document.getElementById("menuOverlay")
+    .classList.remove("open");
+
   document.body.style.overflow="";
+
 }
 
 document.addEventListener("keydown",function(e){
@@ -2307,7 +2563,16 @@ function toggleCollection(id){
 
   document.querySelectorAll(".collection-grid")
     .forEach(function(grid){
+
       grid.classList.remove("open");
+
+    });
+
+  document.querySelectorAll(".product-card.open")
+    .forEach(function(card){
+
+      card.classList.remove("open");
+
     });
 
   if(!wasOpen){
@@ -2370,6 +2635,40 @@ const products={
 
 function showProduct(key){
 
+  const royalKeys=[
+    "wildMountain",
+    "blackSeed",
+    "blackSidr",
+    "blackMountain"
+  ];
+
+  /* ROYAL PRODUCTS OPEN INSIDE THEIR OWN CARD */
+
+  if(royalKeys.includes(key)){
+
+    const card=document.querySelector(
+      '.product-card[data-product="' + key + '"]'
+    );
+
+    if(!card)return;
+
+    document.querySelectorAll(
+      '.collection.royal .product-card.open'
+    ).forEach(function(otherCard){
+
+      if(otherCard!==card){
+        otherCard.classList.remove("open");
+      }
+
+    });
+
+    card.classList.toggle("open");
+
+    return;
+  }
+
+  /* HIVE ESSENCE KEEPS THE ORIGINAL DETAIL SYSTEM */
+
   const product=products[key];
 
   if(!product)return;
@@ -2388,11 +2687,16 @@ function showProduct(key){
 
   document.querySelectorAll(".size-btn")
     .forEach(function(btn){
+
       btn.classList.remove("active");
+
     });
 
-  document.querySelector(".size-btn")
-    .classList.add("active");
+  const firstSize=document.querySelector(".size-btn");
+
+  if(firstSize){
+    firstSize.classList.add("active");
+  }
 
   setTimeout(function(){
 
@@ -2412,7 +2716,9 @@ function selectSize(button){
 
   document.querySelectorAll(".size-btn")
     .forEach(function(btn){
+
       btn.classList.remove("active");
+
     });
 
   button.classList.add("active");
