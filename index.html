@@ -1,1 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Golden Honey Fusion</title>
 
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #0b0b0b;
+    color: #d4af37;
+    font-family: Georgia, "Times New Roman", serif;
+    min-height: 100vh;
+}
+
+.container {
+    width: 100%;
+    max-width: 500px;
+    margin: auto;
+    padding: 35px 20px 45px;
+    text-align: center;
+}
+
+.logo {
+    width: 95px;
+    height: 95px;
+    margin: 5px auto 20px;
+    border: 1px solid #d4af37;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 42px;
+}
+
+h1 {
+    font-size: 28px;
+    letter-spacing: 3px;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    color: #b9b9b9;
+    font-size: 14px;
+    letter-spacing: 2px;
+    margin-bottom: 45px;
+}
+
+.collection {
+    display: block;
+    width: 100%;
+    background: linear-gradient(145deg, #151515, #0e0e0e);
+    border: 1px solid #5d4a17;
+    border-radius: 20px;
+    padding: 28px 15px;
+    margin-bottom: 20px;
+    text-decoration: none;
+    color: #d4af37;
+    transition: 0.3s;
+}
+
+.collection:hover {
+    border-color: #d4af37;
+    transform: translateY(-3px);
+}
+
+.icon {
+    height: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+/* Crown */
+.crown {
+    font-size: 55px;
+}
+
+/* Star */
+.star {
+    font-size: 55px;
+}
+
+/* Two upward leaves */
+.leaves {
+    position: relative;
+    width: 75px;
+    height: 65px;
+}
+
+.leaf {
+    position: absolute;
+    width: 30px;
+    height: 52px;
+    border: 2px solid #d4af37;
+    border-radius: 100% 0 100% 0;
+    bottom: 0;
+}
+
+.leaf.left {
+    left: 13px;
+    transform: rotate(-38deg);
+}
+
+.leaf.right {
+    right: 13px;
+    transform: rotate(38deg) scaleX(-1);
+}
+
+.collection-title {
+    font-size: 20px;
+    letter-spacing: 2px;
+    margin-bottom: 7px;
+}
+
+.collection-subtitle {
+    color: #999;
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+.footer {
+    margin-top: 40px;
+    color: #666;
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="logo">🍯</div>
+
+    <h1>GOLDEN HONEY FUSION</h1>
+
+    <div class="subtitle">
+        THE ART OF EXCEPTIONAL HONEY
+    </div>
+
+    <a href="#" class="collection">
+        <div class="icon crown">♛</div>
+        <div class="collection-title">ROYAL COLLECTION</div>
+        <div class="collection-subtitle">EXCEPTIONAL • RARE • DISTINGUISHED</div>
+    </a>
+
+    <a href="#" class="collection">
+        <div class="icon star">★</div>
+        <div class="collection-title">SPECIAL COLLECTION</div>
+        <div class="collection-subtitle">UNIQUE • SELECTED • SPECIAL</div>
+    </a>
+
+    <a href="#" class="collection">
+        <div class="icon">
+            <div class="leaves">
+                <div class="leaf left"></div>
+                <div class="leaf right"></div>
+            </div>
+        </div>
+        <div class="collection-title">NATURAL COLLECTION</div>
+        <div class="collection-subtitle">PURE • NATURAL • AUTHENTIC</div>
+    </a>
+
+    <div class="footer">
+        GOLDEN HONEY FUSION
+    </div>
+
+</div>
+
+</body>
+</html>
