@@ -558,9 +558,30 @@ section{
   font-family:Georgia,"Times New Roman",serif;
   font-size:clamp(30px,6vw,55px);
   font-weight:400;
-  letter-spacing:5px;
-  color:#dcd5c9;
-  text-shadow:0 3px 12px #000;
+  letter-spacing:6px;
+  color:#d6cfc1;
+  text-shadow:
+    0 2px 2px rgba(0,0,0,.95),
+    0 5px 16px rgba(0,0,0,.85);
+  position:relative;
+}
+
+.section-title:after{
+  content:"";
+  position:absolute;
+  left:50%;
+  bottom:-10px;
+  width:46px;
+  height:1px;
+  transform:translateX(-50%);
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(224,196,126,.65),
+      transparent
+    );
+  opacity:.7;
 }
 
 .section-title-line{
@@ -648,15 +669,15 @@ section{
   font-size:clamp(21px,4vw,34px);
   font-weight:500;
   letter-spacing:4px;
-  color:#e1dbcf;
+  color:#d7d0c3;
   text-shadow:
-    0 2px 6px rgba(0,0,0,.95),
-    0 5px 18px rgba(0,0,0,.7);
+    0 2px 5px rgba(0,0,0,.98),
+    0 5px 18px rgba(0,0,0,.75);
   transition:.35s;
 }
 
 .collection-header:hover .collection-name{
-  color:#eee7dc;
+  color:#e5ded1;
   letter-spacing:5px;
 }
 
@@ -756,7 +777,7 @@ section{
   text-transform:uppercase;
 }
 
-/* PRICE BOXES FOR SPECIAL + NATURAL */
+/* PRICE BOXES — ROYAL ONLY */
 
 .product-price-box{
   margin-top:20px;
@@ -960,8 +981,6 @@ section{
     linear-gradient(180deg,#030303,#070706,#030303);
 }
 
-/* NO EXTRA ABOUT TITLE — ONLY CLICKABLE CARD */
-
 .about .section-heading{
   display:none;
 }
@@ -998,14 +1017,18 @@ section{
 .reveal-card-title{
   font-family:Georgia,"Times New Roman",serif;
   font-size:clamp(23px,5vw,38px);
-  color:#ded8cd;
+  color:#d6cfc1;
   letter-spacing:6px;
   font-weight:400;
+  text-shadow:
+    0 2px 3px rgba(0,0,0,.9),
+    0 5px 14px rgba(0,0,0,.7);
   transition:.4s;
 }
 
 .reveal-card:hover .reveal-card-title{
   letter-spacing:8px;
+  color:#e3dccf;
 }
 
 .reveal-arrow{
@@ -1062,8 +1085,6 @@ section{
 }
 
 /* CONTACT */
-
-/* NO EXTRA CONTACT TITLE — ONLY CLICKABLE CARD */
 
 .contact{
   background:
@@ -1224,6 +1245,11 @@ footer{
 
   .section{
     padding:95px 0;
+  }
+
+  .section-title{
+    font-size:clamp(28px,7vw,44px);
+    letter-spacing:4px;
   }
 
   .collection-header{
@@ -1619,6 +1645,26 @@ footer{
               Premium Selection
             </div>
 
+            <div class="product-price-box">
+
+              <div class="product-price-title">
+                AVAILABLE SIZES
+              </div>
+
+              <div class="product-price-sizes">
+
+                <span class="product-price-size">30 G</span>
+                <span class="product-price-size">500 G</span>
+                <span class="product-price-size">1000 G</span>
+
+              </div>
+
+              <div class="product-price-request">
+                PRICE ON REQUEST
+              </div>
+
+            </div>
+
           </div>
 
           <div class="product-card"
@@ -1631,6 +1677,26 @@ footer{
 
             <div class="product-meta">
               Signature Selection
+            </div>
+
+            <div class="product-price-box">
+
+              <div class="product-price-title">
+                AVAILABLE SIZES
+              </div>
+
+              <div class="product-price-sizes">
+
+                <span class="product-price-size">30 G</span>
+                <span class="product-price-size">500 G</span>
+                <span class="product-price-size">1000 G</span>
+
+              </div>
+
+              <div class="product-price-request">
+                PRICE ON REQUEST
+              </div>
+
             </div>
 
           </div>
@@ -1647,6 +1713,26 @@ footer{
               Rare Selection
             </div>
 
+            <div class="product-price-box">
+
+              <div class="product-price-title">
+                AVAILABLE SIZES
+              </div>
+
+              <div class="product-price-sizes">
+
+                <span class="product-price-size">30 G</span>
+                <span class="product-price-size">500 G</span>
+                <span class="product-price-size">1000 G</span>
+
+              </div>
+
+              <div class="product-price-request">
+                PRICE ON REQUEST
+              </div>
+
+            </div>
+
           </div>
 
           <div class="product-card"
@@ -1659,6 +1745,26 @@ footer{
 
             <div class="product-meta">
               Exceptional Selection
+            </div>
+
+            <div class="product-price-box">
+
+              <div class="product-price-title">
+                AVAILABLE SIZES
+              </div>
+
+              <div class="product-price-sizes">
+
+                <span class="product-price-size">30 G</span>
+                <span class="product-price-size">500 G</span>
+                <span class="product-price-size">1000 G</span>
+
+              </div>
+
+              <div class="product-price-request">
+                PRICE ON REQUEST
+              </div>
+
             </div>
 
           </div>
@@ -1719,26 +1825,6 @@ footer{
               Signature Blend
             </div>
 
-            <div class="product-price-box">
-
-              <div class="product-price-title">
-                AVAILABLE SIZES
-              </div>
-
-              <div class="product-price-sizes">
-
-                <span class="product-price-size">30 G</span>
-                <span class="product-price-size">500 G</span>
-                <span class="product-price-size">1000 G</span>
-
-              </div>
-
-              <div class="product-price-request">
-                PRICE ON REQUEST
-              </div>
-
-            </div>
-
           </div>
 
           <div class="product-card">
@@ -1750,26 +1836,6 @@ footer{
 
             <div class="product-meta">
               Distinctive Origin
-            </div>
-
-            <div class="product-price-box">
-
-              <div class="product-price-title">
-                AVAILABLE SIZES
-              </div>
-
-              <div class="product-price-sizes">
-
-                <span class="product-price-size">30 G</span>
-                <span class="product-price-size">500 G</span>
-                <span class="product-price-size">1000 G</span>
-
-              </div>
-
-              <div class="product-price-request">
-                PRICE ON REQUEST
-              </div>
-
             </div>
 
           </div>
@@ -1785,26 +1851,6 @@ footer{
               Golden Selection
             </div>
 
-            <div class="product-price-box">
-
-              <div class="product-price-title">
-                AVAILABLE SIZES
-              </div>
-
-              <div class="product-price-sizes">
-
-                <span class="product-price-size">30 G</span>
-                <span class="product-price-size">500 G</span>
-                <span class="product-price-size">1000 G</span>
-
-              </div>
-
-              <div class="product-price-request">
-                PRICE ON REQUEST
-              </div>
-
-            </div>
-
           </div>
 
           <div class="product-card">
@@ -1816,26 +1862,6 @@ footer{
 
             <div class="product-meta">
               Premium Selection
-            </div>
-
-            <div class="product-price-box">
-
-              <div class="product-price-title">
-                AVAILABLE SIZES
-              </div>
-
-              <div class="product-price-sizes">
-
-                <span class="product-price-size">30 G</span>
-                <span class="product-price-size">500 G</span>
-                <span class="product-price-size">1000 G</span>
-
-              </div>
-
-              <div class="product-price-request">
-                PRICE ON REQUEST
-              </div>
-
             </div>
 
           </div>
@@ -1902,26 +1928,6 @@ footer{
               Pure Comb Selection
             </div>
 
-            <div class="product-price-box">
-
-              <div class="product-price-title">
-                AVAILABLE SIZES
-              </div>
-
-              <div class="product-price-sizes">
-
-                <span class="product-price-size">30 G</span>
-                <span class="product-price-size">500 G</span>
-                <span class="product-price-size">1000 G</span>
-
-              </div>
-
-              <div class="product-price-request">
-                PRICE ON REQUEST
-              </div>
-
-            </div>
-
           </div>
 
           <div class="product-card">
@@ -1935,26 +1941,6 @@ footer{
               Natural Origin
             </div>
 
-            <div class="product-price-box">
-
-              <div class="product-price-title">
-                AVAILABLE SIZES
-              </div>
-
-              <div class="product-price-sizes">
-
-                <span class="product-price-size">30 G</span>
-                <span class="product-price-size">500 G</span>
-                <span class="product-price-size">1000 G</span>
-
-              </div>
-
-              <div class="product-price-request">
-                PRICE ON REQUEST
-              </div>
-
-            </div>
-
           </div>
 
           <div class="product-card">
@@ -1966,26 +1952,6 @@ footer{
 
             <div class="product-meta">
               Botanical Selection
-            </div>
-
-            <div class="product-price-box">
-
-              <div class="product-price-title">
-                AVAILABLE SIZES
-              </div>
-
-              <div class="product-price-sizes">
-
-                <span class="product-price-size">30 G</span>
-                <span class="product-price-size">500 G</span>
-                <span class="product-price-size">1000 G</span>
-
-              </div>
-
-              <div class="product-price-request">
-                PRICE ON REQUEST
-              </div>
-
             </div>
 
           </div>
@@ -2169,8 +2135,6 @@ footer{
 
   <div class="container">
 
-    <!-- ONLY ONE ABOUT US BOX -->
-
     <div class="reveal-card"
          id="aboutCard"
          onclick="toggleAbout()">
@@ -2229,8 +2193,6 @@ footer{
 <section class="section contact" id="contact">
 
   <div class="container">
-
-    <!-- ONLY ONE CONTACT US BOX -->
 
     <div class="reveal-card contact-reveal"
          id="contactCard"
