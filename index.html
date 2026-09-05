@@ -360,11 +360,6 @@ section{
   width:146px;
   height:146px;
 
-  /*
-    Full solid hexagon.
-    The second pseudo-element creates the darker
-    inner area, leaving six clearly visible golden sides.
-  */
   background:
     linear-gradient(
       115deg,
@@ -568,6 +563,8 @@ section{
   text-transform:uppercase;
 }
 
+/* GALAXY 3D GOLDEN */
+
 .hero-title{
   position:relative;
   display:inline-block;
@@ -578,98 +575,165 @@ section{
   letter-spacing:-5px;
   text-transform:uppercase;
   color:transparent;
+
   background:
     linear-gradient(
-      112deg,
-      #302005 0%,
-      #62410d 5%,
-      #b78325 12%,
-      #f1d77e 19%,
-      #fff6c7 26%,
-      #c99a37 34%,
-      #70490e 42%,
-      #f5d97e 49%,
-      #fff4bb 55%,
-      #a8751d 64%,
-      #e1bd5e 73%,
+      105deg,
+      #241500 0%,
+      #4b2d04 5%,
+      #8a5a0e 10%,
+      #d1a23a 17%,
+      #ffe88a 24%,
+      #fff8d0 29%,
+      #b67e1d 36%,
+      #563304 43%,
+      #d7ad4a 49%,
+      #fff1a4 55%,
+      #fff9d8 59%,
+      #9b6815 67%,
+      #e4bf5e 75%,
       #fff0a0 82%,
-      #805615 91%,
-      #3b2506 100%
+      #a06d17 89%,
+      #4b2c04 96%,
+      #241500 100%
     );
-  background-size:200% 100%;
+
+  background-size:260% 100%;
+  background-position:0% 50%;
+
   -webkit-background-clip:text;
   background-clip:text;
   -webkit-text-fill-color:transparent;
+
   text-shadow:
-    1px 1px 0 #6b460e,
-    2px 2px 0 #5a3a09,
-    3px 3px 0 #432a06,
-    4px 4px 0 #2c1b04,
-    0 8px 9px rgba(0,0,0,.95),
-    0 0 14px rgba(255,222,119,.28);
-  filter:drop-shadow(0 7px 5px rgba(0,0,0,.95));
+    1px 1px 0 #8b5d12,
+    2px 2px 0 #70470b,
+    3px 3px 0 #593707,
+    4px 4px 0 #3d2505,
+    5px 5px 0 #251704,
+    0 8px 9px rgba(0,0,0,.96),
+    0 0 10px rgba(238,195,80,.18),
+    0 0 25px rgba(207,158,43,.12);
+
+  filter:
+    drop-shadow(0 7px 5px rgba(0,0,0,.96))
+    drop-shadow(0 0 5px rgba(236,195,84,.12));
+
   animation:
-    galaxyShift 9s ease-in-out infinite,
-    titleBreath 7s ease-in-out infinite;
+    goldenGalaxy 7s ease-in-out infinite,
+    golden3DBreath 5.5s ease-in-out infinite;
 }
 
-@keyframes galaxyShift{
-  0%,100%{background-position:0% 50%}
-  50%{background-position:100% 50%}
-}
+/* MOVING GALAXY LIGHT THROUGH GOLDEN */
 
-@keyframes titleBreath{
-  0%,100%{
-    filter:drop-shadow(0 7px 5px rgba(0,0,0,.95));
+@keyframes goldenGalaxy{
+
+  0%{
+    background-position:-20% 50%;
   }
+
+  25%{
+    background-position:35% 50%;
+  }
+
   50%{
-    filter:
-      drop-shadow(0 7px 5px rgba(0,0,0,.95))
-      drop-shadow(0 0 18px rgba(234,193,83,.12));
+    background-position:100% 50%;
   }
+
+  75%{
+    background-position:55% 50%;
+  }
+
+  100%{
+    background-position:-20% 50%;
+  }
+
 }
+
+/* SUBTLE 3D METALLIC DEPTH */
+
+@keyframes golden3DBreath{
+
+  0%,100%{
+    text-shadow:
+      1px 1px 0 #8b5d12,
+      2px 2px 0 #70470b,
+      3px 3px 0 #593707,
+      4px 4px 0 #3d2505,
+      5px 5px 0 #251704,
+      0 8px 9px rgba(0,0,0,.96),
+      0 0 10px rgba(238,195,80,.18),
+      0 0 25px rgba(207,158,43,.12);
+  }
+
+  50%{
+    text-shadow:
+      1px 1px 0 #a8731d,
+      2px 2px 0 #805313,
+      3px 3px 0 #603b08,
+      4px 4px 0 #432906,
+      5px 5px 0 #281804,
+      0 9px 10px rgba(0,0,0,.98),
+      0 0 15px rgba(255,220,112,.25),
+      0 0 32px rgba(214,168,55,.16);
+  }
+
+}
+
+/* MOVING HIGHLIGHT OVER GOLDEN */
 
 .hero-title:after{
   content:"";
   position:absolute;
-  left:4%;
-  right:4%;
-  top:18%;
-  height:9px;
+  left:3%;
+  right:3%;
+  top:10%;
+  height:18px;
+
   background:
     linear-gradient(
-      90deg,
+      105deg,
       transparent 0%,
-      transparent 20%,
-      rgba(255,247,204,.03) 30%,
-      rgba(255,247,204,.95) 48%,
-      rgba(255,255,220,.13) 58%,
-      transparent 78%
+      transparent 30%,
+      rgba(255,255,225,0) 38%,
+      rgba(255,255,225,.10) 44%,
+      rgba(255,255,225,.92) 49%,
+      rgba(255,255,240,.25) 53%,
+      rgba(255,255,225,0) 59%,
+      transparent 70%,
+      transparent 100%
     );
-  filter:blur(4px);
-  opacity:.65;
+
+  background-size:240% 100%;
+  background-position:-120% 50%;
+
+  filter:blur(3px);
+  opacity:.72;
   pointer-events:none;
-  animation:goldReflection 5.5s ease-in-out infinite;
+
+  animation:goldenSurfaceGlint 5.8s ease-in-out infinite;
 }
 
-@keyframes goldReflection{
-  0%{
-    transform:translateX(-35%);
+@keyframes goldenSurfaceGlint{
+
+  0%,100%{
+    background-position:-120% 50%;
     opacity:0;
   }
-  20%{opacity:.2}
+
+  20%{
+    opacity:.20;
+  }
+
   50%{
-    transform:translateX(25%);
-    opacity:.8;
+    background-position:120% 50%;
+    opacity:.78;
   }
-  80%{
-    transform:translateX(25%);
-    opacity:.2;
+
+  75%{
+    opacity:.18;
   }
-  100%{
-    transform:translateX(35%);
-    opacity:0;
-  }
+
 }
 
 /* HONEY FUSION */
@@ -706,12 +770,12 @@ section{
   letter-spacing:2px;
 }
 
-/* GOLD LINE UNDER ARABIC — MOVING GLINT */
+/* CLEAN GOLD LINE UNDER ARABIC */
 
 .hero-line{
   position:relative;
   width:135px;
-  height:2px;
+  height:1px;
   margin:38px auto 0;
   overflow:hidden;
 
@@ -719,31 +783,35 @@ section{
     linear-gradient(
       90deg,
       transparent 0%,
-      #765014 12%,
-      #d0a747 28%,
-      #ffeaa0 45%,
-      #fff7cf 50%,
-      #d0a747 55%,
-      #765014 75%,
+      rgba(146,103,27,.65) 15%,
+      #c69a35 30%,
+      #e7c86d 42%,
+      #fff1ae 50%,
+      #e7c86d 58%,
+      #c69a35 70%,
+      rgba(146,103,27,.65) 85%,
       transparent 100%
     );
 
-  background-size:280% 100%;
-  animation:goldLineShine 4.2s ease-in-out infinite;
+  background-size:220% 100%;
+  background-position:-110% 50%;
+
   box-shadow:
-    0 0 5px rgba(225,190,96,.20),
-    0 0 13px rgba(198,151,43,.10);
+    0 0 4px rgba(225,190,96,.16),
+    0 0 9px rgba(198,151,43,.08);
+
+  animation:cleanLineGlint 4.8s ease-in-out infinite;
 }
 
-@keyframes goldLineShine{
+@keyframes cleanLineGlint{
 
   0%,100%{
-    background-position:130% 50%;
-    opacity:.72;
+    background-position:-110% 50%;
+    opacity:.62;
   }
 
   50%{
-    background-position:-30% 50%;
+    background-position:110% 50%;
     opacity:1;
   }
 
@@ -752,12 +820,12 @@ section{
 /* SECTION TITLES */
 
 .section{
-  padding:130px 0;
+  padding:112px 0;
 }
 
 .section-heading{
   text-align:center;
-  margin-bottom:65px;
+  margin-bottom:60px;
 }
 
 .section-eyebrow{
@@ -779,7 +847,7 @@ section{
   position:relative;
 }
 
-/* SHORT LINE DIRECTLY UNDER COLLECTIONS — MOVING GLINT */
+/* SHORT LINE DIRECTLY UNDER SECTION TITLE */
 
 .section-title:after{
   content:"";
@@ -787,85 +855,84 @@ section{
   left:50%;
   bottom:-10px;
   width:46px;
-  height:2px;
+  height:1px;
   transform:translateX(-50%);
-
   background:
     linear-gradient(
       90deg,
       transparent 0%,
-      #765014 12%,
-      #d0a747 30%,
-      #ffeaa0 46%,
-      #fff7cf 50%,
-      #d0a747 55%,
-      #765014 78%,
+      rgba(160,117,32,.55) 18%,
+      #c69a35 35%,
+      #f0d77f 47%,
+      #fff2b0 50%,
+      #f0d77f 53%,
+      #c69a35 65%,
+      rgba(160,117,32,.55) 82%,
       transparent 100%
     );
-
-  background-size:300% 100%;
-  box-shadow:
-    0 0 5px rgba(225,190,96,.20),
-    0 0 12px rgba(198,151,43,.10);
-
-  opacity:.9;
-  animation:goldLineShineShort 4s ease-in-out infinite;
+  background-size:220% 100%;
+  background-position:-110% 50%;
+  opacity:.82;
+  box-shadow:0 0 5px rgba(224,190,96,.13);
+  animation:cleanLineGlintShort 4.4s ease-in-out infinite;
 }
 
-@keyframes goldLineShineShort{
+@keyframes cleanLineGlintShort{
 
   0%,100%{
-    background-position:130% 50%;
-    opacity:.68;
+    background-position:-110% 50%;
+    opacity:.55;
   }
 
   50%{
-    background-position:-30% 50%;
-    opacity:1;
+    background-position:110% 50%;
+    opacity:.95;
   }
 
 }
 
-/* LONG LINE UNDER COLLECTIONS — MOVING GLINT */
+/* LONG LINE UNDER SECTION TITLE */
 
 .section-title-line{
   position:relative;
   width:65px;
-  height:2px;
+  height:1px;
   overflow:hidden;
 
   background:
     linear-gradient(
       90deg,
       transparent 0%,
-      #765014 12%,
-      #d0a747 28%,
-      #ffeaa0 45%,
-      #fff7cf 50%,
-      #d0a747 55%,
-      #765014 78%,
+      rgba(160,117,32,.55) 15%,
+      #c69a35 29%,
+      #e5c56a 43%,
+      #fff1ae 50%,
+      #e5c56a 57%,
+      #c69a35 71%,
+      rgba(160,117,32,.55) 85%,
       transparent 100%
     );
 
-  background-size:300% 100%;
+  background-size:220% 100%;
+  background-position:-110% 50%;
   margin:25px auto 0;
 
   box-shadow:
-    0 0 5px rgba(225,190,96,.22),
-    0 0 14px rgba(198,151,43,.12);
+    0 0 5px rgba(225,190,96,.15),
+    0 0 10px rgba(198,151,43,.07);
 
-  animation:goldLineShineLong 4.6s ease-in-out infinite;
+  animation:cleanLineGlintLong 4.9s ease-in-out infinite;
 }
 
-@keyframes goldLineShineLong{
+@keyframes cleanLineGlintLong{
 
   0%,100%{
-    background-position:130% 50%;
-    opacity:.70;
+    background-position:-110% 50%;
+    opacity:.58;
   }
 
   50%{
-    background-position:-30% 50%;
+    background-position:110% 50%;
     opacity:1;
   }
 
@@ -1538,9 +1605,7 @@ footer{
   .luxury-bee-wrap:before{
     width:132px;
     height:132px;
-
     background-size:320% 100%;
-
     animation:honeycombGalaxyShine 5.5s ease-in-out infinite;
   }
 
@@ -1576,10 +1641,11 @@ footer{
 
   .hero-line{
     width:120px;
+    margin-top:34px;
   }
 
   .section{
-    padding:95px 0;
+    padding:88px 0;
   }
 
   .section-title{
@@ -1593,6 +1659,7 @@ footer{
 
   .section-title-line{
     width:60px;
+    margin-top:22px;
   }
 
   .collection-header{
