@@ -580,40 +580,38 @@ section{
     linear-gradient(
       180deg,
       #fffdf0 0%,
-      #f9edbd 8%,
-      #d8bd70 18%,
-      #fff5c9 29%,
-      #b88a32 40%,
-      #f1d98a 51%,
-      #fffbe1 61%,
-      #d0a94e 72%,
-      #a77a25 83%,
-      #6d4911 93%,
-      #3e2707 100%
+      #f7e8a8 9%,
+      #d8b65b 20%,
+      #fff3b8 32%,
+      #c79a38 44%,
+      #f4d982 56%,
+      #fff8d5 67%,
+      #d1aa4d 78%,
+      #8e661d 89%,
+      #5c3c0c 100%
     );
 
   -webkit-background-clip:text;
   background-clip:text;
   -webkit-text-fill-color:transparent;
 
-  background-size:100% 230%;
+  background-size:100% 220%;
   background-position:50% 0%;
 
   text-shadow:
-    1px 1px 0 rgba(255,245,196,.65),
-    2px 2px 0 #c0953c,
-    3px 3px 0 #96702a,
-    4px 4px 0 #684b16,
-    5px 5px 0 #3f2b09,
+    1px 1px 0 rgba(255,242,177,.55),
+    2px 2px 0 #b98729,
+    3px 3px 0 #8b6118,
+    4px 4px 0 #60400c,
+    5px 5px 0 #3b2708,
     0 7px 8px rgba(0,0,0,.98),
-    0 12px 20px rgba(0,0,0,.78),
-    0 0 10px rgba(242,216,139,.10);
+    0 12px 18px rgba(0,0,0,.72);
 
   filter:
-    drop-shadow(0 6px 4px rgba(0,0,0,.96))
-    drop-shadow(0 0 7px rgba(244,220,146,.10));
+    drop-shadow(0 5px 3px rgba(0,0,0,.95))
+    drop-shadow(0 0 7px rgba(236,198,99,.12));
 
-  animation:goldenLuxuryShine 6.5s ease-in-out infinite;
+  animation:goldenLuxuryShine 6s ease-in-out infinite;
 }
 
 /* REFINED METALLIC LIGHT */
@@ -623,71 +621,75 @@ section{
   0%,100%{
     background-position:50% 0%;
     filter:
-      drop-shadow(0 6px 4px rgba(0,0,0,.96))
-      drop-shadow(0 0 6px rgba(244,220,146,.08));
+      drop-shadow(0 5px 3px rgba(0,0,0,.95))
+      drop-shadow(0 0 6px rgba(236,198,99,.08));
   }
 
   50%{
     background-position:50% 100%;
     filter:
-      drop-shadow(0 7px 5px rgba(0,0,0,.98))
-      drop-shadow(0 0 11px rgba(255,229,157,.16));
+      drop-shadow(0 6px 4px rgba(0,0,0,.98))
+      drop-shadow(0 0 10px rgba(255,224,135,.14));
   }
 
 }
 
-/* MOVING HIGHLIGHT OVER GOLDEN */
+/* CLEAN INTERNAL SURFACE GLINT — GOLDEN */
 
 .hero-title:after{
-  content:"";
+  content:"GOLDEN";
   position:absolute;
-  left:3%;
-  right:3%;
-  top:10%;
-  height:18px;
+  inset:0;
+
+  font:inherit;
+  letter-spacing:inherit;
+  line-height:inherit;
+  text-transform:inherit;
+
+  color:transparent;
 
   background:
     linear-gradient(
-      105deg,
+      110deg,
       transparent 0%,
-      transparent 30%,
-      rgba(255,255,225,0) 38%,
-      rgba(255,255,225,.08) 44%,
-      rgba(255,255,240,.78) 49%,
-      rgba(255,255,240,.18) 53%,
-      rgba(255,255,225,0) 59%,
-      transparent 70%,
+      transparent 40%,
+      rgba(255,255,245,0) 44%,
+      rgba(255,255,245,.95) 49%,
+      rgba(255,255,245,.18) 53%,
+      transparent 58%,
       transparent 100%
     );
 
-  background-size:240% 100%;
-  background-position:-120% 50%;
+  background-size:260% 100%;
+  background-position:-130% 50%;
 
-  filter:blur(2.5px);
-  opacity:.65;
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+
   pointer-events:none;
 
-  animation:goldenSurfaceGlint 5.8s ease-in-out infinite;
+  animation:goldenSurfaceGlint 7.5s ease-in-out infinite;
 }
 
 @keyframes goldenSurfaceGlint{
 
   0%,100%{
-    background-position:-120% 50%;
+    background-position:-130% 50%;
     opacity:0;
   }
 
   20%{
-    opacity:.16;
+    opacity:.15;
   }
 
   50%{
-    background-position:120% 50%;
-    opacity:.68;
+    background-position:130% 50%;
+    opacity:1;
   }
 
   75%{
-    opacity:.14;
+    opacity:.15;
   }
 
 }
@@ -717,13 +719,14 @@ section{
   text-shadow:0 3px 7px rgba(0,0,0,.95);
 }
 
-/* ARABIC */
+/* ARABIC — CLEAN / NO HALO */
 
 .hero-arabic{
   margin-top:19px;
   color:#b1aa9d;
   font-size:21px;
   letter-spacing:2px;
+  text-shadow:none;
 }
 
 /* ULTRA CLEAN GOLD LINE — NO HALO */
@@ -739,13 +742,13 @@ section{
     linear-gradient(
       90deg,
       transparent 0%,
-      rgba(198,154,55,.18) 18%,
+      rgba(198,154,55,.20) 18%,
       #c9a34d 34%,
       #ead28a 44%,
       #fff1b0 50%,
       #ead28a 56%,
       #c9a34d 66%,
-      rgba(198,154,55,.18) 82%,
+      rgba(198,154,55,.20) 82%,
       transparent 100%
     );
 
@@ -801,53 +804,17 @@ section{
   position:relative;
 }
 
-/* LONGER SLOW JEWEL LINE */
+/* REMOVE THE OLD SECOND LINE */
 
 .section-title:after{
-  content:"";
-  position:absolute;
-  left:50%;
-  bottom:-10px;
-  width:145px;
-  height:1px;
-  transform:translateX(-50%);
-  background:
-    linear-gradient(
-      90deg,
-      transparent 0%,
-      rgba(160,117,32,.25) 16%,
-      #c69a35 30%,
-      #e5c56a 43%,
-      #fff3bd 50%,
-      #e5c56a 57%,
-      #c69a35 70%,
-      rgba(160,117,32,.25) 84%,
-      transparent 100%
-    );
-  background-size:240% 100%;
-  background-position:-120% 50%;
-  opacity:.72;
-  box-shadow:none;
-  animation:jewelLineGlint 8s ease-in-out infinite;
+  display:none;
 }
 
-@keyframes jewelLineGlint{
-
-  0%,100%{
-    background-position:-120% 50%;
-    opacity:.55;
-  }
-
-  50%{
-    background-position:120% 50%;
-    opacity:1;
-  }
-
-}
+/* ONE LONG SLOW JEWEL LINE */
 
 .section-title-line{
   position:relative;
-  width:145px;
+  width:170px;
   height:1px;
   overflow:hidden;
 
@@ -855,30 +822,31 @@ section{
     linear-gradient(
       90deg,
       transparent 0%,
-      rgba(160,117,32,.25) 15%,
-      #c69a35 29%,
-      #e5c56a 43%,
-      #fff1ae 50%,
-      #e5c56a 57%,
-      #c69a35 71%,
-      rgba(160,117,32,.25) 85%,
+      rgba(178,133,43,.22) 16%,
+      #a97824 30%,
+      #d8b65d 42%,
+      #fff0a5 50%,
+      #d8b65d 58%,
+      #a97824 70%,
+      rgba(178,133,43,.22) 84%,
       transparent 100%
     );
 
   background-size:240% 100%;
   background-position:-120% 50%;
-  margin:25px auto 0;
+
+  margin:16px auto 0;
 
   box-shadow:none;
 
-  animation:jewelLineGlintLong 8.5s ease-in-out infinite;
+  animation:sectionJewelLine 8s ease-in-out infinite;
 }
 
-@keyframes jewelLineGlintLong{
+@keyframes sectionJewelLine{
 
   0%,100%{
     background-position:-120% 50%;
-    opacity:.55;
+    opacity:.72;
   }
 
   50%{
@@ -960,66 +928,142 @@ section{
   justify-content:center;
   color:#c6a24d;
   position:relative;
-  overflow:hidden;
+  overflow:visible;
 }
 
-/* GEMSTONE GLINT — ROYAL CROWN + SPECIAL STAR */
+/* 3D METALLIC ROYAL CROWN */
 
-.collection.royal .collection-icon:after,
-.collection.special .collection-icon:after{
-  content:"";
-  position:absolute;
-  top:-18%;
-  left:-75%;
-  width:32%;
-  height:136%;
+.collection.royal .collection-icon svg{
+  overflow:visible;
+  filter:
+    drop-shadow(0 3px 0 #3b2507)
+    drop-shadow(0 6px 4px rgba(0,0,0,.75));
+}
 
-  background:
-    linear-gradient(
-      105deg,
-      transparent 0%,
-      rgba(255,255,255,0) 22%,
-      rgba(255,238,166,.15) 36%,
-      rgba(255,248,207,.95) 48%,
-      rgba(255,255,240,.45) 54%,
-      rgba(255,224,111,.12) 64%,
-      transparent 78%
-    );
+.collection.royal .crown-main{
+  fill:url(#crownGold);
+  stroke:url(#crownEdge);
+  stroke-width:1.5;
+  paint-order:stroke fill;
+}
 
-  transform:skewX(-18deg);
+.collection.royal .crown-depth{
+  fill:none;
+  stroke:#68470e;
+  stroke-width:2;
+  opacity:.95;
+  transform:translateY(3px);
+}
+
+.collection.royal .crown-highlight{
+  fill:none;
+  stroke:url(#crownReflection);
+  stroke-width:2.2;
+  stroke-linecap:round;
+  stroke-dasharray:18 100;
+  stroke-dashoffset:118;
   opacity:0;
-
-  pointer-events:none;
-
-  animation:gemstoneSparkle 7.5s ease-in-out infinite;
+  animation:crownWavyReflection 7.8s ease-in-out infinite;
 }
 
-.collection.special .collection-icon:after{
-  animation-delay:3.4s;
+.collection.royal .crown-base{
+  fill:url(#crownBase);
+  stroke:#e8c96f;
+  stroke-width:1.2;
 }
 
-@keyframes gemstoneSparkle{
+@keyframes crownWavyReflection{
 
-  0%,18%{
-    left:-75%;
+  0%,100%{
+    stroke-dashoffset:118;
     opacity:0;
   }
 
-  30%{
-    opacity:.35;
+  22%{
+    opacity:.12;
   }
 
-  48%{
-    opacity:1;
+  45%{
+    stroke-dashoffset:38;
+    opacity:.95;
   }
 
-  62%{
-    left:145%;
-    opacity:.45;
+  56%{
+    stroke-dashoffset:-48;
+    opacity:.70;
   }
 
-  70%,100%{
-    left:145%;
+  70%{
+    stroke-dashoffset:-120;
+    opacity:0;
+  }
+
+}
+
+/* 3D METALLIC SPECIAL STAR */
+
+.collection.special .collection-icon svg{
+  overflow:visible;
+  filter:
+    drop-shadow(0 3px 0 #3b2507)
+    drop-shadow(0 6px 4px rgba(0,0,0,.75));
+}
+
+.collection.special .star-main{
+  fill:url(#starGold);
+  stroke:url(#starEdge);
+  stroke-width:1.45;
+  paint-order:stroke fill;
+}
+
+.collection.special .star-depth{
+  fill:none;
+  stroke:#60420c;
+  stroke-width:2;
+  opacity:.95;
+  transform:translateY(3px);
+}
+
+.collection.special .star-highlight{
+  fill:none;
+  stroke:url(#starReflection);
+  stroke-width:2.2;
+  stroke-linecap:round;
+  stroke-dasharray:16 100;
+  stroke-dashoffset:118;
+  opacity:0;
+  animation:starWavyReflection 8.2s ease-in-out infinite;
+}
+
+.collection.special .star-core{
+  fill:url(#starCore);
+  stroke:#efd584;
+  stroke-width:.8;
+}
+
+@keyframes starWavyReflection{
+
+  0%,100%{
+    stroke-dashoffset:118;
+    opacity:0;
+  }
+
+  23%{
+    opacity:.10;
+  }
+
+  46%{
+    stroke-dashoffset:34;
+    opacity:.92;
+  }
+
+  57%{
+    stroke-dashoffset:-48;
+    opacity:.68;
+  }
+
+  72%{
+    stroke-dashoffset:-120;
     opacity:0;
   }
 
@@ -1667,10 +1711,10 @@ footer{
     letter-spacing:4px;
   }
 
-  /* LONGER MOBILE JEWEL LINES */
+  /* ONE LONG MOBILE JEWEL LINE */
 
   .section-title:after{
-    width:120px;
+    display:none;
   }
 
   .section-title-line{
@@ -2058,21 +2102,89 @@ footer{
                  width="60"
                  height="60">
 
-              <path
-                d="M18 27 L29 45 L40 23 L51 45 L62 27 L58 58 L22 58 Z"
-                fill="none"
-                stroke="#c5a04b"
-                stroke-width="2"/>
+              <defs>
+
+                <linearGradient id="crownGold"
+                                x1="0"
+                                y1="0"
+                                x2="1"
+                                y2="1">
+
+                  <stop offset="0%" stop-color="#5a3b0b"/>
+                  <stop offset="18%" stop-color="#b8892e"/>
+                  <stop offset="34%" stop-color="#ffe89a"/>
+                  <stop offset="46%" stop-color="#fff6c8"/>
+                  <stop offset="58%" stop-color="#c89b39"/>
+                  <stop offset="74%" stop-color="#825a15"/>
+                  <stop offset="88%" stop-color="#f0d37b"/>
+                  <stop offset="100%" stop-color="#65430c"/>
+
+                </linearGradient>
+
+                <linearGradient id="crownEdge"
+                                x1="0"
+                                y1="0"
+                                x2="1"
+                                y2="0">
+
+                  <stop offset="0%" stop-color="#745014"/>
+                  <stop offset="50%" stop-color="#fff0a5"/>
+                  <stop offset="100%" stop-color="#745014"/>
+
+                </linearGradient>
+
+                <linearGradient id="crownBase"
+                                x1="0"
+                                y1="0"
+                                x2="0"
+                                y2="1">
+
+                  <stop offset="0%" stop-color="#f3d982"/>
+                  <stop offset="35%" stop-color="#bd8e2e"/>
+                  <stop offset="100%" stop-color="#65420b"/>
+
+                </linearGradient>
+
+                <linearGradient id="crownReflection"
+                                x1="0"
+                                y1="0"
+                                x2="1"
+                                y2="1">
+
+                  <stop offset="0%" stop-color="transparent"/>
+                  <stop offset="35%" stop-color="transparent"/>
+                  <stop offset="48%" stop-color="#fffbe0"/>
+                  <stop offset="55%" stop-color="#fff1ad"/>
+                  <stop offset="63%" stop-color="transparent"/>
+                  <stop offset="100%" stop-color="transparent"/>
+
+                </linearGradient>
+
+              </defs>
+
+              <!-- 3D DEPTH -->
 
               <path
-                d="M23 58 H57"
-                stroke="#e0c16b"
-                stroke-width="2"/>
+                class="crown-depth"
+                d="M18 27 L29 45 L40 23 L51 45 L62 27 L58 58 L22 58 Z"/>
+
+              <!-- MAIN 3D CROWN -->
 
               <path
-                d="M28 63 H52"
-                stroke="#765516"
-                stroke-width="1"/>
+                class="crown-main"
+                d="M18 27 L29 45 L40 23 L51 45 L62 27 L58 58 L22 58 Z"/>
+
+              <!-- SLOW INTERNAL WAVY REFLECTION -->
+
+              <path
+                class="crown-highlight"
+                d="M18 27 L29 45 L40 23 L51 45 L62 27 L58 58 L22 58 Z"/>
+
+              <!-- CROWN BASE -->
+
+              <path
+                class="crown-base"
+                d="M22 58 H58 L52 63 H28 Z"/>
 
             </svg>
 
@@ -2271,17 +2383,90 @@ footer{
                  width="58"
                  height="58">
 
+              <defs>
+
+                <linearGradient id="starGold"
+                                x1="0"
+                                y1="0"
+                                x2="1"
+                                y2="1">
+
+                  <stop offset="0%" stop-color="#5b3c0b"/>
+                  <stop offset="18%" stop-color="#b8892f"/>
+                  <stop offset="34%" stop-color="#ffe89a"/>
+                  <stop offset="46%" stop-color="#fff6c9"/>
+                  <stop offset="58%" stop-color="#c89b3a"/>
+                  <stop offset="74%" stop-color="#825b16"/>
+                  <stop offset="89%" stop-color="#f0d47d"/>
+                  <stop offset="100%" stop-color="#65430d"/>
+
+                </linearGradient>
+
+                <linearGradient id="starEdge"
+                                x1="0"
+                                y1="0"
+                                x2="1"
+                                y2="0">
+
+                  <stop offset="0%" stop-color="#765114"/>
+                  <stop offset="50%" stop-color="#fff0a5"/>
+                  <stop offset="100%" stop-color="#765114"/>
+
+                </linearGradient>
+
+                <linearGradient id="starReflection"
+                                x1="0"
+                                y1="0"
+                                x2="1"
+                                y2="1">
+
+                  <stop offset="0%" stop-color="transparent"/>
+                  <stop offset="35%" stop-color="transparent"/>
+                  <stop offset="48%" stop-color="#fffce3"/>
+                  <stop offset="55%" stop-color="#fff2b0"/>
+                  <stop offset="63%" stop-color="transparent"/>
+                  <stop offset="100%" stop-color="transparent"/>
+
+                </linearGradient>
+
+                <radialGradient id="starCore"
+                                cx="50%"
+                                cy="40%"
+                                r="65%">
+
+                  <stop offset="0%" stop-color="#fff0a0"/>
+                  <stop offset="45%" stop-color="#d4ac4c"/>
+                  <stop offset="100%" stop-color="#765014"/>
+
+                </radialGradient>
+
+              </defs>
+
+              <!-- 3D DEPTH -->
+
               <path
-                d="M40 10 L44 32 L66 40 L44 45 L40 70 L36 45 L14 40 L36 32 Z"
-                fill="none"
-                stroke="#d2ad57"
-                stroke-width="1.7"/>
+                class="star-depth"
+                d="M40 10 L44 32 L66 40 L44 45 L40 70 L36 45 L14 40 L36 32 Z"/>
+
+              <!-- MAIN 3D STAR -->
+
+              <path
+                class="star-main"
+                d="M40 10 L44 32 L66 40 L44 45 L40 70 L36 45 L14 40 L36 32 Z"/>
+
+              <!-- SLOW INTERNAL WAVY REFLECTION -->
+
+              <path
+                class="star-highlight"
+                d="M40 10 L44 32 L66 40 L44 45 L40 70 L36 45 L14 40 L36 32 Z"/>
+
+              <!-- CENTRAL GEM -->
 
               <circle
+                class="star-core"
                 cx="40"
                 cy="40"
-                r="3"
-                fill="#e9ce7c"/>
+                r="3"/>
 
             </svg>
 
