@@ -392,8 +392,6 @@ section{
   animation:honeycombGalaxyShine 5.5s ease-in-out infinite;
 }
 
-/* DARK INNER HEXAGON — LEAVES A CLEAR GOLD BORDER */
-
 .luxury-bee-wrap:after{
   content:"";
   position:absolute;
@@ -422,8 +420,6 @@ section{
 
   z-index:2;
 }
-
-/* MOVING GALAXY GLINT AROUND THE HEXAGON */
 
 @keyframes honeycombGalaxyShine{
 
@@ -505,8 +501,6 @@ section{
   }
 
 }
-
-/* FAST NATURAL WING FLAP */
 
 .bee-wing{
   transform-box:fill-box;
@@ -614,8 +608,6 @@ section{
   animation:goldenLuxuryShine 6s ease-in-out infinite;
 }
 
-/* REFINED METALLIC LIGHT */
-
 @keyframes goldenLuxuryShine{
 
   0%,100%{
@@ -633,8 +625,6 @@ section{
   }
 
 }
-
-/* CLEAN INTERNAL SURFACE GLINT — GOLDEN */
 
 .hero-title:after{
   content:"GOLDEN";
@@ -729,26 +719,26 @@ section{
   text-shadow:none;
 }
 
-/* ULTRA CLEAN GOLD LINE — NO HALO */
+/* THICK PREMIUM DIAMOND LINE */
 
 .hero-line{
   position:relative;
-  width:135px;
-  height:1px;
+  width:145px;
+  height:2px;
   margin:38px auto 0;
-  overflow:hidden;
+  overflow:visible;
 
   background:
     linear-gradient(
       90deg,
       transparent 0%,
-      rgba(198,154,55,.20) 18%,
-      #c9a34d 34%,
-      #ead28a 44%,
+      rgba(198,154,55,.18) 12%,
+      #a97824 25%,
+      #d8b65d 38%,
       #fff1b0 50%,
-      #ead28a 56%,
-      #c9a34d 66%,
-      rgba(198,154,55,.20) 82%,
+      #d8b65d 62%,
+      #a97824 75%,
+      rgba(198,154,55,.18) 88%,
       transparent 100%
     );
 
@@ -757,19 +747,59 @@ section{
 
   box-shadow:none;
 
-  animation:cleanLineGlint 5.8s ease-in-out infinite;
+  animation:cleanLineGlint 6.2s ease-in-out infinite;
+}
+
+.hero-line:after{
+  content:"";
+  position:absolute;
+  right:7px;
+  top:50%;
+  width:6px;
+  height:6px;
+  transform:translateY(-50%) rotate(45deg);
+  background:
+    linear-gradient(
+      135deg,
+      #8d641b 0%,
+      #fff8d2 42%,
+      #ffffff 50%,
+      #d9b75d 58%,
+      #7d5513 100%
+    );
+  opacity:.15;
+  animation:lineDiamondFlash 6.2s ease-in-out infinite;
 }
 
 @keyframes cleanLineGlint{
 
   0%,100%{
     background-position:-110% 50%;
-    opacity:.68;
+    opacity:.70;
   }
 
   50%{
     background-position:110% 50%;
     opacity:1;
+  }
+
+}
+
+@keyframes lineDiamondFlash{
+
+  0%,70%,100%{
+    opacity:.08;
+    transform:translateY(-50%) rotate(45deg) scale(.72);
+  }
+
+  78%{
+    opacity:1;
+    transform:translateY(-50%) rotate(45deg) scale(1.12);
+  }
+
+  84%{
+    opacity:.22;
+    transform:translateY(-50%) rotate(45deg) scale(.82);
   }
 
 }
@@ -804,31 +834,29 @@ section{
   position:relative;
 }
 
-/* REMOVE THE OLD SECOND LINE */
-
 .section-title:after{
   display:none;
 }
 
-/* ONE LONG SLOW JEWEL LINE */
+/* THICK LONG JEWEL LINE */
 
 .section-title-line{
   position:relative;
-  width:170px;
-  height:1px;
-  overflow:hidden;
+  width:220px;
+  height:2px;
+  overflow:visible;
 
   background:
     linear-gradient(
       90deg,
       transparent 0%,
-      rgba(178,133,43,.22) 16%,
-      #a97824 30%,
-      #d8b65d 42%,
+      rgba(178,133,43,.16) 8%,
+      #a97824 22%,
+      #d8b65d 37%,
       #fff0a5 50%,
-      #d8b65d 58%,
-      #a97824 70%,
-      rgba(178,133,43,.22) 84%,
+      #d8b65d 63%,
+      #a97824 78%,
+      rgba(178,133,43,.16) 92%,
       transparent 100%
     );
 
@@ -842,6 +870,30 @@ section{
   animation:sectionJewelLine 8s ease-in-out infinite;
 }
 
+.section-title-line:after{
+  content:"";
+  position:absolute;
+  right:10px;
+  top:50%;
+  width:7px;
+  height:7px;
+  transform:translateY(-50%) rotate(45deg);
+
+  background:
+    linear-gradient(
+      135deg,
+      #795316 0%,
+      #ead28a 35%,
+      #ffffff 50%,
+      #ead28a 65%,
+      #795316 100%
+    );
+
+  opacity:.10;
+
+  animation:sectionDiamondFlash 8s ease-in-out infinite;
+}
+
 @keyframes sectionJewelLine{
 
   0%,100%{
@@ -852,6 +904,25 @@ section{
   50%{
     background-position:120% 50%;
     opacity:1;
+  }
+
+}
+
+@keyframes sectionDiamondFlash{
+
+  0%,68%,100%{
+    opacity:.08;
+    transform:translateY(-50%) rotate(45deg) scale(.72);
+  }
+
+  76%{
+    opacity:1;
+    transform:translateY(-50%) rotate(45deg) scale(1.14);
+  }
+
+  82%{
+    opacity:.18;
+    transform:translateY(-50%) rotate(45deg) scale(.82);
   }
 
 }
@@ -948,22 +1019,11 @@ section{
 }
 
 .collection.royal .crown-depth{
-  fill:none;
-  stroke:#68470e;
+  fill:#60400c;
+  stroke:#60400c;
   stroke-width:2;
   opacity:.95;
   transform:translateY(3px);
-}
-
-.collection.royal .crown-highlight{
-  fill:none;
-  stroke:url(#crownReflection);
-  stroke-width:2.2;
-  stroke-linecap:round;
-  stroke-dasharray:18 100;
-  stroke-dashoffset:118;
-  opacity:0;
-  animation:crownWavyReflection 7.8s ease-in-out infinite;
 }
 
 .collection.royal .crown-base{
@@ -972,35 +1032,35 @@ section{
   stroke-width:1.2;
 }
 
-@keyframes crownWavyReflection{
+/* SHARP DIAMOND FLASH ON CROWN TIP */
 
-  0%,100%{
-    stroke-dashoffset:118;
-    opacity:0;
+.collection.royal .diamond-flash{
+  transform-box:fill-box;
+  transform-origin:center;
+  opacity:.08;
+  animation:diamondCrownFlash 6.8s ease-in-out infinite;
+}
+
+@keyframes diamondCrownFlash{
+
+  0%,68%,100%{
+    opacity:.06;
+    transform:scale(.65);
   }
 
-  22%{
-    opacity:.12;
+  76%{
+    opacity:1;
+    transform:scale(1.12);
   }
 
-  45%{
-    stroke-dashoffset:38;
-    opacity:.95;
-  }
-
-  56%{
-    stroke-dashoffset:-48;
-    opacity:.70;
-  }
-
-  70%{
-    stroke-dashoffset:-120;
-    opacity:0;
+  82%{
+    opacity:.18;
+    transform:scale(.76);
   }
 
 }
 
-/* 3D METALLIC SPECIAL STAR */
+/* 3D METALLIC FIVE-POINT SPECIAL STAR */
 
 .collection.special .collection-icon svg{
   overflow:visible;
@@ -1017,22 +1077,11 @@ section{
 }
 
 .collection.special .star-depth{
-  fill:none;
+  fill:#60420c;
   stroke:#60420c;
   stroke-width:2;
   opacity:.95;
   transform:translateY(3px);
-}
-
-.collection.special .star-highlight{
-  fill:none;
-  stroke:url(#starReflection);
-  stroke-width:2.2;
-  stroke-linecap:round;
-  stroke-dasharray:16 100;
-  stroke-dashoffset:118;
-  opacity:0;
-  animation:starWavyReflection 8.2s ease-in-out infinite;
 }
 
 .collection.special .star-core{
@@ -1041,30 +1090,30 @@ section{
   stroke-width:.8;
 }
 
-@keyframes starWavyReflection{
+/* SHARP DIAMOND FLASH ON STAR TIP */
 
-  0%,100%{
-    stroke-dashoffset:118;
-    opacity:0;
+.collection.special .diamond-flash{
+  transform-box:fill-box;
+  transform-origin:center;
+  opacity:.08;
+  animation:diamondStarFlash 7.2s ease-in-out infinite;
+}
+
+@keyframes diamondStarFlash{
+
+  0%,70%,100%{
+    opacity:.06;
+    transform:scale(.62);
   }
 
-  23%{
-    opacity:.10;
+  78%{
+    opacity:1;
+    transform:scale(1.14);
   }
 
-  46%{
-    stroke-dashoffset:34;
-    opacity:.92;
-  }
-
-  57%{
-    stroke-dashoffset:-48;
-    opacity:.68;
-  }
-
-  72%{
-    stroke-dashoffset:-120;
-    opacity:0;
+  84%{
+    opacity:.18;
+    transform:scale(.76);
   }
 
 }
@@ -1698,7 +1747,8 @@ footer{
   }
 
   .hero-line{
-    width:120px;
+    width:130px;
+    height:2px;
     margin-top:34px;
   }
 
@@ -1711,14 +1761,13 @@ footer{
     letter-spacing:4px;
   }
 
-  /* ONE LONG MOBILE JEWEL LINE */
-
   .section-title:after{
     display:none;
   }
 
   .section-title-line{
-    width:120px;
+    width:190px;
+    height:2px;
     margin-top:22px;
   }
 
@@ -2145,18 +2194,17 @@ footer{
 
                 </linearGradient>
 
-                <linearGradient id="crownReflection"
+                <linearGradient id="diamondCrown"
                                 x1="0"
                                 y1="0"
                                 x2="1"
                                 y2="1">
 
-                  <stop offset="0%" stop-color="transparent"/>
-                  <stop offset="35%" stop-color="transparent"/>
-                  <stop offset="48%" stop-color="#fffbe0"/>
-                  <stop offset="55%" stop-color="#fff1ad"/>
-                  <stop offset="63%" stop-color="transparent"/>
-                  <stop offset="100%" stop-color="transparent"/>
+                  <stop offset="0%" stop-color="#8b6118"/>
+                  <stop offset="35%" stop-color="#fff4b8"/>
+                  <stop offset="50%" stop-color="#ffffff"/>
+                  <stop offset="65%" stop-color="#fff0a1"/>
+                  <stop offset="100%" stop-color="#8b6118"/>
 
                 </linearGradient>
 
@@ -2174,17 +2222,26 @@ footer{
                 class="crown-main"
                 d="M18 27 L29 45 L40 23 L51 45 L62 27 L58 58 L22 58 Z"/>
 
-              <!-- SLOW INTERNAL WAVY REFLECTION -->
-
-              <path
-                class="crown-highlight"
-                d="M18 27 L29 45 L40 23 L51 45 L62 27 L58 58 L22 58 Z"/>
-
               <!-- CROWN BASE -->
 
               <path
                 class="crown-base"
                 d="M22 58 H58 L52 63 H28 Z"/>
+
+              <!-- SHARP DIAMOND FLASH FROM CROWN TIP -->
+
+              <path
+                class="diamond-flash"
+                d="M40 17
+                   L41.5 21
+                   L45 23
+                   L41.5 25
+                   L40 30
+                   L38.5 25
+                   L35 23
+                   L38.5 21
+                   Z"
+                fill="url(#diamondCrown)"/>
 
             </svg>
 
@@ -2414,21 +2471,6 @@ footer{
 
                 </linearGradient>
 
-                <linearGradient id="starReflection"
-                                x1="0"
-                                y1="0"
-                                x2="1"
-                                y2="1">
-
-                  <stop offset="0%" stop-color="transparent"/>
-                  <stop offset="35%" stop-color="transparent"/>
-                  <stop offset="48%" stop-color="#fffce3"/>
-                  <stop offset="55%" stop-color="#fff2b0"/>
-                  <stop offset="63%" stop-color="transparent"/>
-                  <stop offset="100%" stop-color="transparent"/>
-
-                </linearGradient>
-
                 <radialGradient id="starCore"
                                 cx="50%"
                                 cy="40%"
@@ -2440,25 +2482,53 @@ footer{
 
                 </radialGradient>
 
+                <linearGradient id="diamondStar"
+                                x1="0"
+                                y1="0"
+                                x2="1"
+                                y2="1">
+
+                  <stop offset="0%" stop-color="#8b6118"/>
+                  <stop offset="35%" stop-color="#fff4b8"/>
+                  <stop offset="50%" stop-color="#ffffff"/>
+                  <stop offset="65%" stop-color="#fff0a1"/>
+                  <stop offset="100%" stop-color="#8b6118"/>
+
+                </linearGradient>
+
               </defs>
 
               <!-- 3D DEPTH -->
 
               <path
                 class="star-depth"
-                d="M40 10 L44 32 L66 40 L44 45 L40 70 L36 45 L14 40 L36 32 Z"/>
+                d="M40 8
+                   L47.6 29.5
+                   L70.4 30.1
+                   L52.2 43.8
+                   L58.2 65.9
+                   L40 53
+                   L21.8 65.9
+                   L27.8 43.8
+                   L9.6 30.1
+                   L32.4 29.5
+                   Z"/>
 
-              <!-- MAIN 3D STAR -->
+              <!-- TRUE FIVE-POINT STAR -->
 
               <path
                 class="star-main"
-                d="M40 10 L44 32 L66 40 L44 45 L40 70 L36 45 L14 40 L36 32 Z"/>
-
-              <!-- SLOW INTERNAL WAVY REFLECTION -->
-
-              <path
-                class="star-highlight"
-                d="M40 10 L44 32 L66 40 L44 45 L40 70 L36 45 L14 40 L36 32 Z"/>
+                d="M40 8
+                   L47.6 29.5
+                   L70.4 30.1
+                   L52.2 43.8
+                   L58.2 65.9
+                   L40 53
+                   L21.8 65.9
+                   L27.8 43.8
+                   L9.6 30.1
+                   L32.4 29.5
+                   Z"/>
 
               <!-- CENTRAL GEM -->
 
@@ -2467,6 +2537,21 @@ footer{
                 cx="40"
                 cy="40"
                 r="3"/>
+
+              <!-- SHARP DIAMOND FLASH FROM TOP TIP -->
+
+              <path
+                class="diamond-flash"
+                d="M40 2
+                   L41.5 6
+                   L45 8
+                   L41.5 10
+                   L40 15
+                   L38.5 10
+                   L35 8
+                   L38.5 6
+                   Z"
+                fill="url(#diamondStar)"/>
 
             </svg>
 
