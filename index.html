@@ -726,7 +726,7 @@ section{
   letter-spacing:2px;
 }
 
-/* ULTRA CLEAN GOLD LINE */
+/* ULTRA CLEAN GOLD LINE — NO HALO */
 
 .hero-line{
   position:relative;
@@ -739,13 +739,13 @@ section{
     linear-gradient(
       90deg,
       transparent 0%,
-      rgba(198,154,55,.16) 18%,
+      rgba(198,154,55,.18) 18%,
       #c9a34d 34%,
       #ead28a 44%,
       #fff1b0 50%,
       #ead28a 56%,
       #c9a34d 66%,
-      rgba(198,154,55,.16) 82%,
+      rgba(198,154,55,.18) 82%,
       transparent 100%
     );
 
@@ -754,14 +754,14 @@ section{
 
   box-shadow:none;
 
-  animation:cleanLineGlint 4.8s ease-in-out infinite;
+  animation:cleanLineGlint 5.8s ease-in-out infinite;
 }
 
 @keyframes cleanLineGlint{
 
   0%,100%{
     background-position:-110% 50%;
-    opacity:.72;
+    opacity:.68;
   }
 
   50%{
@@ -801,51 +801,53 @@ section{
   position:relative;
 }
 
+/* LONGER SLOW JEWEL LINE */
+
 .section-title:after{
   content:"";
   position:absolute;
   left:50%;
   bottom:-10px;
-  width:46px;
+  width:145px;
   height:1px;
   transform:translateX(-50%);
   background:
     linear-gradient(
       90deg,
       transparent 0%,
-      rgba(160,117,32,.55) 18%,
-      #c69a35 35%,
-      #f0d77f 47%,
-      #fff2b0 50%,
-      #f0d77f 53%,
-      #c69a35 65%,
-      rgba(160,117,32,.55) 82%,
+      rgba(160,117,32,.25) 16%,
+      #c69a35 30%,
+      #e5c56a 43%,
+      #fff3bd 50%,
+      #e5c56a 57%,
+      #c69a35 70%,
+      rgba(160,117,32,.25) 84%,
       transparent 100%
     );
-  background-size:220% 100%;
-  background-position:-110% 50%;
-  opacity:.82;
-  box-shadow:0 0 5px rgba(224,190,96,.13);
-  animation:cleanLineGlintShort 4.4s ease-in-out infinite;
+  background-size:240% 100%;
+  background-position:-120% 50%;
+  opacity:.72;
+  box-shadow:none;
+  animation:jewelLineGlint 8s ease-in-out infinite;
 }
 
-@keyframes cleanLineGlintShort{
+@keyframes jewelLineGlint{
 
   0%,100%{
-    background-position:-110% 50%;
+    background-position:-120% 50%;
     opacity:.55;
   }
 
   50%{
-    background-position:110% 50%;
-    opacity:.95;
+    background-position:120% 50%;
+    opacity:1;
   }
 
 }
 
 .section-title-line{
   position:relative;
-  width:65px;
+  width:145px;
   height:1px;
   overflow:hidden;
 
@@ -853,36 +855,34 @@ section{
     linear-gradient(
       90deg,
       transparent 0%,
-      rgba(160,117,32,.55) 15%,
+      rgba(160,117,32,.25) 15%,
       #c69a35 29%,
       #e5c56a 43%,
       #fff1ae 50%,
       #e5c56a 57%,
       #c69a35 71%,
-      rgba(160,117,32,.55) 85%,
+      rgba(160,117,32,.25) 85%,
       transparent 100%
     );
 
-  background-size:220% 100%;
-  background-position:-110% 50%;
+  background-size:240% 100%;
+  background-position:-120% 50%;
   margin:25px auto 0;
 
-  box-shadow:
-    0 0 5px rgba(225,190,96,.15),
-    0 0 10px rgba(198,151,43,.07);
+  box-shadow:none;
 
-  animation:cleanLineGlintLong 4.9s ease-in-out infinite;
+  animation:jewelLineGlintLong 8.5s ease-in-out infinite;
 }
 
-@keyframes cleanLineGlintLong{
+@keyframes jewelLineGlintLong{
 
   0%,100%{
-    background-position:-110% 50%;
-    opacity:.58;
+    background-position:-120% 50%;
+    opacity:.55;
   }
 
   50%{
-    background-position:110% 50%;
+    background-position:120% 50%;
     opacity:1;
   }
 
@@ -959,6 +959,70 @@ section{
   align-items:center;
   justify-content:center;
   color:#c6a24d;
+  position:relative;
+  overflow:hidden;
+}
+
+/* GEMSTONE GLINT — ROYAL CROWN + SPECIAL STAR */
+
+.collection.royal .collection-icon:after,
+.collection.special .collection-icon:after{
+  content:"";
+  position:absolute;
+  top:-18%;
+  left:-75%;
+  width:32%;
+  height:136%;
+
+  background:
+    linear-gradient(
+      105deg,
+      transparent 0%,
+      rgba(255,255,255,0) 22%,
+      rgba(255,238,166,.15) 36%,
+      rgba(255,248,207,.95) 48%,
+      rgba(255,255,240,.45) 54%,
+      rgba(255,224,111,.12) 64%,
+      transparent 78%
+    );
+
+  transform:skewX(-18deg);
+  opacity:0;
+
+  pointer-events:none;
+
+  animation:gemstoneSparkle 7.5s ease-in-out infinite;
+}
+
+.collection.special .collection-icon:after{
+  animation-delay:3.4s;
+}
+
+@keyframes gemstoneSparkle{
+
+  0%,18%{
+    left:-75%;
+    opacity:0;
+  }
+
+  30%{
+    opacity:.35;
+  }
+
+  48%{
+    opacity:1;
+  }
+
+  62%{
+    left:145%;
+    opacity:.45;
+  }
+
+  70%,100%{
+    left:145%;
+    opacity:0;
+  }
+
 }
 
 .collection-name{
@@ -1603,12 +1667,14 @@ footer{
     letter-spacing:4px;
   }
 
+  /* LONGER MOBILE JEWEL LINES */
+
   .section-title:after{
-    width:42px;
+    width:120px;
   }
 
   .section-title-line{
-    width:60px;
+    width:120px;
     margin-top:22px;
   }
 
