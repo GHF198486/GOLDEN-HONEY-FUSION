@@ -563,7 +563,7 @@ section{
   text-transform:uppercase;
 }
 
-/* GALAXY 3D GOLDEN */
+/* ULTRA PREMIUM 3D GOLDEN */
 
 .hero-title{
   position:relative;
@@ -578,104 +578,60 @@ section{
 
   background:
     linear-gradient(
-      105deg,
-      #241500 0%,
-      #4b2d04 5%,
-      #8a5a0e 10%,
-      #d1a23a 17%,
-      #ffe88a 24%,
-      #fff8d0 29%,
-      #b67e1d 36%,
-      #563304 43%,
-      #d7ad4a 49%,
-      #fff1a4 55%,
-      #fff9d8 59%,
-      #9b6815 67%,
-      #e4bf5e 75%,
-      #fff0a0 82%,
-      #a06d17 89%,
-      #4b2c04 96%,
-      #241500 100%
+      180deg,
+      #fffdf0 0%,
+      #f9edbd 8%,
+      #d8bd70 18%,
+      #fff5c9 29%,
+      #b88a32 40%,
+      #f1d98a 51%,
+      #fffbe1 61%,
+      #d0a94e 72%,
+      #a77a25 83%,
+      #6d4911 93%,
+      #3e2707 100%
     );
-
-  background-size:260% 100%;
-  background-position:0% 50%;
 
   -webkit-background-clip:text;
   background-clip:text;
   -webkit-text-fill-color:transparent;
 
+  background-size:100% 230%;
+  background-position:50% 0%;
+
   text-shadow:
-    1px 1px 0 #8b5d12,
-    2px 2px 0 #70470b,
-    3px 3px 0 #593707,
-    4px 4px 0 #3d2505,
-    5px 5px 0 #251704,
-    0 8px 9px rgba(0,0,0,.96),
-    0 0 10px rgba(238,195,80,.18),
-    0 0 25px rgba(207,158,43,.12);
+    1px 1px 0 rgba(255,245,196,.65),
+    2px 2px 0 #c0953c,
+    3px 3px 0 #96702a,
+    4px 4px 0 #684b16,
+    5px 5px 0 #3f2b09,
+    0 7px 8px rgba(0,0,0,.98),
+    0 12px 20px rgba(0,0,0,.78),
+    0 0 10px rgba(242,216,139,.10);
 
   filter:
-    drop-shadow(0 7px 5px rgba(0,0,0,.96))
-    drop-shadow(0 0 5px rgba(236,195,84,.12));
+    drop-shadow(0 6px 4px rgba(0,0,0,.96))
+    drop-shadow(0 0 7px rgba(244,220,146,.10));
 
-  animation:
-    goldenGalaxy 7s ease-in-out infinite,
-    golden3DBreath 5.5s ease-in-out infinite;
+  animation:goldenLuxuryShine 6.5s ease-in-out infinite;
 }
 
-/* MOVING GALAXY LIGHT THROUGH GOLDEN */
+/* REFINED METALLIC LIGHT */
 
-@keyframes goldenGalaxy{
-
-  0%{
-    background-position:-20% 50%;
-  }
-
-  25%{
-    background-position:35% 50%;
-  }
-
-  50%{
-    background-position:100% 50%;
-  }
-
-  75%{
-    background-position:55% 50%;
-  }
-
-  100%{
-    background-position:-20% 50%;
-  }
-
-}
-
-/* SUBTLE 3D METALLIC DEPTH */
-
-@keyframes golden3DBreath{
+@keyframes goldenLuxuryShine{
 
   0%,100%{
-    text-shadow:
-      1px 1px 0 #8b5d12,
-      2px 2px 0 #70470b,
-      3px 3px 0 #593707,
-      4px 4px 0 #3d2505,
-      5px 5px 0 #251704,
-      0 8px 9px rgba(0,0,0,.96),
-      0 0 10px rgba(238,195,80,.18),
-      0 0 25px rgba(207,158,43,.12);
+    background-position:50% 0%;
+    filter:
+      drop-shadow(0 6px 4px rgba(0,0,0,.96))
+      drop-shadow(0 0 6px rgba(244,220,146,.08));
   }
 
   50%{
-    text-shadow:
-      1px 1px 0 #a8731d,
-      2px 2px 0 #805313,
-      3px 3px 0 #603b08,
-      4px 4px 0 #432906,
-      5px 5px 0 #281804,
-      0 9px 10px rgba(0,0,0,.98),
-      0 0 15px rgba(255,220,112,.25),
-      0 0 32px rgba(214,168,55,.16);
+    background-position:50% 100%;
+    filter:
+      drop-shadow(0 7px 5px rgba(0,0,0,.98))
+      drop-shadow(0 0 11px rgba(255,229,157,.16));
   }
 
 }
@@ -696,9 +652,9 @@ section{
       transparent 0%,
       transparent 30%,
       rgba(255,255,225,0) 38%,
-      rgba(255,255,225,.10) 44%,
-      rgba(255,255,225,.92) 49%,
-      rgba(255,255,240,.25) 53%,
+      rgba(255,255,225,.08) 44%,
+      rgba(255,255,240,.78) 49%,
+      rgba(255,255,240,.18) 53%,
       rgba(255,255,225,0) 59%,
       transparent 70%,
       transparent 100%
@@ -707,8 +663,8 @@ section{
   background-size:240% 100%;
   background-position:-120% 50%;
 
-  filter:blur(3px);
-  opacity:.72;
+  filter:blur(2.5px);
+  opacity:.65;
   pointer-events:none;
 
   animation:goldenSurfaceGlint 5.8s ease-in-out infinite;
@@ -722,16 +678,16 @@ section{
   }
 
   20%{
-    opacity:.20;
+    opacity:.16;
   }
 
   50%{
     background-position:120% 50%;
-    opacity:.78;
+    opacity:.68;
   }
 
   75%{
-    opacity:.18;
+    opacity:.14;
   }
 
 }
@@ -770,7 +726,7 @@ section{
   letter-spacing:2px;
 }
 
-/* CLEAN GOLD LINE UNDER ARABIC */
+/* ULTRA CLEAN GOLD LINE */
 
 .hero-line{
   position:relative;
@@ -783,22 +739,20 @@ section{
     linear-gradient(
       90deg,
       transparent 0%,
-      rgba(146,103,27,.65) 15%,
-      #c69a35 30%,
-      #e7c86d 42%,
-      #fff1ae 50%,
-      #e7c86d 58%,
-      #c69a35 70%,
-      rgba(146,103,27,.65) 85%,
+      rgba(198,154,55,.16) 18%,
+      #c9a34d 34%,
+      #ead28a 44%,
+      #fff1b0 50%,
+      #ead28a 56%,
+      #c9a34d 66%,
+      rgba(198,154,55,.16) 82%,
       transparent 100%
     );
 
   background-size:220% 100%;
   background-position:-110% 50%;
 
-  box-shadow:
-    0 0 4px rgba(225,190,96,.16),
-    0 0 9px rgba(198,151,43,.08);
+  box-shadow:none;
 
   animation:cleanLineGlint 4.8s ease-in-out infinite;
 }
@@ -807,7 +761,7 @@ section{
 
   0%,100%{
     background-position:-110% 50%;
-    opacity:.62;
+    opacity:.72;
   }
 
   50%{
@@ -846,8 +800,6 @@ section{
     0 5px 16px rgba(0,0,0,.85);
   position:relative;
 }
-
-/* SHORT LINE DIRECTLY UNDER SECTION TITLE */
 
 .section-title:after{
   content:"";
@@ -890,8 +842,6 @@ section{
   }
 
 }
-
-/* LONG LINE UNDER SECTION TITLE */
 
 .section-title-line{
   position:relative;
@@ -2780,9 +2730,7 @@ function toggleCollection(id){
     });
 
   if(!wasOpen){
-
     target.classList.add("open");
-
   }
 
 }
