@@ -25,7 +25,7 @@
   --stone:#999287;
 
   --line:rgba(214,177,82,.25);
-  --line-strong:rgba(225,190,96,.48);
+  --line-strong:rgba(225,190,96,.72);
 
   --royal:#24112e;
   --special:#10182c;
@@ -96,9 +96,9 @@ section{
   background:linear-gradient(
     180deg,
     transparent,
-    rgba(206,165,64,.25) 15%,
-    rgba(224,190,99,.48) 50%,
-    rgba(206,165,64,.25) 85%,
+    rgba(206,165,64,.30) 15%,
+    rgba(224,190,99,.62) 50%,
+    rgba(206,165,64,.30) 85%,
     transparent
   );
   z-index:50;
@@ -175,38 +175,49 @@ section{
   text-shadow:0 2px 6px #000;
 }
 
-/* GHF MESSAGE */
+/* GHF MESSAGE — LUXURY COMPACT */
 
 .ghf-message{
   position:fixed;
   top:88px;
   left:50%;
   transform:translate(-50%,-15px);
-  width:min(520px,calc(100% - 36px));
-  padding:18px 22px;
+  width:max-content;
+  max-width:min(350px,calc(100% - 36px));
+  padding:14px 19px;
   z-index:3000;
   text-align:center;
   direction:rtl;
 
-  border:1px solid rgba(218,181,85,.45);
+  border:1px solid rgba(218,181,85,.58);
 
   background:
     radial-gradient(
       circle at 50% 0%,
-      rgba(211,166,63,.13),
-      transparent 60%
+      rgba(211,166,63,.16),
+      transparent 65%
     ),
-    rgba(5,5,5,.96);
+    linear-gradient(
+      180deg,
+      rgba(13,12,10,.98),
+      rgba(4,4,4,.97)
+    );
 
   box-shadow:
-    0 14px 45px rgba(0,0,0,.65),
-    inset 0 0 25px rgba(214,173,82,.025);
+    0 14px 45px rgba(0,0,0,.72),
+    0 0 22px rgba(214,173,82,.06),
+    inset 0 0 25px rgba(214,173,82,.035);
 
-  color:#e7d69d;
-  font-family:Georgia,"Times New Roman",serif;
-  font-size:14px;
-  line-height:1.8;
-  letter-spacing:.4px;
+  color:#ead9a2;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:13px;
+  line-height:1.75;
+  letter-spacing:.35px;
 
   opacity:0;
   visibility:hidden;
@@ -216,6 +227,29 @@ section{
     opacity:.45s ease,
     transform:.45s ease,
     visibility:.45s;
+}
+
+.ghf-message:before,
+.ghf-message:after{
+  content:"";
+  position:absolute;
+  width:18px;
+  height:18px;
+  pointer-events:none;
+}
+
+.ghf-message:before{
+  top:6px;
+  left:6px;
+  border-top:1px solid rgba(238,207,117,.52);
+  border-left:1px solid rgba(238,207,117,.52);
+}
+
+.ghf-message:after{
+  bottom:6px;
+  right:6px;
+  border-bottom:1px solid rgba(238,207,117,.52);
+  border-right:1px solid rgba(238,207,117,.52);
 }
 
 .ghf-message.show{
@@ -252,7 +286,7 @@ section{
   background:#cbb271;
 }
 
-/* MENU */
+/* MENU OVERLAY */
 
 .menu-overlay{
   position:fixed;
@@ -742,7 +776,7 @@ section{
 .collection{
   position:relative;
   overflow:hidden;
-  border:1px solid rgba(218,181,85,.16);
+  border:1px solid rgba(218,181,85,.20);
   box-shadow:
     0 20px 60px rgba(0,0,0,.42),
     inset 0 0 50px rgba(255,255,255,.01);
@@ -750,7 +784,7 @@ section{
 }
 
 .collection:hover{
-  border-color:rgba(218,181,85,.30);
+  border-color:rgba(218,181,85,.36);
   transform:translateY(-2px);
 }
 
@@ -805,7 +839,7 @@ section{
   content:"";
   position:absolute;
   inset:-8px;
-  border:1px solid rgba(218,181,85,.38);
+  border:1px solid rgba(218,181,85,.48);
   box-shadow:
     0 0 12px rgba(214,173,82,.05),
     inset 0 0 10px rgba(214,173,82,.025);
@@ -895,7 +929,7 @@ section{
   display:none;
   grid-template-columns:repeat(2,1fr);
   gap:0;
-  background:rgba(218,181,85,.08);
+  background:rgba(218,181,85,.12);
   animation:collectionOpen .55s;
 }
 
@@ -930,9 +964,13 @@ section{
   cursor:pointer;
   transition:.45s;
 
-  /* GOLD SEPARATION */
-  border:1px solid rgba(218,181,85,.22);
+  /* STRONGER GOLD SEPARATION */
+  border:1.5px solid rgba(218,181,85,.52);
   margin:5px;
+
+  box-shadow:
+    inset 0 0 0 1px rgba(255,235,157,.035),
+    0 0 0 1px rgba(0,0,0,.45);
 }
 
 .product-card:hover{
@@ -943,10 +981,14 @@ section{
       rgba(202,155,48,.045)
     );
 
-  border-color:rgba(225,190,96,.52);
+  border-color:rgba(225,190,96,.78);
   box-shadow:
     inset 0 0 20px rgba(214,173,82,.025),
-    0 0 12px rgba(214,173,82,.04);
+    0 0 12px rgba(214,173,82,.06);
+}
+
+.product-card.detail-active{
+  border-color:rgba(239,205,116,.78);
 }
 
 .product-card h3{
@@ -986,9 +1028,7 @@ section{
   text-transform:uppercase;
 }
 
-/* =========================================================
-   UNIVERSAL PRODUCT DETAIL
-   ========================================================= */
+/* UNIVERSAL PRODUCT DETAIL */
 
 .universal-detail{
   display:none;
@@ -996,7 +1036,7 @@ section{
   margin-top:24px;
   padding:20px 17px 18px;
 
-  border:1px solid rgba(218,181,85,.28);
+  border:1px solid rgba(218,181,85,.34);
 
   background:
     radial-gradient(
@@ -1175,7 +1215,7 @@ section{
   align-items:center;
   gap:12px;
   padding:12px;
-  border:1px solid rgba(218,181,85,.18);
+  border:1px solid rgba(218,181,85,.28);
   background:rgba(255,255,255,.012);
   cursor:pointer;
   transition:.35s;
@@ -1183,7 +1223,7 @@ section{
 }
 
 .detail-price-option:hover{
-  border-color:rgba(225,190,96,.58);
+  border-color:rgba(225,190,96,.72);
   background:rgba(202,155,48,.055);
   transform:translateX(2px);
 }
@@ -1253,12 +1293,24 @@ section{
   letter-spacing:1px;
 }
 
+/* WHATSAPP PURCHASE HINT */
+
+.whatsapp-purchase-note{
+  margin-top:12px;
+  color:#8f887b;
+  font-size:9px;
+  line-height:1.7;
+  letter-spacing:.6px;
+  direction:rtl;
+  text-align:center;
+}
+
 /* SPECIAL WILD INFO */
 
 .wild-source-note{
   margin-top:14px;
   padding:12px;
-  border:1px solid rgba(218,181,85,.16);
+  border:1px solid rgba(218,181,85,.22);
   background:rgba(198,154,55,.025);
   color:#a99e8c;
   font-size:11px;
@@ -1547,8 +1599,11 @@ footer{
 
   .ghf-message{
     top:78px;
-    font-size:13px;
-    padding:16px 17px;
+    width:max-content;
+    max-width:calc(100% - 30px);
+    font-size:12px;
+    padding:13px 15px;
+    line-height:1.75;
   }
 
   .hero{
@@ -1647,6 +1702,7 @@ footer{
   .product-card{
     min-height:240px;
     margin:5px;
+    border-width:1.5px;
   }
 
   .universal-detail{
@@ -2149,8 +2205,9 @@ footer{
                 </div>
 
                 <div class="detail-property-text">
-                  عسل بري طبيعي فاخر، يتميّز بطابعه الجبلي الطبيعي
-                  وانتقائه ضمن فئة المنتجات الفاخرة.
+                  عسل جبلي بري طبيعي فاخر، يتميّز بطابعه الأصيل
+                  وتركيبته الطبيعية الغنية، ويُختار من مصادر برية
+                  مميزة بعيداً عن إنتاج المناحل التقليدية.
                 </div>
 
                 <div class="detail-property-label">
@@ -2166,16 +2223,47 @@ footer{
                 </div>
 
                 <div class="detail-property-text">
-                  عسل جبلي بري طبيعي، وليس من إنتاج المناحل.
+                  عسل بري طبيعي، وليس من إنتاج المناحل، ويعكس
+                  تنوّع البيئة الجبلية البرية التي جُمع منها.
                 </div>
 
                 <div class="detail-property-label">
-                  PROFILE
+                  TASTE
                 </div>
 
                 <div class="detail-property-text">
-                  طابع طبيعي جبلي مميز، بعمق ونكهة تعبّر عن البيئة
-                  البرية التي جُمع منها العسل.
+                  طعم متميّز وعميق وثقيل، ذو شخصية قوية وطابع
+                  جبلي واضح، مع مذاق طويل الأثر يميّزه عن الأنواع
+                  التقليدية.
+                </div>
+
+                <div class="detail-property-label">
+                  AROMA
+                </div>
+
+                <div class="detail-property-text">
+                  رائحة فريدة وغنية، ذات طابع طبيعي واضح، تعكس
+                  تنوّع المصادر النباتية والبيئة الجبلية البرية.
+                </div>
+
+                <div class="detail-property-label">
+                  ANTIOXIDANT PROFILE
+                </div>
+
+                <div class="detail-property-text">
+                  غني بمركبات طبيعية ذات نشاط مضاد للأكسدة،
+                  وتُعد هذه المركبات جزءاً من القيمة الطبيعية
+                  المميزة للعسل.
+                </div>
+
+                <div class="detail-property-label">
+                  NATURAL CHARACTER
+                </div>
+
+                <div class="detail-property-text">
+                  تركيبة طبيعية تمنحه شخصية مميزة في الطعم والرائحة،
+                  مع خصائص مرتبطة بمصدره النباتي والبيئة البرية
+                  التي ينتمي إليها.
                 </div>
 
                 <button class="detail-back"
@@ -2194,6 +2282,9 @@ footer{
                 <div class="detail-price-list">
 
                   <button class="detail-price-option"
+                          data-product="عسل جبلي بري"
+                          data-weight="30 G"
+                          data-price="$3"
                           onclick="selectUniversalPrice(this,event)">
 
                     <span class="detail-radio"></span>
@@ -2209,6 +2300,9 @@ footer{
                   </button>
 
                   <button class="detail-price-option"
+                          data-product="عسل جبلي بري"
+                          data-weight="500 G"
+                          data-price="$35"
                           onclick="selectUniversalPrice(this,event)">
 
                     <span class="detail-radio"></span>
@@ -2224,6 +2318,9 @@ footer{
                   </button>
 
                   <button class="detail-price-option"
+                          data-product="عسل جبلي بري"
+                          data-weight="1000 G"
+                          data-price="$75"
                           onclick="selectUniversalPrice(this,event)">
 
                     <span class="detail-radio"></span>
@@ -2238,6 +2335,10 @@ footer{
 
                   </button>
 
+                </div>
+
+                <div class="whatsapp-purchase-note">
+                  اختر الحجم للشراء مباشرة عبر WhatsApp
                 </div>
 
                 <button class="detail-back"
@@ -2320,6 +2421,9 @@ footer{
                 <div class="detail-price-list">
 
                   <button class="detail-price-option"
+                          data-product="عسل حبة البركة"
+                          data-weight="30 G"
+                          data-price="PRICE ON REQUEST"
                           onclick="selectUniversalPrice(this,event)">
                     <span class="detail-radio"></span>
                     <span class="detail-price-weight">30 G</span>
@@ -2327,6 +2431,9 @@ footer{
                   </button>
 
                   <button class="detail-price-option"
+                          data-product="عسل حبة البركة"
+                          data-weight="500 G"
+                          data-price="PRICE ON REQUEST"
                           onclick="selectUniversalPrice(this,event)">
                     <span class="detail-radio"></span>
                     <span class="detail-price-weight">500 G</span>
@@ -2334,12 +2441,19 @@ footer{
                   </button>
 
                   <button class="detail-price-option"
+                          data-product="عسل حبة البركة"
+                          data-weight="1000 G"
+                          data-price="PRICE ON REQUEST"
                           onclick="selectUniversalPrice(this,event)">
                     <span class="detail-radio"></span>
                     <span class="detail-price-weight">1000 G</span>
                     <span class="detail-price-value">PRICE ON REQUEST</span>
                   </button>
 
+                </div>
+
+                <div class="whatsapp-purchase-note">
+                  اختر الحجم للتواصل والطلب عبر WhatsApp
                 </div>
 
                 <button class="detail-back"
@@ -2422,6 +2536,9 @@ footer{
                 <div class="detail-price-list">
 
                   <button class="detail-price-option"
+                          data-product="عسل السدر الأسود"
+                          data-weight="30 G"
+                          data-price="PRICE ON REQUEST"
                           onclick="selectUniversalPrice(this,event)">
                     <span class="detail-radio"></span>
                     <span class="detail-price-weight">30 G</span>
@@ -2429,6 +2546,9 @@ footer{
                   </button>
 
                   <button class="detail-price-option"
+                          data-product="عسل السدر الأسود"
+                          data-weight="500 G"
+                          data-price="PRICE ON REQUEST"
                           onclick="selectUniversalPrice(this,event)">
                     <span class="detail-radio"></span>
                     <span class="detail-price-weight">500 G</span>
@@ -2436,12 +2556,19 @@ footer{
                   </button>
 
                   <button class="detail-price-option"
+                          data-product="عسل السدر الأسود"
+                          data-weight="1000 G"
+                          data-price="PRICE ON REQUEST"
                           onclick="selectUniversalPrice(this,event)">
                     <span class="detail-radio"></span>
                     <span class="detail-price-weight">1000 G</span>
                     <span class="detail-price-value">PRICE ON REQUEST</span>
                   </button>
 
+                </div>
+
+                <div class="whatsapp-purchase-note">
+                  اختر الحجم للتواصل والطلب عبر WhatsApp
                 </div>
 
                 <button class="detail-back"
@@ -2524,6 +2651,9 @@ footer{
                 <div class="detail-price-list">
 
                   <button class="detail-price-option"
+                          data-product="عسل جبلي أسود"
+                          data-weight="30 G"
+                          data-price="PRICE ON REQUEST"
                           onclick="selectUniversalPrice(this,event)">
                     <span class="detail-radio"></span>
                     <span class="detail-price-weight">30 G</span>
@@ -2531,6 +2661,9 @@ footer{
                   </button>
 
                   <button class="detail-price-option"
+                          data-product="عسل جبلي أسود"
+                          data-weight="500 G"
+                          data-price="PRICE ON REQUEST"
                           onclick="selectUniversalPrice(this,event)">
                     <span class="detail-radio"></span>
                     <span class="detail-price-weight">500 G</span>
@@ -2538,12 +2671,19 @@ footer{
                   </button>
 
                   <button class="detail-price-option"
+                          data-product="عسل جبلي أسود"
+                          data-weight="1000 G"
+                          data-price="PRICE ON REQUEST"
                           onclick="selectUniversalPrice(this,event)">
                     <span class="detail-radio"></span>
                     <span class="detail-price-weight">1000 G</span>
                     <span class="detail-price-value">PRICE ON REQUEST</span>
                   </button>
 
+                </div>
+
+                <div class="whatsapp-purchase-note">
+                  اختر الحجم للتواصل والطلب عبر WhatsApp
                 </div>
 
                 <button class="detail-back"
@@ -2668,6 +2808,8 @@ footer{
 
         <div class="collection-grid" id="specialGrid">
 
+          <!-- GOLDEN BALANCE -->
+
           <div class="product-card"
                onclick="toggleProductDetail(this,event,'goldenBalance')">
 
@@ -2683,6 +2825,7 @@ footer{
                         onclick="showDetailPanel(this,'properties',event)">
                   PROPERTIES
                 </button>
+
                 <button class="detail-tab"
                         onclick="showDetailPanel(this,'prices',event)">
                   PRICES
@@ -2721,7 +2864,11 @@ footer{
                 <div class="detail-price-heading">AVAILABLE SIZES</div>
 
                 <div class="detail-price-list">
+
                   <button class="detail-price-option"
+                          data-product="توازن ذهبي"
+                          data-weight="30 G"
+                          data-price="PRICE ON REQUEST"
                           onclick="selectUniversalPrice(this,event)">
                     <span class="detail-radio"></span>
                     <span class="detail-price-weight">30 G</span>
@@ -2729,6 +2876,9 @@ footer{
                   </button>
 
                   <button class="detail-price-option"
+                          data-product="توازن ذهبي"
+                          data-weight="500 G"
+                          data-price="PRICE ON REQUEST"
                           onclick="selectUniversalPrice(this,event)">
                     <span class="detail-radio"></span>
                     <span class="detail-price-weight">500 G</span>
@@ -2736,11 +2886,19 @@ footer{
                   </button>
 
                   <button class="detail-price-option"
+                          data-product="توازن ذهبي"
+                          data-weight="1000 G"
+                          data-price="PRICE ON REQUEST"
                           onclick="selectUniversalPrice(this,event)">
                     <span class="detail-radio"></span>
                     <span class="detail-price-weight">1000 G</span>
                     <span class="detail-price-value">PRICE ON REQUEST</span>
                   </button>
+
+                </div>
+
+                <div class="whatsapp-purchase-note">
+                  اختر الحجم للتواصل والطلب عبر WhatsApp
                 </div>
 
                 <button class="detail-back"
@@ -2753,6 +2911,8 @@ footer{
             </div>
 
           </div>
+
+          <!-- THYME -->
 
           <div class="product-card"
                onclick="toggleProductDetail(this,event,'thyme')">
@@ -2769,6 +2929,7 @@ footer{
                         onclick="showDetailPanel(this,'properties',event)">
                   PROPERTIES
                 </button>
+
                 <button class="detail-tab"
                         onclick="showDetailPanel(this,'prices',event)">
                   PRICES
@@ -2803,10 +2964,15 @@ footer{
               </div>
 
               <div class="detail-panel prices-panel">
+
                 <div class="detail-price-heading">AVAILABLE SIZES</div>
 
                 <div class="detail-price-list">
+
                   <button class="detail-price-option"
+                          data-product="عسل الزعتر"
+                          data-weight="30 G"
+                          data-price="PRICE ON REQUEST"
                           onclick="selectUniversalPrice(this,event)">
                     <span class="detail-radio"></span>
                     <span class="detail-price-weight">30 G</span>
@@ -2814,6 +2980,9 @@ footer{
                   </button>
 
                   <button class="detail-price-option"
+                          data-product="عسل الزعتر"
+                          data-weight="500 G"
+                          data-price="PRICE ON REQUEST"
                           onclick="selectUniversalPrice(this,event)">
                     <span class="detail-radio"></span>
                     <span class="detail-price-weight">500 G</span>
@@ -2821,22 +2990,33 @@ footer{
                   </button>
 
                   <button class="detail-price-option"
+                          data-product="عسل الزعتر"
+                          data-weight="1000 G"
+                          data-price="PRICE ON REQUEST"
                           onclick="selectUniversalPrice(this,event)">
                     <span class="detail-radio"></span>
                     <span class="detail-price-weight">1000 G</span>
                     <span class="detail-price-value">PRICE ON REQUEST</span>
                   </button>
+
+                </div>
+
+                <div class="whatsapp-purchase-note">
+                  اختر الحجم للتواصل والطلب عبر WhatsApp
                 </div>
 
                 <button class="detail-back"
                         onclick="closeProductDetail(this,event)">
                   BACK
                 </button>
+
               </div>
 
             </div>
 
           </div>
+
+          <!-- GOLDEN SUN -->
 
           <div class="product-card"
                onclick="toggleProductDetail(this,event,'goldenSun')">
@@ -2853,6 +3033,7 @@ footer{
                         onclick="showDetailPanel(this,'properties',event)">
                   PROPERTIES
                 </button>
+
                 <button class="detail-tab"
                         onclick="showDetailPanel(this,'prices',event)">
                   PRICES
@@ -2887,10 +3068,15 @@ footer{
               </div>
 
               <div class="detail-panel prices-panel">
+
                 <div class="detail-price-heading">AVAILABLE SIZES</div>
 
                 <div class="detail-price-list">
+
                   <button class="detail-price-option"
+                          data-product="عسل شرف الشمس"
+                          data-weight="30 G"
+                          data-price="PRICE ON REQUEST"
                           onclick="selectUniversalPrice(this,event)">
                     <span class="detail-radio"></span>
                     <span class="detail-price-weight">30 G</span>
@@ -2898,6 +3084,9 @@ footer{
                   </button>
 
                   <button class="detail-price-option"
+                          data-product="عسل شرف الشمس"
+                          data-weight="500 G"
+                          data-price="PRICE ON REQUEST"
                           onclick="selectUniversalPrice(this,event)">
                     <span class="detail-radio"></span>
                     <span class="detail-price-weight">500 G</span>
@@ -2905,22 +3094,33 @@ footer{
                   </button>
 
                   <button class="detail-price-option"
+                          data-product="عسل شرف الشمس"
+                          data-weight="1000 G"
+                          data-price="PRICE ON REQUEST"
                           onclick="selectUniversalPrice(this,event)">
                     <span class="detail-radio"></span>
                     <span class="detail-price-weight">1000 G</span>
                     <span class="detail-price-value">PRICE ON REQUEST</span>
                   </button>
+
+                </div>
+
+                <div class="whatsapp-purchase-note">
+                  اختر الحجم للتواصل والطلب عبر WhatsApp
                 </div>
 
                 <button class="detail-back"
                         onclick="closeProductDetail(this,event)">
                   BACK
                 </button>
+
               </div>
 
             </div>
 
           </div>
+
+          <!-- CRIMSON SIDR -->
 
           <div class="product-card"
                onclick="toggleProductDetail(this,event,'crimsonSidr')">
@@ -2937,6 +3137,7 @@ footer{
                         onclick="showDetailPanel(this,'properties',event)">
                   PROPERTIES
                 </button>
+
                 <button class="detail-tab"
                         onclick="showDetailPanel(this,'prices',event)">
                   PRICES
@@ -2971,10 +3172,15 @@ footer{
               </div>
 
               <div class="detail-panel prices-panel">
+
                 <div class="detail-price-heading">AVAILABLE SIZES</div>
 
                 <div class="detail-price-list">
+
                   <button class="detail-price-option"
+                          data-product="عسل السدر الأحمر"
+                          data-weight="30 G"
+                          data-price="PRICE ON REQUEST"
                           onclick="selectUniversalPrice(this,event)">
                     <span class="detail-radio"></span>
                     <span class="detail-price-weight">30 G</span>
@@ -2982,6 +3188,9 @@ footer{
                   </button>
 
                   <button class="detail-price-option"
+                          data-product="عسل السدر الأحمر"
+                          data-weight="500 G"
+                          data-price="PRICE ON REQUEST"
                           onclick="selectUniversalPrice(this,event)">
                     <span class="detail-radio"></span>
                     <span class="detail-price-weight">500 G</span>
@@ -2989,17 +3198,26 @@ footer{
                   </button>
 
                   <button class="detail-price-option"
+                          data-product="عسل السدر الأحمر"
+                          data-weight="1000 G"
+                          data-price="PRICE ON REQUEST"
                           onclick="selectUniversalPrice(this,event)">
                     <span class="detail-radio"></span>
                     <span class="detail-price-weight">1000 G</span>
                     <span class="detail-price-value">PRICE ON REQUEST</span>
                   </button>
+
+                </div>
+
+                <div class="whatsapp-purchase-note">
+                  اختر الحجم للتواصل والطلب عبر WhatsApp
                 </div>
 
                 <button class="detail-back"
                         onclick="closeProductDetail(this,event)">
                   BACK
                 </button>
+
               </div>
 
             </div>
@@ -3057,6 +3275,8 @@ footer{
 
         <div class="collection-grid" id="naturalGrid">
 
+          <!-- HONEYCOMB -->
+
           <div class="product-card"
                onclick="toggleProductDetail(this,event,'honeycomb')">
 
@@ -3072,6 +3292,7 @@ footer{
                         onclick="showDetailPanel(this,'properties',event)">
                   PROPERTIES
                 </button>
+
                 <button class="detail-tab"
                         onclick="showDetailPanel(this,'prices',event)">
                   PRICES
@@ -3106,10 +3327,15 @@ footer{
               </div>
 
               <div class="detail-panel prices-panel">
+
                 <div class="detail-price-heading">AVAILABLE SIZES</div>
 
                 <div class="detail-price-list">
+
                   <button class="detail-price-option"
+                          data-product="عسل بشهده"
+                          data-weight="30 G"
+                          data-price="PRICE ON REQUEST"
                           onclick="selectUniversalPrice(this,event)">
                     <span class="detail-radio"></span>
                     <span class="detail-price-weight">30 G</span>
@@ -3117,6 +3343,9 @@ footer{
                   </button>
 
                   <button class="detail-price-option"
+                          data-product="عسل بشهده"
+                          data-weight="500 G"
+                          data-price="PRICE ON REQUEST"
                           onclick="selectUniversalPrice(this,event)">
                     <span class="detail-radio"></span>
                     <span class="detail-price-weight">500 G</span>
@@ -3124,22 +3353,33 @@ footer{
                   </button>
 
                   <button class="detail-price-option"
+                          data-product="عسل بشهده"
+                          data-weight="1000 G"
+                          data-price="PRICE ON REQUEST"
                           onclick="selectUniversalPrice(this,event)">
                     <span class="detail-radio"></span>
                     <span class="detail-price-weight">1000 G</span>
                     <span class="detail-price-value">PRICE ON REQUEST</span>
                   </button>
+
+                </div>
+
+                <div class="whatsapp-purchase-note">
+                  اختر الحجم للتواصل والطلب عبر WhatsApp
                 </div>
 
                 <button class="detail-back"
                         onclick="closeProductDetail(this,event)">
                   BACK
                 </button>
+
               </div>
 
             </div>
 
           </div>
+
+          <!-- THORNS -->
 
           <div class="product-card"
                onclick="toggleProductDetail(this,event,'thorns')">
@@ -3156,6 +3396,7 @@ footer{
                         onclick="showDetailPanel(this,'properties',event)">
                   PROPERTIES
                 </button>
+
                 <button class="detail-tab"
                         onclick="showDetailPanel(this,'prices',event)">
                   PRICES
@@ -3190,10 +3431,15 @@ footer{
               </div>
 
               <div class="detail-panel prices-panel">
+
                 <div class="detail-price-heading">AVAILABLE SIZES</div>
 
                 <div class="detail-price-list">
+
                   <button class="detail-price-option"
+                          data-product="عسل الأشواك"
+                          data-weight="30 G"
+                          data-price="PRICE ON REQUEST"
                           onclick="selectUniversalPrice(this,event)">
                     <span class="detail-radio"></span>
                     <span class="detail-price-weight">30 G</span>
@@ -3201,6 +3447,9 @@ footer{
                   </button>
 
                   <button class="detail-price-option"
+                          data-product="عسل الأشواك"
+                          data-weight="500 G"
+                          data-price="PRICE ON REQUEST"
                           onclick="selectUniversalPrice(this,event)">
                     <span class="detail-radio"></span>
                     <span class="detail-price-weight">500 G</span>
@@ -3208,22 +3457,33 @@ footer{
                   </button>
 
                   <button class="detail-price-option"
+                          data-product="عسل الأشواك"
+                          data-weight="1000 G"
+                          data-price="PRICE ON REQUEST"
                           onclick="selectUniversalPrice(this,event)">
                     <span class="detail-radio"></span>
                     <span class="detail-price-weight">1000 G</span>
                     <span class="detail-price-value">PRICE ON REQUEST</span>
                   </button>
+
+                </div>
+
+                <div class="whatsapp-purchase-note">
+                  اختر الحجم للتواصل والطلب عبر WhatsApp
                 </div>
 
                 <button class="detail-back"
                         onclick="closeProductDetail(this,event)">
                   BACK
                 </button>
+
               </div>
 
             </div>
 
           </div>
+
+          <!-- FORTY HERB -->
 
           <div class="product-card"
                onclick="toggleProductDetail(this,event,'fortyHerb')">
@@ -3240,6 +3500,7 @@ footer{
                         onclick="showDetailPanel(this,'properties',event)">
                   PROPERTIES
                 </button>
+
                 <button class="detail-tab"
                         onclick="showDetailPanel(this,'prices',event)">
                   PRICES
@@ -3274,10 +3535,15 @@ footer{
               </div>
 
               <div class="detail-panel prices-panel">
+
                 <div class="detail-price-heading">AVAILABLE SIZES</div>
 
                 <div class="detail-price-list">
+
                   <button class="detail-price-option"
+                          data-product="عسل 40 نبتة"
+                          data-weight="30 G"
+                          data-price="PRICE ON REQUEST"
                           onclick="selectUniversalPrice(this,event)">
                     <span class="detail-radio"></span>
                     <span class="detail-price-weight">30 G</span>
@@ -3285,6 +3551,9 @@ footer{
                   </button>
 
                   <button class="detail-price-option"
+                          data-product="عسل 40 نبتة"
+                          data-weight="500 G"
+                          data-price="PRICE ON REQUEST"
                           onclick="selectUniversalPrice(this,event)">
                     <span class="detail-radio"></span>
                     <span class="detail-price-weight">500 G</span>
@@ -3292,17 +3561,26 @@ footer{
                   </button>
 
                   <button class="detail-price-option"
+                          data-product="عسل 40 نبتة"
+                          data-weight="1000 G"
+                          data-price="PRICE ON REQUEST"
                           onclick="selectUniversalPrice(this,event)">
                     <span class="detail-radio"></span>
                     <span class="detail-price-weight">1000 G</span>
                     <span class="detail-price-value">PRICE ON REQUEST</span>
                   </button>
+
+                </div>
+
+                <div class="whatsapp-purchase-note">
+                  اختر الحجم للتواصل والطلب عبر WhatsApp
                 </div>
 
                 <button class="detail-back"
                         onclick="closeProductDetail(this,event)">
                   BACK
                 </button>
+
               </div>
 
             </div>
@@ -3358,6 +3636,8 @@ footer{
 
         <div class="collection-grid" id="hiveGrid">
 
+          <!-- POLLEN -->
+
           <div class="product-card"
                onclick="toggleProductDetail(this,event,'pollen')">
 
@@ -3373,6 +3653,7 @@ footer{
                         onclick="showDetailPanel(this,'properties',event)">
                   PROPERTIES
                 </button>
+
                 <button class="detail-tab"
                         onclick="showDetailPanel(this,'prices',event)">
                   PRICES
@@ -3411,7 +3692,11 @@ footer{
                 <div class="detail-price-heading">AVAILABLE SIZES</div>
 
                 <div class="detail-price-list">
+
                   <button class="detail-price-option"
+                          data-product="حبوب اللقاح"
+                          data-weight="30 G"
+                          data-price="PRICE ON REQUEST"
                           onclick="selectUniversalPrice(this,event)">
                     <span class="detail-radio"></span>
                     <span class="detail-price-weight">30 G</span>
@@ -3419,6 +3704,9 @@ footer{
                   </button>
 
                   <button class="detail-price-option"
+                          data-product="حبوب اللقاح"
+                          data-weight="500 G"
+                          data-price="PRICE ON REQUEST"
                           onclick="selectUniversalPrice(this,event)">
                     <span class="detail-radio"></span>
                     <span class="detail-price-weight">500 G</span>
@@ -3426,11 +3714,19 @@ footer{
                   </button>
 
                   <button class="detail-price-option"
+                          data-product="حبوب اللقاح"
+                          data-weight="1000 G"
+                          data-price="PRICE ON REQUEST"
                           onclick="selectUniversalPrice(this,event)">
                     <span class="detail-radio"></span>
                     <span class="detail-price-weight">1000 G</span>
                     <span class="detail-price-value">PRICE ON REQUEST</span>
                   </button>
+
+                </div>
+
+                <div class="whatsapp-purchase-note">
+                  اختر الحجم للتواصل والطلب عبر WhatsApp
                 </div>
 
                 <button class="detail-back"
@@ -3443,6 +3739,8 @@ footer{
             </div>
 
           </div>
+
+          <!-- PROPOLIS -->
 
           <div class="product-card"
                onclick="toggleProductDetail(this,event,'propolis')">
@@ -3459,6 +3757,7 @@ footer{
                         onclick="showDetailPanel(this,'properties',event)">
                   PROPERTIES
                 </button>
+
                 <button class="detail-tab"
                         onclick="showDetailPanel(this,'prices',event)">
                   PRICES
@@ -3497,7 +3796,11 @@ footer{
                 <div class="detail-price-heading">AVAILABLE SIZES</div>
 
                 <div class="detail-price-list">
+
                   <button class="detail-price-option"
+                          data-product="العكبر"
+                          data-weight="30 G"
+                          data-price="PRICE ON REQUEST"
                           onclick="selectUniversalPrice(this,event)">
                     <span class="detail-radio"></span>
                     <span class="detail-price-weight">30 G</span>
@@ -3505,6 +3808,9 @@ footer{
                   </button>
 
                   <button class="detail-price-option"
+                          data-product="العكبر"
+                          data-weight="500 G"
+                          data-price="PRICE ON REQUEST"
                           onclick="selectUniversalPrice(this,event)">
                     <span class="detail-radio"></span>
                     <span class="detail-price-weight">500 G</span>
@@ -3512,11 +3818,19 @@ footer{
                   </button>
 
                   <button class="detail-price-option"
+                          data-product="العكبر"
+                          data-weight="1000 G"
+                          data-price="PRICE ON REQUEST"
                           onclick="selectUniversalPrice(this,event)">
                     <span class="detail-radio"></span>
                     <span class="detail-price-weight">1000 G</span>
                     <span class="detail-price-value">PRICE ON REQUEST</span>
                   </button>
+
+                </div>
+
+                <div class="whatsapp-purchase-note">
+                  اختر الحجم للتواصل والطلب عبر WhatsApp
                 </div>
 
                 <button class="detail-back"
@@ -3816,6 +4130,8 @@ function toggleCollection(id){
 
   const target=document.getElementById(id);
 
+  if(!target)return;
+
   const wasOpen=target.classList.contains("open");
 
   document.querySelectorAll(".collection-grid")
@@ -3850,8 +4166,6 @@ function toggleProductDetail(card,event,key){
   const detail=card.querySelector(".universal-detail");
 
   if(!detail)return;
-
-  /* Close all other product details */
 
   document.querySelectorAll(".universal-detail")
     .forEach(function(item){
@@ -3992,6 +4306,10 @@ function closeProductDetail(button,event){
 
 }
 
+/* =========================================================
+   PRICE → WHATSAPP PURCHASE
+   ========================================================= */
+
 function selectUniversalPrice(button,event){
 
   if(event){
@@ -4012,6 +4330,29 @@ function selectUniversalPrice(button,event){
     });
 
   button.classList.add("selected");
+
+  const product=button.dataset.product || "Golden Honey Fusion";
+  const weight=button.dataset.weight || "";
+  const price=button.dataset.price || "";
+
+  const message=
+    "مرحباً Golden Honey Fusion%0A%0A" +
+    "أرغب بطلب:%20" + encodeURIComponent(product) +
+    "%0Aالحجم:%20" + encodeURIComponent(weight) +
+    "%0Aالسعر:%20" + encodeURIComponent(price);
+
+  const whatsappUrl=
+    "https://wa.me/96171127840?text=" + message;
+
+  setTimeout(function(){
+
+    window.open(
+      whatsappUrl,
+      "_blank",
+      "noopener,noreferrer"
+    );
+
+  },180);
 
 }
 
