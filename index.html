@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -352,14 +353,11 @@ section{
   justify-content:center;
 }
 
-/* COMPLETE SIX-SIDED GOLD HONEYCOMB */
-
 .luxury-bee-wrap:before{
   content:"";
   position:absolute;
   width:146px;
   height:146px;
-
   background:
     linear-gradient(
       115deg,
@@ -372,10 +370,8 @@ section{
       #f4d477 84%,
       #9a6b1d 100%
     );
-
   background-size:320% 100%;
   background-position:0% 50%;
-
   clip-path:polygon(
     25% 3%,
     75% 3%,
@@ -384,11 +380,9 @@ section{
     25% 97%,
     0 50%
   );
-
   filter:
     drop-shadow(0 0 5px rgba(255,220,111,.30))
     drop-shadow(0 0 18px rgba(211,163,51,.20));
-
   animation:honeycombGalaxyShine 5.5s ease-in-out infinite;
 }
 
@@ -397,7 +391,6 @@ section{
   position:absolute;
   width:139px;
   height:139px;
-
   background:
     radial-gradient(
       circle at 50% 45%,
@@ -405,7 +398,6 @@ section{
       rgba(35,22,4,.72) 54%,
       rgba(5,5,5,.96) 100%
     );
-
   clip-path:polygon(
     25% 3%,
     75% 3%,
@@ -414,50 +406,41 @@ section{
     25% 97%,
     0 50%
   );
-
-  filter:
-    drop-shadow(0 0 8px rgba(202,156,44,.12));
-
+  filter:drop-shadow(0 0 8px rgba(202,156,44,.12));
   z-index:2;
 }
 
 @keyframes honeycombGalaxyShine{
-
   0%{
     background-position:0% 50%;
     filter:
       drop-shadow(0 0 4px rgba(255,220,111,.22))
       drop-shadow(0 0 15px rgba(211,163,51,.14));
   }
-
   25%{
     background-position:45% 50%;
     filter:
       drop-shadow(0 0 7px rgba(255,224,122,.36))
       drop-shadow(0 0 20px rgba(211,163,51,.22));
   }
-
   50%{
     background-position:100% 50%;
     filter:
       drop-shadow(0 0 11px rgba(255,235,151,.60))
       drop-shadow(0 0 27px rgba(211,163,51,.28));
   }
-
   75%{
     background-position:55% 50%;
     filter:
       drop-shadow(0 0 7px rgba(255,224,122,.36))
       drop-shadow(0 0 20px rgba(211,163,51,.22));
   }
-
   100%{
     background-position:0% 50%;
     filter:
       drop-shadow(0 0 4px rgba(255,220,111,.22))
       drop-shadow(0 0 15px rgba(211,163,51,.14));
   }
-
 }
 
 /* BEE FLIGHT */
@@ -475,31 +458,12 @@ section{
 }
 
 @keyframes beeFlight{
-
-  0%{
-    transform:translate3d(-3px,2px,0) rotate(-1deg);
-  }
-
-  20%{
-    transform:translate3d(4px,-3px,0) rotate(1.2deg);
-  }
-
-  40%{
-    transform:translate3d(7px,1px,0) rotate(2deg);
-  }
-
-  60%{
-    transform:translate3d(2px,-6px,0) rotate(-1deg);
-  }
-
-  80%{
-    transform:translate3d(-5px,-1px,0) rotate(-2deg);
-  }
-
-  100%{
-    transform:translate3d(-3px,2px,0) rotate(-1deg);
-  }
-
+  0%{transform:translate3d(-3px,2px,0) rotate(-1deg);}
+  20%{transform:translate3d(4px,-3px,0) rotate(1.2deg);}
+  40%{transform:translate3d(7px,1px,0) rotate(2deg);}
+  60%{transform:translate3d(2px,-6px,0) rotate(-1deg);}
+  80%{transform:translate3d(-5px,-1px,0) rotate(-2deg);}
+  100%{transform:translate3d(-3px,2px,0) rotate(-1deg);}
 }
 
 .bee-wing{
@@ -515,38 +479,17 @@ section{
 .bee-wing-right{
   transform-origin:left center;
   animation-delay:-.09s;
-}
-
-@keyframes wingFlap{
-
-  0%{
-    transform:scaleY(1) rotate(0deg);
-    opacity:.94;
-  }
-
-  100%{
-    transform:scaleY(.73) rotate(4deg);
-    opacity:1;
-  }
-
-}
-
-.bee-wing-right{
   animation-name:wingFlapRight;
 }
 
+@keyframes wingFlap{
+  0%{transform:scaleY(1) rotate(0deg);opacity:.94;}
+  100%{transform:scaleY(.73) rotate(4deg);opacity:1;}
+}
+
 @keyframes wingFlapRight{
-
-  0%{
-    transform:scaleY(1) rotate(0deg);
-    opacity:.94;
-  }
-
-  100%{
-    transform:scaleY(.73) rotate(-4deg);
-    opacity:1;
-  }
-
+  0%{transform:scaleY(1) rotate(0deg);opacity:.94;}
+  100%{transform:scaleY(.73) rotate(-4deg);opacity:1;}
 }
 
 .hero-kicker{
@@ -556,8 +499,6 @@ section{
   margin-bottom:26px;
   text-transform:uppercase;
 }
-
-/* ULTRA PREMIUM 3D GOLDEN */
 
 .hero-title{
   position:relative;
@@ -569,7 +510,6 @@ section{
   letter-spacing:-5px;
   text-transform:uppercase;
   color:transparent;
-
   background:
     linear-gradient(
       180deg,
@@ -584,14 +524,11 @@ section{
       #8e661d 89%,
       #5c3c0c 100%
     );
-
   -webkit-background-clip:text;
   background-clip:text;
   -webkit-text-fill-color:transparent;
-
   background-size:100% 220%;
   background-position:50% 0%;
-
   text-shadow:
     1px 1px 0 rgba(255,242,177,.55),
     2px 2px 0 #b98729,
@@ -600,44 +537,36 @@ section{
     5px 5px 0 #3b2708,
     0 7px 8px rgba(0,0,0,.98),
     0 12px 18px rgba(0,0,0,.72);
-
   filter:
     drop-shadow(0 5px 3px rgba(0,0,0,.95))
     drop-shadow(0 0 7px rgba(236,198,99,.12));
-
   animation:goldenLuxuryShine 6s ease-in-out infinite;
 }
 
 @keyframes goldenLuxuryShine{
-
   0%,100%{
     background-position:50% 0%;
     filter:
       drop-shadow(0 5px 3px rgba(0,0,0,.95))
       drop-shadow(0 0 6px rgba(236,198,99,.08));
   }
-
   50%{
     background-position:50% 100%;
     filter:
       drop-shadow(0 6px 4px rgba(0,0,0,.98))
       drop-shadow(0 0 10px rgba(255,224,135,.14));
   }
-
 }
 
 .hero-title:after{
   content:"GOLDEN";
   position:absolute;
   inset:0;
-
   font:inherit;
   letter-spacing:inherit;
   line-height:inherit;
   text-transform:inherit;
-
   color:transparent;
-
   background:
     linear-gradient(
       110deg,
@@ -649,42 +578,21 @@ section{
       transparent 58%,
       transparent 100%
     );
-
   background-size:260% 100%;
   background-position:-130% 50%;
-
   -webkit-background-clip:text;
   background-clip:text;
   -webkit-text-fill-color:transparent;
-
   pointer-events:none;
-
   animation:goldenSurfaceGlint 7.5s ease-in-out infinite;
 }
 
 @keyframes goldenSurfaceGlint{
-
-  0%,100%{
-    background-position:-130% 50%;
-    opacity:0;
-  }
-
-  20%{
-    opacity:.15;
-  }
-
-  50%{
-    background-position:130% 50%;
-    opacity:1;
-  }
-
-  75%{
-    opacity:.15;
-  }
-
+  0%,100%{background-position:-130% 50%;opacity:0;}
+  20%{opacity:.15;}
+  50%{background-position:130% 50%;opacity:1;}
+  75%{opacity:.15;}
 }
-
-/* HONEY FUSION */
 
 .hero-subtitle{
   margin-top:32px;
@@ -709,8 +617,6 @@ section{
   text-shadow:0 3px 7px rgba(0,0,0,.95);
 }
 
-/* ARABIC — CLEAN / NO HALO */
-
 .hero-arabic{
   margin-top:19px;
   color:#b1aa9d;
@@ -719,15 +625,12 @@ section{
   text-shadow:none;
 }
 
-/* THICK PREMIUM DIAMOND LINE */
-
 .hero-line{
   position:relative;
   width:145px;
   height:2px;
   margin:38px auto 0;
   overflow:visible;
-
   background:
     linear-gradient(
       90deg,
@@ -741,12 +644,9 @@ section{
       rgba(198,154,55,.18) 88%,
       transparent 100%
     );
-
   background-size:220% 100%;
   background-position:-110% 50%;
-
   box-shadow:none;
-
   animation:cleanLineGlint 6.2s ease-in-out infinite;
 }
 
@@ -772,36 +672,23 @@ section{
 }
 
 @keyframes cleanLineGlint{
-
-  0%,100%{
-    background-position:-110% 50%;
-    opacity:.70;
-  }
-
-  50%{
-    background-position:110% 50%;
-    opacity:1;
-  }
-
+  0%,100%{background-position:-110% 50%;opacity:.70;}
+  50%{background-position:110% 50%;opacity:1;}
 }
 
 @keyframes lineDiamondFlash{
-
   0%,70%,100%{
     opacity:.08;
     transform:translateY(-50%) rotate(45deg) scale(.72);
   }
-
   78%{
     opacity:1;
     transform:translateY(-50%) rotate(45deg) scale(1.12);
   }
-
   84%{
     opacity:.22;
     transform:translateY(-50%) rotate(45deg) scale(.82);
   }
-
 }
 
 /* SECTION TITLES */
@@ -838,14 +725,11 @@ section{
   display:none;
 }
 
-/* THICK LONG JEWEL LINE */
-
 .section-title-line{
   position:relative;
   width:220px;
   height:2px;
   overflow:visible;
-
   background:
     linear-gradient(
       90deg,
@@ -859,14 +743,10 @@ section{
       rgba(178,133,43,.16) 92%,
       transparent 100%
     );
-
   background-size:240% 100%;
   background-position:-120% 50%;
-
   margin:16px auto 0;
-
   box-shadow:none;
-
   animation:sectionJewelLine 8s ease-in-out infinite;
 }
 
@@ -878,7 +758,6 @@ section{
   width:7px;
   height:7px;
   transform:translateY(-50%) rotate(45deg);
-
   background:
     linear-gradient(
       135deg,
@@ -888,43 +767,28 @@ section{
       #ead28a 65%,
       #795316 100%
     );
-
   opacity:.10;
-
   animation:sectionDiamondFlash 8s ease-in-out infinite;
 }
 
 @keyframes sectionJewelLine{
-
-  0%,100%{
-    background-position:-120% 50%;
-    opacity:.72;
-  }
-
-  50%{
-    background-position:120% 50%;
-    opacity:1;
-  }
-
+  0%,100%{background-position:-120% 50%;opacity:.72;}
+  50%{background-position:120% 50%;opacity:1;}
 }
 
 @keyframes sectionDiamondFlash{
-
   0%,68%,100%{
     opacity:.08;
     transform:translateY(-50%) rotate(45deg) scale(.72);
   }
-
   76%{
     opacity:1;
     transform:translateY(-50%) rotate(45deg) scale(1.14);
   }
-
   82%{
     opacity:.18;
     transform:translateY(-50%) rotate(45deg) scale(.82);
   }
-
 }
 
 /* COLLECTIONS */
@@ -1002,8 +866,6 @@ section{
   overflow:visible;
 }
 
-/* 3D METALLIC ROYAL CROWN */
-
 .collection.royal .collection-icon svg{
   overflow:visible;
   filter:
@@ -1032,8 +894,6 @@ section{
   stroke-width:1.2;
 }
 
-/* SHARP DIAMOND FLASH ON CROWN TIP */
-
 .collection.royal .diamond-flash{
   transform-box:fill-box;
   transform-origin:center;
@@ -1042,25 +902,10 @@ section{
 }
 
 @keyframes diamondCrownFlash{
-
-  0%,68%,100%{
-    opacity:.06;
-    transform:scale(.65);
-  }
-
-  76%{
-    opacity:1;
-    transform:scale(1.12);
-  }
-
-  82%{
-    opacity:.18;
-    transform:scale(.76);
-  }
-
+  0%,68%,100%{opacity:.06;transform:scale(.65);}
+  76%{opacity:1;transform:scale(1.12);}
+  82%{opacity:.18;transform:scale(.76);}
 }
-
-/* 3D METALLIC FIVE-POINT SPECIAL STAR */
 
 .collection.special .collection-icon svg{
   overflow:visible;
@@ -1090,8 +935,6 @@ section{
   stroke-width:.8;
 }
 
-/* SHARP DIAMOND FLASH ON STAR TIP */
-
 .collection.special .diamond-flash{
   transform-box:fill-box;
   transform-origin:center;
@@ -1100,22 +943,9 @@ section{
 }
 
 @keyframes diamondStarFlash{
-
-  0%,70%,100%{
-    opacity:.06;
-    transform:scale(.62);
-  }
-
-  78%{
-    opacity:1;
-    transform:scale(1.14);
-  }
-
-  84%{
-    opacity:.18;
-    transform:scale(.76);
-  }
-
+  0%,70%,100%{opacity:.06;transform:scale(.62);}
+  78%{opacity:1;transform:scale(1.14);}
+  84%{opacity:.18;transform:scale(.76);}
 }
 
 .collection-name{
@@ -1160,14 +990,8 @@ section{
 }
 
 @keyframes collectionOpen{
-  from{
-    opacity:0;
-    transform:translateY(-12px);
-  }
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
+  from{opacity:0;transform:translateY(-12px);}
+  to{opacity:1;transform:translateY(0);}
 }
 
 /* PRODUCTS */
@@ -1237,7 +1061,319 @@ section{
   text-transform:uppercase;
 }
 
-/* ROYAL INLINE DETAILS */
+/* =========================================================
+   WILD MOUNTAIN HONEY — SPECIAL INLINE EXPERIENCE
+   ========================================================= */
+
+.wild-mountain-card{
+  cursor:pointer;
+}
+
+.wild-mountain-card.wild-active{
+  background:
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(214,173,82,.08),
+      transparent 55%
+    ),
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.055),
+      rgba(202,155,48,.055)
+    );
+}
+
+.wild-mountain-detail{
+  display:none;
+  width:min(390px,100%);
+  margin-top:24px;
+  padding:20px 17px 18px;
+  border:1px solid rgba(218,181,85,.24);
+  background:
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(214,173,82,.075),
+      transparent 55%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(5,5,5,.68),
+      rgba(0,0,0,.46)
+    );
+  animation:wildDetailIn .4s ease;
+}
+
+.wild-mountain-detail.open{
+  display:block;
+}
+
+@keyframes wildDetailIn{
+  from{
+    opacity:0;
+    transform:translateY(-10px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+.wild-detail-tabs{
+  display:flex;
+  justify-content:center;
+  gap:8px;
+  margin-bottom:19px;
+}
+
+.wild-tab{
+  min-width:130px;
+  padding:11px 12px;
+  border:1px solid rgba(218,181,85,.25);
+  background:rgba(255,255,255,.012);
+  color:#9f9788;
+  font-size:9px;
+  letter-spacing:3px;
+  cursor:pointer;
+  transition:.35s;
+}
+
+.wild-tab:hover,
+.wild-tab.active{
+  color:#eadcae;
+  border-color:rgba(225,190,96,.68);
+  background:
+    linear-gradient(
+      180deg,
+      rgba(205,160,52,.10),
+      rgba(205,160,52,.035)
+    );
+  box-shadow:
+    inset 0 0 15px rgba(214,173,82,.035),
+    0 0 12px rgba(214,173,82,.035);
+}
+
+.wild-panel{
+  display:none;
+  animation:wildPanelIn .35s ease;
+}
+
+.wild-panel.active{
+  display:block;
+}
+
+@keyframes wildPanelIn{
+  from{
+    opacity:0;
+    transform:translateY(5px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+/* PROPERTIES */
+
+.wild-stars{
+  display:flex;
+  justify-content:center;
+  gap:5px;
+  margin:4px 0 17px;
+}
+
+.wild-star{
+  font-size:20px;
+  line-height:1;
+  color:#e1bc5e;
+  text-shadow:
+    0 0 4px rgba(255,224,125,.35),
+    0 2px 3px rgba(0,0,0,.9);
+}
+
+.wild-property-label{
+  color:#8d8476;
+  font-size:8px;
+  letter-spacing:3px;
+  margin-bottom:8px;
+}
+
+.wild-property-text{
+  color:#bcb4a6;
+  font-size:12px;
+  line-height:1.8;
+}
+
+.wild-property-text + .wild-property-label{
+  margin-top:18px;
+}
+
+.wild-back{
+  margin-top:20px;
+  border:0;
+  border-top:1px solid rgba(218,181,85,.16);
+  padding-top:13px;
+  width:100%;
+  background:none;
+  color:#887b61;
+  font-size:8px;
+  letter-spacing:3px;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.wild-back:hover{
+  color:#d8bc70;
+}
+
+/* PRICES */
+
+.wild-price-heading{
+  color:#8d8476;
+  font-size:8px;
+  letter-spacing:3px;
+  margin-bottom:14px;
+}
+
+.wild-price-list{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+.wild-price-option{
+  width:100%;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:12px 12px;
+  border:1px solid rgba(218,181,85,.18);
+  background:rgba(255,255,255,.012);
+  cursor:pointer;
+  transition:.35s;
+  text-align:left;
+}
+
+.wild-price-option:hover{
+  border-color:rgba(225,190,96,.58);
+  background:rgba(202,155,48,.055);
+  transform:translateX(2px);
+}
+
+/* GOLD LUXURY RADIO */
+
+.wild-radio{
+  width:17px;
+  height:17px;
+  flex:0 0 17px;
+  border-radius:50%;
+  border:1px solid #a77b25;
+  position:relative;
+  background:
+    radial-gradient(
+      circle,
+      rgba(255,238,166,.18),
+      rgba(85,57,10,.18) 58%,
+      rgba(0,0,0,.45) 100%
+    );
+  box-shadow:
+    inset 0 0 5px rgba(255,221,119,.10),
+    0 0 5px rgba(197,154,55,.08);
+}
+
+.wild-radio:after{
+  content:"";
+  position:absolute;
+  width:7px;
+  height:7px;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%) scale(.35);
+  border-radius:50%;
+  background:
+    radial-gradient(
+      circle at 35% 30%,
+      #fff6ca,
+      #e2bd5c 42%,
+      #8d6319 100%
+    );
+  opacity:0;
+  transition:.3s;
+  box-shadow:0 0 7px rgba(255,222,116,.35);
+}
+
+.wild-price-option.selected{
+  border-color:#cba455;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(194,148,43,.08),
+      rgba(194,148,43,.025)
+    );
+}
+
+.wild-price-option.selected .wild-radio{
+  border-color:#e1bd61;
+  box-shadow:
+    inset 0 0 6px rgba(255,221,119,.16),
+    0 0 8px rgba(197,154,55,.16);
+}
+
+.wild-price-option.selected .wild-radio:after{
+  opacity:1;
+  transform:translate(-50%,-50%) scale(1);
+}
+
+.wild-price-weight{
+  flex:1;
+  color:#d6cdbd;
+  font-size:12px;
+  letter-spacing:2px;
+}
+
+.wild-price-value{
+  color:#d8b65d;
+  font-size:15px;
+  font-weight:600;
+  letter-spacing:1px;
+}
+
+.wild-order-note{
+  margin-top:14px;
+  color:#70695f;
+  font-size:8px;
+  line-height:1.7;
+  letter-spacing:1px;
+}
+
+.wild-whatsapp{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:100%;
+  margin-top:14px;
+  padding:12px 14px;
+  border:1px solid rgba(218,181,85,.28);
+  background:
+    linear-gradient(
+      180deg,
+      rgba(198,154,55,.10),
+      rgba(198,154,55,.035)
+    );
+  color:#dfc77f;
+  font-size:9px;
+  letter-spacing:2px;
+  cursor:pointer;
+  transition:.35s;
+}
+
+.wild-whatsapp:hover{
+  border-color:#d9b75d;
+  background:rgba(202,155,48,.10);
+  color:#f0dda4;
+  transform:translateY(-1px);
+}
+
+/* OLD ROYAL INLINE DETAILS — PRESERVED */
 
 .royal-inline-detail{
   display:none;
@@ -1307,7 +1443,7 @@ section{
   letter-spacing:1px;
 }
 
-/* PRODUCT DETAIL */
+/* PRODUCT DETAIL — PRESERVED FOR OTHER PRODUCTS */
 
 .product-detail{
   display:none;
@@ -1326,14 +1462,8 @@ section{
 }
 
 @keyframes detailIn{
-  from{
-    opacity:0;
-    transform:translateY(10px);
-  }
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
+  from{opacity:0;transform:translateY(10px);}
+  to{opacity:1;transform:translateY(0);}
 }
 
 .product-detail h2{
@@ -1548,14 +1678,8 @@ section{
 }
 
 @keyframes reveal{
-  from{
-    opacity:0;
-    transform:translateY(-10px);
-  }
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
+  from{opacity:0;transform:translateY(-10px);}
+  to{opacity:1;transform:translateY(0);}
 }
 
 .reveal-content p{
@@ -1820,6 +1944,26 @@ footer{
     width:min(340px,100%);
   }
 
+  .wild-mountain-detail{
+    width:min(340px,100%);
+    padding:18px 14px 16px;
+  }
+
+  .wild-detail-tabs{
+    gap:6px;
+  }
+
+  .wild-tab{
+    min-width:0;
+    flex:1;
+    padding:11px 7px;
+    letter-spacing:2px;
+  }
+
+  .wild-price-option{
+    padding:12px 10px;
+  }
+
 }
 
 /* REDUCED MOTION */
@@ -1827,8 +1971,7 @@ footer{
 @media(prefers-reduced-motion:reduce){
 
   *,
-  *:before,
-  *:after{
+  *:before{
     animation:none !important;
     transition:none !important;
     scroll-behavior:auto !important;
@@ -1974,8 +2117,6 @@ footer{
 
           </defs>
 
-          <!-- LEFT WING -->
-
           <g class="bee-wing bee-wing-left">
 
             <path
@@ -1996,8 +2137,6 @@ footer{
               stroke-width="1"/>
 
           </g>
-
-          <!-- RIGHT WING -->
 
           <g class="bee-wing bee-wing-right">
 
@@ -2020,15 +2159,11 @@ footer{
 
           </g>
 
-          <!-- HEAD -->
-
           <polygon
             points="80,30 93,38 97,51 89,61 71,61 63,51 67,38"
             fill="url(#beeGold)"
             stroke="#efd17a"
             stroke-width="1.5"/>
-
-          <!-- BODY -->
 
           <path
             d="M68 57
@@ -2043,24 +2178,17 @@ footer{
             stroke="#efd17a"
             stroke-width="1.6"/>
 
-          <!-- BODY STRIPES -->
-
-          <path
-            d="M62 73 L98 73"
+          <path d="M62 73 L98 73"
             stroke="#543506"
             stroke-width="4"/>
 
-          <path
-            d="M60 88 L100 88"
+          <path d="M60 88 L100 88"
             stroke="#543506"
             stroke-width="4"/>
 
-          <path
-            d="M64 102 L96 102"
+          <path d="M64 102 L96 102"
             stroke="#543506"
             stroke-width="4"/>
-
-          <!-- BODY HIGHLIGHT -->
 
           <path
             d="M80 59 L80 121"
@@ -2068,14 +2196,10 @@ footer{
             stroke-opacity=".35"
             stroke-width="1"/>
 
-          <!-- LOWER BODY -->
-
           <polygon
             points="64,103 80,126 96,103 88,109 80,113 72,109"
             fill="url(#beeGold)"
             opacity=".95"/>
-
-          <!-- ANTENNAE -->
 
           <path
             d="M70 36 C60 21 51 19 43 24"
@@ -2210,25 +2334,17 @@ footer{
 
               </defs>
 
-              <!-- 3D DEPTH -->
-
               <path
                 class="crown-depth"
                 d="M18 27 L29 45 L40 23 L51 45 L62 27 L58 58 L22 58 Z"/>
-
-              <!-- MAIN 3D CROWN -->
 
               <path
                 class="crown-main"
                 d="M18 27 L29 45 L40 23 L51 45 L62 27 L58 58 L22 58 Z"/>
 
-              <!-- CROWN BASE -->
-
               <path
                 class="crown-base"
                 d="M22 58 H58 L52 63 H28 Z"/>
-
-              <!-- SHARP DIAMOND FLASH FROM CROWN TIP -->
 
               <path
                 class="diamond-flash"
@@ -2259,11 +2375,17 @@ footer{
 
         <div class="collection-grid" id="royalGrid">
 
-          <div class="product-card"
-               onclick="showProduct('wildMountain')">
+          <!-- WILD MOUNTAIN HONEY -->
+
+          <div class="product-card wild-mountain-card"
+               id="wildMountainCard"
+               onclick="openWildMountain(event)">
 
             <h3>WILD MOUNTAIN HONEY</h3>
-            <div class="arabic">عسل جبلي بري</div>
+
+            <div class="arabic">
+              عسل جبلي بري
+            </div>
 
             <div class="product-rule"></div>
 
@@ -2271,28 +2393,159 @@ footer{
               Premium Selection
             </div>
 
-            <div class="royal-inline-detail">
+            <!-- SPECIAL INLINE DETAIL -->
 
-              <div class="royal-price-title">
-                AVAILABLE SIZES
+            <div class="wild-mountain-detail"
+                 id="wildMountainDetail"
+                 onclick="event.stopPropagation()">
+
+              <div class="wild-detail-tabs">
+
+                <button class="wild-tab active"
+                        id="wildPropertiesTab"
+                        onclick="showWildPanel('properties')">
+                  PROPERTIES
+                </button>
+
+                <button class="wild-tab"
+                        id="wildPricesTab"
+                        onclick="showWildPanel('prices')">
+                  PRICES
+                </button>
+
               </div>
 
-              <div class="royal-price-grid">
+              <!-- PROPERTIES -->
 
-                <div class="royal-price-item">
-                  <div class="royal-weight">30 G</div>
-                  <div class="royal-price">$3</div>
+              <div class="wild-panel active"
+                   id="wildProperties">
+
+                <div class="wild-stars"
+                     aria-label="Five star premium quality">
+
+                  <span class="wild-star">★</span>
+                  <span class="wild-star">★</span>
+                  <span class="wild-star">★</span>
+                  <span class="wild-star">★</span>
+                  <span class="wild-star">★</span>
+
                 </div>
 
-                <div class="royal-price-item">
-                  <div class="royal-weight">500 G</div>
-                  <div class="royal-price">$35</div>
+                <div class="wild-property-label">
+                  QUALITY
                 </div>
 
-                <div class="royal-price-item">
-                  <div class="royal-weight">1000 G</div>
-                  <div class="royal-price">$75</div>
+                <div class="wild-property-text">
+                  Premium selection chosen for its distinctive
+                  character, depth and exceptional natural profile.
                 </div>
+
+                <div class="wild-property-label">
+                  PROFILE
+                </div>
+
+                <div class="wild-property-text">
+                  A distinctive wild mountain honey with a refined
+                  natural character and memorable depth.
+                </div>
+
+                <div class="wild-property-label">
+                  SELECTION
+                </div>
+
+                <div class="wild-property-text">
+                  Carefully selected as part of the
+                  GOLDEN HONEY FUSION premium collection.
+                </div>
+
+                <button class="wild-back"
+                        onclick="closeWildMountain()">
+                  BACK
+                </button>
+
+              </div>
+
+              <!-- PRICES -->
+
+              <div class="wild-panel"
+                   id="wildPrices">
+
+                <div class="wild-price-heading">
+                  SELECT YOUR SIZE
+                </div>
+
+                <div class="wild-price-list">
+
+                  <button class="wild-price-option"
+                          data-weight="30 G"
+                          data-price="$3"
+                          onclick="selectWildPrice(this,event)">
+
+                    <span class="wild-radio"></span>
+
+                    <span class="wild-price-weight">
+                      30 G
+                    </span>
+
+                    <span class="wild-price-value">
+                      $3
+                    </span>
+
+                  </button>
+
+                  <button class="wild-price-option"
+                          data-weight="500 G"
+                          data-price="$35"
+                          onclick="selectWildPrice(this,event)">
+
+                    <span class="wild-radio"></span>
+
+                    <span class="wild-price-weight">
+                      500 G
+                    </span>
+
+                    <span class="wild-price-value">
+                      $35
+                    </span>
+
+                  </button>
+
+                  <button class="wild-price-option"
+                          data-weight="1000 G"
+                          data-price="$75"
+                          onclick="selectWildPrice(this,event)">
+
+                    <span class="wild-radio"></span>
+
+                    <span class="wild-price-weight">
+                      1000 G
+                    </span>
+
+                    <span class="wild-price-value">
+                      $75
+                    </span>
+
+                  </button>
+
+                </div>
+
+                <div class="wild-order-note">
+                  SELECT A SIZE TO CONTINUE TO WHATSAPP
+                </div>
+
+                <a class="wild-whatsapp"
+                   id="wildWhatsapp"
+                   href="#"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   onclick="event.stopPropagation()">
+                  ORDER VIA WHATSAPP
+                </a>
+
+                <button class="wild-back"
+                        onclick="closeWildMountain()">
+                  BACK
+                </button>
 
               </div>
 
@@ -2300,11 +2553,16 @@ footer{
 
           </div>
 
+          <!-- BLACK SEED — UNTOUCHED -->
+
           <div class="product-card"
                onclick="showProduct('blackSeed')">
 
             <h3>BLACK SEED HONEY</h3>
-            <div class="arabic">عسل حبة البركة</div>
+
+            <div class="arabic">
+              عسل حبة البركة
+            </div>
 
             <div class="product-rule"></div>
 
@@ -2322,17 +2580,23 @@ footer{
 
                 <div class="royal-price-item">
                   <div class="royal-weight">30 G</div>
-                  <div class="royal-price royal-request">PRICE ON REQUEST</div>
+                  <div class="royal-price royal-request">
+                    PRICE ON REQUEST
+                  </div>
                 </div>
 
                 <div class="royal-price-item">
                   <div class="royal-weight">500 G</div>
-                  <div class="royal-price royal-request">PRICE ON REQUEST</div>
+                  <div class="royal-price royal-request">
+                    PRICE ON REQUEST
+                  </div>
                 </div>
 
                 <div class="royal-price-item">
                   <div class="royal-weight">1000 G</div>
-                  <div class="royal-price royal-request">PRICE ON REQUEST</div>
+                  <div class="royal-price royal-request">
+                    PRICE ON REQUEST
+                  </div>
                 </div>
 
               </div>
@@ -2341,11 +2605,16 @@ footer{
 
           </div>
 
+          <!-- BLACK SIDR — UNTOUCHED -->
+
           <div class="product-card"
                onclick="showProduct('blackSidr')">
 
             <h3>BLACK SIDR HONEY</h3>
-            <div class="arabic">عسل السدر الأسود</div>
+
+            <div class="arabic">
+              عسل السدر الأسود
+            </div>
 
             <div class="product-rule"></div>
 
@@ -2363,17 +2632,23 @@ footer{
 
                 <div class="royal-price-item">
                   <div class="royal-weight">30 G</div>
-                  <div class="royal-price royal-request">PRICE ON REQUEST</div>
+                  <div class="royal-price royal-request">
+                    PRICE ON REQUEST
+                  </div>
                 </div>
 
                 <div class="royal-price-item">
                   <div class="royal-weight">500 G</div>
-                  <div class="royal-price royal-request">PRICE ON REQUEST</div>
+                  <div class="royal-price royal-request">
+                    PRICE ON REQUEST
+                  </div>
                 </div>
 
                 <div class="royal-price-item">
                   <div class="royal-weight">1000 G</div>
-                  <div class="royal-price royal-request">PRICE ON REQUEST</div>
+                  <div class="royal-price royal-request">
+                    PRICE ON REQUEST
+                  </div>
                 </div>
 
               </div>
@@ -2382,11 +2657,16 @@ footer{
 
           </div>
 
+          <!-- BLACK MOUNTAIN — UNTOUCHED -->
+
           <div class="product-card"
                onclick="showProduct('blackMountain')">
 
             <h3>BLACK MOUNTAIN HONEY</h3>
-            <div class="arabic">عسل جبلي أسود</div>
+
+            <div class="arabic">
+              عسل جبلي أسود
+            </div>
 
             <div class="product-rule"></div>
 
@@ -2404,17 +2684,23 @@ footer{
 
                 <div class="royal-price-item">
                   <div class="royal-weight">30 G</div>
-                  <div class="royal-price royal-request">PRICE ON REQUEST</div>
+                  <div class="royal-price royal-request">
+                    PRICE ON REQUEST
+                  </div>
                 </div>
 
                 <div class="royal-price-item">
                   <div class="royal-weight">500 G</div>
-                  <div class="royal-price royal-request">PRICE ON REQUEST</div>
+                  <div class="royal-price royal-request">
+                    PRICE ON REQUEST
+                  </div>
                 </div>
 
                 <div class="royal-price-item">
                   <div class="royal-weight">1000 G</div>
-                  <div class="royal-price royal-request">PRICE ON REQUEST</div>
+                  <div class="royal-price royal-request">
+                    PRICE ON REQUEST
+                  </div>
                 </div>
 
               </div>
@@ -2498,8 +2784,6 @@ footer{
 
               </defs>
 
-              <!-- 3D DEPTH -->
-
               <path
                 class="star-depth"
                 d="M40 8
@@ -2513,8 +2797,6 @@ footer{
                    L9.6 30.1
                    L32.4 29.5
                    Z"/>
-
-              <!-- TRUE FIVE-POINT STAR -->
 
               <path
                 class="star-main"
@@ -2530,15 +2812,11 @@ footer{
                    L32.4 29.5
                    Z"/>
 
-              <!-- CENTRAL GEM -->
-
               <circle
                 class="star-core"
                 cx="40"
                 cy="40"
                 r="3"/>
-
-              <!-- SHARP DIAMOND FLASH FROM TOP TIP -->
 
               <path
                 class="diamond-flash"
@@ -2570,55 +2848,31 @@ footer{
         <div class="collection-grid" id="specialGrid">
 
           <div class="product-card">
-
             <h3>GOLDEN BALANCE</h3>
             <div class="arabic">توازن ذهبي</div>
-
             <div class="product-rule"></div>
-
-            <div class="product-meta">
-              Signature Blend
-            </div>
-
+            <div class="product-meta">Signature Blend</div>
           </div>
 
           <div class="product-card">
-
             <h3>THYME HONEY</h3>
             <div class="arabic">عسل الزعتر</div>
-
             <div class="product-rule"></div>
-
-            <div class="product-meta">
-              Distinctive Origin
-            </div>
-
+            <div class="product-meta">Distinctive Origin</div>
           </div>
 
           <div class="product-card">
-
             <h3>GOLDEN SUN HONEY</h3>
             <div class="arabic">عسل شرف الشمس</div>
-
             <div class="product-rule"></div>
-
-            <div class="product-meta">
-              Golden Selection
-            </div>
-
+            <div class="product-meta">Golden Selection</div>
           </div>
 
           <div class="product-card">
-
             <h3>CRIMSON SIDR HONEY</h3>
             <div class="arabic">عسل السدر الأحمر</div>
-
             <div class="product-rule"></div>
-
-            <div class="product-meta">
-              Premium Selection
-            </div>
-
+            <div class="product-meta">Premium Selection</div>
           </div>
 
         </div>
@@ -2673,42 +2927,24 @@ footer{
         <div class="collection-grid" id="naturalGrid">
 
           <div class="product-card">
-
             <h3>HONEYCOMB HONEY</h3>
             <div class="arabic">عسل بشهده</div>
-
             <div class="product-rule"></div>
-
-            <div class="product-meta">
-              Pure Comb Selection
-            </div>
-
+            <div class="product-meta">Pure Comb Selection</div>
           </div>
 
           <div class="product-card">
-
             <h3>THORNS HONEY</h3>
             <div class="arabic">عسل الأشواك</div>
-
             <div class="product-rule"></div>
-
-            <div class="product-meta">
-              Natural Origin
-            </div>
-
+            <div class="product-meta">Natural Origin</div>
           </div>
 
           <div class="product-card">
-
             <h3>FORTY HERB HONEY</h3>
             <div class="arabic">عسل 40 نبتة</div>
-
             <div class="product-rule"></div>
-
-            <div class="product-meta">
-              Botanical Selection
-            </div>
-
+            <div class="product-meta">Botanical Selection</div>
           </div>
 
         </div>
@@ -2765,12 +3001,8 @@ footer{
 
             <h3>BEE POLLEN</h3>
             <div class="arabic">حبوب اللقاح</div>
-
             <div class="product-rule"></div>
-
-            <div class="product-meta">
-              Bee-Derived Essence
-            </div>
+            <div class="product-meta">Bee-Derived Essence</div>
 
           </div>
 
@@ -2779,12 +3011,8 @@ footer{
 
             <h3>PROPOLIS</h3>
             <div class="arabic">العكبر</div>
-
             <div class="product-rule"></div>
-
-            <div class="product-meta">
-              Hive Essence
-            </div>
+            <div class="product-meta">Hive Essence</div>
 
           </div>
 
@@ -3071,16 +3299,128 @@ function toggleCollection(id){
 
 }
 
+/* =========================================================
+   WILD MOUNTAIN HONEY
+   ========================================================= */
+
+function openWildMountain(event){
+
+  if(event){
+    event.stopPropagation();
+  }
+
+  const card=document.getElementById("wildMountainCard");
+  const detail=document.getElementById("wildMountainDetail");
+
+  if(!card || !detail)return;
+
+  const isOpen=detail.classList.contains("open");
+
+  /* Close other royal inline details */
+
+  document.querySelectorAll(".royal-inline-detail")
+    .forEach(function(item){
+      item.classList.remove("open");
+    });
+
+  if(isOpen){
+
+    detail.classList.remove("open");
+    card.classList.remove("wild-active");
+
+  }else{
+
+    detail.classList.add("open");
+    card.classList.add("wild-active");
+
+    showWildPanel("properties");
+
+  }
+
+}
+
+function showWildPanel(panel){
+
+  const properties=document.getElementById("wildProperties");
+  const prices=document.getElementById("wildPrices");
+
+  const propertiesTab=document.getElementById("wildPropertiesTab");
+  const pricesTab=document.getElementById("wildPricesTab");
+
+  if(panel==="prices"){
+
+    properties.classList.remove("active");
+    prices.classList.add("active");
+
+    propertiesTab.classList.remove("active");
+    pricesTab.classList.add("active");
+
+  }else{
+
+    prices.classList.remove("active");
+    properties.classList.add("active");
+
+    pricesTab.classList.remove("active");
+    propertiesTab.classList.add("active");
+
+  }
+
+}
+
+function closeWildMountain(){
+
+  const card=document.getElementById("wildMountainCard");
+  const detail=document.getElementById("wildMountainDetail");
+
+  if(detail){
+    detail.classList.remove("open");
+  }
+
+  if(card){
+    card.classList.remove("wild-active");
+  }
+
+}
+
+function selectWildPrice(button,event){
+
+  if(event){
+    event.stopPropagation();
+  }
+
+  document.querySelectorAll(".wild-price-option")
+    .forEach(function(option){
+      option.classList.remove("selected");
+    });
+
+  button.classList.add("selected");
+
+  const weight=button.getAttribute("data-weight");
+  const price=button.getAttribute("data-price");
+
+  const phone="96171127840";
+
+  const message=
+    "Hello Golden Honey Fusion,%0A%0A" +
+    "I would like to order WILD MOUNTAIN HONEY.%0A" +
+    "Size: " + encodeURIComponent(weight) + "%0A" +
+    "Price: " + encodeURIComponent(price);
+
+  const whatsappUrl=
+    "https://wa.me/" + phone + "?text=" + message;
+
+  const whatsappButton=
+    document.getElementById("wildWhatsapp");
+
+  if(whatsappButton){
+    whatsappButton.href=whatsappUrl;
+  }
+
+}
+
 /* PRODUCTS */
 
 const products={
-
-  wildMountain:{
-    title:"WILD MOUNTAIN HONEY",
-    arabic:"عسل جبلي بري",
-    description:
-      "A distinctive wild mountain honey selected for its character, depth and exceptional natural profile."
-  },
 
   blackSeed:{
     title:"BLACK SEED HONEY",
@@ -3119,7 +3459,7 @@ const products={
 
 };
 
-/* SHOW PRODUCT */
+/* SHOW OTHER PRODUCTS */
 
 function showProduct(key){
 
@@ -3127,10 +3467,7 @@ function showProduct(key){
 
   if(!product)return;
 
-  /* ROYAL PRODUCTS OPEN INSIDE THEIR OWN CARD */
-
   const royalKeys=[
-    "wildMountain",
     "blackSeed",
     "blackSidr",
     "blackMountain"
@@ -3164,6 +3501,10 @@ function showProduct(key){
         ).forEach(function(item){
           item.classList.remove("open");
         });
+
+        /* Close Wild Mountain if another Royal product opens */
+
+        closeWildMountain();
 
         if(!wasOpen){
           detail.classList.add("open");
@@ -3302,3 +3643,4 @@ document.getElementById("menuOverlay")
 
 </body>
 </html>
+```
