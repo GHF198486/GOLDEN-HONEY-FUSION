@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -139,6 +138,7 @@ section{
   display:flex;
   align-items:center;
   justify-content:center;
+  cursor:pointer;
 }
 
 .ghf-mark:before{
@@ -174,6 +174,58 @@ section{
   -webkit-text-fill-color:transparent;
   text-shadow:0 2px 6px #000;
 }
+
+/* GHF MESSAGE */
+
+.ghf-message{
+  position:fixed;
+  top:88px;
+  left:50%;
+  transform:translate(-50%,-15px);
+  width:min(520px,calc(100% - 36px));
+  padding:18px 22px;
+  z-index:3000;
+  text-align:center;
+  direction:rtl;
+
+  border:1px solid rgba(218,181,85,.45);
+
+  background:
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(211,166,63,.13),
+      transparent 60%
+    ),
+    rgba(5,5,5,.96);
+
+  box-shadow:
+    0 14px 45px rgba(0,0,0,.65),
+    inset 0 0 25px rgba(214,173,82,.025);
+
+  color:#e7d69d;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:14px;
+  line-height:1.8;
+  letter-spacing:.4px;
+
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+
+  transition:
+    opacity:.45s ease,
+    transform:.45s ease,
+    visibility:.45s;
+}
+
+.ghf-message.show{
+  opacity:1;
+  visibility:visible;
+  pointer-events:auto;
+  transform:translate(-50%,0);
+}
+
+/* MENU */
 
 .menu-btn{
   width:48px;
@@ -411,36 +463,11 @@ section{
 }
 
 @keyframes honeycombGalaxyShine{
-  0%{
-    background-position:0% 50%;
-    filter:
-      drop-shadow(0 0 4px rgba(255,220,111,.22))
-      drop-shadow(0 0 15px rgba(211,163,51,.14));
-  }
-  25%{
-    background-position:45% 50%;
-    filter:
-      drop-shadow(0 0 7px rgba(255,224,122,.36))
-      drop-shadow(0 0 20px rgba(211,163,51,.22));
-  }
-  50%{
-    background-position:100% 50%;
-    filter:
-      drop-shadow(0 0 11px rgba(255,235,151,.60))
-      drop-shadow(0 0 27px rgba(211,163,51,.28));
-  }
-  75%{
-    background-position:55% 50%;
-    filter:
-      drop-shadow(0 0 7px rgba(255,224,122,.36))
-      drop-shadow(0 0 20px rgba(211,163,51,.22));
-  }
-  100%{
-    background-position:0% 50%;
-    filter:
-      drop-shadow(0 0 4px rgba(255,220,111,.22))
-      drop-shadow(0 0 15px rgba(211,163,51,.14));
-  }
+  0%{background-position:0% 50%}
+  25%{background-position:45% 50%}
+  50%{background-position:100% 50%}
+  75%{background-position:55% 50%}
+  100%{background-position:0% 50%}
 }
 
 /* BEE FLIGHT */
@@ -458,12 +485,12 @@ section{
 }
 
 @keyframes beeFlight{
-  0%{transform:translate3d(-3px,2px,0) rotate(-1deg);}
-  20%{transform:translate3d(4px,-3px,0) rotate(1.2deg);}
-  40%{transform:translate3d(7px,1px,0) rotate(2deg);}
-  60%{transform:translate3d(2px,-6px,0) rotate(-1deg);}
-  80%{transform:translate3d(-5px,-1px,0) rotate(-2deg);}
-  100%{transform:translate3d(-3px,2px,0) rotate(-1deg);}
+  0%{transform:translate3d(-3px,2px,0) rotate(-1deg)}
+  20%{transform:translate3d(4px,-3px,0) rotate(1.2deg)}
+  40%{transform:translate3d(7px,1px,0) rotate(2deg)}
+  60%{transform:translate3d(2px,-6px,0) rotate(-1deg)}
+  80%{transform:translate3d(-5px,-1px,0) rotate(-2deg)}
+  100%{transform:translate3d(-3px,2px,0) rotate(-1deg)}
 }
 
 .bee-wing{
@@ -483,13 +510,13 @@ section{
 }
 
 @keyframes wingFlap{
-  0%{transform:scaleY(1) rotate(0deg);opacity:.94;}
-  100%{transform:scaleY(.73) rotate(4deg);opacity:1;}
+  0%{transform:scaleY(1) rotate(0deg);opacity:.94}
+  100%{transform:scaleY(.73) rotate(4deg);opacity:1}
 }
 
 @keyframes wingFlapRight{
-  0%{transform:scaleY(1) rotate(0deg);opacity:.94;}
-  100%{transform:scaleY(.73) rotate(-4deg);opacity:1;}
+  0%{transform:scaleY(1) rotate(0deg);opacity:.94}
+  100%{transform:scaleY(.73) rotate(-4deg);opacity:1}
 }
 
 .hero-kicker{
@@ -544,18 +571,8 @@ section{
 }
 
 @keyframes goldenLuxuryShine{
-  0%,100%{
-    background-position:50% 0%;
-    filter:
-      drop-shadow(0 5px 3px rgba(0,0,0,.95))
-      drop-shadow(0 0 6px rgba(236,198,99,.08));
-  }
-  50%{
-    background-position:50% 100%;
-    filter:
-      drop-shadow(0 6px 4px rgba(0,0,0,.98))
-      drop-shadow(0 0 10px rgba(255,224,135,.14));
-  }
+  0%,100%{background-position:50% 0%}
+  50%{background-position:50% 100%}
 }
 
 .hero-title:after{
@@ -588,10 +605,10 @@ section{
 }
 
 @keyframes goldenSurfaceGlint{
-  0%,100%{background-position:-130% 50%;opacity:0;}
-  20%{opacity:.15;}
-  50%{background-position:130% 50%;opacity:1;}
-  75%{opacity:.15;}
+  0%,100%{background-position:-130% 50%;opacity:0}
+  20%{opacity:.15}
+  50%{background-position:130% 50%;opacity:1}
+  75%{opacity:.15}
 }
 
 .hero-subtitle{
@@ -622,7 +639,6 @@ section{
   color:#b1aa9d;
   font-size:21px;
   letter-spacing:2px;
-  text-shadow:none;
 }
 
 .hero-line{
@@ -630,11 +646,10 @@ section{
   width:145px;
   height:2px;
   margin:38px auto 0;
-  overflow:visible;
   background:
     linear-gradient(
       90deg,
-      transparent 0%,
+      transparent,
       rgba(198,154,55,.18) 12%,
       #a97824 25%,
       #d8b65d 38%,
@@ -642,53 +657,16 @@ section{
       #d8b65d 62%,
       #a97824 75%,
       rgba(198,154,55,.18) 88%,
-      transparent 100%
+      transparent
     );
   background-size:220% 100%;
   background-position:-110% 50%;
-  box-shadow:none;
   animation:cleanLineGlint 6.2s ease-in-out infinite;
 }
 
-.hero-line:after{
-  content:"";
-  position:absolute;
-  right:7px;
-  top:50%;
-  width:6px;
-  height:6px;
-  transform:translateY(-50%) rotate(45deg);
-  background:
-    linear-gradient(
-      135deg,
-      #8d641b 0%,
-      #fff8d2 42%,
-      #ffffff 50%,
-      #d9b75d 58%,
-      #7d5513 100%
-    );
-  opacity:.15;
-  animation:lineDiamondFlash 6.2s ease-in-out infinite;
-}
-
 @keyframes cleanLineGlint{
-  0%,100%{background-position:-110% 50%;opacity:.70;}
-  50%{background-position:110% 50%;opacity:1;}
-}
-
-@keyframes lineDiamondFlash{
-  0%,70%,100%{
-    opacity:.08;
-    transform:translateY(-50%) rotate(45deg) scale(.72);
-  }
-  78%{
-    opacity:1;
-    transform:translateY(-50%) rotate(45deg) scale(1.12);
-  }
-  84%{
-    opacity:.22;
-    transform:translateY(-50%) rotate(45deg) scale(.82);
-  }
+  0%,100%{background-position:-110% 50%;opacity:.70}
+  50%{background-position:110% 50%;opacity:1}
 }
 
 /* SECTION TITLES */
@@ -718,22 +696,17 @@ section{
   text-shadow:
     0 2px 2px rgba(0,0,0,.95),
     0 5px 16px rgba(0,0,0,.85);
-  position:relative;
-}
-
-.section-title:after{
-  display:none;
 }
 
 .section-title-line{
   position:relative;
   width:220px;
   height:2px;
-  overflow:visible;
+  margin:16px auto 0;
   background:
     linear-gradient(
       90deg,
-      transparent 0%,
+      transparent,
       rgba(178,133,43,.16) 8%,
       #a97824 22%,
       #d8b65d 37%,
@@ -741,54 +714,16 @@ section{
       #d8b65d 63%,
       #a97824 78%,
       rgba(178,133,43,.16) 92%,
-      transparent 100%
+      transparent
     );
   background-size:240% 100%;
   background-position:-120% 50%;
-  margin:16px auto 0;
-  box-shadow:none;
   animation:sectionJewelLine 8s ease-in-out infinite;
 }
 
-.section-title-line:after{
-  content:"";
-  position:absolute;
-  right:10px;
-  top:50%;
-  width:7px;
-  height:7px;
-  transform:translateY(-50%) rotate(45deg);
-  background:
-    linear-gradient(
-      135deg,
-      #795316 0%,
-      #ead28a 35%,
-      #ffffff 50%,
-      #ead28a 65%,
-      #795316 100%
-    );
-  opacity:.10;
-  animation:sectionDiamondFlash 8s ease-in-out infinite;
-}
-
 @keyframes sectionJewelLine{
-  0%,100%{background-position:-120% 50%;opacity:.72;}
-  50%{background-position:120% 50%;opacity:1;}
-}
-
-@keyframes sectionDiamondFlash{
-  0%,68%,100%{
-    opacity:.08;
-    transform:translateY(-50%) rotate(45deg) scale(.72);
-  }
-  76%{
-    opacity:1;
-    transform:translateY(-50%) rotate(45deg) scale(1.14);
-  }
-  82%{
-    opacity:.18;
-    transform:translateY(-50%) rotate(45deg) scale(.82);
-  }
+  0%,100%{background-position:-120% 50%;opacity:.72}
+  50%{background-position:120% 50%;opacity:1}
 }
 
 /* COLLECTIONS */
@@ -866,7 +801,19 @@ section{
   overflow:visible;
 }
 
-.collection.royal .collection-icon svg{
+.collection-icon:after{
+  content:"";
+  position:absolute;
+  inset:-8px;
+  border:1px solid rgba(218,181,85,.38);
+  box-shadow:
+    0 0 12px rgba(214,173,82,.05),
+    inset 0 0 10px rgba(214,173,82,.025);
+  pointer-events:none;
+}
+
+.collection.royal .collection-icon svg,
+.collection.special .collection-icon svg{
   overflow:visible;
   filter:
     drop-shadow(0 3px 0 #3b2507)
@@ -894,26 +841,6 @@ section{
   stroke-width:1.2;
 }
 
-.collection.royal .diamond-flash{
-  transform-box:fill-box;
-  transform-origin:center;
-  opacity:.08;
-  animation:diamondCrownFlash 6.8s ease-in-out infinite;
-}
-
-@keyframes diamondCrownFlash{
-  0%,68%,100%{opacity:.06;transform:scale(.65);}
-  76%{opacity:1;transform:scale(1.12);}
-  82%{opacity:.18;transform:scale(.76);}
-}
-
-.collection.special .collection-icon svg{
-  overflow:visible;
-  filter:
-    drop-shadow(0 3px 0 #3b2507)
-    drop-shadow(0 6px 4px rgba(0,0,0,.75));
-}
-
 .collection.special .star-main{
   fill:url(#starGold);
   stroke:url(#starEdge);
@@ -933,19 +860,6 @@ section{
   fill:url(#starCore);
   stroke:#efd584;
   stroke-width:.8;
-}
-
-.collection.special .diamond-flash{
-  transform-box:fill-box;
-  transform-origin:center;
-  opacity:.08;
-  animation:diamondStarFlash 7.2s ease-in-out infinite;
-}
-
-@keyframes diamondStarFlash{
-  0%,70%,100%{opacity:.06;transform:scale(.62);}
-  78%{opacity:1;transform:scale(1.14);}
-  84%{opacity:.18;transform:scale(.76);}
 }
 
 .collection-name{
@@ -980,8 +894,8 @@ section{
 .collection-grid{
   display:none;
   grid-template-columns:repeat(2,1fr);
-  gap:1px;
-  background:rgba(218,181,85,.13);
+  gap:0;
+  background:rgba(218,181,85,.08);
   animation:collectionOpen .55s;
 }
 
@@ -990,8 +904,8 @@ section{
 }
 
 @keyframes collectionOpen{
-  from{opacity:0;transform:translateY(-12px);}
-  to{opacity:1;transform:translateY(0);}
+  from{opacity:0;transform:translateY(-12px)}
+  to{opacity:1;transform:translateY(0)}
 }
 
 /* PRODUCTS */
@@ -1006,13 +920,19 @@ section{
       rgba(255,255,255,.035),
       rgba(0,0,0,.14)
     );
+
   display:flex;
   flex-direction:column;
   justify-content:center;
   align-items:center;
   text-align:center;
+
   cursor:pointer;
   transition:.45s;
+
+  /* GOLD SEPARATION */
+  border:1px solid rgba(218,181,85,.22);
+  margin:5px;
 }
 
 .product-card:hover{
@@ -1022,6 +942,11 @@ section{
       rgba(255,255,255,.055),
       rgba(202,155,48,.045)
     );
+
+  border-color:rgba(225,190,96,.52);
+  box-shadow:
+    inset 0 0 20px rgba(214,173,82,.025),
+    0 0 12px rgba(214,173,82,.04);
 }
 
 .product-card h3{
@@ -1062,33 +987,17 @@ section{
 }
 
 /* =========================================================
-   WILD MOUNTAIN HONEY — SPECIAL INLINE EXPERIENCE
+   UNIVERSAL PRODUCT DETAIL
    ========================================================= */
 
-.wild-mountain-card{
-  cursor:pointer;
-}
-
-.wild-mountain-card.wild-active{
-  background:
-    radial-gradient(
-      circle at 50% 0%,
-      rgba(214,173,82,.08),
-      transparent 55%
-    ),
-    linear-gradient(
-      145deg,
-      rgba(255,255,255,.055),
-      rgba(202,155,48,.055)
-    );
-}
-
-.wild-mountain-detail{
+.universal-detail{
   display:none;
-  width:min(390px,100%);
+  width:min(420px,100%);
   margin-top:24px;
   padding:20px 17px 18px;
-  border:1px solid rgba(218,181,85,.24);
+
+  border:1px solid rgba(218,181,85,.28);
+
   background:
     radial-gradient(
       circle at 50% 0%,
@@ -1097,17 +1006,18 @@ section{
     ),
     linear-gradient(
       180deg,
-      rgba(5,5,5,.68),
-      rgba(0,0,0,.46)
+      rgba(5,5,5,.72),
+      rgba(0,0,0,.48)
     );
-  animation:wildDetailIn .4s ease;
+
+  animation:detailIn .4s ease;
 }
 
-.wild-mountain-detail.open{
+.universal-detail.open{
   display:block;
 }
 
-@keyframes wildDetailIn{
+@keyframes detailIn{
   from{
     opacity:0;
     transform:translateY(-10px);
@@ -1118,16 +1028,16 @@ section{
   }
 }
 
-.wild-detail-tabs{
+.detail-tabs{
   display:flex;
   justify-content:center;
   gap:8px;
-  margin-bottom:19px;
+  margin-bottom:20px;
 }
 
-.wild-tab{
-  min-width:130px;
-  padding:11px 12px;
+.detail-tab{
+  flex:1;
+  padding:11px 10px;
   border:1px solid rgba(218,181,85,.25);
   background:rgba(255,255,255,.012);
   color:#9f9788;
@@ -1137,8 +1047,8 @@ section{
   transition:.35s;
 }
 
-.wild-tab:hover,
-.wild-tab.active{
+.detail-tab:hover,
+.detail-tab.active{
   color:#eadcae;
   border-color:rgba(225,190,96,.68);
   background:
@@ -1147,21 +1057,20 @@ section{
       rgba(205,160,52,.10),
       rgba(205,160,52,.035)
     );
-  box-shadow:
-    inset 0 0 15px rgba(214,173,82,.035),
-    0 0 12px rgba(214,173,82,.035);
 }
 
-.wild-panel{
+/* PROPERTIES */
+
+.detail-panel{
   display:none;
-  animation:wildPanelIn .35s ease;
+  animation:panelIn .35s ease;
 }
 
-.wild-panel.active{
+.detail-panel.active{
   display:block;
 }
 
-@keyframes wildPanelIn{
+@keyframes panelIn{
   from{
     opacity:0;
     transform:translateY(5px);
@@ -1172,80 +1081,100 @@ section{
   }
 }
 
-/* PROPERTIES */
-
-.wild-stars{
+.quality-stars{
   display:flex;
   justify-content:center;
-  gap:5px;
-  margin:4px 0 17px;
+  gap:4px;
+  margin:4px 0 19px;
+  direction:ltr;
 }
 
-.wild-star{
-  font-size:20px;
+.quality-star{
+  font-size:21px;
   line-height:1;
-  color:#e1bc5e;
+  color:#dfbb5b;
   text-shadow:
-    0 0 4px rgba(255,224,125,.35),
+    0 0 5px rgba(255,224,125,.32),
     0 2px 3px rgba(0,0,0,.9);
 }
 
-.wild-property-label{
+.quality-star.partial{
+  background:
+    linear-gradient(
+      90deg,
+      #dfbb5b 0%,
+      #dfbb5b var(--fill),
+      #33260d var(--fill),
+      #33260d 100%
+    );
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+.detail-property-label{
   color:#8d8476;
   font-size:8px;
   letter-spacing:3px;
   margin-bottom:8px;
 }
 
-.wild-property-text{
-  color:#bcb4a6;
+.detail-property-text{
+  color:#c2b9aa;
   font-size:12px;
-  line-height:1.8;
+  line-height:1.85;
+  direction:rtl;
+  text-align:center;
 }
 
-.wild-property-text + .wild-property-label{
+.detail-property-text + .detail-property-label{
   margin-top:18px;
 }
 
-.wild-back{
+/* BACK */
+
+.detail-back{
   margin-top:20px;
   border:0;
-  border-top:1px solid rgba(218,181,85,.16);
+  border-top:1px solid rgba(218,181,85,.18);
   padding-top:13px;
   width:100%;
   background:none;
-  color:#887b61;
-  font-size:8px;
+
+  color:#d8b65d;
+  font-size:9px;
   letter-spacing:3px;
+
   cursor:pointer;
   transition:.3s;
 }
 
-.wild-back:hover{
-  color:#d8bc70;
+.detail-back:hover{
+  color:#fff0a1;
+  text-shadow:0 0 8px rgba(225,190,96,.25);
 }
 
 /* PRICES */
 
-.wild-price-heading{
+.detail-price-heading{
   color:#8d8476;
   font-size:8px;
   letter-spacing:3px;
   margin-bottom:14px;
 }
 
-.wild-price-list{
+.detail-price-list{
   display:flex;
   flex-direction:column;
   gap:8px;
 }
 
-.wild-price-option{
+.detail-price-option{
   width:100%;
   display:flex;
   align-items:center;
   gap:12px;
-  padding:12px 12px;
+  padding:12px;
   border:1px solid rgba(218,181,85,.18);
   background:rgba(255,255,255,.012);
   cursor:pointer;
@@ -1253,15 +1182,13 @@ section{
   text-align:left;
 }
 
-.wild-price-option:hover{
+.detail-price-option:hover{
   border-color:rgba(225,190,96,.58);
   background:rgba(202,155,48,.055);
   transform:translateX(2px);
 }
 
-/* GOLD LUXURY RADIO */
-
-.wild-radio{
+.detail-radio{
   width:17px;
   height:17px;
   flex:0 0 17px;
@@ -1275,12 +1202,9 @@ section{
       rgba(85,57,10,.18) 58%,
       rgba(0,0,0,.45) 100%
     );
-  box-shadow:
-    inset 0 0 5px rgba(255,221,119,.10),
-    0 0 5px rgba(197,154,55,.08);
 }
 
-.wild-radio:after{
+.detail-radio:after{
   content:"";
   position:absolute;
   width:7px;
@@ -1298,10 +1222,9 @@ section{
     );
   opacity:0;
   transition:.3s;
-  box-shadow:0 0 7px rgba(255,222,116,.35);
 }
 
-.wild-price-option.selected{
+.detail-price-option.selected{
   border-color:#cba455;
   background:
     linear-gradient(
@@ -1311,220 +1234,37 @@ section{
     );
 }
 
-.wild-price-option.selected .wild-radio{
-  border-color:#e1bd61;
-  box-shadow:
-    inset 0 0 6px rgba(255,221,119,.16),
-    0 0 8px rgba(197,154,55,.16);
-}
-
-.wild-price-option.selected .wild-radio:after{
+.detail-price-option.selected .detail-radio:after{
   opacity:1;
   transform:translate(-50%,-50%) scale(1);
 }
 
-.wild-price-weight{
+.detail-price-weight{
   flex:1;
   color:#d6cdbd;
   font-size:12px;
   letter-spacing:2px;
 }
 
-.wild-price-value{
+.detail-price-value{
   color:#d8b65d;
-  font-size:15px;
+  font-size:13px;
   font-weight:600;
   letter-spacing:1px;
 }
 
-.wild-order-note{
+/* SPECIAL WILD INFO */
+
+.wild-source-note{
   margin-top:14px;
-  color:#70695f;
-  font-size:8px;
-  line-height:1.7;
-  letter-spacing:1px;
-}
-
-.wild-whatsapp{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  width:100%;
-  margin-top:14px;
-  padding:12px 14px;
-  border:1px solid rgba(218,181,85,.28);
-  background:
-    linear-gradient(
-      180deg,
-      rgba(198,154,55,.10),
-      rgba(198,154,55,.035)
-    );
-  color:#dfc77f;
-  font-size:9px;
-  letter-spacing:2px;
-  cursor:pointer;
-  transition:.35s;
-}
-
-.wild-whatsapp:hover{
-  border-color:#d9b75d;
-  background:rgba(202,155,48,.10);
-  color:#f0dda4;
-  transform:translateY(-1px);
-}
-
-/* OLD ROYAL INLINE DETAILS — PRESERVED */
-
-.royal-inline-detail{
-  display:none;
-  width:min(360px,100%);
-  margin-top:22px;
-  padding:15px 14px 13px;
-  border:1px solid rgba(218,181,85,.22);
-  background:
-    linear-gradient(
-      180deg,
-      rgba(0,0,0,.24),
-      rgba(0,0,0,.38)
-    );
-  animation:royalDetailIn .35s ease;
-}
-
-.royal-inline-detail.open{
-  display:block;
-}
-
-@keyframes royalDetailIn{
-  from{
-    opacity:0;
-    transform:translateY(-8px);
-  }
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
-}
-
-.royal-price-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:6px;
-}
-
-.royal-price-title{
-  color:#756f65;
-  font-size:8px;
-  letter-spacing:3px;
-  margin-bottom:10px;
-}
-
-.royal-price-item{
-  padding:10px 5px;
+  padding:12px;
   border:1px solid rgba(218,181,85,.16);
-  background:rgba(255,255,255,.012);
-}
-
-.royal-weight{
-  color:#d6cdbd;
-  font-size:12px;
-  letter-spacing:1.5px;
-}
-
-.royal-price{
-  margin-top:6px;
-  color:#d4b15a;
-  font-size:15px;
-  font-weight:600;
-  letter-spacing:1px;
-}
-
-.royal-request{
-  font-size:10px;
-  letter-spacing:1px;
-}
-
-/* PRODUCT DETAIL — PRESERVED FOR OTHER PRODUCTS */
-
-.product-detail{
-  display:none;
-  margin-top:26px;
-  padding:45px 30px;
-  border:1px solid rgba(218,181,85,.22);
-  background:
-    radial-gradient(circle at 50% 0%,rgba(198,151,43,.09),transparent 42%),
-    linear-gradient(180deg,#0b0b09,#050505);
+  background:rgba(198,154,55,.025);
+  color:#a99e8c;
+  font-size:11px;
+  line-height:1.8;
+  direction:rtl;
   text-align:center;
-  animation:detailIn .5s;
-}
-
-.product-detail.active{
-  display:block;
-}
-
-@keyframes detailIn{
-  from{opacity:0;transform:translateY(10px);}
-  to{opacity:1;transform:translateY(0);}
-}
-
-.product-detail h2{
-  font-family:Georgia,"Times New Roman",serif;
-  font-size:clamp(25px,5vw,42px);
-  font-weight:400;
-  color:#e1dbcf;
-  letter-spacing:3px;
-}
-
-.product-detail .detail-ar{
-  color:#969086;
-  margin-top:9px;
-}
-
-.product-description{
-  width:min(700px,100%);
-  margin:28px auto 0;
-  color:#aaa399;
-  line-height:1.9;
-  font-size:14px;
-}
-
-.size-label{
-  margin-top:35px;
-  color:#777065;
-  font-size:9px;
-  letter-spacing:4px;
-}
-
-.sizes{
-  margin:17px auto;
-  display:flex;
-  justify-content:center;
-  gap:8px;
-  flex-wrap:wrap;
-}
-
-.size-btn{
-  border:1px solid rgba(218,181,85,.25);
-  background:rgba(255,255,255,.015);
-  color:#b7b0a4;
-  padding:11px 20px;
-  font-size:10px;
-  letter-spacing:2px;
-  cursor:pointer;
-  transition:.3s;
-}
-
-.size-btn:hover,
-.size-btn.active{
-  border-color:#c5a14d;
-  color:#e8dfce;
-  background:rgba(190,146,44,.07);
-}
-
-.price{
-  margin-top:20px;
-  color:#c5a55a;
-  font-size:10px;
-  letter-spacing:4px;
 }
 
 /* OUR WORLD */
@@ -1602,7 +1342,8 @@ section{
     linear-gradient(180deg,#030303,#070706,#030303);
 }
 
-.about .section-heading{
+.about .section-heading,
+.contact .section-heading{
   display:none;
 }
 
@@ -1627,12 +1368,6 @@ section{
 
 .reveal-card:hover{
   border-color:rgba(218,181,85,.38);
-  background:
-    linear-gradient(
-      135deg,
-      rgba(255,255,255,.04),
-      rgba(196,150,47,.045)
-    );
 }
 
 .reveal-card-title{
@@ -1641,15 +1376,6 @@ section{
   color:#d6cfc1;
   letter-spacing:6px;
   font-weight:400;
-  text-shadow:
-    0 2px 3px rgba(0,0,0,.9),
-    0 5px 14px rgba(0,0,0,.7);
-  transition:.4s;
-}
-
-.reveal-card:hover .reveal-card-title{
-  letter-spacing:8px;
-  color:#e3dccf;
 }
 
 .reveal-arrow{
@@ -1678,8 +1404,8 @@ section{
 }
 
 @keyframes reveal{
-  from{opacity:0;transform:translateY(-10px);}
-  to{opacity:1;transform:translateY(0);}
+  from{opacity:0;transform:translateY(-10px)}
+  to{opacity:1;transform:translateY(0)}
 }
 
 .reveal-content p{
@@ -1705,10 +1431,6 @@ section{
   background:
     radial-gradient(circle at 50% 20%,rgba(184,137,36,.06),transparent 40%),
     #030303;
-}
-
-.contact .section-heading{
-  display:none;
 }
 
 .contact-reveal{
@@ -1823,6 +1545,12 @@ footer{
     height:44px;
   }
 
+  .ghf-message{
+    top:78px;
+    font-size:13px;
+    padding:16px 17px;
+  }
+
   .hero{
     padding-top:105px;
   }
@@ -1836,8 +1564,6 @@ footer{
   .luxury-bee-wrap:before{
     width:132px;
     height:132px;
-    background-size:320% 100%;
-    animation:honeycombGalaxyShine 5.5s ease-in-out infinite;
   }
 
   .luxury-bee-wrap:after{
@@ -1872,7 +1598,6 @@ footer{
 
   .hero-line{
     width:130px;
-    height:2px;
     margin-top:34px;
   }
 
@@ -1885,13 +1610,8 @@ footer{
     letter-spacing:4px;
   }
 
-  .section-title:after{
-    display:none;
-  }
-
   .section-title-line{
     width:190px;
-    height:2px;
     margin-top:22px;
   }
 
@@ -1905,6 +1625,10 @@ footer{
     width:52px;
     height:52px;
     flex-basis:52px;
+  }
+
+  .collection-icon:after{
+    inset:-6px;
   }
 
   .collection-name{
@@ -1922,6 +1646,21 @@ footer{
 
   .product-card{
     min-height:240px;
+    margin:5px;
+  }
+
+  .universal-detail{
+    width:min(340px,100%);
+    padding:18px 14px 16px;
+  }
+
+  .detail-tabs{
+    gap:6px;
+  }
+
+  .detail-tab{
+    padding:11px 7px;
+    letter-spacing:2px;
   }
 
   .world-box{
@@ -1939,31 +1678,6 @@ footer{
   .contact-item{
     width:100%;
   }
-
-  .royal-inline-detail{
-    width:min(340px,100%);
-  }
-
-  .wild-mountain-detail{
-    width:min(340px,100%);
-    padding:18px 14px 16px;
-  }
-
-  .wild-detail-tabs{
-    gap:6px;
-  }
-
-  .wild-tab{
-    min-width:0;
-    flex:1;
-    padding:11px 7px;
-    letter-spacing:2px;
-  }
-
-  .wild-price-option{
-    padding:12px 10px;
-  }
-
 }
 
 /* REDUCED MOTION */
@@ -1986,12 +1700,22 @@ footer{
 <div class="side-line left"></div>
 <div class="side-line right"></div>
 
+<!-- GHF MESSAGE -->
+
+<div class="ghf-message" id="ghfMessage">
+  أربعة Collections… كنوزٌ من عالم العسل، صُمّمت لتكتشف مذاق الطبيعة بكل فخامتها.
+</div>
+
 <!-- TOP BAR -->
 
 <header class="topbar">
 
-  <div class="ghf-mark" aria-label="Golden Honey Fusion">
+  <div class="ghf-mark"
+       aria-label="Golden Honey Fusion"
+       onclick="showGHFMessage()">
+
     <span>GHF</span>
+
   </div>
 
   <button class="menu-btn"
@@ -2375,11 +2099,10 @@ footer{
 
         <div class="collection-grid" id="royalGrid">
 
-          <!-- WILD MOUNTAIN HONEY -->
+          <!-- WILD MOUNTAIN -->
 
-          <div class="product-card wild-mountain-card"
-               id="wildMountainCard"
-               onclick="openWildMountain(event)">
+          <div class="product-card"
+               onclick="toggleProductDetail(this,event,'wildMountain')">
 
             <h3>WILD MOUNTAIN HONEY</h3>
 
@@ -2393,135 +2116,123 @@ footer{
               Premium Selection
             </div>
 
-            <!-- SPECIAL INLINE DETAIL -->
+            <div class="universal-detail">
 
-            <div class="wild-mountain-detail"
-                 id="wildMountainDetail"
-                 onclick="event.stopPropagation()">
+              <div class="detail-tabs">
 
-              <div class="wild-detail-tabs">
-
-                <button class="wild-tab active"
-                        id="wildPropertiesTab"
-                        onclick="showWildPanel('properties')">
+                <button class="detail-tab active"
+                        onclick="showDetailPanel(this,'properties',event)">
                   PROPERTIES
                 </button>
 
-                <button class="wild-tab"
-                        id="wildPricesTab"
-                        onclick="showWildPanel('prices')">
+                <button class="detail-tab"
+                        onclick="showDetailPanel(this,'prices',event)">
                   PRICES
                 </button>
 
               </div>
 
-              <!-- PROPERTIES -->
+              <div class="detail-panel active properties-panel">
 
-              <div class="wild-panel active"
-                   id="wildProperties">
+                <div class="quality-stars">
 
-                <div class="wild-stars"
-                     aria-label="Five star premium quality">
-
-                  <span class="wild-star">★</span>
-                  <span class="wild-star">★</span>
-                  <span class="wild-star">★</span>
-                  <span class="wild-star">★</span>
-                  <span class="wild-star">★</span>
+                  <span class="quality-star">★</span>
+                  <span class="quality-star">★</span>
+                  <span class="quality-star">★</span>
+                  <span class="quality-star">★</span>
+                  <span class="quality-star">★</span>
 
                 </div>
 
-                <div class="wild-property-label">
+                <div class="detail-property-label">
                   QUALITY
                 </div>
 
-                <div class="wild-property-text">
-                  Premium selection chosen for its distinctive
-                  character, depth and exceptional natural profile.
+                <div class="detail-property-text">
+                  عسل بري طبيعي فاخر، يتميّز بطابعه الجبلي الطبيعي
+                  وانتقائه ضمن فئة المنتجات الفاخرة.
                 </div>
 
-                <div class="wild-property-label">
+                <div class="detail-property-label">
+                  ORIGIN
+                </div>
+
+                <div class="detail-property-text">
+                  جبال جولفا – شرق تركيا
+                </div>
+
+                <div class="detail-property-label">
+                  NATURE
+                </div>
+
+                <div class="detail-property-text">
+                  عسل جبلي بري طبيعي، وليس من إنتاج المناحل.
+                </div>
+
+                <div class="detail-property-label">
                   PROFILE
                 </div>
 
-                <div class="wild-property-text">
-                  A distinctive wild mountain honey with a refined
-                  natural character and memorable depth.
+                <div class="detail-property-text">
+                  طابع طبيعي جبلي مميز، بعمق ونكهة تعبّر عن البيئة
+                  البرية التي جُمع منها العسل.
                 </div>
 
-                <div class="wild-property-label">
-                  SELECTION
-                </div>
-
-                <div class="wild-property-text">
-                  Carefully selected as part of the
-                  GOLDEN HONEY FUSION premium collection.
-                </div>
-
-                <button class="wild-back"
-                        onclick="closeWildMountain()">
+                <button class="detail-back"
+                        onclick="closeProductDetail(this,event)">
                   BACK
                 </button>
 
               </div>
 
-              <!-- PRICES -->
+              <div class="detail-panel prices-panel">
 
-              <div class="wild-panel"
-                   id="wildPrices">
-
-                <div class="wild-price-heading">
+                <div class="detail-price-heading">
                   SELECT YOUR SIZE
                 </div>
 
-                <div class="wild-price-list">
+                <div class="detail-price-list">
 
-                  <button class="wild-price-option"
-                          data-weight="30 G"
-                          data-price="$3"
-                          onclick="selectWildPrice(this,event)">
+                  <button class="detail-price-option"
+                          onclick="selectUniversalPrice(this,event)">
 
-                    <span class="wild-radio"></span>
+                    <span class="detail-radio"></span>
 
-                    <span class="wild-price-weight">
+                    <span class="detail-price-weight">
                       30 G
                     </span>
 
-                    <span class="wild-price-value">
+                    <span class="detail-price-value">
                       $3
                     </span>
 
                   </button>
 
-                  <button class="wild-price-option"
-                          data-weight="500 G"
-                          data-price="$35"
-                          onclick="selectWildPrice(this,event)">
+                  <button class="detail-price-option"
+                          onclick="selectUniversalPrice(this,event)">
 
-                    <span class="wild-radio"></span>
+                    <span class="detail-radio"></span>
 
-                    <span class="wild-price-weight">
+                    <span class="detail-price-weight">
                       500 G
                     </span>
 
-                    <span class="wild-price-value">
+                    <span class="detail-price-value">
                       $35
                     </span>
 
                   </button>
 
-                  <button class="wild-price-option"
-                          data-weight="1000 G"
-                          data-price="$75"
-                          onclick="selectWildPrice(this,event)">
+                  <button class="detail-price-option"
+                          onclick="selectUniversalPrice(this,event)">
 
-                    <span class="wild-radio"></span>
+                    <span class="detail-radio"></span>
 
-                    <span class="wild-price-weight">
+                    <span class="detail-price-weight">
                       1000 G
                     </span>
 
-                    <span class="wild-price-value">
+                    <span class="detail-price-value">
                       $75
                     </span>
 
@@ -2529,21 +2240,8 @@ footer{
 
                 </div>
 
-                <div class="wild-order-note">
-                  SELECT A SIZE TO CONTINUE TO WHATSAPP
-                </div>
-
-                <a class="wild-whatsapp"
-                   id="wildWhatsapp"
-                   href="#"
-                   target="_blank"
-                   rel="noopener noreferrer"
-                   onclick="event.stopPropagation()">
-                  ORDER VIA WHATSAPP
-                </a>
-
-                <button class="wild-back"
-                        onclick="closeWildMountain()">
+                <button class="detail-back"
+                        onclick="closeProductDetail(this,event)">
                   BACK
                 </button>
 
@@ -2553,10 +2251,10 @@ footer{
 
           </div>
 
-          <!-- BLACK SEED — UNTOUCHED -->
+          <!-- BLACK SEED -->
 
           <div class="product-card"
-               onclick="showProduct('blackSeed')">
+               onclick="toggleProductDetail(this,event,'blackSeed')">
 
             <h3>BLACK SEED HONEY</h3>
 
@@ -2570,34 +2268,84 @@ footer{
               Signature Selection
             </div>
 
-            <div class="royal-inline-detail">
+            <div class="universal-detail">
 
-              <div class="royal-price-title">
-                AVAILABLE SIZES
+              <div class="detail-tabs">
+                <button class="detail-tab active"
+                        onclick="showDetailPanel(this,'properties',event)">
+                  PROPERTIES
+                </button>
+
+                <button class="detail-tab"
+                        onclick="showDetailPanel(this,'prices',event)">
+                  PRICES
+                </button>
               </div>
 
-              <div class="royal-price-grid">
+              <div class="detail-panel active properties-panel">
 
-                <div class="royal-price-item">
-                  <div class="royal-weight">30 G</div>
-                  <div class="royal-price royal-request">
-                    PRICE ON REQUEST
-                  </div>
+                <div class="quality-stars">
+                  <span class="quality-star">★</span>
+                  <span class="quality-star">★</span>
+                  <span class="quality-star">★</span>
+                  <span class="quality-star">★</span>
+                  <span class="quality-star">★</span>
                 </div>
 
-                <div class="royal-price-item">
-                  <div class="royal-weight">500 G</div>
-                  <div class="royal-price royal-request">
-                    PRICE ON REQUEST
-                  </div>
+                <div class="detail-property-label">QUALITY</div>
+
+                <div class="detail-property-text">
+                  يتم تحديد التفاصيل الخاصة بهذا النوع لاحقاً.
                 </div>
 
-                <div class="royal-price-item">
-                  <div class="royal-weight">1000 G</div>
-                  <div class="royal-price royal-request">
-                    PRICE ON REQUEST
-                  </div>
+                <div class="detail-property-label">ORIGIN</div>
+
+                <div class="detail-property-text">
+                  سيتم تحديد المصدر لاحقاً.
                 </div>
+
+                <button class="detail-back"
+                        onclick="closeProductDetail(this,event)">
+                  BACK
+                </button>
+
+              </div>
+
+              <div class="detail-panel prices-panel">
+
+                <div class="detail-price-heading">
+                  AVAILABLE SIZES
+                </div>
+
+                <div class="detail-price-list">
+
+                  <button class="detail-price-option"
+                          onclick="selectUniversalPrice(this,event)">
+                    <span class="detail-radio"></span>
+                    <span class="detail-price-weight">30 G</span>
+                    <span class="detail-price-value">PRICE ON REQUEST</span>
+                  </button>
+
+                  <button class="detail-price-option"
+                          onclick="selectUniversalPrice(this,event)">
+                    <span class="detail-radio"></span>
+                    <span class="detail-price-weight">500 G</span>
+                    <span class="detail-price-value">PRICE ON REQUEST</span>
+                  </button>
+
+                  <button class="detail-price-option"
+                          onclick="selectUniversalPrice(this,event)">
+                    <span class="detail-radio"></span>
+                    <span class="detail-price-weight">1000 G</span>
+                    <span class="detail-price-value">PRICE ON REQUEST</span>
+                  </button>
+
+                </div>
+
+                <button class="detail-back"
+                        onclick="closeProductDetail(this,event)">
+                  BACK
+                </button>
 
               </div>
 
@@ -2605,10 +2353,10 @@ footer{
 
           </div>
 
-          <!-- BLACK SIDR — UNTOUCHED -->
+          <!-- BLACK SIDR -->
 
           <div class="product-card"
-               onclick="showProduct('blackSidr')">
+               onclick="toggleProductDetail(this,event,'blackSidr')">
 
             <h3>BLACK SIDR HONEY</h3>
 
@@ -2622,34 +2370,84 @@ footer{
               Rare Selection
             </div>
 
-            <div class="royal-inline-detail">
+            <div class="universal-detail">
 
-              <div class="royal-price-title">
-                AVAILABLE SIZES
+              <div class="detail-tabs">
+                <button class="detail-tab active"
+                        onclick="showDetailPanel(this,'properties',event)">
+                  PROPERTIES
+                </button>
+
+                <button class="detail-tab"
+                        onclick="showDetailPanel(this,'prices',event)">
+                  PRICES
+                </button>
               </div>
 
-              <div class="royal-price-grid">
+              <div class="detail-panel active properties-panel">
 
-                <div class="royal-price-item">
-                  <div class="royal-weight">30 G</div>
-                  <div class="royal-price royal-request">
-                    PRICE ON REQUEST
-                  </div>
+                <div class="quality-stars">
+                  <span class="quality-star">★</span>
+                  <span class="quality-star">★</span>
+                  <span class="quality-star">★</span>
+                  <span class="quality-star">★</span>
+                  <span class="quality-star">★</span>
                 </div>
 
-                <div class="royal-price-item">
-                  <div class="royal-weight">500 G</div>
-                  <div class="royal-price royal-request">
-                    PRICE ON REQUEST
-                  </div>
+                <div class="detail-property-label">QUALITY</div>
+
+                <div class="detail-property-text">
+                  يتم تحديد التفاصيل الخاصة بهذا النوع لاحقاً.
                 </div>
 
-                <div class="royal-price-item">
-                  <div class="royal-weight">1000 G</div>
-                  <div class="royal-price royal-request">
-                    PRICE ON REQUEST
-                  </div>
+                <div class="detail-property-label">ORIGIN</div>
+
+                <div class="detail-property-text">
+                  سيتم تحديد المصدر لاحقاً.
                 </div>
+
+                <button class="detail-back"
+                        onclick="closeProductDetail(this,event)">
+                  BACK
+                </button>
+
+              </div>
+
+              <div class="detail-panel prices-panel">
+
+                <div class="detail-price-heading">
+                  AVAILABLE SIZES
+                </div>
+
+                <div class="detail-price-list">
+
+                  <button class="detail-price-option"
+                          onclick="selectUniversalPrice(this,event)">
+                    <span class="detail-radio"></span>
+                    <span class="detail-price-weight">30 G</span>
+                    <span class="detail-price-value">PRICE ON REQUEST</span>
+                  </button>
+
+                  <button class="detail-price-option"
+                          onclick="selectUniversalPrice(this,event)">
+                    <span class="detail-radio"></span>
+                    <span class="detail-price-weight">500 G</span>
+                    <span class="detail-price-value">PRICE ON REQUEST</span>
+                  </button>
+
+                  <button class="detail-price-option"
+                          onclick="selectUniversalPrice(this,event)">
+                    <span class="detail-radio"></span>
+                    <span class="detail-price-weight">1000 G</span>
+                    <span class="detail-price-value">PRICE ON REQUEST</span>
+                  </button>
+
+                </div>
+
+                <button class="detail-back"
+                        onclick="closeProductDetail(this,event)">
+                  BACK
+                </button>
 
               </div>
 
@@ -2657,10 +2455,10 @@ footer{
 
           </div>
 
-          <!-- BLACK MOUNTAIN — UNTOUCHED -->
+          <!-- BLACK MOUNTAIN -->
 
           <div class="product-card"
-               onclick="showProduct('blackMountain')">
+               onclick="toggleProductDetail(this,event,'blackMountain')">
 
             <h3>BLACK MOUNTAIN HONEY</h3>
 
@@ -2674,34 +2472,84 @@ footer{
               Exceptional Selection
             </div>
 
-            <div class="royal-inline-detail">
+            <div class="universal-detail">
 
-              <div class="royal-price-title">
-                AVAILABLE SIZES
+              <div class="detail-tabs">
+                <button class="detail-tab active"
+                        onclick="showDetailPanel(this,'properties',event)">
+                  PROPERTIES
+                </button>
+
+                <button class="detail-tab"
+                        onclick="showDetailPanel(this,'prices',event)">
+                  PRICES
+                </button>
               </div>
 
-              <div class="royal-price-grid">
+              <div class="detail-panel active properties-panel">
 
-                <div class="royal-price-item">
-                  <div class="royal-weight">30 G</div>
-                  <div class="royal-price royal-request">
-                    PRICE ON REQUEST
-                  </div>
+                <div class="quality-stars">
+                  <span class="quality-star">★</span>
+                  <span class="quality-star">★</span>
+                  <span class="quality-star">★</span>
+                  <span class="quality-star">★</span>
+                  <span class="quality-star">★</span>
                 </div>
 
-                <div class="royal-price-item">
-                  <div class="royal-weight">500 G</div>
-                  <div class="royal-price royal-request">
-                    PRICE ON REQUEST
-                  </div>
+                <div class="detail-property-label">QUALITY</div>
+
+                <div class="detail-property-text">
+                  يتم تحديد التفاصيل الخاصة بهذا النوع لاحقاً.
                 </div>
 
-                <div class="royal-price-item">
-                  <div class="royal-weight">1000 G</div>
-                  <div class="royal-price royal-request">
-                    PRICE ON REQUEST
-                  </div>
+                <div class="detail-property-label">ORIGIN</div>
+
+                <div class="detail-property-text">
+                  سيتم تحديد المصدر لاحقاً.
                 </div>
+
+                <button class="detail-back"
+                        onclick="closeProductDetail(this,event)">
+                  BACK
+                </button>
+
+              </div>
+
+              <div class="detail-panel prices-panel">
+
+                <div class="detail-price-heading">
+                  AVAILABLE SIZES
+                </div>
+
+                <div class="detail-price-list">
+
+                  <button class="detail-price-option"
+                          onclick="selectUniversalPrice(this,event)">
+                    <span class="detail-radio"></span>
+                    <span class="detail-price-weight">30 G</span>
+                    <span class="detail-price-value">PRICE ON REQUEST</span>
+                  </button>
+
+                  <button class="detail-price-option"
+                          onclick="selectUniversalPrice(this,event)">
+                    <span class="detail-radio"></span>
+                    <span class="detail-price-weight">500 G</span>
+                    <span class="detail-price-value">PRICE ON REQUEST</span>
+                  </button>
+
+                  <button class="detail-price-option"
+                          onclick="selectUniversalPrice(this,event)">
+                    <span class="detail-radio"></span>
+                    <span class="detail-price-weight">1000 G</span>
+                    <span class="detail-price-value">PRICE ON REQUEST</span>
+                  </button>
+
+                </div>
+
+                <button class="detail-back"
+                        onclick="closeProductDetail(this,event)">
+                  BACK
+                </button>
 
               </div>
 
@@ -2768,20 +2616,6 @@ footer{
 
                 </radialGradient>
 
-                <linearGradient id="diamondStar"
-                                x1="0"
-                                y1="0"
-                                x2="1"
-                                y2="1">
-
-                  <stop offset="0%" stop-color="#8b6118"/>
-                  <stop offset="35%" stop-color="#fff4b8"/>
-                  <stop offset="50%" stop-color="#ffffff"/>
-                  <stop offset="65%" stop-color="#fff0a1"/>
-                  <stop offset="100%" stop-color="#8b6118"/>
-
-                </linearGradient>
-
               </defs>
 
               <path
@@ -2818,19 +2652,6 @@ footer{
                 cy="40"
                 r="3"/>
 
-              <path
-                class="diamond-flash"
-                d="M40 2
-                   L41.5 6
-                   L45 8
-                   L41.5 10
-                   L40 15
-                   L38.5 10
-                   L35 8
-                   L38.5 6
-                   Z"
-                fill="url(#diamondStar)"/>
-
             </svg>
 
           </div>
@@ -2847,32 +2668,342 @@ footer{
 
         <div class="collection-grid" id="specialGrid">
 
-          <div class="product-card">
+          <div class="product-card"
+               onclick="toggleProductDetail(this,event,'goldenBalance')">
+
             <h3>GOLDEN BALANCE</h3>
             <div class="arabic">توازن ذهبي</div>
             <div class="product-rule"></div>
             <div class="product-meta">Signature Blend</div>
+
+            <div class="universal-detail">
+
+              <div class="detail-tabs">
+                <button class="detail-tab active"
+                        onclick="showDetailPanel(this,'properties',event)">
+                  PROPERTIES
+                </button>
+                <button class="detail-tab"
+                        onclick="showDetailPanel(this,'prices',event)">
+                  PRICES
+                </button>
+              </div>
+
+              <div class="detail-panel active properties-panel">
+
+                <div class="quality-stars">
+                  <span class="quality-star">★</span>
+                  <span class="quality-star">★</span>
+                  <span class="quality-star">★</span>
+                  <span class="quality-star">★</span>
+                  <span class="quality-star partial" style="--fill:75%">★</span>
+                </div>
+
+                <div class="detail-property-label">QUALITY</div>
+                <div class="detail-property-text">
+                  تفاصيل الخصائص والفوائد سيتم تحديدها لاحقاً.
+                </div>
+
+                <div class="detail-property-label">ORIGIN</div>
+                <div class="detail-property-text">
+                  سيتم تحديد المصدر لاحقاً.
+                </div>
+
+                <button class="detail-back"
+                        onclick="closeProductDetail(this,event)">
+                  BACK
+                </button>
+
+              </div>
+
+              <div class="detail-panel prices-panel">
+
+                <div class="detail-price-heading">AVAILABLE SIZES</div>
+
+                <div class="detail-price-list">
+                  <button class="detail-price-option"
+                          onclick="selectUniversalPrice(this,event)">
+                    <span class="detail-radio"></span>
+                    <span class="detail-price-weight">30 G</span>
+                    <span class="detail-price-value">PRICE ON REQUEST</span>
+                  </button>
+
+                  <button class="detail-price-option"
+                          onclick="selectUniversalPrice(this,event)">
+                    <span class="detail-radio"></span>
+                    <span class="detail-price-weight">500 G</span>
+                    <span class="detail-price-value">PRICE ON REQUEST</span>
+                  </button>
+
+                  <button class="detail-price-option"
+                          onclick="selectUniversalPrice(this,event)">
+                    <span class="detail-radio"></span>
+                    <span class="detail-price-weight">1000 G</span>
+                    <span class="detail-price-value">PRICE ON REQUEST</span>
+                  </button>
+                </div>
+
+                <button class="detail-back"
+                        onclick="closeProductDetail(this,event)">
+                  BACK
+                </button>
+
+              </div>
+
+            </div>
+
           </div>
 
-          <div class="product-card">
+          <div class="product-card"
+               onclick="toggleProductDetail(this,event,'thyme')">
+
             <h3>THYME HONEY</h3>
             <div class="arabic">عسل الزعتر</div>
             <div class="product-rule"></div>
             <div class="product-meta">Distinctive Origin</div>
+
+            <div class="universal-detail">
+
+              <div class="detail-tabs">
+                <button class="detail-tab active"
+                        onclick="showDetailPanel(this,'properties',event)">
+                  PROPERTIES
+                </button>
+                <button class="detail-tab"
+                        onclick="showDetailPanel(this,'prices',event)">
+                  PRICES
+                </button>
+              </div>
+
+              <div class="detail-panel active properties-panel">
+
+                <div class="quality-stars">
+                  <span class="quality-star">★</span>
+                  <span class="quality-star">★</span>
+                  <span class="quality-star">★</span>
+                  <span class="quality-star">★</span>
+                  <span class="quality-star partial" style="--fill:75%">★</span>
+                </div>
+
+                <div class="detail-property-label">QUALITY</div>
+                <div class="detail-property-text">
+                  تفاصيل الخصائص والفوائد سيتم تحديدها لاحقاً.
+                </div>
+
+                <div class="detail-property-label">ORIGIN</div>
+                <div class="detail-property-text">
+                  سيتم تحديد المصدر لاحقاً.
+                </div>
+
+                <button class="detail-back"
+                        onclick="closeProductDetail(this,event)">
+                  BACK
+                </button>
+
+              </div>
+
+              <div class="detail-panel prices-panel">
+                <div class="detail-price-heading">AVAILABLE SIZES</div>
+
+                <div class="detail-price-list">
+                  <button class="detail-price-option"
+                          onclick="selectUniversalPrice(this,event)">
+                    <span class="detail-radio"></span>
+                    <span class="detail-price-weight">30 G</span>
+                    <span class="detail-price-value">PRICE ON REQUEST</span>
+                  </button>
+
+                  <button class="detail-price-option"
+                          onclick="selectUniversalPrice(this,event)">
+                    <span class="detail-radio"></span>
+                    <span class="detail-price-weight">500 G</span>
+                    <span class="detail-price-value">PRICE ON REQUEST</span>
+                  </button>
+
+                  <button class="detail-price-option"
+                          onclick="selectUniversalPrice(this,event)">
+                    <span class="detail-radio"></span>
+                    <span class="detail-price-weight">1000 G</span>
+                    <span class="detail-price-value">PRICE ON REQUEST</span>
+                  </button>
+                </div>
+
+                <button class="detail-back"
+                        onclick="closeProductDetail(this,event)">
+                  BACK
+                </button>
+              </div>
+
+            </div>
+
           </div>
 
-          <div class="product-card">
+          <div class="product-card"
+               onclick="toggleProductDetail(this,event,'goldenSun')">
+
             <h3>GOLDEN SUN HONEY</h3>
             <div class="arabic">عسل شرف الشمس</div>
             <div class="product-rule"></div>
             <div class="product-meta">Golden Selection</div>
+
+            <div class="universal-detail">
+
+              <div class="detail-tabs">
+                <button class="detail-tab active"
+                        onclick="showDetailPanel(this,'properties',event)">
+                  PROPERTIES
+                </button>
+                <button class="detail-tab"
+                        onclick="showDetailPanel(this,'prices',event)">
+                  PRICES
+                </button>
+              </div>
+
+              <div class="detail-panel active properties-panel">
+
+                <div class="quality-stars">
+                  <span class="quality-star">★</span>
+                  <span class="quality-star">★</span>
+                  <span class="quality-star">★</span>
+                  <span class="quality-star">★</span>
+                  <span class="quality-star partial" style="--fill:75%">★</span>
+                </div>
+
+                <div class="detail-property-label">QUALITY</div>
+                <div class="detail-property-text">
+                  تفاصيل الخصائص والفوائد سيتم تحديدها لاحقاً.
+                </div>
+
+                <div class="detail-property-label">ORIGIN</div>
+                <div class="detail-property-text">
+                  سيتم تحديد المصدر لاحقاً.
+                </div>
+
+                <button class="detail-back"
+                        onclick="closeProductDetail(this,event)">
+                  BACK
+                </button>
+
+              </div>
+
+              <div class="detail-panel prices-panel">
+                <div class="detail-price-heading">AVAILABLE SIZES</div>
+
+                <div class="detail-price-list">
+                  <button class="detail-price-option"
+                          onclick="selectUniversalPrice(this,event)">
+                    <span class="detail-radio"></span>
+                    <span class="detail-price-weight">30 G</span>
+                    <span class="detail-price-value">PRICE ON REQUEST</span>
+                  </button>
+
+                  <button class="detail-price-option"
+                          onclick="selectUniversalPrice(this,event)">
+                    <span class="detail-radio"></span>
+                    <span class="detail-price-weight">500 G</span>
+                    <span class="detail-price-value">PRICE ON REQUEST</span>
+                  </button>
+
+                  <button class="detail-price-option"
+                          onclick="selectUniversalPrice(this,event)">
+                    <span class="detail-radio"></span>
+                    <span class="detail-price-weight">1000 G</span>
+                    <span class="detail-price-value">PRICE ON REQUEST</span>
+                  </button>
+                </div>
+
+                <button class="detail-back"
+                        onclick="closeProductDetail(this,event)">
+                  BACK
+                </button>
+              </div>
+
+            </div>
+
           </div>
 
-          <div class="product-card">
+          <div class="product-card"
+               onclick="toggleProductDetail(this,event,'crimsonSidr')">
+
             <h3>CRIMSON SIDR HONEY</h3>
             <div class="arabic">عسل السدر الأحمر</div>
             <div class="product-rule"></div>
             <div class="product-meta">Premium Selection</div>
+
+            <div class="universal-detail">
+
+              <div class="detail-tabs">
+                <button class="detail-tab active"
+                        onclick="showDetailPanel(this,'properties',event)">
+                  PROPERTIES
+                </button>
+                <button class="detail-tab"
+                        onclick="showDetailPanel(this,'prices',event)">
+                  PRICES
+                </button>
+              </div>
+
+              <div class="detail-panel active properties-panel">
+
+                <div class="quality-stars">
+                  <span class="quality-star">★</span>
+                  <span class="quality-star">★</span>
+                  <span class="quality-star">★</span>
+                  <span class="quality-star">★</span>
+                  <span class="quality-star partial" style="--fill:75%">★</span>
+                </div>
+
+                <div class="detail-property-label">QUALITY</div>
+                <div class="detail-property-text">
+                  تفاصيل الخصائص والفوائد سيتم تحديدها لاحقاً.
+                </div>
+
+                <div class="detail-property-label">ORIGIN</div>
+                <div class="detail-property-text">
+                  سيتم تحديد المصدر لاحقاً.
+                </div>
+
+                <button class="detail-back"
+                        onclick="closeProductDetail(this,event)">
+                  BACK
+                </button>
+
+              </div>
+
+              <div class="detail-panel prices-panel">
+                <div class="detail-price-heading">AVAILABLE SIZES</div>
+
+                <div class="detail-price-list">
+                  <button class="detail-price-option"
+                          onclick="selectUniversalPrice(this,event)">
+                    <span class="detail-radio"></span>
+                    <span class="detail-price-weight">30 G</span>
+                    <span class="detail-price-value">PRICE ON REQUEST</span>
+                  </button>
+
+                  <button class="detail-price-option"
+                          onclick="selectUniversalPrice(this,event)">
+                    <span class="detail-radio"></span>
+                    <span class="detail-price-weight">500 G</span>
+                    <span class="detail-price-value">PRICE ON REQUEST</span>
+                  </button>
+
+                  <button class="detail-price-option"
+                          onclick="selectUniversalPrice(this,event)">
+                    <span class="detail-radio"></span>
+                    <span class="detail-price-weight">1000 G</span>
+                    <span class="detail-price-value">PRICE ON REQUEST</span>
+                  </button>
+                </div>
+
+                <button class="detail-back"
+                        onclick="closeProductDetail(this,event)">
+                  BACK
+                </button>
+              </div>
+
+            </div>
+
           </div>
 
         </div>
@@ -2926,25 +3057,256 @@ footer{
 
         <div class="collection-grid" id="naturalGrid">
 
-          <div class="product-card">
+          <div class="product-card"
+               onclick="toggleProductDetail(this,event,'honeycomb')">
+
             <h3>HONEYCOMB HONEY</h3>
             <div class="arabic">عسل بشهده</div>
             <div class="product-rule"></div>
             <div class="product-meta">Pure Comb Selection</div>
+
+            <div class="universal-detail">
+
+              <div class="detail-tabs">
+                <button class="detail-tab active"
+                        onclick="showDetailPanel(this,'properties',event)">
+                  PROPERTIES
+                </button>
+                <button class="detail-tab"
+                        onclick="showDetailPanel(this,'prices',event)">
+                  PRICES
+                </button>
+              </div>
+
+              <div class="detail-panel active properties-panel">
+
+                <div class="quality-stars">
+                  <span class="quality-star">★</span>
+                  <span class="quality-star">★</span>
+                  <span class="quality-star">★</span>
+                  <span class="quality-star">★</span>
+                  <span class="quality-star partial" style="--fill:50%">★</span>
+                </div>
+
+                <div class="detail-property-label">QUALITY</div>
+                <div class="detail-property-text">
+                  تفاصيل الخصائص والفوائد سيتم تحديدها لاحقاً.
+                </div>
+
+                <div class="detail-property-label">ORIGIN</div>
+                <div class="detail-property-text">
+                  سيتم تحديد المصدر لاحقاً.
+                </div>
+
+                <button class="detail-back"
+                        onclick="closeProductDetail(this,event)">
+                  BACK
+                </button>
+
+              </div>
+
+              <div class="detail-panel prices-panel">
+                <div class="detail-price-heading">AVAILABLE SIZES</div>
+
+                <div class="detail-price-list">
+                  <button class="detail-price-option"
+                          onclick="selectUniversalPrice(this,event)">
+                    <span class="detail-radio"></span>
+                    <span class="detail-price-weight">30 G</span>
+                    <span class="detail-price-value">PRICE ON REQUEST</span>
+                  </button>
+
+                  <button class="detail-price-option"
+                          onclick="selectUniversalPrice(this,event)">
+                    <span class="detail-radio"></span>
+                    <span class="detail-price-weight">500 G</span>
+                    <span class="detail-price-value">PRICE ON REQUEST</span>
+                  </button>
+
+                  <button class="detail-price-option"
+                          onclick="selectUniversalPrice(this,event)">
+                    <span class="detail-radio"></span>
+                    <span class="detail-price-weight">1000 G</span>
+                    <span class="detail-price-value">PRICE ON REQUEST</span>
+                  </button>
+                </div>
+
+                <button class="detail-back"
+                        onclick="closeProductDetail(this,event)">
+                  BACK
+                </button>
+              </div>
+
+            </div>
+
           </div>
 
-          <div class="product-card">
+          <div class="product-card"
+               onclick="toggleProductDetail(this,event,'thorns')">
+
             <h3>THORNS HONEY</h3>
             <div class="arabic">عسل الأشواك</div>
             <div class="product-rule"></div>
             <div class="product-meta">Natural Origin</div>
+
+            <div class="universal-detail">
+
+              <div class="detail-tabs">
+                <button class="detail-tab active"
+                        onclick="showDetailPanel(this,'properties',event)">
+                  PROPERTIES
+                </button>
+                <button class="detail-tab"
+                        onclick="showDetailPanel(this,'prices',event)">
+                  PRICES
+                </button>
+              </div>
+
+              <div class="detail-panel active properties-panel">
+
+                <div class="quality-stars">
+                  <span class="quality-star">★</span>
+                  <span class="quality-star">★</span>
+                  <span class="quality-star">★</span>
+                  <span class="quality-star">★</span>
+                  <span class="quality-star partial" style="--fill:50%">★</span>
+                </div>
+
+                <div class="detail-property-label">QUALITY</div>
+                <div class="detail-property-text">
+                  تفاصيل الخصائص والفوائد سيتم تحديدها لاحقاً.
+                </div>
+
+                <div class="detail-property-label">ORIGIN</div>
+                <div class="detail-property-text">
+                  سيتم تحديد المصدر لاحقاً.
+                </div>
+
+                <button class="detail-back"
+                        onclick="closeProductDetail(this,event)">
+                  BACK
+                </button>
+
+              </div>
+
+              <div class="detail-panel prices-panel">
+                <div class="detail-price-heading">AVAILABLE SIZES</div>
+
+                <div class="detail-price-list">
+                  <button class="detail-price-option"
+                          onclick="selectUniversalPrice(this,event)">
+                    <span class="detail-radio"></span>
+                    <span class="detail-price-weight">30 G</span>
+                    <span class="detail-price-value">PRICE ON REQUEST</span>
+                  </button>
+
+                  <button class="detail-price-option"
+                          onclick="selectUniversalPrice(this,event)">
+                    <span class="detail-radio"></span>
+                    <span class="detail-price-weight">500 G</span>
+                    <span class="detail-price-value">PRICE ON REQUEST</span>
+                  </button>
+
+                  <button class="detail-price-option"
+                          onclick="selectUniversalPrice(this,event)">
+                    <span class="detail-radio"></span>
+                    <span class="detail-price-weight">1000 G</span>
+                    <span class="detail-price-value">PRICE ON REQUEST</span>
+                  </button>
+                </div>
+
+                <button class="detail-back"
+                        onclick="closeProductDetail(this,event)">
+                  BACK
+                </button>
+              </div>
+
+            </div>
+
           </div>
 
-          <div class="product-card">
+          <div class="product-card"
+               onclick="toggleProductDetail(this,event,'fortyHerb')">
+
             <h3>FORTY HERB HONEY</h3>
             <div class="arabic">عسل 40 نبتة</div>
             <div class="product-rule"></div>
             <div class="product-meta">Botanical Selection</div>
+
+            <div class="universal-detail">
+
+              <div class="detail-tabs">
+                <button class="detail-tab active"
+                        onclick="showDetailPanel(this,'properties',event)">
+                  PROPERTIES
+                </button>
+                <button class="detail-tab"
+                        onclick="showDetailPanel(this,'prices',event)">
+                  PRICES
+                </button>
+              </div>
+
+              <div class="detail-panel active properties-panel">
+
+                <div class="quality-stars">
+                  <span class="quality-star">★</span>
+                  <span class="quality-star">★</span>
+                  <span class="quality-star">★</span>
+                  <span class="quality-star">★</span>
+                  <span class="quality-star partial" style="--fill:50%">★</span>
+                </div>
+
+                <div class="detail-property-label">QUALITY</div>
+                <div class="detail-property-text">
+                  تفاصيل الخصائص والفوائد سيتم تحديدها لاحقاً.
+                </div>
+
+                <div class="detail-property-label">ORIGIN</div>
+                <div class="detail-property-text">
+                  سيتم تحديد المصدر لاحقاً.
+                </div>
+
+                <button class="detail-back"
+                        onclick="closeProductDetail(this,event)">
+                  BACK
+                </button>
+
+              </div>
+
+              <div class="detail-panel prices-panel">
+                <div class="detail-price-heading">AVAILABLE SIZES</div>
+
+                <div class="detail-price-list">
+                  <button class="detail-price-option"
+                          onclick="selectUniversalPrice(this,event)">
+                    <span class="detail-radio"></span>
+                    <span class="detail-price-weight">30 G</span>
+                    <span class="detail-price-value">PRICE ON REQUEST</span>
+                  </button>
+
+                  <button class="detail-price-option"
+                          onclick="selectUniversalPrice(this,event)">
+                    <span class="detail-radio"></span>
+                    <span class="detail-price-weight">500 G</span>
+                    <span class="detail-price-value">PRICE ON REQUEST</span>
+                  </button>
+
+                  <button class="detail-price-option"
+                          onclick="selectUniversalPrice(this,event)">
+                    <span class="detail-radio"></span>
+                    <span class="detail-price-weight">1000 G</span>
+                    <span class="detail-price-value">PRICE ON REQUEST</span>
+                  </button>
+                </div>
+
+                <button class="detail-back"
+                        onclick="closeProductDetail(this,event)">
+                  BACK
+                </button>
+              </div>
+
+            </div>
+
           </div>
 
         </div>
@@ -2997,68 +3359,179 @@ footer{
         <div class="collection-grid" id="hiveGrid">
 
           <div class="product-card"
-               onclick="showProduct('pollen')">
+               onclick="toggleProductDetail(this,event,'pollen')">
 
             <h3>BEE POLLEN</h3>
             <div class="arabic">حبوب اللقاح</div>
             <div class="product-rule"></div>
             <div class="product-meta">Bee-Derived Essence</div>
 
+            <div class="universal-detail">
+
+              <div class="detail-tabs">
+                <button class="detail-tab active"
+                        onclick="showDetailPanel(this,'properties',event)">
+                  PROPERTIES
+                </button>
+                <button class="detail-tab"
+                        onclick="showDetailPanel(this,'prices',event)">
+                  PRICES
+                </button>
+              </div>
+
+              <div class="detail-panel active properties-panel">
+
+                <div class="quality-stars">
+                  <span class="quality-star">★</span>
+                  <span class="quality-star">★</span>
+                  <span class="quality-star">★</span>
+                  <span class="quality-star">★</span>
+                  <span class="quality-star">★</span>
+                </div>
+
+                <div class="detail-property-label">QUALITY</div>
+                <div class="detail-property-text">
+                  تفاصيل الخصائص والفوائد سيتم تحديدها لاحقاً.
+                </div>
+
+                <div class="detail-property-label">ORIGIN</div>
+                <div class="detail-property-text">
+                  سيتم تحديد المصدر لاحقاً.
+                </div>
+
+                <button class="detail-back"
+                        onclick="closeProductDetail(this,event)">
+                  BACK
+                </button>
+
+              </div>
+
+              <div class="detail-panel prices-panel">
+
+                <div class="detail-price-heading">AVAILABLE SIZES</div>
+
+                <div class="detail-price-list">
+                  <button class="detail-price-option"
+                          onclick="selectUniversalPrice(this,event)">
+                    <span class="detail-radio"></span>
+                    <span class="detail-price-weight">30 G</span>
+                    <span class="detail-price-value">PRICE ON REQUEST</span>
+                  </button>
+
+                  <button class="detail-price-option"
+                          onclick="selectUniversalPrice(this,event)">
+                    <span class="detail-radio"></span>
+                    <span class="detail-price-weight">500 G</span>
+                    <span class="detail-price-value">PRICE ON REQUEST</span>
+                  </button>
+
+                  <button class="detail-price-option"
+                          onclick="selectUniversalPrice(this,event)">
+                    <span class="detail-radio"></span>
+                    <span class="detail-price-weight">1000 G</span>
+                    <span class="detail-price-value">PRICE ON REQUEST</span>
+                  </button>
+                </div>
+
+                <button class="detail-back"
+                        onclick="closeProductDetail(this,event)">
+                  BACK
+                </button>
+
+              </div>
+
+            </div>
+
           </div>
 
           <div class="product-card"
-               onclick="showProduct('propolis')">
+               onclick="toggleProductDetail(this,event,'propolis')">
 
             <h3>PROPOLIS</h3>
             <div class="arabic">العكبر</div>
             <div class="product-rule"></div>
             <div class="product-meta">Hive Essence</div>
 
+            <div class="universal-detail">
+
+              <div class="detail-tabs">
+                <button class="detail-tab active"
+                        onclick="showDetailPanel(this,'properties',event)">
+                  PROPERTIES
+                </button>
+                <button class="detail-tab"
+                        onclick="showDetailPanel(this,'prices',event)">
+                  PRICES
+                </button>
+              </div>
+
+              <div class="detail-panel active properties-panel">
+
+                <div class="quality-stars">
+                  <span class="quality-star">★</span>
+                  <span class="quality-star">★</span>
+                  <span class="quality-star">★</span>
+                  <span class="quality-star">★</span>
+                  <span class="quality-star">★</span>
+                </div>
+
+                <div class="detail-property-label">QUALITY</div>
+                <div class="detail-property-text">
+                  تفاصيل الخصائص والفوائد سيتم تحديدها لاحقاً.
+                </div>
+
+                <div class="detail-property-label">ORIGIN</div>
+                <div class="detail-property-text">
+                  سيتم تحديد المصدر لاحقاً.
+                </div>
+
+                <button class="detail-back"
+                        onclick="closeProductDetail(this,event)">
+                  BACK
+                </button>
+
+              </div>
+
+              <div class="detail-panel prices-panel">
+
+                <div class="detail-price-heading">AVAILABLE SIZES</div>
+
+                <div class="detail-price-list">
+                  <button class="detail-price-option"
+                          onclick="selectUniversalPrice(this,event)">
+                    <span class="detail-radio"></span>
+                    <span class="detail-price-weight">30 G</span>
+                    <span class="detail-price-value">PRICE ON REQUEST</span>
+                  </button>
+
+                  <button class="detail-price-option"
+                          onclick="selectUniversalPrice(this,event)">
+                    <span class="detail-radio"></span>
+                    <span class="detail-price-weight">500 G</span>
+                    <span class="detail-price-value">PRICE ON REQUEST</span>
+                  </button>
+
+                  <button class="detail-price-option"
+                          onclick="selectUniversalPrice(this,event)">
+                    <span class="detail-radio"></span>
+                    <span class="detail-price-weight">1000 G</span>
+                    <span class="detail-price-value">PRICE ON REQUEST</span>
+                  </button>
+                </div>
+
+                <button class="detail-back"
+                        onclick="closeProductDetail(this,event)">
+                  BACK
+                </button>
+
+              </div>
+
+            </div>
+
           </div>
 
         </div>
 
-      </div>
-
-    </div>
-
-    <!-- PRODUCT DETAIL -->
-
-    <div class="product-detail" id="productDetail">
-
-      <h2 id="detailTitle"></h2>
-
-      <div class="detail-ar"
-           id="detailArabic"></div>
-
-      <div class="product-description"
-           id="detailDescription"></div>
-
-      <div class="size-label">
-        AVAILABLE SIZES
-      </div>
-
-      <div class="sizes">
-
-        <button class="size-btn active"
-                onclick="selectSize(this)">
-          30 G
-        </button>
-
-        <button class="size-btn"
-                onclick="selectSize(this)">
-          500 G
-        </button>
-
-        <button class="size-btn"
-                onclick="selectSize(this)">
-          1000 G
-        </button>
-
-      </div>
-
-      <div class="price">
-        PRICE ON REQUEST
       </div>
 
     </div>
@@ -3260,22 +3733,79 @@ footer{
 
 <script>
 
+/* =========================================================
+   GHF MESSAGE
+   ========================================================= */
+
+let ghfMessageTimer;
+
+function showGHFMessage(){
+
+  const message=document.getElementById("ghfMessage");
+
+  if(!message)return;
+
+  clearTimeout(ghfMessageTimer);
+
+  if(message.classList.contains("show")){
+
+    message.classList.remove("show");
+
+    return;
+
+  }
+
+  message.classList.add("show");
+
+  ghfMessageTimer=setTimeout(function(){
+
+    message.classList.remove("show");
+
+  },5000);
+
+}
+
+document.getElementById("ghfMessage")
+  .addEventListener("click",function(){
+
+    this.classList.remove("show");
+
+    clearTimeout(ghfMessageTimer);
+
+  });
+
 /* MENU */
 
 function openMenu(){
-  document.getElementById("menuOverlay").classList.add("open");
+
+  document.getElementById("menuOverlay")
+    .classList.add("open");
+
   document.body.style.overflow="hidden";
+
 }
 
 function closeMenu(){
-  document.getElementById("menuOverlay").classList.remove("open");
+
+  document.getElementById("menuOverlay")
+    .classList.remove("open");
+
   document.body.style.overflow="";
+
 }
 
 document.addEventListener("keydown",function(e){
 
   if(e.key==="Escape"){
+
     closeMenu();
+
+    const message=document.getElementById("ghfMessage");
+
+    if(message){
+      message.classList.remove("show");
+    }
+
   }
 
 });
@@ -3290,277 +3820,198 @@ function toggleCollection(id){
 
   document.querySelectorAll(".collection-grid")
     .forEach(function(grid){
+
       grid.classList.remove("open");
+
     });
 
   if(!wasOpen){
+
     target.classList.add("open");
+
   }
 
 }
 
 /* =========================================================
-   WILD MOUNTAIN HONEY
+   UNIVERSAL PRODUCT DETAILS
    ========================================================= */
 
-function openWildMountain(event){
+function toggleProductDetail(card,event,key){
 
   if(event){
+
     event.stopPropagation();
+
   }
 
-  const card=document.getElementById("wildMountainCard");
-  const detail=document.getElementById("wildMountainDetail");
+  if(!card)return;
 
-  if(!card || !detail)return;
+  const detail=card.querySelector(".universal-detail");
 
-  const isOpen=detail.classList.contains("open");
+  if(!detail)return;
 
-  /* Close other royal inline details */
+  /* Close all other product details */
 
-  document.querySelectorAll(".royal-inline-detail")
+  document.querySelectorAll(".universal-detail")
     .forEach(function(item){
-      item.classList.remove("open");
-    });
 
-  if(isOpen){
+      if(item!==detail){
 
-    detail.classList.remove("open");
-    card.classList.remove("wild-active");
+        item.classList.remove("open");
 
-  }else{
+        const parent=item.closest(".product-card");
 
-    detail.classList.add("open");
-    card.classList.add("wild-active");
+        if(parent){
 
-    showWildPanel("properties");
+          parent.classList.remove("detail-active");
 
-  }
-
-}
-
-function showWildPanel(panel){
-
-  const properties=document.getElementById("wildProperties");
-  const prices=document.getElementById("wildPrices");
-
-  const propertiesTab=document.getElementById("wildPropertiesTab");
-  const pricesTab=document.getElementById("wildPricesTab");
-
-  if(panel==="prices"){
-
-    properties.classList.remove("active");
-    prices.classList.add("active");
-
-    propertiesTab.classList.remove("active");
-    pricesTab.classList.add("active");
-
-  }else{
-
-    prices.classList.remove("active");
-    properties.classList.add("active");
-
-    pricesTab.classList.remove("active");
-    propertiesTab.classList.add("active");
-
-  }
-
-}
-
-function closeWildMountain(){
-
-  const card=document.getElementById("wildMountainCard");
-  const detail=document.getElementById("wildMountainDetail");
-
-  if(detail){
-    detail.classList.remove("open");
-  }
-
-  if(card){
-    card.classList.remove("wild-active");
-  }
-
-}
-
-function selectWildPrice(button,event){
-
-  if(event){
-    event.stopPropagation();
-  }
-
-  document.querySelectorAll(".wild-price-option")
-    .forEach(function(option){
-      option.classList.remove("selected");
-    });
-
-  button.classList.add("selected");
-
-  const weight=button.getAttribute("data-weight");
-  const price=button.getAttribute("data-price");
-
-  const phone="96171127840";
-
-  const message=
-    "Hello Golden Honey Fusion,%0A%0A" +
-    "I would like to order WILD MOUNTAIN HONEY.%0A" +
-    "Size: " + encodeURIComponent(weight) + "%0A" +
-    "Price: " + encodeURIComponent(price);
-
-  const whatsappUrl=
-    "https://wa.me/" + phone + "?text=" + message;
-
-  const whatsappButton=
-    document.getElementById("wildWhatsapp");
-
-  if(whatsappButton){
-    whatsappButton.href=whatsappUrl;
-  }
-
-}
-
-/* PRODUCTS */
-
-const products={
-
-  blackSeed:{
-    title:"BLACK SEED HONEY",
-    arabic:"عسل حبة البركة",
-    description:
-      "A distinctive honey selection associated with black seed blossoms, chosen for its deep character and memorable profile."
-  },
-
-  blackSidr:{
-    title:"BLACK SIDR HONEY",
-    arabic:"عسل السدر الأسود",
-    description:
-      "A rare and powerful sidr selection with a deep character, refined profile and exceptional presence."
-  },
-
-  blackMountain:{
-    title:"BLACK MOUNTAIN HONEY",
-    arabic:"عسل جبلي أسود",
-    description:
-      "A bold mountain honey selected for its dark character, richness and distinctive natural identity."
-  },
-
-  pollen:{
-    title:"BEE POLLEN",
-    arabic:"حبوب اللقاح",
-    description:
-      "A naturally collected bee-derived product selected as part of the HIVE ESSENCE collection."
-  },
-
-  propolis:{
-    title:"PROPOLIS",
-    arabic:"العكبر",
-    description:
-      "A distinctive hive essence carefully selected as part of our collection of premium bee-derived products."
-  }
-
-};
-
-/* SHOW OTHER PRODUCTS */
-
-function showProduct(key){
-
-  const product=products[key];
-
-  if(!product)return;
-
-  const royalKeys=[
-    "blackSeed",
-    "blackSidr",
-    "blackMountain"
-  ];
-
-  if(royalKeys.includes(key)){
-
-    const cards=document.querySelectorAll(
-      ".collection.royal .product-card"
-    );
-
-    cards.forEach(function(card){
-
-      const detail=card.querySelector(
-        ".royal-inline-detail"
-      );
-
-      if(!detail)return;
-
-      const cardTitle=card.querySelector("h3");
-
-      if(
-        cardTitle &&
-        cardTitle.textContent.trim()===product.title
-      ){
-
-        const wasOpen=detail.classList.contains("open");
-
-        document.querySelectorAll(
-          ".royal-inline-detail"
-        ).forEach(function(item){
-          item.classList.remove("open");
-        });
-
-        /* Close Wild Mountain if another Royal product opens */
-
-        closeWildMountain();
-
-        if(!wasOpen){
-          detail.classList.add("open");
         }
 
       }
 
     });
 
-    return;
-  }
+  const isOpen=detail.classList.contains("open");
 
-  /* HIVE ESSENCE KEEPS THE SHARED DETAIL */
+  if(isOpen){
 
-  document.getElementById("detailTitle").textContent=
-    product.title;
+    detail.classList.remove("open");
+    card.classList.remove("detail-active");
 
-  document.getElementById("detailArabic").textContent=
-    product.arabic;
+  }else{
 
-  document.getElementById("detailDescription").textContent=
-    product.description;
+    detail.classList.add("open");
+    card.classList.add("detail-active");
 
-  document.getElementById("productDetail")
-    .classList.add("active");
+    resetDetail(detail);
 
-  document.querySelectorAll(".size-btn")
-    .forEach(function(btn){
-      btn.classList.remove("active");
-    });
+    setTimeout(function(){
 
-  document.querySelector(".size-btn")
-    .classList.add("active");
-
-  setTimeout(function(){
-
-    document.getElementById("productDetail")
-      .scrollIntoView({
+      detail.scrollIntoView({
         behavior:"smooth",
         block:"center"
       });
 
-  },60);
+    },60);
+
+  }
 
 }
 
-/* SIZE */
+function resetDetail(detail){
 
-function selectSize(button){
+  if(!detail)return;
 
-  document.querySelectorAll(".size-btn")
-    .forEach(function(btn){
-      btn.classList.remove("active");
+  const tabs=detail.querySelectorAll(".detail-tab");
+  const panels=detail.querySelectorAll(".detail-panel");
+
+  tabs.forEach(function(tab,index){
+
+    tab.classList.toggle("active",index===0);
+
+  });
+
+  panels.forEach(function(panel,index){
+
+    panel.classList.toggle("active",index===0);
+
+  });
+
+  detail.querySelectorAll(".detail-price-option")
+    .forEach(function(option){
+
+      option.classList.remove("selected");
+
     });
 
+}
+
+function showDetailPanel(button,panel,event){
+
+  if(event){
+
+    event.stopPropagation();
+
+  }
+
+  const detail=button.closest(".universal-detail");
+
+  if(!detail)return;
+
+  const tabs=detail.querySelectorAll(".detail-tab");
+  const panels=detail.querySelectorAll(".detail-panel");
+
+  tabs.forEach(function(tab){
+
+    tab.classList.remove("active");
+
+  });
+
+  panels.forEach(function(item){
+
+    item.classList.remove("active");
+
+  });
+
   button.classList.add("active");
+
+  const targetPanel=detail.querySelector(
+    "." + panel + "-panel"
+  );
+
+  if(targetPanel){
+
+    targetPanel.classList.add("active");
+
+  }
+
+}
+
+function closeProductDetail(button,event){
+
+  if(event){
+
+    event.stopPropagation();
+
+  }
+
+  const detail=button.closest(".universal-detail");
+
+  if(!detail)return;
+
+  const card=detail.closest(".product-card");
+
+  detail.classList.remove("open");
+
+  if(card){
+
+    card.classList.remove("detail-active");
+
+  }
+
+}
+
+function selectUniversalPrice(button,event){
+
+  if(event){
+
+    event.stopPropagation();
+
+  }
+
+  const detail=button.closest(".universal-detail");
+
+  if(!detail)return;
+
+  detail.querySelectorAll(".detail-price-option")
+    .forEach(function(option){
+
+      option.classList.remove("selected");
+
+    });
+
+  button.classList.add("selected");
 
 }
 
@@ -3634,7 +4085,9 @@ document.getElementById("menuOverlay")
   .addEventListener("click",function(e){
 
     if(e.target===this){
+
       closeMenu();
+
     }
 
   });
@@ -3643,4 +4096,3 @@ document.getElementById("menuOverlay")
 
 </body>
 </html>
-```
