@@ -1,0 +1,3996 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="#050505" name="theme-color"/>
+<meta content="Golden Honey Fusion — Premium Honey &amp; Bee-Derived Products" name="description"/>
+<title>Golden Honey Fusion</title>
+<style>
+:root{
+  --black:#030303;
+  --black2:#070707;
+  --black3:#0c0c0b;
+
+  --gold-deep:#4a3007;
+  --gold-dark:#745014;
+  --gold:#c69a35;
+  --gold-mid:#d9b75d;
+  --gold-light:#f0d77f;
+  --gold-bright:#fff1ae;
+
+  --ivory:#e5dfd2;
+  --ivory-soft:#c2bcaf;
+  --stone:#999287;
+
+  --line:rgba(214,177,82,.25);
+  --line-strong:rgba(225,190,96,.72);
+
+  --royal:#24112e;
+  --special:#10182c;
+  --natural:#0d1b14;
+  --hive:#191208;
+}
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  background:
+    radial-gradient(circle at 50% -10%,rgba(178,132,35,.10),transparent 28%),
+    linear-gradient(180deg,#020202 0%,#050505 40%,#020202 100%);
+  color:var(--ivory);
+  font-family:Arial,Helvetica,sans-serif;
+  overflow-x:hidden;
+}
+
+body:before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:9998;
+  background:
+    radial-gradient(circle at 50% 20%,transparent 20%,rgba(0,0,0,.25) 75%),
+    repeating-linear-gradient(
+      0deg,
+      rgba(255,255,255,.008) 0px,
+      rgba(255,255,255,.008) 1px,
+      transparent 1px,
+      transparent 4px
+    );
+  opacity:.45;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+button{
+  font:inherit;
+}
+
+section{
+  position:relative;
+}
+
+.container{
+  width:min(1180px,92%);
+  margin:auto;
+}
+
+.side-line{
+  position:fixed;
+  top:0;
+  bottom:0;
+  width:1px;
+  background:linear-gradient(
+    180deg,
+    transparent,
+    rgba(206,165,64,.30) 15%,
+    rgba(224,190,99,.62) 50%,
+    rgba(206,165,64,.30) 85%,
+    transparent
+  );
+  z-index:50;
+  pointer-events:none;
+}
+
+.side-line.left{left:18px}
+.side-line.right{right:18px}
+
+/* TOP BAR */
+
+.topbar{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  height:76px;
+  z-index:1000;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 34px;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(3,3,3,.96),
+      rgba(3,3,3,.70),
+      transparent
+    );
+  backdrop-filter:blur(10px);
+}
+
+.ghf-mark{
+  width:52px;
+  height:52px;
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+}
+
+.ghf-mark:before{
+  content:"";
+  position:absolute;
+  width:35px;
+  height:35px;
+  border:1px solid rgba(216,177,76,.58);
+  transform:rotate(45deg);
+  box-shadow:
+    0 0 18px rgba(214,173,82,.08),
+    inset 0 0 12px rgba(214,173,82,.04);
+}
+
+.ghf-mark span{
+  overflow:hidden;
+  position:relative;
+  z-index:2;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:2px;
+  background:
+    linear-gradient(
+      120deg,
+      #65430d,
+      #c69a35,
+      #fff0a1,
+      #a8781e,
+      #e5c66d
+    );
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  text-shadow:0 2px 6px #000;
+}
+
+.ghf-mark span{
+  filter:drop-shadow(0 0 4px rgba(255,232,143,.16));
+  animation:none !important;
+}
+
+
+/* GHF MESSAGE — LUXURY COMPACT */
+
+.ghf-message{
+  position:fixed;
+  top:88px;
+  left:50%;
+  transform:translate(-50%,-15px);
+  width:max-content;
+  max-width:min(350px,calc(100% - 36px));
+  padding:14px 19px;
+  z-index:3000;
+  text-align:center;
+  direction:rtl;
+
+  border:1px solid rgba(218,181,85,.58);
+
+  background:
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(211,166,63,.16),
+      transparent 65%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(13,12,10,.98),
+      rgba(4,4,4,.97)
+    );
+
+  box-shadow:
+    0 14px 45px rgba(0,0,0,.72),
+    0 0 22px rgba(214,173,82,.06),
+    inset 0 0 25px rgba(214,173,82,.035);
+
+  color:#ead9a2;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:13px;
+  line-height:1.75;
+  letter-spacing:.35px;
+
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+
+  transition:
+    opacity:.45s ease,
+    transform:.45s ease,
+    visibility:.45s;
+}
+
+.ghf-message:before,
+.ghf-message:after{
+  content:"";
+  position:absolute;
+  width:18px;
+  height:18px;
+  pointer-events:none;
+}
+
+.ghf-message:before{
+  top:6px;
+  left:6px;
+  border-top:1px solid rgba(238,207,117,.52);
+  border-left:1px solid rgba(238,207,117,.52);
+}
+
+.ghf-message:after{
+  bottom:6px;
+  right:6px;
+  border-bottom:1px solid rgba(238,207,117,.52);
+  border-right:1px solid rgba(238,207,117,.52);
+}
+
+.ghf-message{
+  overflow:hidden;
+}
+.ghf-message-text{
+  position:relative;
+  display:inline-block;
+  color:#ead9a2;
+  background:linear-gradient(105deg,#8f7440 0%,#e8d399 34%,#fff7cf 48%,#e6cf8b 58%,#8f7440 100%);
+  background-size:220% 100%;
+  background-position:140% 50%;
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  text-shadow:none;
+  animation:ghfTextShimmer 3.8s ease-in-out infinite;
+}
+@keyframes ghfTextShimmer{
+  0%,100%{background-position:140% 50%;}
+  50%{background-position:-40% 50%;}
+}
+.ghf-message:global-placeholder{}
+.ghf-message.show{
+  opacity:1;
+  visibility:visible;
+  pointer-events:auto;
+  transform:translate(-50%,0);
+}
+
+/* MENU */
+
+.menu-btn{
+  width:48px;
+  height:48px;
+  border:1px solid rgba(218,181,86,.28);
+  background:rgba(255,255,255,.015);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  gap:6px;
+  cursor:pointer;
+  transition:.4s;
+}
+
+.menu-btn:hover{
+  border-color:rgba(235,201,111,.7);
+  background:rgba(211,169,68,.05);
+}
+
+.menu-btn span{
+  width:20px;
+  height:1px;
+  background:#cbb271;
+}
+
+/* MENU OVERLAY */
+
+.menu-overlay{
+  position:fixed;
+  inset:0;
+  z-index:2000;
+  background:
+    radial-gradient(circle at 50% 40%,rgba(178,130,32,.09),transparent 30%),
+    rgba(3,3,3,.985);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  opacity:0;
+  visibility:hidden;
+  transition:.5s;
+}
+
+.menu-overlay.open{
+  opacity:1;
+  visibility:visible;
+}
+
+.menu-inner{
+  text-align:center;
+  width:min(600px,90%);
+}
+
+.menu-label{
+  font-size:10px;
+  letter-spacing:7px;
+  color:#b99d61;
+  margin-bottom:35px;
+}
+
+.menu-link{
+  display:block;
+  padding:16px 0;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(27px,6vw,48px);
+  letter-spacing:5px;
+  font-weight:400;
+  color:#ffffff;
+  text-shadow:
+    0 2px 8px rgba(0,0,0,.95),
+    0 0 18px rgba(210,174,83,.08);
+  transition:.4s;
+}
+
+.menu-link:hover{
+  color:#ffffff;
+  letter-spacing:9px;
+  transform:scale(1.02);
+  text-shadow:
+    0 2px 8px rgba(0,0,0,.95),
+    0 0 24px rgba(224,190,96,.18);
+}
+
+.menu-close{
+  position:absolute;
+  top:25px;
+  right:30px;
+  width:45px;
+  height:45px;
+  border:1px solid rgba(214,173,82,.42);
+  background:none;
+  color:#d8bd78;
+  font-size:25px;
+  cursor:pointer;
+  transition:.35s;
+}
+
+.menu-close:hover{
+  color:#f2dda0;
+  border-color:rgba(235,201,111,.75);
+}
+
+/* HERO */
+
+.hero{
+  min-height:100vh;
+  min-height:100svh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  padding:120px 20px 80px;
+  background:
+    radial-gradient(
+      ellipse at 50% 42%,
+      rgba(161,112,24,.16) 0%,
+      rgba(91,59,8,.08) 22%,
+      transparent 50%
+    ),
+    radial-gradient(
+      ellipse at 50% 75%,
+      rgba(191,145,43,.05),
+      transparent 42%
+    ),
+    #030303;
+}
+
+.hero:before{
+  content:"";
+  position:absolute;
+  width:760px;
+  height:760px;
+  border-radius:50%;
+  background:
+    radial-gradient(
+      circle,
+      rgba(214,173,82,.09) 0%,
+      rgba(214,173,82,.025) 38%,
+      transparent 70%
+    );
+  filter:blur(20px);
+}
+
+.hero-gold-floor{
+  position:absolute;
+  width:min(900px,90vw);
+  height:210px;
+  bottom:4%;
+  left:50%;
+  transform:translateX(-50%);
+  background:
+    radial-gradient(
+      ellipse,
+      rgba(182,137,39,.16),
+      rgba(116,78,14,.06) 40%,
+      transparent 72%
+    );
+  filter:blur(15px);
+}
+
+.hero-content{
+  position:relative;
+  z-index:3;
+  width:min(1100px,100%);
+  text-align:center;
+}
+
+/* LUXURY BEE */
+
+.luxury-bee-wrap{
+  width:165px;
+  height:165px;
+  margin:0 auto 34px;
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.luxury-bee-wrap:before{
+  content:"";
+  position:absolute;
+  width:146px;
+  height:146px;
+  background:
+    linear-gradient(
+      115deg,
+      #795316 0%,
+      #c79b38 18%,
+      #ffe99a 34%,
+      #fff7ce 43%,
+      #d7ad4c 52%,
+      #8b6019 68%,
+      #f4d477 84%,
+      #9a6b1d 100%
+    );
+  background-size:320% 100%;
+  background-position:0% 50%;
+  clip-path:polygon(
+    25% 3%,
+    75% 3%,
+    100% 50%,
+    75% 97%,
+    25% 97%,
+    0 50%
+  );
+  filter:
+    drop-shadow(0 0 5px rgba(255,220,111,.30))
+    drop-shadow(0 0 18px rgba(211,163,51,.20));
+  animation:honeycombGalaxyShine 5.5s ease-in-out infinite;
+}
+
+.luxury-bee-wrap:after{
+  content:"";
+  position:absolute;
+  width:139px;
+  height:139px;
+  background:
+    radial-gradient(
+      circle at 50% 45%,
+      rgba(210,164,56,.10),
+      rgba(35,22,4,.72) 54%,
+      rgba(5,5,5,.96) 100%
+    );
+  clip-path:polygon(
+    25% 3%,
+    75% 3%,
+    100% 50%,
+    75% 97%,
+    25% 97%,
+    0 50%
+  );
+  filter:drop-shadow(0 0 8px rgba(202,156,44,.12));
+  z-index:2;
+}
+
+@keyframes honeycombGalaxyShine{
+  0%{background-position:0% 50%}
+  25%{background-position:45% 50%}
+  50%{background-position:100% 50%}
+  75%{background-position:55% 50%}
+  100%{background-position:0% 50%}
+}
+
+/* BEE FLIGHT */
+
+.luxury-bee{
+  position:relative;
+  z-index:3;
+  width:120px;
+  height:120px;
+  filter:
+    drop-shadow(0 10px 8px rgba(0,0,0,.9))
+    drop-shadow(0 0 17px rgba(232,190,75,.20));
+  animation:beeFlight 4.2s ease-in-out infinite;
+  transform-origin:center;
+}
+
+@keyframes beeFlight{
+  0%{transform:translate3d(-3px,2px,0) rotate(-1deg)}
+  20%{transform:translate3d(4px,-3px,0) rotate(1.2deg)}
+  40%{transform:translate3d(7px,1px,0) rotate(2deg)}
+  60%{transform:translate3d(2px,-6px,0) rotate(-1deg)}
+  80%{transform:translate3d(-5px,-1px,0) rotate(-2deg)}
+  100%{transform:translate3d(-3px,2px,0) rotate(-1deg)}
+}
+
+.bee-wing{
+  transform-box:fill-box;
+  transform-origin:center;
+  animation:wingFlap .27s ease-in-out infinite alternate;
+}
+
+.bee-wing-left{
+  transform-origin:right center;
+}
+
+.bee-wing-right{
+  transform-origin:left center;
+  animation-delay:-.09s;
+  animation-name:wingFlapRight;
+}
+
+@keyframes wingFlap{
+  0%{transform:scaleY(1) rotate(0deg);opacity:.94}
+  100%{transform:scaleY(.73) rotate(4deg);opacity:1}
+}
+
+@keyframes wingFlapRight{
+  0%{transform:scaleY(1) rotate(0deg);opacity:.94}
+  100%{transform:scaleY(.73) rotate(-4deg);opacity:1}
+}
+
+.hero-kicker{
+  font-size:10px;
+  letter-spacing:8px;
+  color:#8f887b;
+  margin-bottom:26px;
+  text-transform:uppercase;
+}
+
+.hero-title{
+  position:relative;
+  display:inline-block;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(58px,13vw,150px);
+  line-height:.78;
+  font-weight:900;
+  letter-spacing:-5px;
+  text-transform:uppercase;
+  color:transparent;
+  background:
+    linear-gradient(
+      180deg,
+      #fffdf0 0%,
+      #f7e8a8 9%,
+      #d8b65b 20%,
+      #fff3b8 32%,
+      #c79a38 44%,
+      #f4d982 56%,
+      #fff8d5 67%,
+      #d1aa4d 78%,
+      #8e661d 89%,
+      #5c3c0c 100%
+    );
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-size:100% 220%;
+  background-position:50% 0%;
+  text-shadow:
+    1px 1px 0 rgba(255,242,177,.55),
+    2px 2px 0 #b98729,
+    3px 3px 0 #8b6118,
+    4px 4px 0 #60400c,
+    5px 5px 0 #3b2708,
+    0 7px 8px rgba(0,0,0,.98),
+    0 12px 18px rgba(0,0,0,.72);
+  filter:
+    drop-shadow(0 5px 3px rgba(0,0,0,.95))
+    drop-shadow(0 0 7px rgba(236,198,99,.12));
+  animation:goldenLuxuryShine 6s ease-in-out infinite;
+}
+
+
+@keyframes goldenLuxuryShine{
+  0%,100%{background-position:50% 0%}
+  50%{background-position:50% 100%}
+}
+
+.hero-title:after{
+  content:"GOLDEN";
+  position:absolute;
+  inset:0;
+  font:inherit;
+  letter-spacing:inherit;
+  line-height:inherit;
+  text-transform:inherit;
+  color:transparent;
+  background:
+    linear-gradient(
+      110deg,
+      transparent 0%,
+      transparent 40%,
+      rgba(255,255,245,0) 44%,
+      rgba(255,255,245,.95) 49%,
+      rgba(255,255,245,.18) 53%,
+      transparent 58%,
+      transparent 100%
+    );
+  background-size:260% 100%;
+  background-position:-130% 50%;
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  pointer-events:none;
+  animation:goldenSurfaceGlint 7.5s ease-in-out infinite;
+}
+
+@keyframes goldenSurfaceGlint{
+  0%,100%{background-position:-130% 50%;opacity:0}
+  20%{opacity:.15}
+  50%{background-position:130% 50%;opacity:1}
+  75%{opacity:.15}
+}
+
+.hero-subtitle{
+  margin-top:32px;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(20px,4.4vw,38px);
+  font-weight:500;
+  letter-spacing:9px;
+  color:transparent;
+  background:
+    linear-gradient(
+      110deg,
+      #735016,
+      #bd9132,
+      #fff0a1,
+      #9c6d1d,
+      #e5c66d,
+      #735016
+    );
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  text-shadow:0 3px 7px rgba(0,0,0,.95);
+}
+
+.hero-arabic{
+  margin-top:19px;
+  color:#b1aa9d;
+  font-size:21px;
+  letter-spacing:2px;
+}
+
+.hero-line{
+  position:relative;
+  width:145px;
+  height:2px;
+  margin:38px auto 0;
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(198,154,55,.18) 12%,
+      #a97824 25%,
+      #d8b65d 38%,
+      #fff1b0 50%,
+      #d8b65d 62%,
+      #a97824 75%,
+      rgba(198,154,55,.18) 88%,
+      transparent
+    );
+  background-size:220% 100%;
+  background-position:-110% 50%;
+  animation:cleanLineGlint 6.2s ease-in-out infinite;
+}
+
+@keyframes cleanLineGlint{
+  0%,100%{background-position:-110% 50%;opacity:.70}
+  50%{background-position:110% 50%;opacity:1}
+}
+
+/* SECTION TITLES */
+
+.section{
+  padding:112px 0;
+}
+
+.section-heading{
+  text-align:center;
+  margin-bottom:60px;
+}
+
+.section-eyebrow{
+  color:#777065;
+  font-size:9px;
+  letter-spacing:7px;
+  margin-bottom:18px;
+}
+
+.section-title{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(30px,6vw,55px);
+  font-weight:400;
+  letter-spacing:6px;
+  color:#d6cfc1;
+  text-shadow:
+    0 2px 2px rgba(0,0,0,.95),
+    0 5px 16px rgba(0,0,0,.85);
+}
+
+.section-title-line{
+  position:relative;
+  width:220px;
+  height:2px;
+  margin:16px auto 0;
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(178,133,43,.16) 8%,
+      #a97824 22%,
+      #d8b65d 37%,
+      #fff0a5 50%,
+      #d8b65d 63%,
+      #a97824 78%,
+      rgba(178,133,43,.16) 92%,
+      transparent
+    );
+  background-size:240% 100%;
+  background-position:-120% 50%;
+  animation:sectionJewelLine 8s ease-in-out infinite;
+}
+
+@keyframes sectionJewelLine{
+  0%,100%{background-position:-120% 50%;opacity:.72}
+  50%{background-position:120% 50%;opacity:1}
+}
+
+/* COLLECTIONS */
+
+.collections{
+  background:
+    linear-gradient(180deg,#030303,#080807 50%,#030303);
+}
+
+.collections-grid{
+  display:flex;
+  align-items:stretch;
+  flex-direction:column;
+  gap:22px;
+}
+
+.collection{
+  position:relative;
+  overflow:hidden;
+  border:1px solid rgba(218,181,85,.20);
+  box-shadow:
+    0 20px 60px rgba(0,0,0,.42),
+    inset 0 0 50px rgba(255,255,255,.01);
+  transition:.55s;
+}
+
+.collection:hover{
+  border-color:rgba(218,181,85,.36);
+  transform:translateY(-2px);
+}
+
+.collection-header:active,
+.collection-icon:active{
+  background-color:transparent;
+  -webkit-tap-highlight-color:transparent;
+}
+
+.collection.royal{
+  background:
+    radial-gradient(circle at 50% 0%,rgba(120,58,109,.19),transparent 45%),
+    linear-gradient(180deg,#28132f,#180b1e 80%,#0b070d);
+}
+
+.collection.special{
+  background:
+    radial-gradient(circle at 50% 0%,rgba(40,83,117,.20),transparent 45%),
+    linear-gradient(180deg,#131d35,#0d1425 80%,#070a13);
+}
+
+.collection.natural{
+  background:
+    radial-gradient(circle at 50% 0%,rgba(43,103,68,.16),transparent 45%),
+    linear-gradient(180deg,#112219,#0b1811 80%,#050b08);
+}
+
+.collection.hive{
+  background:
+    radial-gradient(circle at 50% 0%,rgba(147,103,30,.18),transparent 45%),
+    linear-gradient(180deg,#241a0b,#171006 80%,#080604);
+}
+
+.collection-header{
+  min-height:185px;
+  width:100%;
+  padding:38px 34px;
+  display:flex;
+  align-items:center;
+  justify-content:flex-start;
+  gap:28px;
+  cursor:pointer;
+  user-select:none;
+}
+
+.collection-icon{
+  width:70px;
+  margin-left:0;
+  margin-right:0;
+  height:70px;
+  flex:0 0 70px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#c6a24d;
+  position:relative;
+  overflow:visible;
+}
+
+.collection-icon:after{content:none;}
+
+.collection.royal .collection-icon svg,
+.collection.special .collection-icon svg{
+  overflow:visible;
+  filter:
+    drop-shadow(0 3px 0 #3b2507)
+    drop-shadow(0 6px 4px rgba(0,0,0,.75));
+}
+
+.collection.royal .crown-main{
+  fill:url(#crownGold);
+  stroke:url(#crownEdge);
+  stroke-width:1.5;
+  paint-order:stroke fill;
+}
+
+.collection.royal .crown-depth{
+  fill:#60400c;
+  stroke:#60400c;
+  stroke-width:2;
+  opacity:.95;
+  transform:translateY(3px);
+}
+
+.collection.royal .crown-base{
+  fill:url(#crownBase);
+  stroke:#e8c96f;
+  stroke-width:1.2;
+}
+
+.collection.special .star-main{
+  fill:url(#starGold);
+  stroke:url(#starEdge);
+  stroke-width:1.45;
+  paint-order:stroke fill;
+}
+
+.collection.special .star-depth{
+  fill:#60420c;
+  stroke:#60420c;
+  stroke-width:2;
+  opacity:.95;
+  transform:translateY(3px);
+}
+
+.collection.special .star-core{
+  fill:url(#starCore);
+  stroke:#efd584;
+  stroke-width:.8;
+}
+
+.collection-name{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(21px,4vw,34px);
+  font-weight:500;
+  letter-spacing:4px;
+  color:#d7d0c3;
+  text-shadow:
+    0 2px 5px rgba(0,0,0,.98),
+    0 5px 18px rgba(0,0,0,.75);
+  transition:.35s;
+}
+
+.collection-header:hover .collection-name{
+  color:#e5ded1;
+  letter-spacing:5px;
+}
+
+.collection-hint{
+  display:none !important;
+}
+
+.collection-grid{
+  display:none;
+  grid-template-columns:repeat(2,1fr);
+  gap:0;
+  background:rgba(218,181,85,.12);
+  animation:collectionOpen .18s ease-out;
+}
+
+.collection-grid.open{
+  display:grid;
+  background:
+    radial-gradient(circle at 50% 0%,rgba(214,174,78,.08),transparent 42%),
+    linear-gradient(180deg,rgba(34,30,24,.96),rgba(15,13,11,.98));
+}
+
+/* PRODUCTS — same family as their collection, but noticeably lighter */
+.collection.royal .collection-grid.open{
+  background:
+    radial-gradient(circle at 50% 0%,rgba(170,92,150,.16),transparent 45%),
+    linear-gradient(180deg,#3a1d43,#26132e 82%,#170d1d);
+}
+.collection.special .collection-grid.open{
+  background:
+    radial-gradient(circle at 50% 0%,rgba(70,120,160,.16),transparent 45%),
+    linear-gradient(180deg,#243552,#18263e 82%,#101a2b);
+}
+.collection.natural .collection-grid.open{
+  background:
+    radial-gradient(circle at 50% 0%,rgba(70,135,92,.14),transparent 45%),
+    linear-gradient(180deg,#1b3828,#12281c 82%,#0b1710);
+}
+.collection.hive .collection-grid.open{
+  background:
+    radial-gradient(circle at 50% 0%,rgba(190,145,52,.16),transparent 45%),
+    linear-gradient(180deg,#39290f,#281c0b 82%,#160f07);
+}
+
+.collection.royal .product-card{
+  background:linear-gradient(145deg,rgba(91,49,103,.52),rgba(31,16,38,.78));
+}
+.collection.special .product-card{
+  background:linear-gradient(145deg,rgba(45,67,103,.52),rgba(16,25,43,.78));
+}
+.collection.natural .product-card{
+  background:linear-gradient(145deg,rgba(37,76,53,.52),rgba(12,28,18,.78));
+}
+.collection.hive .product-card{
+  background:linear-gradient(145deg,rgba(91,67,24,.52),rgba(30,20,8,.78));
+}
+
+@keyframes collectionOpen{
+  from{opacity:0;transform:translateY(-4px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+/* PRODUCTS */
+
+.product-card{
+  position:relative;
+  min-height:275px;
+  padding:38px 28px;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.035),
+      rgba(0,0,0,.14)
+    );
+
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+
+  cursor:pointer;
+  transition:.45s;
+
+  /* STRONGER GOLD SEPARATION */
+  border:1.7px solid rgba(218,181,85,.68);
+  margin:5px;
+
+  box-shadow:
+    inset 0 0 0 1px rgba(255,235,157,.035),
+    0 0 0 1px rgba(0,0,0,.45);
+}
+
+.product-card:hover{
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.055),
+      rgba(202,155,48,.045)
+    );
+
+  border-color:rgba(225,190,96,.78);
+  box-shadow:
+    inset 0 0 20px rgba(214,173,82,.025),
+    0 0 12px rgba(214,173,82,.06);
+}
+
+.product-card.detail-active{
+  border-color:rgba(239,205,116,.78);
+}
+
+.product-card h3{
+  font-family:Georgia,"Times New Roman",serif;
+  color:#ddd7cc;
+  font-size:21px;
+  font-weight:500;
+  letter-spacing:1.5px;
+  line-height:1.3;
+  text-shadow:0 2px 7px rgba(0,0,0,.95);
+}
+
+.product-card .arabic{
+  margin-top:9px;
+  color:#9d968b;
+  font-size:13px;
+}
+
+.collection.royal .product-card .arabic{
+  font-size:16px;
+  color:#b1a99b;
+  margin-top:11px;
+}
+
+.product-rule{
+  width:35px;
+  height:1px;
+  background:#a67d28;
+  margin:20px auto;
+  opacity:.65;
+}
+
+.product-meta{
+  color:#716b61;
+  font-size:9px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+}
+
+/* UNIVERSAL PRODUCT DETAIL */
+
+.universal-detail{
+  display:none;
+  width:min(420px,100%);
+  margin-top:24px;
+  padding:20px 17px 18px;
+
+  border:1px solid rgba(218,181,85,.34);
+
+  background:#050504;
+  isolation:isolate;
+  will-change:opacity,transform;
+  backface-visibility:hidden;
+  -webkit-backface-visibility:hidden;
+
+  animation:detailIn .4s ease;
+}
+
+.universal-detail.open{
+  display:block;
+}
+
+@keyframes detailIn{
+  from{
+    opacity:0;
+    transform:translateY(-10px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+.detail-tabs{
+  display:flex;
+  justify-content:center;
+  gap:8px;
+  margin-bottom:20px;
+}
+
+.detail-tab{
+  flex:1;
+  padding:11px 10px;
+  border:1px solid rgba(218,181,85,.25);
+  background:rgba(255,255,255,.012);
+  color:#9f9788;
+  font-size:9px;
+  letter-spacing:3px;
+  cursor:pointer;
+  transition:.35s;
+}
+
+.detail-tab:hover,
+.detail-tab.active{
+  color:#eadcae;
+  border-color:rgba(225,190,96,.68);
+  background:
+    linear-gradient(
+      180deg,
+      rgba(205,160,52,.10),
+      rgba(205,160,52,.035)
+    );
+}
+
+/* PREMIUM DETAIL TABS */
+.detail-tabs{
+  gap:10px;
+  margin-bottom:20px;
+}
+.detail-tab{
+  position:relative;
+  min-height:44px;
+  padding:11px 14px;
+  border:1px solid rgba(238,205,116,.78);
+  border-radius:3px;
+  background:
+    linear-gradient(135deg,#4f3307 0%,#8f671c 17%,#d7b354 40%,#f5dc91 52%,#c3973b 70%,#5a3b0a 100%);
+  color:#171109;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:10px;
+  font-weight:600;
+  letter-spacing:2.4px;
+  text-shadow:0 1px 0 rgba(255,244,190,.32);
+  box-shadow:
+    inset 0 1px 0 rgba(255,250,220,.55),
+    inset 0 -2px 5px rgba(66,40,5,.35),
+    0 3px 12px rgba(0,0,0,.42);
+  overflow:hidden;
+}
+.detail-tab:before{
+  content:"";
+  position:absolute;
+  inset:1px;
+  border:1px solid rgba(255,246,202,.20);
+  pointer-events:none;
+}
+.detail-tab:hover,.detail-tab.active{
+  color:#0d0a05;
+  border-color:#f4dc91;
+  background:
+    linear-gradient(135deg,#765015 0%,#c49a3b 20%,#ffe7a0 48%,#d4ad52 70%,#795313 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,235,.72),
+    inset 0 -2px 6px rgba(74,44,5,.32),
+    0 0 16px rgba(222,184,83,.12);
+}
+
+/* PROPERTIES */
+
+.detail-panel{
+  display:none;
+  animation:panelIn .35s ease;
+}
+
+.detail-panel.active{
+  display:block;
+}
+
+@keyframes panelIn{
+  from{
+    opacity:0;
+    transform:translateY(5px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+.quality-stars{
+  display:flex;
+  justify-content:center;
+  gap:4px;
+  margin:4px 0 19px;
+  direction:ltr;
+}
+
+.quality-star{
+  font-size:21px;
+  line-height:1;
+  color:#dfbb5b;
+  text-shadow:
+    0 0 5px rgba(255,224,125,.32),
+    0 2px 3px rgba(0,0,0,.9);
+}
+
+.quality-star.partial{
+  background:
+    linear-gradient(
+      90deg,
+      #dfbb5b 0%,
+      #dfbb5b var(--fill),
+      #33260d var(--fill),
+      #33260d 100%
+    );
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+.detail-property-label{
+  color:#8d8476;
+  font-size:8px;
+  letter-spacing:3px;
+  margin-bottom:8px;
+}
+
+.detail-property-text{
+  color:#c2b9aa;
+  font-size:12px;
+  line-height:1.85;
+  direction:rtl;
+  text-align:center;
+}
+
+.detail-property-text + .detail-property-label{
+  margin-top:18px;
+}
+
+
+  68%{opacity:.10;}
+  74%{opacity:.42;}
+  80%{transform:translateX(82px) skewX(-18deg);opacity:.12;}
+  88%,100%{transform:translateX(96px) skewX(-18deg);opacity:0;}
+}
+/* BACK */
+
+.detail-back{
+  margin-top:20px;
+  border:0;
+  border-top:1px solid rgba(218,181,85,.20);
+  padding-top:13px;
+  width:100%;
+  background:transparent !important;
+  appearance:none;
+  -webkit-appearance:none;
+
+  color:#e7cf86;
+  font-family:"Cinzel", Georgia, "Times New Roman", serif;
+  font-size:10px;
+  font-weight:600;
+  letter-spacing:3.8px;
+  text-transform:uppercase;
+  text-shadow:0 1px 0 rgba(255,235,165,.12);
+
+  cursor:pointer;
+  transition:.3s;
+}
+
+.detail-back:hover{
+  color:#fff0a1;
+  text-shadow:0 0 8px rgba(225,190,96,.25);
+}
+
+/* PRICES */
+
+.detail-price-heading{
+  color:#8d8476;
+  font-size:8px;
+  letter-spacing:3px;
+  margin-bottom:14px;
+}
+
+.detail-price-list{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+.detail-price-option{
+  width:100%;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:12px;
+  border:1px solid rgba(218,181,85,.28);
+  background:rgba(255,255,255,.012);
+  cursor:pointer;
+  transition:.35s;
+  text-align:left;
+}
+
+.detail-price-option:hover{
+  border-color:rgba(225,190,96,.72);
+  background:rgba(202,155,48,.055);
+  transform:translateX(2px);
+}
+
+.detail-radio{
+  width:17px;
+  height:17px;
+  flex:0 0 17px;
+  border-radius:50%;
+  border:1px solid #a77b25;
+  position:relative;
+  background:
+    radial-gradient(
+      circle,
+      rgba(255,238,166,.18),
+      rgba(85,57,10,.18) 58%,
+      rgba(0,0,0,.45) 100%
+    );
+}
+
+.detail-radio:after{
+  content:"";
+  position:absolute;
+  width:7px;
+  height:7px;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%) scale(.35);
+  border-radius:50%;
+  background:
+    radial-gradient(
+      circle at 35% 30%,
+      #fff6ca,
+      #e2bd5c 42%,
+      #8d6319 100%
+    );
+  opacity:0;
+  transition:.3s;
+}
+
+.detail-price-option.selected{
+  border-color:#cba455;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(194,148,43,.08),
+      rgba(194,148,43,.025)
+    );
+}
+
+.detail-price-option.selected .detail-radio:after{
+  opacity:1;
+  transform:translate(-50%,-50%) scale(1);
+}
+
+.detail-price-weight{
+  flex:1;
+  color:#d6cdbd;
+  font-size:12px;
+  letter-spacing:2px;
+}
+
+.detail-price-value{
+  color:#d8b65d;
+  font-size:13px;
+  font-weight:600;
+  letter-spacing:1px;
+}
+
+/* WHATSAPP PURCHASE HINT */
+
+.whatsapp-purchase-note{
+  margin-top:12px;
+  color:#8f887b;
+  font-size:9px;
+  line-height:1.7;
+  letter-spacing:.6px;
+  direction:rtl;
+  text-align:center;
+}
+
+/* SPECIAL WILD INFO */
+
+.wild-source-note{
+  margin-top:14px;
+  padding:12px;
+  border:1px solid rgba(218,181,85,.22);
+  background:rgba(198,154,55,.025);
+  color:#a99e8c;
+  font-size:11px;
+  line-height:1.8;
+  direction:rtl;
+  text-align:center;
+}
+
+/* OUR WORLD */
+
+.world{
+  background:
+    radial-gradient(circle at 50% 20%,rgba(175,127,29,.06),transparent 40%),
+    #030303;
+}
+
+.world-box{
+  position:relative;
+  padding:70px 45px;
+  border:1px solid rgba(218,181,85,.18);
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,.025),
+      transparent 40%,
+      rgba(204,156,48,.025)
+    );
+  text-align:center;
+  overflow:hidden;
+}
+
+.world-box:before,
+.world-box:after{
+  content:"";
+  position:absolute;
+  width:80px;
+  height:80px;
+  border-color:rgba(203,161,65,.28);
+}
+
+.world-box:before{
+  top:18px;
+  left:18px;
+  border-top:1px solid;
+  border-left:1px solid;
+}
+
+.world-box:after{
+  right:18px;
+  bottom:18px;
+  border-right:1px solid;
+  border-bottom:1px solid;
+}
+
+.world-box h2{
+  font-family:Georgia,"Times New Roman",serif;
+  font-weight:400;
+  color:#ded7cb;
+  font-size:clamp(26px,5vw,42px);
+  letter-spacing:4px;
+}
+
+.world-box p{
+  max-width:760px;
+  margin:28px auto 0;
+  color:#aaa399;
+  line-height:1.95;
+  font-size:15px;
+}
+
+.world-box .arabic-text{
+  color:#8e887e;
+  margin-top:22px;
+  direction:rtl;
+}
+
+/* ABOUT */
+
+.about{
+  background:
+    linear-gradient(180deg,#030303,#070706,#030303);
+}
+
+.about .section-heading,
+.contact .section-heading{
+  display:none;
+}
+
+.reveal-card{
+  position:relative;
+  border:1px solid rgba(218,181,85,.18);
+  min-height:130px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  cursor:pointer;
+  overflow:hidden;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,.025),
+      rgba(196,150,47,.025)
+    );
+  transition:.5s;
+}
+
+.reveal-card:hover{
+  border-color:rgba(218,181,85,.38);
+}
+
+.reveal-card-title{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(23px,5vw,38px);
+  color:#d6cfc1;
+  letter-spacing:6px;
+  font-weight:400;
+}
+
+.reveal-arrow{
+  position:absolute;
+  right:28px;
+  font-size:17px;
+  color:#9d7a31;
+  transition:.4s;
+}
+
+.reveal-card.open .reveal-arrow{
+  transform:rotate(180deg);
+}
+
+.reveal-content{
+  display:none;
+  margin-top:18px;
+  border:1px solid rgba(218,181,85,.15);
+  padding:48px 40px;
+  background:#070706;
+  animation:reveal .5s;
+}
+
+.reveal-content.open{
+  display:block;
+}
+
+@keyframes reveal{
+  from{opacity:0;transform:translateY(-10px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+.reveal-content p{
+  max-width:850px;
+  margin:auto;
+  color:#aaa399;
+  font-size:15px;
+  line-height:2;
+}
+
+.reveal-content p + p{
+  margin-top:25px;
+}
+
+.reveal-content .ar{
+  direction:rtl;
+  color:#8f897f;
+}
+
+/* CONTACT */
+
+.contact{
+  background:
+    radial-gradient(circle at 50% 20%,rgba(184,137,36,.06),transparent 40%),
+    #030303;
+}
+
+.contact-reveal{
+  margin-bottom:18px;
+}
+
+.contact-content{
+  display:none;
+  border:1px solid rgba(218,181,85,.15);
+  background:#070706;
+  padding:42px 25px;
+  animation:reveal .5s;
+}
+
+.contact-content.open{
+  display:block;
+}
+
+.contact-list{
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  flex-wrap:wrap;
+}
+
+.contact-item{
+  min-width:min(330px,100%);
+  padding:27px 30px;
+  border:1px solid rgba(218,181,85,.15);
+  background:rgba(255,255,255,.012);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:9px;
+  transition:.4s;
+}
+
+.contact-item:hover{
+  border-color:rgba(218,181,85,.45);
+  background:rgba(192,147,42,.045);
+  transform:translateY(-3px);
+}
+
+.contact-label{
+  color:#716b61;
+  font-size:8px;
+  letter-spacing:4px;
+  text-transform:uppercase;
+}
+
+.contact-number,
+.instagram-name{
+  font-family:Georgia,"Times New Roman",serif;
+  color:#d9d2c5;
+  font-size:17px;
+  letter-spacing:1px;
+}
+
+.contact-icon{
+  color:#b28a35;
+  font-size:21px;
+}
+
+/* FOOTER */
+
+footer{
+  border-top:1px solid rgba(218,181,85,.10);
+  padding:50px 20px;
+  text-align:center;
+  background:#020202;
+}
+
+.footer-brand{
+  font-family:Georgia,"Times New Roman",serif;
+  color:#a89465;
+  font-size:14px;
+  letter-spacing:4px;
+}
+
+.footer-copy{
+  margin-top:15px;
+  color:#514d47;
+  font-size:8px;
+  letter-spacing:3px;
+}
+
+/* LUXURY COLLECTION / PRODUCT FINISH */
+.collection{
+  border-color:rgba(218,181,85,.34);
+  box-shadow:
+    0 20px 60px rgba(0,0,0,.48),
+    inset 0 0 50px rgba(255,255,255,.012),
+    inset 0 1px 0 rgba(255,232,153,.08);
+}
+.collection-header{
+  position:relative;
+  min-height:185px;
+  -webkit-tap-highlight-color:transparent;
+  tap-highlight-color:transparent;
+  padding:30px 34px;
+  display:grid;
+  grid-template-columns:82px 1fr 28px;
+  align-items:center;
+  gap:22px;
+  overflow:hidden;
+  border:0;
+  background:
+    radial-gradient(circle at 18% 50%,rgba(238,202,111,.09),transparent 24%),
+    linear-gradient(110deg,rgba(255,255,255,.028),rgba(0,0,0,.04) 55%,rgba(218,181,85,.035));
+}
+.collection-header:before{
+  content:"";
+  position:absolute;
+  left:0;right:0;bottom:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(232,197,108,.48),transparent);
+}
+.collection-icon{
+  width:74px;
+  -webkit-tap-highlight-color:transparent;
+  tap-highlight-color:transparent;
+  height:74px;
+  margin:0;
+  flex:none;
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:
+    linear-gradient(145deg,rgba(255,235,160,.07),rgba(0,0,0,.46));
+  border:1px solid rgba(225,190,96,.72);
+  border-radius:3px;
+  box-shadow:
+    inset 0 0 18px rgba(230,194,94,.08),
+    0 8px 22px rgba(0,0,0,.48);
+}
+.collection-icon:after{
+  content:none;
+}
+
+/* ROYAL / SPECIAL — refined diamond flash + almost imperceptible movement */
+.collection-diamond{
+  position:absolute;
+  z-index:5;
+  left:71px;
+  top:29px;
+  font-size:17px;
+  line-height:1;
+  color:#f7df92;
+  opacity:0;
+  transform:translate(-50%,-50%) scale(.55);
+  text-shadow:
+    0 0 4px rgba(255,238,159,.72),
+    0 0 11px rgba(231,190,78,.45);
+  pointer-events:none;
+}
+.collection.royal .collection-icon svg,
+.collection.special .collection-icon svg{
+  transform-origin:center;
+}
+.collection.royal.collection-active .collection-icon svg{
+  animation:royalIconMotion 4.6s ease-in-out infinite;
+}
+.collection.special.collection-active .collection-icon svg{
+  animation:specialIconMotion 4.6s ease-in-out infinite;
+}
+.collection.royal.collection-active .collection-diamond,
+.collection.special.collection-active .collection-diamond{
+  animation:collectionDiamondBlink 2.9s ease-in-out infinite;
+}
+@keyframes collectionDiamondBlink{
+  0%,100%{opacity:0;transform:translate(-50%,-50%) scale(.60);filter:blur(.25px);}
+  12%{opacity:.18;transform:translate(-50%,-50%) scale(.72);}
+  19%{opacity:1;transform:translate(-50%,-50%) scale(1.04);filter:blur(0);}
+  27%{opacity:.48;transform:translate(-50%,-50%) scale(.88);}
+  35%{opacity:.92;transform:translate(-50%,-50%) scale(.98);}
+  48%{opacity:0;transform:translate(-50%,-50%) scale(.66);}
+  100%{opacity:0;}
+}
+@keyframes royalIconMotion{
+  0%,100%{transform:translateY(0) rotate(0deg);}
+  50%{transform:translateY(-1px) rotate(.35deg);}
+}
+@keyframes specialIconMotion{
+  0%,100%{transform:translateY(0) rotate(0deg);}
+  50%{transform:translateY(-1px) rotate(-.3deg);}
+}
+.collection-name{
+  justify-self:center;
+  text-align:center;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(20px,3.5vw,31px);
+  letter-spacing:4px;
+  color:#e2d8c5;
+}
+.collection-hint{
+  display:none;
+  position:static;
+  justify-self:end;
+  color:#a88a49;
+  font-size:8px;
+  letter-spacing:2px;
+  writing-mode:vertical-rl;
+  transform:rotate(180deg);
+}
+.product-card{
+  border:1.7px solid rgba(218,181,85,.70);
+  background:
+    radial-gradient(circle at 50% 20%,rgba(238,203,112,.035),transparent 38%),
+    linear-gradient(145deg,rgba(255,255,255,.038),rgba(0,0,0,.18));
+}
+.product-card h3{
+  font-family:Georgia,"Times New Roman",serif;
+  letter-spacing:2px;
+}
+.universal-detail{
+  border-color:rgba(218,181,85,.45);
+  box-shadow:inset 0 0 24px rgba(218,181,85,.025);
+}
+.detail-price-option{
+  border-color:rgba(218,181,85,.42);
+  background:linear-gradient(100deg,rgba(180,132,32,.07),rgba(255,255,255,.012));
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+  .side-line{
+    display:none;
+  }
+
+  .topbar{
+    height:67px;
+    padding:0 18px;
+  }
+
+  .ghf-mark{
+    width:45px;
+    height:45px;
+  }
+
+  .ghf-mark:before{
+    width:31px;
+    height:31px;
+  }
+
+  .menu-btn{
+    width:44px;
+    height:44px;
+  }
+
+  .ghf-message{
+    top:78px;
+    width:max-content;
+    max-width:calc(100% - 30px);
+    font-size:12px;
+    padding:13px 15px;
+    line-height:1.75;
+  }
+
+  .hero{
+    padding-top:105px;
+  }
+
+  .luxury-bee-wrap{
+    width:145px;
+    height:145px;
+    margin-bottom:29px;
+  }
+
+  .luxury-bee-wrap:before{
+    width:132px;
+    height:132px;
+  }
+
+  .luxury-bee-wrap:after{
+    width:125px;
+    height:125px;
+  }
+
+  .luxury-bee{
+    width:105px;
+    height:105px;
+  }
+
+  .hero-kicker{
+    font-size:8px;
+    letter-spacing:5px;
+  }
+
+  .hero-title{
+    font-size:clamp(54px,16vw,95px);
+    letter-spacing:-3px;
+  }
+
+  .hero-subtitle{
+    font-size:19px;
+    letter-spacing:5px;
+    line-height:1.5;
+  }
+
+  .hero-arabic{
+    font-size:19px;
+  }
+
+  .hero-line{
+    width:130px;
+    margin-top:34px;
+  }
+
+  .section{
+    padding:88px 0;
+  }
+
+  .section-title{
+    font-size:clamp(28px,7vw,44px);
+    letter-spacing:4px;
+  }
+
+  .section-title-line{
+    width:190px;
+    margin-top:22px;
+  }
+
+  .collection-header{
+    min-height:155px;
+    grid-template-columns:60px 1fr 18px;
+    padding:32px 20px;
+    gap:16px;
+    justify-content:flex-start;
+  }
+
+  .collection-icon{
+    width:52px;
+    height:52px;
+    flex-basis:52px;
+  }
+
+  .collection-diamond{
+    left:46px;
+    top:11px;
+    font-size:14px;
+  }
+
+  .collection-icon:after{
+    inset:-6px;
+  }
+
+  .collection-name{
+    font-size:19px;
+    letter-spacing:2px;
+  }
+
+  .collection-header:hover .collection-name{
+    letter-spacing:2px;
+  }
+
+  .collection-grid{
+    grid-template-columns:1fr;
+  }
+
+  .product-card{
+    min-height:240px;
+    margin:5px;
+    border-width:1.5px;
+  }
+
+  .universal-detail{
+    width:min(340px,100%);
+    padding:18px 14px 16px;
+  }
+
+  .detail-tabs{
+    gap:6px;
+  }
+
+  .detail-tab{
+    padding:11px 7px;
+    letter-spacing:2px;
+  }
+
+  .world-box{
+    padding:50px 25px;
+  }
+
+  .reveal-content{
+    padding:35px 23px;
+  }
+
+  .contact-list{
+    flex-direction:column;
+  }
+
+  .contact-item{
+    width:100%;
+  }
+}
+
+/* REDUCED MOTION */
+
+@media(prefers-reduced-motion:reduce){
+
+  *,
+  *:before{
+    animation:none !important;
+    transition:none !important;
+    scroll-behavior:auto !important;
+  }
+
+}
+
+/* FINAL LUXURY BACK BUTTON */
+.detail-back,
+.detail-back:hover,
+.detail-back:focus,
+.detail-back:active{
+  background:transparent !important;
+  background-color:transparent !important;
+  color:#e8cf87 !important;
+  border-radius:0 !important;
+  border-left:0 !important;
+  border-right:0 !important;
+  border-bottom:0 !important;
+  box-shadow:none !important;
+  -webkit-tap-highlight-color:transparent !important;
+  appearance:none !important;
+  -webkit-appearance:none !important;
+  font-family:Georgia,"Times New Roman",serif !important;
+  font-weight:600 !important;
+  letter-spacing:4px !important;
+}
+.detail-back:hover{
+  color:#fff0ae !important;
+  text-shadow:0 0 9px rgba(235,201,111,.24);
+}
+
+/* COLLECTION PRODUCT BACKGROUNDS — each collection keeps its own identity */
+.collection.royal .collection-grid.open{
+  background:
+    radial-gradient(circle at 50% 0%,rgba(120,58,109,.16),transparent 48%),
+    linear-gradient(180deg,#24112d,#130a19 82%,#080508) !important;
+}
+.collection.special .collection-grid.open{
+  background:
+    radial-gradient(circle at 50% 0%,rgba(40,83,117,.17),transparent 48%),
+    linear-gradient(180deg,#111a30,#0b1220 82%,#060910) !important;
+}
+.collection.natural .collection-grid.open{
+  background:
+    radial-gradient(circle at 50% 0%,rgba(43,103,68,.14),transparent 48%),
+    linear-gradient(180deg,#0f2017,#09150e 82%,#040907) !important;
+}
+.collection.hive .collection-grid.open{
+  background:
+    radial-gradient(circle at 50% 0%,rgba(147,103,30,.16),transparent 48%),
+    linear-gradient(180deg,#211808,#140d05 82%,#070503) !important;
+}
+
+/* Remove the blue/grey tap flash on mobile */
+.collection,
+.collection-header,
+.collection-icon,
+.collection-grid,
+.product-card{
+  -webkit-tap-highlight-color:transparent !important;
+}
+
+/* Keep the collection opening transition extremely short and elegant */
+.collection-grid{
+  animation:collectionOpen .08s ease-out !important;
+}
+
+
+/* FINAL COLLECTION / PRODUCT FINISH — lighter than the parent collection, with a very subtle gold luxury touch */
+.collection-grid.open .product-card{
+  background:linear-gradient(145deg,rgba(218,181,85,.045),rgba(0,0,0,.06)) !important;
+}
+.collection.royal .collection-grid.open .product-card{
+  background:
+    radial-gradient(circle at 18% 8%,rgba(225,181,88,.055),transparent 34%),
+    linear-gradient(145deg,rgba(92,48,104,.78),rgba(52,27,61,.72)) !important;
+}
+.collection.special .collection-grid.open .product-card{
+  background:
+    radial-gradient(circle at 18% 8%,rgba(225,181,88,.055),transparent 34%),
+    linear-gradient(145deg,rgba(48,72,110,.78),rgba(28,43,69,.72)) !important;
+}
+.collection.natural .collection-grid.open .product-card{
+  background:
+    radial-gradient(circle at 18% 8%,rgba(225,181,88,.05),transparent 34%),
+    linear-gradient(145deg,rgba(42,86,59,.78),rgba(22,47,31,.72)) !important;
+}
+.collection.hive .collection-grid.open .product-card{
+  background:
+    radial-gradient(circle at 18% 8%,rgba(245,211,125,.07),transparent 34%),
+    linear-gradient(145deg,rgba(101,75,27,.78),rgba(55,39,14,.72)) !important;
+}
+.collection, .collection-header, .collection-icon, .collection-grid, .product-card{
+  -webkit-tap-highlight-color:transparent !important;
+}
+.detail-back{
+  background:transparent !important;
+  background-color:transparent !important;
+  border-radius:0 !important;
+  -webkit-tap-highlight-color:transparent !important;
+  font-family:Georgia,"Times New Roman",serif !important;
+  color:#e8cf87 !important;
+}
+
+</style>
+</head>
+<body>
+<!-- GHF LUXURY BACKGROUND MUSIC
+     Place these two files beside this index in: audio/
+     audio/elegant-piano.mp3
+     audio/calm-piano.mp3
+-->
+<audio id="ghfBackgroundMusic" preload="auto" loop playsinline></audio>
+
+<div class="side-line left"></div>
+<div class="side-line right"></div>
+<!-- GHF MESSAGE -->
+<div class="ghf-message" id="ghfMessage">
+<span class="ghf-message-text">أربعة Collections… كنوزٌ من عالم العسل، صُمّمت لتكتشف مذاق الطبيعة بكل فخامتها.</span>
+</div>
+<!-- TOP BAR -->
+<header class="topbar">
+<div aria-label="Golden Honey Fusion" class="ghf-mark" onclick="showGHFMessage()">
+<span>GHF</span>
+</div>
+<button aria-label="Open menu" class="menu-btn" onclick="openMenu()">
+<span></span>
+<span></span>
+<span></span>
+</button>
+</header>
+<!-- MENU -->
+<div class="menu-overlay" id="menuOverlay">
+<button aria-label="Close menu" class="menu-close" onclick="closeMenu()">
+    ×
+  </button>
+<div class="menu-inner">
+<div class="menu-label">
+      GOLDEN HONEY FUSION
+    </div>
+<a class="menu-link" href="#home" onclick="closeMenu()">
+      HOME
+    </a>
+<a class="menu-link" href="#collections" onclick="closeMenu()">
+      COLLECTIONS
+    </a>
+<a class="menu-link" href="#world" onclick="closeMenu()">
+      OUR WORLD
+    </a>
+<a class="menu-link" href="#about" onclick="closeMenu()">
+      ABOUT US
+    </a>
+<a class="menu-link" href="#contact" onclick="closeMenu()">
+      CONTACT US
+    </a>
+</div>
+</div>
+<!-- HERO -->
+<section class="hero" id="home">
+<div class="hero-gold-floor"></div>
+<div class="hero-content">
+<div class="luxury-bee-wrap">
+<div class="luxury-bee">
+<svg aria-label="Golden Honey Fusion emblem" viewbox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<lineargradient id="beeGold" x1="0" x2="1" y1="0" y2="1">
+<stop offset="0%" stop-color="#493006"></stop>
+<stop offset="17%" stop-color="#95661a"></stop>
+<stop offset="34%" stop-color="#f0d47a"></stop>
+<stop offset="48%" stop-color="#fff0aa"></stop>
+<stop offset="62%" stop-color="#b17d20"></stop>
+<stop offset="80%" stop-color="#f1d174"></stop>
+<stop offset="100%" stop-color="#513307"></stop>
+</lineargradient>
+<lineargradient id="wingGold" x1="0" x2="1" y1="0" y2="1">
+<stop offset="0%" stop-color="#684712"></stop>
+<stop offset="35%" stop-color="#d0a447"></stop>
+<stop offset="57%" stop-color="#fff0a5"></stop>
+<stop offset="76%" stop-color="#9b6d1d"></stop>
+<stop offset="100%" stop-color="#4e3208"></stop>
+</lineargradient>
+<lineargradient id="edgeGold" x1="0" x2="1" y1="0" y2="0">
+<stop offset="0%" stop-color="#765014"></stop>
+<stop offset="50%" stop-color="#ffeaa0"></stop>
+<stop offset="100%" stop-color="#765014"></stop>
+</lineargradient>
+</defs>
+<g class="bee-wing bee-wing-left">
+<path d="M67 63
+                 C48 34 27 24 17 33
+                 C5 44 17 65 38 73
+                 C48 77 58 76 70 70
+                 Z" fill="url(#wingGold)" stroke="url(#edgeGold)" stroke-width="1.8"></path>
+<path d="M22 38 C38 43 49 53 60 67" fill="none" stroke="#f3d982" stroke-opacity=".42" stroke-width="1"></path>
+</g>
+<g class="bee-wing bee-wing-right">
+<path d="M93 63
+                 C112 34 133 24 143 33
+                 C155 44 143 65 122 73
+                 C112 77 102 76 90 70
+                 Z" fill="url(#wingGold)" stroke="url(#edgeGold)" stroke-width="1.8"></path>
+<path d="M138 38 C122 43 111 53 100 67" fill="none" stroke="#f3d982" stroke-opacity=".42" stroke-width="1"></path>
+</g>
+<polygon fill="url(#beeGold)" points="80,30 93,38 97,51 89,61 71,61 63,51 67,38" stroke="#efd17a" stroke-width="1.5"></polygon>
+<path d="M68 57
+               L92 57
+               L101 76
+               L96 103
+               L80 126
+               L64 103
+               L59 76
+               Z" fill="url(#beeGold)" stroke="#efd17a" stroke-width="1.6"></path>
+<path d="M62 73 L98 73" stroke="#543506" stroke-width="4"></path>
+<path d="M60 88 L100 88" stroke="#543506" stroke-width="4"></path>
+<path d="M64 102 L96 102" stroke="#543506" stroke-width="4"></path>
+<path d="M80 59 L80 121" stroke="#fff1ad" stroke-opacity=".35" stroke-width="1"></path>
+<polygon fill="url(#beeGold)" opacity=".95" points="64,103 80,126 96,103 88,109 80,113 72,109"></polygon>
+<path d="M70 36 C60 21 51 19 43 24" fill="none" stroke="#d7b45a" stroke-width="1.6"></path>
+<path d="M90 36 C100 21 109 19 117 24" fill="none" stroke="#d7b45a" stroke-width="1.6"></path>
+</svg>
+</div>
+</div>
+<div class="hero-kicker">
+      PREMIUM HONEY · BEE-DERIVED PRODUCTS
+    </div>
+<h1 class="hero-title">
+      GOLDEN
+    </h1>
+<div class="hero-subtitle">
+      HONEY FUSION
+    </div>
+<div class="hero-arabic">
+      عسل أصلي فاخر
+    </div>
+<div class="hero-line"></div>
+</div>
+</section>
+<!-- COLLECTIONS -->
+<section class="section collections" id="collections">
+<div class="container">
+<div class="section-heading">
+<div class="section-eyebrow">
+        DISCOVER THE COLLECTIONS
+      </div>
+<h2 class="section-title">
+        COLLECTIONS
+      </h2>
+<div class="section-title-line"></div>
+</div>
+<div class="collections-grid">
+<!-- ROYAL -->
+<div class="collection royal">
+<div class="collection-header" onclick="toggleCollection('royalGrid')">
+<div class="collection-icon">
+<svg height="60" viewbox="0 0 80 80" width="60">
+<defs>
+<lineargradient id="crownGold" x1="0" x2="1" y1="0" y2="1">
+<stop offset="0%" stop-color="#5a3b0b"></stop>
+<stop offset="18%" stop-color="#b8892e"></stop>
+<stop offset="34%" stop-color="#ffe89a"></stop>
+<stop offset="46%" stop-color="#fff6c8"></stop>
+<stop offset="58%" stop-color="#c89b39"></stop>
+<stop offset="74%" stop-color="#825a15"></stop>
+<stop offset="88%" stop-color="#f0d37b"></stop>
+<stop offset="100%" stop-color="#65430c"></stop>
+</lineargradient>
+<lineargradient id="crownEdge" x1="0" x2="1" y1="0" y2="0">
+<stop offset="0%" stop-color="#745014"></stop>
+<stop offset="50%" stop-color="#fff0a5"></stop>
+<stop offset="100%" stop-color="#745014"></stop>
+</lineargradient>
+<lineargradient id="crownBase" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#f3d982"></stop>
+<stop offset="35%" stop-color="#bd8e2e"></stop>
+<stop offset="100%" stop-color="#65420b"></stop>
+</lineargradient>
+<lineargradient id="diamondCrown" x1="0" x2="1" y1="0" y2="1">
+<stop offset="0%" stop-color="#8b6118"></stop>
+<stop offset="35%" stop-color="#fff4b8"></stop>
+<stop offset="50%" stop-color="#ffffff"></stop>
+<stop offset="65%" stop-color="#fff0a1"></stop>
+<stop offset="100%" stop-color="#8b6118"></stop>
+</lineargradient>
+<lineargradient id="crownShimmer" x1="0" x2="1" y1="0" y2="0"><stop offset="0%" stop-color="#fff" stop-opacity="0"></stop><stop offset="48%" stop-color="#fff8cf" stop-opacity="0"></stop><stop offset="50%" stop-color="#fff" stop-opacity="1"></stop><stop offset="52%" stop-color="#fff8cf" stop-opacity="0"></stop><stop offset="100%" stop-color="#fff" stop-opacity="0"></stop></lineargradient>
+<clippath id="crownClip">
+<path d="M18 27 L29 45 L40 23 L51 45 L62 27 L58 58 L22 58 Z"></path>
+</clippath>
+</defs>
+<path class="crown-depth" d="M18 27 L29 45 L40 23 L51 45 L62 27 L58 58 L22 58 Z"></path>
+<path class="crown-main" d="M18 27 L29 45 L40 23 L51 45 L62 27 L58 58 L22 58 Z"></path>
+<path class="crown-base" d="M22 58 H58 L52 63 H28 Z"></path>
+</svg>
+</div>
+<span aria-hidden="true" class="collection-diamond">◆</span>
+<div class="collection-name">
+            ROYAL COLLECTION
+          </div>
+<div class="collection-hint">
+</div>
+</div>
+<div class="collection-grid" id="royalGrid">
+<!-- WILD MOUNTAIN -->
+<div class="product-card" onclick="toggleProductDetail(this,event,'wildMountain')">
+<h3>WILD MOUNTAIN HONEY</h3>
+<div class="arabic">
+              عسل جبلي بري
+            </div>
+<div class="product-rule"></div>
+<div class="product-meta">
+              Premium Selection
+            </div>
+<div class="universal-detail">
+<div class="detail-tabs">
+<button class="detail-tab" onclick="showDetailPanel(this,'properties',event)">
+                  PROPERTIES
+                </button>
+<button class="detail-tab" onclick="showDetailPanel(this,'prices',event)">
+                  PRICES
+                </button>
+</div>
+<div class="detail-panel properties-panel">
+<div class="quality-stars">
+<span class="quality-star">★</span>
+<span class="quality-star">★</span>
+<span class="quality-star">★</span>
+<span class="quality-star">★</span>
+<span class="quality-star">★</span>
+</div>
+<div class="detail-property-label">
+                  QUALITY
+                </div>
+<div class="detail-property-text">
+                  أكثر من مجرد غذاء؛ كنز طبيعي من قلب الجبال، ينتجه النحل البري
+                  في المناطق المرتفعة، بعيداً عن المناحل التقليدية. طعم استثنائي
+                  ورائحة آسرة غير مألوفة، بشخصية قوية تحمل قوة الجبال.
+                </div>
+<div class="detail-property-label">
+                  ORIGIN
+                </div>
+<div class="detail-property-text">
+                  جبال جولفا – شرق تركيا
+                </div>
+<div class="detail-property-label">
+                  NATURE
+                </div>
+<div class="detail-property-text">
+                  عسل بري طبيعي 100%، يجمعه النحل البري من شقوق الصخور
+                  وجذوع الأشجار القديمة والكهوف في المناطق الجبلية المرتفعة.
+                </div>
+<div class="detail-property-label">
+                  TASTE
+                </div>
+<div class="detail-property-text">
+                  مذاق فريد وعميق وثقيل؛ طعمة غير معروفة من قبل،
+                  بطابع استثنائي وقوة واضحة مستمدة من الجبال.
+                </div>
+<div class="detail-property-label">
+                  AROMA
+                </div>
+<div class="detail-property-text">
+                  رائحة رائعة ومميزة، غير مألوفة، تعكس ثراء الطبيعة
+                  البرية وتمنح العسل شخصية فوق العادة.
+                </div>
+<div class="detail-property-label">
+                  ANTIOXIDANT PROFILE
+                </div>
+<div class="detail-property-text">
+                  يقدّم مركبات طبيعية مضادة للأكسدة، مع قيمة غذائية
+                  طبيعية مميزة مرتبطة بمصدره الجبلي البري.
+                </div>
+<div class="detail-property-label">
+                  NATURAL CHARACTER
+                </div>
+<div class="detail-property-text">
+                  دعم طبيعي للمناعة وراحة المعدة والهضم، مع شخصية غذائية
+                  فاخرة تحمل بصمة البيئة الجبلية التي ينتمي إليها.
+                </div>
+<button class="detail-back" onclick="closeProductDetail(this,event)">
+                  BACK
+                </button>
+</div>
+<div class="detail-panel prices-panel">
+<div class="detail-price-heading">
+                  SELECT YOUR SIZE
+                </div>
+<div class="detail-price-list">
+<button class="detail-price-option" data-price="$3" data-product="عسل جبلي بري" data-weight="30 G" onclick="selectUniversalPrice(this,event)">
+<span class="detail-radio"></span>
+<span class="detail-price-weight">
+                      30 G
+                    </span>
+<span class="detail-price-value">
+                      $3
+                    </span>
+</button>
+<button class="detail-price-option" data-price="$38" data-product="عسل جبلي بري" data-weight="500 G" onclick="selectUniversalPrice(this,event)">
+<span class="detail-radio"></span>
+<span class="detail-price-weight">
+                      500 G
+                    </span>
+<span class="detail-price-value">
+                      $38
+                    </span>
+</button>
+<button class="detail-price-option" data-price="$75" data-product="عسل جبلي بري" data-weight="1000 G" onclick="selectUniversalPrice(this,event)">
+<span class="detail-radio"></span>
+<span class="detail-price-weight">
+                      1000 G
+                    </span>
+<span class="detail-price-value">
+                      $75
+                    </span>
+</button>
+</div>
+<div class="whatsapp-purchase-note">
+                  اختر الحجم للشراء مباشرة عبر WhatsApp
+                </div>
+<button class="detail-back" onclick="closeProductDetail(this,event)">
+                  BACK
+                </button>
+</div>
+</div>
+</div>
+<!-- BLACK SEED -->
+<div class="product-card" onclick="toggleProductDetail(this,event,'blackSeed')">
+<h3>BLACK SEED HONEY</h3>
+<div class="arabic">
+              عسل حبة البركة
+            </div>
+<div class="product-rule"></div>
+<div class="product-meta">
+              Signature Selection
+            </div>
+<div class="universal-detail">
+<div class="detail-tabs">
+<button class="detail-tab" onclick="showDetailPanel(this,'properties',event)">
+                  PROPERTIES
+                </button>
+<button class="detail-tab" onclick="showDetailPanel(this,'prices',event)">
+                  PRICES
+                </button>
+</div>
+<div class="detail-panel properties-panel">
+<div class="quality-stars">
+<span class="quality-star">★</span>
+<span class="quality-star">★</span>
+<span class="quality-star">★</span>
+<span class="quality-star">★</span>
+<span class="quality-star">★</span>
+</div>
+<div class="detail-property-label">QUALITY</div>
+<div class="detail-property-text">
+                  طعم ثقيل وفاخر، ورائحة مميزة. يحتوي على مركبات نباتية نشطة
+                  مثل الثيموكينون والفلافونويدات، مع خصائص طبيعية مضادة للأكسدة.
+                  يدعم المناعة، وصحة الهضم والقلب، ويساعد على راحة الجهاز التنفسي
+                  وتهدئة السعال وتهيّج الحلق، مع دعم الجسم خلال الحساسية الموسمية.
+                </div>
+<div class="detail-property-label">ORIGIN</div>
+<div class="detail-property-text">
+                  جبال غرب باكستان
+                </div>
+<button class="detail-back" onclick="closeProductDetail(this,event)">
+                  BACK
+                </button>
+</div>
+<div class="detail-panel prices-panel">
+<div class="detail-price-heading">
+                  AVAILABLE SIZES
+                </div>
+<div class="detail-price-list">
+<button class="detail-price-option" data-price="$2" data-product="عسل حبة البركة" data-weight="30 G" onclick="selectUniversalPrice(this,event)">
+<span class="detail-radio"></span>
+<span class="detail-price-weight">30 G</span>
+<span class="detail-price-value">$2</span>
+</button>
+<button class="detail-price-option" data-price="$25" data-product="عسل حبة البركة" data-weight="500 G" onclick="selectUniversalPrice(this,event)">
+<span class="detail-radio"></span>
+<span class="detail-price-weight">500 G</span>
+<span class="detail-price-value">$25</span>
+</button>
+<button class="detail-price-option" data-price="$50" data-product="عسل حبة البركة" data-weight="1000 G" onclick="selectUniversalPrice(this,event)">
+<span class="detail-radio"></span>
+<span class="detail-price-weight">1000 G</span>
+<span class="detail-price-value">$50</span>
+</button>
+</div>
+<div class="whatsapp-purchase-note">
+                  اختر الحجم للتواصل والطلب عبر WhatsApp
+                </div>
+<button class="detail-back" onclick="closeProductDetail(this,event)">
+                  BACK
+                </button>
+</div>
+</div>
+</div>
+<!-- BLACK SIDR -->
+<div class="product-card" onclick="toggleProductDetail(this,event,'blackSidr')">
+<h3>ROYAL SIDR HONEY</h3>
+<div class="arabic">
+              عسل السدر الملكي
+            </div>
+<div class="product-rule"></div>
+<div class="product-meta">
+              Rare Selection
+            </div>
+<div class="universal-detail">
+<div class="detail-tabs">
+<button class="detail-tab" onclick="showDetailPanel(this,'properties',event)">
+                  PROPERTIES
+                </button>
+<button class="detail-tab" onclick="showDetailPanel(this,'prices',event)">
+                  PRICES
+                </button>
+</div>
+<div class="detail-panel properties-panel">
+<div class="quality-stars">
+<span class="quality-star">★</span>
+<span class="quality-star">★</span>
+<span class="quality-star">★</span>
+<span class="quality-star">★</span>
+<span class="quality-star">★</span>
+</div>
+<div class="detail-property-label">QUALITY</div>
+<div class="detail-property-text">
+                  يتم تحديد التفاصيل الخاصة بهذا النوع لاحقاً.
+                </div>
+<div class="detail-property-label">ORIGIN</div>
+<div class="detail-property-text">
+                  سيتم تحديد المصدر لاحقاً.
+                </div>
+<button class="detail-back" onclick="closeProductDetail(this,event)">
+                  BACK
+                </button>
+</div>
+<div class="detail-panel prices-panel">
+<div class="detail-price-heading">
+                  AVAILABLE SIZES
+                </div>
+<div class="detail-price-list">
+<button class="detail-price-option" data-price="$2" data-product="عسل السدر الملكي" data-weight="30 G" onclick="selectUniversalPrice(this,event)">
+<span class="detail-radio"></span>
+<span class="detail-price-weight">30 G</span>
+<span class="detail-price-value">$2</span>
+</button>
+<button class="detail-price-option" data-price="$25" data-product="عسل السدر الملكي" data-weight="500 G" onclick="selectUniversalPrice(this,event)">
+<span class="detail-radio"></span>
+<span class="detail-price-weight">500 G</span>
+<span class="detail-price-value">$25</span>
+</button>
+<button class="detail-price-option" data-price="$50" data-product="عسل السدر الملكي" data-weight="1000 G" onclick="selectUniversalPrice(this,event)">
+<span class="detail-radio"></span>
+<span class="detail-price-weight">1000 G</span>
+<span class="detail-price-value">$50</span>
+</button>
+</div>
+<div class="whatsapp-purchase-note">
+                  اختر الحجم للتواصل والطلب عبر WhatsApp
+                </div>
+<button class="detail-back" onclick="closeProductDetail(this,event)">
+                  BACK
+                </button>
+</div>
+</div>
+</div>
+<!-- BLACK MOUNTAIN -->
+<div class="product-card" onclick="toggleProductDetail(this,event,'blackMountain')">
+<h3>BLACK MOUNTAIN HONEY</h3>
+<div class="arabic">
+              عسل جبلي أسود
+            </div>
+<div class="product-rule"></div>
+<div class="product-meta">
+              Exceptional Selection
+            </div>
+<div class="universal-detail">
+<div class="detail-tabs">
+<button class="detail-tab" onclick="showDetailPanel(this,'properties',event)">
+                  PROPERTIES
+                </button>
+<button class="detail-tab" onclick="showDetailPanel(this,'prices',event)">
+                  PRICES
+                </button>
+</div>
+<div class="detail-panel properties-panel">
+<div class="quality-stars">
+<span class="quality-star">★</span>
+<span class="quality-star">★</span>
+<span class="quality-star">★</span>
+<span class="quality-star">★</span>
+<span class="quality-star">★</span>
+</div>
+<div class="detail-property-label">QUALITY</div>
+<div class="detail-property-text">
+                  يتم تحديد التفاصيل الخاصة بهذا النوع لاحقاً.
+                </div>
+<div class="detail-property-label">ORIGIN</div>
+<div class="detail-property-text">
+                  سيتم تحديد المصدر لاحقاً.
+                </div>
+<button class="detail-back" onclick="closeProductDetail(this,event)">
+                  BACK
+                </button>
+</div>
+<div class="detail-panel prices-panel">
+<div class="detail-price-heading">
+                  AVAILABLE SIZES
+                </div>
+<div class="detail-price-list">
+<button class="detail-price-option" data-price="$2" data-product="عسل جبلي أسود" data-weight="30 G" onclick="selectUniversalPrice(this,event)">
+<span class="detail-radio"></span>
+<span class="detail-price-weight">30 G</span>
+<span class="detail-price-value">$2</span>
+</button>
+<button class="detail-price-option" data-price="$25" data-product="عسل جبلي أسود" data-weight="500 G" onclick="selectUniversalPrice(this,event)">
+<span class="detail-radio"></span>
+<span class="detail-price-weight">500 G</span>
+<span class="detail-price-value">$25</span>
+</button>
+<button class="detail-price-option" data-price="$50" data-product="عسل جبلي أسود" data-weight="1000 G" onclick="selectUniversalPrice(this,event)">
+<span class="detail-radio"></span>
+<span class="detail-price-weight">1000 G</span>
+<span class="detail-price-value">$50</span>
+</button>
+</div>
+<div class="whatsapp-purchase-note">
+                  اختر الحجم للتواصل والطلب عبر WhatsApp
+                </div>
+<button class="detail-back" onclick="closeProductDetail(this,event)">
+                  BACK
+                </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- SPECIAL -->
+<div class="collection special">
+<div class="collection-header" onclick="toggleCollection('specialGrid')">
+<div class="collection-icon">
+<svg height="58" viewbox="0 0 80 80" width="58">
+<defs>
+<lineargradient id="starGold" x1="0" x2="1" y1="0" y2="1">
+<stop offset="0%" stop-color="#5b3c0b"></stop>
+<stop offset="18%" stop-color="#b8892f"></stop>
+<stop offset="34%" stop-color="#ffe89a"></stop>
+<stop offset="46%" stop-color="#fff6c9"></stop>
+<stop offset="58%" stop-color="#c89b3a"></stop>
+<stop offset="74%" stop-color="#825b16"></stop>
+<stop offset="89%" stop-color="#f0d47d"></stop>
+<stop offset="100%" stop-color="#65430d"></stop>
+</lineargradient>
+<lineargradient id="starEdge" x1="0" x2="1" y1="0" y2="0">
+<stop offset="0%" stop-color="#765114"></stop>
+<stop offset="50%" stop-color="#fff0a5"></stop>
+<stop offset="100%" stop-color="#765114"></stop>
+</lineargradient>
+<radialgradient cx="50%" cy="40%" id="starCore" r="65%">
+<stop offset="0%" stop-color="#fff0a0"></stop>
+<stop offset="45%" stop-color="#d4ac4c"></stop>
+<stop offset="100%" stop-color="#765014"></stop>
+</radialgradient>
+<lineargradient id="starShimmer" x1="0" x2="1" y1="0" y2="0">
+<stop offset="0%" stop-color="#fff" stop-opacity="0"></stop>
+<stop offset="47%" stop-color="#fff8d0" stop-opacity="0"></stop>
+<stop offset="50%" stop-color="#fff" stop-opacity=".95"></stop>
+<stop offset="53%" stop-color="#fff8d0" stop-opacity="0"></stop>
+<stop offset="100%" stop-color="#fff" stop-opacity="0"></stop>
+</lineargradient>
+<clippath id="starClip">
+<path d="M40 8 L47.6 29.5 L70.4 30.1 L52.2 43.8 L58.2 65.9 L40 53 L21.8 65.9 L27.8 43.8 L9.6 30.1 L32.4 29.5 Z"></path>
+</clippath>
+</defs>
+<path class="star-depth" d="M40 8
+                   L47.6 29.5
+                   L70.4 30.1
+                   L52.2 43.8
+                   L58.2 65.9
+                   L40 53
+                   L21.8 65.9
+                   L27.8 43.8
+                   L9.6 30.1
+                   L32.4 29.5
+                   Z"></path>
+<path class="star-main" d="M40 8
+                   L47.6 29.5
+                   L70.4 30.1
+                   L52.2 43.8
+                   L58.2 65.9
+                   L40 53
+                   L21.8 65.9
+                   L27.8 43.8
+                   L9.6 30.1
+                   L32.4 29.5
+                   Z"></path>
+<circle class="star-core" cx="40" cy="40" r="3"></circle>
+</svg>
+</div>
+<span aria-hidden="true" class="collection-diamond">◆</span>
+<div class="collection-name">
+            SPECIAL COLLECTION
+          </div>
+<div class="collection-hint">
+</div>
+</div>
+<div class="collection-grid" id="specialGrid">
+<!-- GOLDEN BALANCE -->
+<div class="product-card" onclick="toggleProductDetail(this,event,'goldenBalance')">
+<h3>GOLDEN BALANCE</h3>
+<div class="arabic">توازن ذهبي</div>
+<div class="product-rule"></div>
+<div class="product-meta">Signature Blend</div>
+<div class="universal-detail">
+<div class="detail-tabs">
+<button class="detail-tab" onclick="showDetailPanel(this,'properties',event)">
+                  PROPERTIES
+                </button>
+<button class="detail-tab" onclick="showDetailPanel(this,'prices',event)">
+                  PRICES
+                </button>
+</div>
+<div class="detail-panel properties-panel">
+<div class="quality-stars">
+<span class="quality-star">★</span>
+<span class="quality-star">★</span>
+<span class="quality-star">★</span>
+<span class="quality-star">★</span>
+<span class="quality-star partial" style="--fill:75%">★</span>
+</div>
+<div class="detail-property-label">QUALITY</div>
+<div class="detail-property-text">
+                  تفاصيل الخصائص والفوائد سيتم تحديدها لاحقاً.
+                </div>
+<div class="detail-property-label">ORIGIN</div>
+<div class="detail-property-text">
+                  سيتم تحديد المصدر لاحقاً.
+                </div>
+<button class="detail-back" onclick="closeProductDetail(this,event)">
+                  BACK
+                </button>
+</div>
+<div class="detail-panel prices-panel">
+<div class="detail-price-heading">AVAILABLE SIZES</div>
+<div class="detail-price-list">
+<button class="detail-price-option" data-price="2 $" data-product="توازن ذهبي" data-weight="30 G" onclick="selectUniversalPrice(this,event)">
+<span class="detail-radio"></span>
+<span class="detail-price-weight">30 G</span>
+<span class="detail-price-value">2 $</span>
+</button>
+<button class="detail-price-option" data-price="25$" data-product="توازن ذهبي" data-weight="500 G" onclick="selectUniversalPrice(this,event)">
+<span class="detail-radio"></span>
+<span class="detail-price-weight">500 G</span>
+<span class="detail-price-value">25$</span>
+</button>
+<button class="detail-price-option" data-price="50$" data-product="توازن ذهبي" data-weight="1000 G" onclick="selectUniversalPrice(this,event)">
+<span class="detail-radio"></span>
+<span class="detail-price-weight">1000 G</span>
+<span class="detail-price-value">50$</span>
+</button>
+</div>
+<div class="whatsapp-purchase-note">
+                  اختر الحجم للتواصل والطلب عبر WhatsApp
+                </div>
+<button class="detail-back" onclick="closeProductDetail(this,event)">
+                  BACK
+                </button>
+</div>
+</div>
+</div>
+
+<!-- THYME -->
+<div class="product-card" onclick="toggleProductDetail(this,event,'thyme')">
+<h3>THYME HONEY</h3>
+<div class="arabic">عسل الزعتر</div>
+<div class="product-rule"></div>
+<div class="product-meta">Distinctive Origin</div>
+<div class="universal-detail">
+<div class="detail-tabs">
+<button class="detail-tab" onclick="showDetailPanel(this,'properties',event)">
+                  PROPERTIES
+                </button>
+<button class="detail-tab" onclick="showDetailPanel(this,'prices',event)">
+                  PRICES
+                </button>
+</div>
+<div class="detail-panel properties-panel">
+<div class="quality-stars">
+<span class="quality-star">★</span>
+<span class="quality-star">★</span>
+<span class="quality-star">★</span>
+<span class="quality-star">★</span>
+<span class="quality-star partial" style="--fill:75%">★</span>
+</div>
+<div class="detail-property-label">QUALITY</div>
+<div class="detail-property-text">
+                  تفاصيل الخصائص والفوائد سيتم تحديدها لاحقاً.
+                </div>
+<div class="detail-property-label">ORIGIN</div>
+<div class="detail-property-text">
+                  سيتم تحديد المصدر لاحقاً.
+                </div>
+<button class="detail-back" onclick="closeProductDetail(this,event)">
+                  BACK
+                </button>
+</div>
+<div class="detail-panel prices-panel">
+<div class="detail-price-heading">AVAILABLE SIZES</div>
+<div class="detail-price-list">
+<button class="detail-price-option" data-price="2$" data-product="عسل الزعتر" data-weight="30 G" onclick="selectUniversalPrice(this,event)">
+<span class="detail-radio"></span>
+<span class="detail-price-weight">30 G</span>
+<span class="detail-price-value">2$</span>
+</button>
+<button class="detail-price-option" data-price="15$" data-product="عسل الزعتر" data-weight="500 G" onclick="selectUniversalPrice(this,event)">
+<span class="detail-radio"></span>
+<span class="detail-price-weight">500 G</span>
+<span class="detail-price-value">15$</span>
+</button>
+<button class="detail-price-option" data-price="30$" data-product="عسل الزعتر" data-weight="1000 G" onclick="selectUniversalPrice(this,event)">
+<span class="detail-radio"></span>
+<span class="detail-price-weight">1000 G</span>
+<span class="detail-price-value">30$</span>
+</button>
+</div>
+<div class="whatsapp-purchase-note">
+                  اختر الحجم للتواصل والطلب عبر WhatsApp
+                </div>
+<button class="detail-back" onclick="closeProductDetail(this,event)">
+                  BACK
+                </button>
+</div>
+</div>
+</div>
+<!-- GOLDEN SUN -->
+<div class="product-card" onclick="toggleProductDetail(this,event,'goldenSun')">
+<h3>GOLDEN SUN HONEY</h3>
+<div class="arabic">عسل شرف الشمس</div>
+<div class="product-rule"></div>
+<div class="product-meta">Golden Selection</div>
+<div class="universal-detail">
+<div class="detail-tabs">
+<button class="detail-tab" onclick="showDetailPanel(this,'properties',event)">
+                  PROPERTIES
+                </button>
+<button class="detail-tab" onclick="showDetailPanel(this,'prices',event)">
+                  PRICES
+                </button>
+</div>
+<div class="detail-panel properties-panel">
+<div class="quality-stars">
+<span class="quality-star">★</span>
+<span class="quality-star">★</span>
+<span class="quality-star">★</span>
+<span class="quality-star">★</span>
+<span class="quality-star partial" style="--fill:75%">★</span>
+</div>
+<div class="detail-property-label">QUALITY</div>
+<div class="detail-property-text">
+                  تفاصيل الخصائص والفوائد سيتم تحديدها لاحقاً.
+                </div>
+<div class="detail-property-label">ORIGIN</div>
+<div class="detail-property-text">
+                  سيتم تحديد المصدر لاحقاً.
+                </div>
+<button class="detail-back" onclick="closeProductDetail(this,event)">
+                  BACK
+                </button>
+</div>
+<div class="detail-panel prices-panel">
+<div class="detail-price-heading">AVAILABLE SIZES</div>
+<div class="detail-price-list">
+<button class="detail-price-option" data-price="2 $" data-product="عسل شرف الشمس" data-weight="30 G" onclick="selectUniversalPrice(this,event)">
+<span class="detail-radio"></span>
+<span class="detail-price-weight">30 G</span>
+<span class="detail-price-value">2 $</span>
+</button>
+<button class="detail-price-option" data-price="25$" data-product="عسل شرف الشمس" data-weight="500 G" onclick="selectUniversalPrice(this,event)">
+<span class="detail-radio"></span>
+<span class="detail-price-weight">500 G</span>
+<span class="detail-price-value">25$</span>
+</button>
+<button class="detail-price-option" data-price="50$" data-product="عسل شرف الشمس" data-weight="1000 G" onclick="selectUniversalPrice(this,event)">
+<span class="detail-radio"></span>
+<span class="detail-price-weight">1000 G</span>
+<span class="detail-price-value">50$</span>
+</button>
+</div>
+<div class="whatsapp-purchase-note">
+                  اختر الحجم للتواصل والطلب عبر WhatsApp
+                </div>
+<button class="detail-back" onclick="closeProductDetail(this,event)">
+                  BACK
+                </button>
+</div>
+</div>
+</div>
+<!-- CRIMSON SIDR -->
+<div class="product-card" onclick="toggleProductDetail(this,event,'crimsonSidr')">
+<h3>CRIMSON SIDR HONEY</h3>
+<div class="arabic">عسل السدر الأحمر</div>
+<div class="product-rule"></div>
+<div class="product-meta">Premium Selection</div>
+<div class="universal-detail">
+<div class="detail-tabs">
+<button class="detail-tab" onclick="showDetailPanel(this,'properties',event)">
+                  PROPERTIES
+                </button>
+<button class="detail-tab" onclick="showDetailPanel(this,'prices',event)">
+                  PRICES
+                </button>
+</div>
+<div class="detail-panel properties-panel">
+<div class="quality-stars">
+<span class="quality-star">★</span>
+<span class="quality-star">★</span>
+<span class="quality-star">★</span>
+<span class="quality-star">★</span>
+<span class="quality-star partial" style="--fill:75%">★</span>
+</div>
+<div class="detail-property-label">QUALITY</div>
+<div class="detail-property-text">
+                  تفاصيل الخصائص والفوائد سيتم تحديدها لاحقاً.
+                </div>
+<div class="detail-property-label">ORIGIN</div>
+<div class="detail-property-text">
+                  سيتم تحديد المصدر لاحقاً.
+                </div>
+<button class="detail-back" onclick="closeProductDetail(this,event)">
+                  BACK
+                </button>
+</div>
+<div class="detail-panel prices-panel">
+<div class="detail-price-heading">AVAILABLE SIZES</div>
+<div class="detail-price-list">
+<button class="detail-price-option" data-price="2 $" data-product="عسل السدر الأحمر" data-weight="30 G" onclick="selectUniversalPrice(this,event)">
+<span class="detail-radio"></span>
+<span class="detail-price-weight">30 G</span>
+<span class="detail-price-value">2 $</span>
+</button>
+<button class="detail-price-option" data-price="20$" data-product="عسل السدر الأحمر" data-weight="500 G" onclick="selectUniversalPrice(this,event)">
+<span class="detail-radio"></span>
+<span class="detail-price-weight">500 G</span>
+<span class="detail-price-value">20$</span>
+</button>
+<button class="detail-price-option" data-price="40$" data-product="عسل السدر الأحمر" data-weight="1000 G" onclick="selectUniversalPrice(this,event)">
+<span class="detail-radio"></span>
+<span class="detail-price-weight">1000 G</span>
+<span class="detail-price-value">40$</span>
+</button>
+</div>
+<div class="whatsapp-purchase-note">
+                  اختر الحجم للتواصل والطلب عبر WhatsApp
+                </div>
+<button class="detail-back" onclick="closeProductDetail(this,event)">
+                  BACK
+                </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- NATURAL -->
+<div class="collection natural">
+<div class="collection-header" onclick="toggleCollection('naturalGrid')">
+<div class="collection-icon">
+<svg height="62" viewbox="0 0 80 80" width="62">
+<path d="M40 65 C39 47 34 30 22 17" fill="none" stroke="#597a5b" stroke-width="2"></path>
+<path d="M37 45 C23 43 15 35 14 23 C26 22 37 29 39 40" fill="#31563a" stroke="#75956e" stroke-width="1"></path>
+<path d="M42 52 C54 49 63 41 65 30 C53 29 43 36 41 46" fill="#284c33" stroke="#708f68" stroke-width="1"></path>
+</svg>
+</div>
+<div class="collection-name">
+            NATURAL COLLECTION
+          </div>
+<div class="collection-hint">
+</div>
+</div>
+<div class="collection-grid" id="naturalGrid"><!-- HONEYCOMB -->
+<div class="product-card" onclick="toggleProductDetail(this,event,'honeycomb')">
+<h3>HONEYCOMB HONEY</h3>
+<div class="arabic">عسل بشهده</div>
+<div class="product-rule"></div>
+<div class="product-meta">Pure Comb Selection</div>
+<div class="universal-detail">
+<div class="detail-tabs">
+<button class="detail-tab" onclick="showDetailPanel(this,'properties',event)">
+                  PROPERTIES
+                </button>
+<button class="detail-tab" onclick="showDetailPanel(this,'prices',event)">
+                  PRICES
+                </button>
+</div>
+<div class="detail-panel properties-panel">
+<div class="quality-stars">
+<span class="quality-star">★</span>
+<span class="quality-star">★</span>
+<span class="quality-star">★</span>
+<span class="quality-star">★</span>
+<span class="quality-star partial" style="--fill:50%">★</span>
+</div>
+<div class="detail-property-label">QUALITY</div>
+<div class="detail-property-text">
+                  تفاصيل الخصائص والفوائد سيتم تحديدها لاحقاً.
+                </div>
+<div class="detail-property-label">ORIGIN</div>
+<div class="detail-property-text">
+                  سيتم تحديد المصدر لاحقاً.
+                </div>
+<button class="detail-back" onclick="closeProductDetail(this,event)">
+                  BACK
+                </button>
+</div>
+<div class="detail-panel prices-panel">
+<div class="detail-price-heading">AVAILABLE SIZES</div>
+<div class="detail-price-list">
+<button class="detail-price-option" data-price="18$" data-product="عسل بشهده" data-weight="500 G" onclick="selectUniversalPrice(this,event)">
+<span class="detail-radio"></span>
+<span class="detail-price-weight">500 G</span>
+<span class="detail-price-value">18$</span>
+</button>
+<button class="detail-price-option" data-price="35$" data-product="عسل بشهده" data-weight="1000 G" onclick="selectUniversalPrice(this,event)">
+<span class="detail-radio"></span>
+<span class="detail-price-weight">1000 G</span>
+<span class="detail-price-value">35$</span>
+</button>
+</div>
+<div class="whatsapp-purchase-note">
+                  اختر الحجم للتواصل والطلب عبر WhatsApp
+                </div>
+<button class="detail-back" onclick="closeProductDetail(this,event)">
+                  BACK
+                </button>
+</div>
+</div>
+</div>
+<!-- THORNS -->
+<div class="product-card" onclick="toggleProductDetail(this,event,'thorns')">
+<h3>THORNS HONEY</h3>
+<div class="arabic">عسل الأشواك</div>
+<div class="product-rule"></div>
+<div class="product-meta">Natural Origin</div>
+<div class="universal-detail">
+<div class="detail-tabs">
+<button class="detail-tab" onclick="showDetailPanel(this,'properties',event)">
+                  PROPERTIES
+                </button>
+<button class="detail-tab" onclick="showDetailPanel(this,'prices',event)">
+                  PRICES
+                </button>
+</div>
+<div class="detail-panel properties-panel">
+<div class="quality-stars">
+<span class="quality-star">★</span>
+<span class="quality-star">★</span>
+<span class="quality-star">★</span>
+<span class="quality-star">★</span>
+<span class="quality-star partial" style="--fill:50%">★</span>
+</div>
+<div class="detail-property-label">QUALITY</div>
+<div class="detail-property-text">
+                  تفاصيل الخصائص والفوائد سيتم تحديدها لاحقاً.
+                </div>
+<div class="detail-property-label">ORIGIN</div>
+<div class="detail-property-text">
+                  سيتم تحديد المصدر لاحقاً.
+                </div>
+<button class="detail-back" onclick="closeProductDetail(this,event)">
+                  BACK
+                </button>
+</div>
+<div class="detail-panel prices-panel">
+<div class="detail-price-heading">AVAILABLE SIZES</div>
+<div class="detail-price-list">
+<button class="detail-price-option" data-price="1.5$" data-product="عسل الأشواك" data-weight="30 G" onclick="selectUniversalPrice(this,event)">
+<span class="detail-radio"></span>
+<span class="detail-price-weight">30 G</span>
+<span class="detail-price-value">1.5$</span>
+</button>
+<button class="detail-price-option" data-price="15$" data-product="عسل الأشواك" data-weight="500 G" onclick="selectUniversalPrice(this,event)">
+<span class="detail-radio"></span>
+<span class="detail-price-weight">500 G</span>
+<span class="detail-price-value">15$</span>
+</button>
+<button class="detail-price-option" data-price="30$" data-product="عسل الأشواك" data-weight="1000 G" onclick="selectUniversalPrice(this,event)">
+<span class="detail-radio"></span>
+<span class="detail-price-weight">1000 G</span>
+<span class="detail-price-value">30$</span>
+</button>
+</div>
+<div class="whatsapp-purchase-note">
+                  اختر الحجم للتواصل والطلب عبر WhatsApp
+                </div>
+<button class="detail-back" onclick="closeProductDetail(this,event)">
+                  BACK
+                </button>
+</div>
+</div>
+</div>
+<!-- FORTY HERB -->
+<div class="product-card" onclick="toggleProductDetail(this,event,'fortyHerb')">
+<h3>FORTY HERB HONEY</h3>
+<div class="arabic">عسل 40 نبتة</div>
+<div class="product-rule"></div>
+<div class="product-meta">Botanical Selection</div>
+<div class="universal-detail">
+<div class="detail-tabs">
+<button class="detail-tab" onclick="showDetailPanel(this,'properties',event)">
+                  PROPERTIES
+                </button>
+<button class="detail-tab" onclick="showDetailPanel(this,'prices',event)">
+                  PRICES
+                </button>
+</div>
+<div class="detail-panel properties-panel">
+<div class="quality-stars">
+<span class="quality-star">★</span>
+<span class="quality-star">★</span>
+<span class="quality-star">★</span>
+<span class="quality-star">★</span>
+<span class="quality-star partial" style="--fill:50%">★</span>
+</div>
+<div class="detail-property-label">QUALITY</div>
+<div class="detail-property-text">
+                  تفاصيل الخصائص والفوائد سيتم تحديدها لاحقاً.
+                </div>
+<div class="detail-property-label">ORIGIN</div>
+<div class="detail-property-text">
+                  سيتم تحديد المصدر لاحقاً.
+                </div>
+<button class="detail-back" onclick="closeProductDetail(this,event)">
+                  BACK
+                </button>
+</div>
+<div class="detail-panel prices-panel">
+<div class="detail-price-heading">AVAILABLE SIZES</div>
+<div class="detail-price-list">
+<button class="detail-price-option" data-price="1.5$" data-product="عسل 40 نبتة" data-weight="30 G" onclick="selectUniversalPrice(this,event)">
+<span class="detail-radio"></span>
+<span class="detail-price-weight">30 G</span>
+<span class="detail-price-value">1.5$</span>
+</button>
+<button class="detail-price-option" data-price="16$" data-product="عسل 40 نبتة" data-weight="500 G" onclick="selectUniversalPrice(this,event)">
+<span class="detail-radio"></span>
+<span class="detail-price-weight">500 G</span>
+<span class="detail-price-value">16$</span>
+</button>
+<button class="detail-price-option" data-price="35$" data-product="عسل 40 نبتة" data-weight="1000 G" onclick="selectUniversalPrice(this,event)">
+<span class="detail-radio"></span>
+<span class="detail-price-weight">1000 G</span>
+<span class="detail-price-value">35$</span>
+</button>
+</div>
+<div class="whatsapp-purchase-note">
+                  اختر الحجم للتواصل والطلب عبر WhatsApp
+                </div>
+<button class="detail-back" onclick="closeProductDetail(this,event)">
+                  BACK
+                </button>
+</div>
+</div>
+</div>
+<div class="product-card" onclick="toggleProductDetail(this,event,'lemonHoney')">
+<h3>LEMON HONEY</h3>
+<div class="arabic">عسل الليمون</div>
+<div class="product-rule"></div>
+<div class="product-meta">Natural Selection</div>
+<div class="universal-detail">
+<div class="detail-tabs">
+<button class="detail-tab" onclick="showDetailPanel(this,'properties',event)">
+              PROPERTIES
+            </button>
+<button class="detail-tab" onclick="showDetailPanel(this,'prices',event)">
+              PRICES
+            </button>
+</div>
+<div class="detail-panel properties-panel">
+<div class="quality-stars">
+<span class="quality-star">★</span>
+<span class="quality-star">★</span>
+<span class="quality-star">★</span>
+<span class="quality-star">★</span>
+<span class="quality-star">★</span>
+</div>
+<div class="detail-property-label">QUALITY</div>
+<div class="detail-property-text">
+              نكهة طبيعية منعشة بعطر مميز ولمسة حمضية أنيقة.
+            </div>
+<div class="detail-property-label">ORIGIN</div>
+<div class="detail-property-text">
+              Natural Selection
+            </div>
+<button class="detail-back" onclick="closeProductDetail(this,event)">BACK</button>
+</div>
+<div class="detail-panel prices-panel">
+<div class="detail-price-heading">AVAILABLE SIZES</div>
+<div class="detail-price-list">
+<button class="detail-price-option" data-price="1.5$" data-product="عسل الليمون" data-weight="30 G" onclick="selectUniversalPrice(this,event)">
+<span class="detail-radio"></span>
+<span class="detail-price-weight">30 G</span>
+<span class="detail-price-value">1.5$</span>
+</button>
+<button class="detail-price-option" data-price="14$" data-product="عسل الليمون" data-weight="500 G" onclick="selectUniversalPrice(this,event)">
+<span class="detail-radio"></span>
+<span class="detail-price-weight">500 G</span>
+<span class="detail-price-value">14$</span>
+</button>
+<button class="detail-price-option" data-price="28$" data-product="عسل الليمون" data-weight="1000 G" onclick="selectUniversalPrice(this,event)">
+<span class="detail-radio"></span>
+<span class="detail-price-weight">1000 G</span>
+<span class="detail-price-value">28$</span>
+</button>
+</div>
+<div class="whatsapp-purchase-note">
+              اختر الحجم للتواصل والطلب عبر WhatsApp
+            </div>
+<button class="detail-back" onclick="closeProductDetail(this,event)">BACK</button>
+</div>
+</div>
+</div></div>
+</div>
+<!-- LEMON HONEY -->
+
+<!-- HIVE ESSENCE -->
+<div class="collection hive">
+<div class="collection-header" onclick="toggleCollection('hiveGrid')">
+<div class="collection-icon">
+<svg height="60" viewbox="0 0 80 80" width="60">
+<polygon fill="none" points="40,9 57,19 57,39 40,49 23,39 23,19" stroke="#c8a14b" stroke-width="1.8"></polygon>
+<polygon fill="none" points="40,31 57,41 57,61 40,71 23,61 23,41" stroke="#8c681e" stroke-width="1.4"></polygon>
+<path d="M34 25 L40 21 L46 25 L44 31 L36 31 Z" fill="#d7b15b"></path>
+</svg>
+</div>
+<div class="collection-name">
+            HIVE ESSENCE
+          </div>
+<div class="collection-hint">
+</div>
+</div>
+<div class="collection-grid" id="hiveGrid">
+<!-- POLLEN -->
+<div class="product-card" onclick="toggleProductDetail(this,event,'pollen')">
+<h3>BEE POLLEN</h3>
+<div class="arabic">حبوب اللقاح</div>
+<div class="product-rule"></div>
+<div class="product-meta">Bee-Derived Essence</div>
+<div class="universal-detail">
+<div class="detail-tabs">
+<button class="detail-tab" onclick="showDetailPanel(this,'properties',event)">
+                  PROPERTIES
+                </button>
+<button class="detail-tab" onclick="showDetailPanel(this,'prices',event)">
+                  PRICES
+                </button>
+</div>
+<div class="detail-panel properties-panel">
+<div class="quality-stars">
+<span class="quality-star">★</span>
+<span class="quality-star">★</span>
+<span class="quality-star">★</span>
+<span class="quality-star">★</span>
+<span class="quality-star">★</span>
+</div>
+<div class="detail-property-label">QUALITY</div>
+<div class="detail-property-text">
+                  تفاصيل الخصائص والفوائد سيتم تحديدها لاحقاً.
+                </div>
+<div class="detail-property-label">ORIGIN</div>
+<div class="detail-property-text">
+                  سيتم تحديد المصدر لاحقاً.
+                </div>
+<button class="detail-back" onclick="closeProductDetail(this,event)">
+                  BACK
+                </button>
+</div>
+<div class="detail-panel prices-panel">
+<div class="detail-price-heading">AVAILABLE SIZES</div>
+<div class="detail-price-list">
+<button class="detail-price-option" data-price="12$" data-product="حبوب اللقاح" data-weight="250 G" onclick="selectUniversalPrice(this,event)">
+<span class="detail-radio"></span>
+<span class="detail-price-weight">250 G</span>
+<span class="detail-price-value">12$</span>
+</button>
+</div>
+<div class="whatsapp-purchase-note">
+                  اختر الحجم للتواصل والطلب عبر WhatsApp
+                </div>
+<button class="detail-back" onclick="closeProductDetail(this,event)">
+                  BACK
+                </button>
+</div>
+</div>
+</div>
+<!-- PROPOLIS -->
+<div class="product-card" onclick="toggleProductDetail(this,event,'propolis')">
+<h3>PROPOLIS</h3>
+<div class="arabic">العكبر</div>
+<div class="product-rule"></div>
+<div class="product-meta">Hive Essence</div>
+<div class="universal-detail">
+<div class="detail-tabs">
+<button class="detail-tab" onclick="showDetailPanel(this,'properties',event)">
+                  PROPERTIES
+                </button>
+<button class="detail-tab" onclick="showDetailPanel(this,'prices',event)">
+                  PRICES
+                </button>
+</div>
+<div class="detail-panel properties-panel">
+<div class="quality-stars">
+<span class="quality-star">★</span>
+<span class="quality-star">★</span>
+<span class="quality-star">★</span>
+<span class="quality-star">★</span>
+<span class="quality-star">★</span>
+</div>
+<div class="detail-property-label">QUALITY</div>
+<div class="detail-property-text">
+                  تفاصيل الخصائص والفوائد سيتم تحديدها لاحقاً.
+                </div>
+<div class="detail-property-label">ORIGIN</div>
+<div class="detail-property-text">
+                  سيتم تحديد المصدر لاحقاً.
+                </div>
+<button class="detail-back" onclick="closeProductDetail(this,event)">
+                  BACK
+                </button>
+</div>
+<div class="detail-panel prices-panel">
+<div class="detail-price-heading">AVAILABLE SIZES</div>
+<div class="detail-price-list">
+
+<button class="detail-price-option" data-price="12$" data-product="العكبر" data-weight="20 G" onclick="selectUniversalPrice(this,event)"><span class="detail-radio"></span><span class="detail-price-weight">20 G</span><span class="detail-price-value">12$</span></button></div>
+<div class="whatsapp-purchase-note">
+                  اختر الحجم للتواصل والطلب عبر WhatsApp
+                </div>
+<button class="detail-back" onclick="closeProductDetail(this,event)">
+                  BACK
+                </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- OUR WORLD -->
+<section class="section world" id="world">
+<div class="container">
+<div class="section-heading">
+<div class="section-eyebrow">
+        OUR PHILOSOPHY
+      </div>
+<h2 class="section-title">
+        OUR WORLD
+      </h2>
+<div class="section-title-line"></div>
+</div>
+<div class="world-box">
+<h2>
+        FROM LEBANON TO THE WORLD
+      </h2>
+<p>
+        From Lebanon to the world, Golden Honey Fusion searches
+        beyond borders for exceptional honey and distinctive
+        bee-derived products. Our world is built around origin,
+        selection and character.
+      </p>
+<p class="arabic-text">
+        من لبنان إلى العالم، تبحث Golden Honey Fusion عبر الحدود
+        عن أنواع عسل استثنائية ومنتجات مميزة من عالم النحل.
+        عالمنا يقوم على المصدر، والاختيار، والطابع.
+      </p>
+</div>
+</div>
+</section>
+<!-- ABOUT US -->
+<section class="section about" id="about">
+<div class="container">
+<div class="reveal-card" id="aboutCard" onclick="toggleAbout()">
+<div class="reveal-card-title">
+        ABOUT US
+      </div>
+<div class="reveal-arrow">
+        ↓
+      </div>
+</div>
+<div class="reveal-content" id="aboutContent">
+<p>
+        Golden Honey Fusion is a Lebanese brand reaching from
+        Lebanon to the world, driven by a passion for discovering
+        and carefully selecting exceptional premium honey from
+        distinctive sources around the world.
+      </p>
+<p>
+        We offer a complete range of products connected to premium
+        honey, guided by a vision that brings together product
+        distinction, careful selection and elegant presentation.
+      </p>
+<p>
+        We do not look for the ordinary.
+        We look for the exceptional.
+      </p>
+<p class="ar">
+        Golden Honey Fusion علامة لبنانية تنطلق من لبنان إلى العالم،
+        بشغف للبحث عن أجود أنواع العسل الفاخر وانتقائها بعناية من
+        مصادر مميزة حول العالم. نقدّم مجموعة متكاملة من المنتجات
+        المرتبطة بالعسل الفاخر، ضمن رؤية تجمع بين تميّز المنتج،
+        جودة الاختيار وأناقة التقديم.
+      </p>
+<p class="ar">
+        عسلنا ليس كأي عسل، لأننا لا نبحث عن العادي، بل عن الاستثنائي.
+      </p>
+</div>
+</div>
+</section>
+<!-- CONTACT US -->
+<section class="section contact" id="contact">
+<div class="container">
+<div class="reveal-card contact-reveal" id="contactCard" onclick="toggleContact()">
+<div class="reveal-card-title">
+        CONTACT US
+      </div>
+<div class="reveal-arrow">
+        ↓
+      </div>
+</div>
+<div class="contact-content" id="contactContent">
+<div class="contact-list">
+<a aria-label="Contact Golden Honey Fusion on WhatsApp" class="contact-item" href="https://wa.me/96171127840" rel="noopener noreferrer" target="_blank">
+<div class="contact-icon">
+            ◇
+          </div>
+<div class="contact-label">
+            WHATSAPP
+          </div>
+<strong class="contact-number">
+            +961 71 127 840
+          </strong>
+</a>
+<a aria-label="Visit Golden Honey Fusion on Instagram" class="contact-item" href="https://www.instagram.com/goldenhoneyfusion" rel="noopener noreferrer" target="_blank">
+<div class="contact-icon">
+            ◎
+          </div>
+<div class="contact-label">
+            INSTAGRAM
+          </div>
+<strong class="instagram-name">
+            @goldenhoneyfusion
+          </strong>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- FOOTER -->
+<footer>
+<div class="footer-brand">
+    GOLDEN HONEY FUSION
+  </div>
+<div class="footer-copy">
+    PREMIUM HONEY · BEE-DERIVED PRODUCTS · LEBANON
+  </div>
+</footer>
+<script>
+
+/* =========================================================
+   GHF MESSAGE
+   ========================================================= */
+
+let ghfMessageTimer;
+
+function showGHFMessage(){
+
+  const message=document.getElementById("ghfMessage");
+
+  if(!message)return;
+
+  clearTimeout(ghfMessageTimer);
+
+  if(message.classList.contains("show")){
+
+    message.classList.remove("show");
+
+    return;
+
+  }
+
+  message.classList.add("show");
+
+  ghfMessageTimer=setTimeout(function(){
+
+    message.classList.remove("show");
+
+  },5000);
+
+}
+
+document.getElementById("ghfMessage")
+  .addEventListener("click",function(){
+
+    this.classList.remove("show");
+
+    clearTimeout(ghfMessageTimer);
+
+  });
+
+/* MENU */
+
+function openMenu(){
+
+  document.getElementById("menuOverlay")
+    .classList.add("open");
+
+  document.body.style.overflow="hidden";
+
+}
+
+function closeMenu(){
+
+  document.getElementById("menuOverlay")
+    .classList.remove("open");
+
+  document.body.style.overflow="";
+
+}
+
+document.addEventListener("keydown",function(e){
+
+  if(e.key==="Escape"){
+
+    closeMenu();
+
+    const message=document.getElementById("ghfMessage");
+
+    if(message){
+      message.classList.remove("show");
+    }
+
+  }
+
+});
+
+/* COLLECTIONS */
+
+function toggleCollection(id){
+
+  const target=document.getElementById(id);
+
+  if(!target)return;
+
+  const wasOpen=target.classList.contains("open");
+
+  // A Collection click must never open a product or its detail panels.
+  document.querySelectorAll(".universal-detail").forEach(function(detail){
+    detail.classList.remove("open");
+    resetDetail(detail);
+    const card=detail.closest(".product-card");
+    if(card) card.classList.remove("detail-active");
+  });
+
+  document.querySelectorAll(".collection-grid").forEach(function(grid){
+    grid.classList.remove("open");
+    const collection=grid.closest(".collection");
+    if(collection){
+      collection.classList.remove("collection-active");
+    }
+  });
+
+  if(!wasOpen){
+    target.classList.add("open");
+    const collection=target.closest(".collection");
+    if(collection){
+      collection.classList.remove("collection-active");
+      void collection.offsetWidth;
+      collection.classList.add("collection-active");
+      requestAnimationFrame(function(){
+        requestAnimationFrame(function(){
+          const firstProduct=collection.querySelector(".collection-grid.open .product-card");
+          if(firstProduct){
+            firstProduct.scrollIntoView({behavior:"auto",block:"start"});
+          }else{
+            collection.scrollIntoView({behavior:"auto",block:"start"});
+          }
+        });
+      });
+    }
+  }
+
+}
+
+/* =========================================================
+   UNIVERSAL PRODUCT DETAILS
+   ========================================================= */
+
+function toggleProductDetail(card,event,key){
+
+  if(event){
+    event.stopPropagation();
+  }
+
+  if(!card)return;
+
+  const detail=card.querySelector(".universal-detail");
+  if(!detail)return;
+
+  document.querySelectorAll(".universal-detail")
+    .forEach(function(item){
+      if(item!==detail){
+        item.classList.remove("open");
+        const parent=item.closest(".product-card");
+        if(parent){
+          parent.classList.remove("detail-active");
+        }
+      }
+    });
+
+  const isOpen=detail.classList.contains("open");
+
+  if(isOpen){
+    detail.classList.remove("open");
+    card.classList.remove("detail-active");
+  }else{
+    resetDetail(detail);
+    detail.classList.add("open");
+    card.classList.add("detail-active");
+  }
+
+}
+
+function resetDetail(detail){
+
+  if(!detail)return;
+
+  const tabs=detail.querySelectorAll(".detail-tab");
+  const panels=detail.querySelectorAll(".detail-panel");
+
+  tabs.forEach(function(tab){
+    tab.classList.remove("active");
+  });
+
+  panels.forEach(function(panel){
+    panel.classList.remove("active");
+  });
+
+  detail.querySelectorAll(".detail-price-option")
+    .forEach(function(option){
+      option.classList.remove("selected");
+    });
+
+}
+
+function showDetailPanel(button,panel,event){
+
+  if(event){
+
+    event.stopPropagation();
+
+  }
+
+  const detail=button.closest(".universal-detail");
+
+  if(!detail)return;
+
+  const tabs=detail.querySelectorAll(".detail-tab");
+  const panels=detail.querySelectorAll(".detail-panel");
+
+  tabs.forEach(function(tab){
+
+    tab.classList.remove("active");
+
+  });
+
+  panels.forEach(function(item){
+
+    item.classList.remove("active");
+
+  });
+
+  button.classList.add("active");
+
+  const targetPanel=detail.querySelector(
+    "." + panel + "-panel"
+  );
+
+  if(targetPanel){
+
+    targetPanel.classList.add("active");
+
+    requestAnimationFrame(function(){
+      detail.scrollIntoView({
+        behavior:"smooth",
+        block:"center"
+      });
+    });
+
+  }
+
+}
+
+function closeProductDetail(button,event){
+
+  if(event){
+    event.stopPropagation();
+  }
+
+  const detail=button.closest(".universal-detail");
+  if(!detail)return;
+
+  const card=detail.closest(".product-card");
+
+  detail.classList.remove("open");
+
+  if(card){
+    card.classList.remove("detail-active");
+    requestAnimationFrame(function(){
+      card.scrollIntoView({
+        behavior:"smooth",
+        block:"center"
+      });
+    });
+  }
+
+}
+
+
+/* =========================================================
+   PHARMACY / STORE PRICING — ONE INDEX, MULTIPLE QR CODES
+   ========================================================= */
+const GHF_PHARMACIES = {
+  PHA001: { name: "صيدلية ثابت", add: 2 },
+  PHA002: { name: "صيدلية غزة", add: 3 },
+  PHA003: { name: "متجر توليب", add: 4 }
+};
+
+function getGHFPharmacy(){
+  const code = new URLSearchParams(window.location.search).get("pharmacy");
+  return GHF_PHARMACIES[code] ? { code, ...GHF_PHARMACIES[code] } : null;
+}
+
+function ghfParsePrice(value){
+  const n = parseFloat(String(value).replace(/[^0-9.]/g,""));
+  return Number.isFinite(n) ? n : null;
+}
+
+function ghfFormatPrice(value){
+  const n = Math.round(value * 100) / 100;
+  return "$" + (Number.isInteger(n) ? n.toFixed(0) : n.toFixed(2).replace(/0$/,""));
+}
+
+function applyGHFPharmacyPricing(){
+  const pharmacy = getGHFPharmacy();
+  document.querySelectorAll(".detail-price-option").forEach(function(option){
+    const base = ghfParsePrice(option.dataset.price);
+    if(base === null) return;
+
+    const finalPrice = pharmacy ? base + pharmacy.add : base;
+    option.dataset.basePrice = String(base);
+    option.dataset.finalPrice = String(finalPrice);
+
+    const valueEl = option.querySelector(".detail-price-value");
+    if(valueEl) valueEl.textContent = ghfFormatPrice(finalPrice);
+  });
+
+  // Small, discreet identification so the same Index can serve every QR.
+  let badge = document.getElementById("ghfPharmacyBadge");
+  if(!pharmacy){
+    if(badge) badge.remove();
+    return;
+  }
+
+  if(!badge){
+    badge = document.createElement("div");
+    badge.id = "ghfPharmacyBadge";
+    badge.style.cssText =
+      "position:fixed;top:78px;left:50%;transform:translateX(-50%);" +
+      "z-index:900;background:rgba(5,5,5,.94);border:1px solid rgba(218,181,85,.32);" +
+      "padding:7px 14px;color:#bfa96b;font:10px Georgia,serif;letter-spacing:1px;" +
+      "box-shadow:0 5px 18px rgba(0,0,0,.45);pointer-events:none;opacity:.92;";
+    document.body.appendChild(badge);
+  }
+  badge.textContent = pharmacy.name;
+}
+
+document.addEventListener("DOMContentLoaded", function(){
+  applyGHFPharmacyPricing();
+});
+
+/* =========================================================
+   PRICE → WHATSAPP PURCHASE
+   ========================================================= */
+
+function selectUniversalPrice(button,event){
+
+  if(event){
+
+    event.stopPropagation();
+
+  }
+
+  const detail=button.closest(".universal-detail");
+
+  if(!detail)return;
+
+  detail.querySelectorAll(".detail-price-option")
+    .forEach(function(option){
+
+      option.classList.remove("selected");
+
+    });
+
+  button.classList.add("selected");
+
+  const product=button.dataset.product || "Golden Honey Fusion";
+  const weight=button.dataset.weight || "";
+  const basePrice=ghfParsePrice(button.dataset.price || "");
+  const pharmacy=getGHFPharmacy();
+  const price=(basePrice !== null ? ghfFormatPrice(basePrice + (pharmacy ? pharmacy.add : 0)) : (button.dataset.price || ""));
+
+  const message=
+    "مرحباً Golden Honey Fusion%0A%0A" +
+    "أرغب بطلب:%20" + encodeURIComponent(product) +
+    "%0Aالحجم:%20" + encodeURIComponent(weight) +
+    "%0Aالسعر:%20" + encodeURIComponent(price);
+
+  const whatsappUrl=
+    "https://wa.me/96171127840?text=" + message;
+
+  setTimeout(function(){
+
+    window.open(
+      whatsappUrl,
+      "_blank",
+      "noopener,noreferrer"
+    );
+
+  },180);
+
+}
+
+/* ABOUT */
+
+function toggleAbout(){
+
+  const card=document.getElementById("aboutCard");
+  const content=document.getElementById("aboutContent");
+
+  const open=content.classList.contains("open");
+
+  if(open){
+
+    content.classList.remove("open");
+    card.classList.remove("open");
+
+  }else{
+
+    content.classList.add("open");
+    card.classList.add("open");
+
+    setTimeout(function(){
+
+      content.scrollIntoView({
+        behavior:"smooth",
+        block:"center"
+      });
+
+    },70);
+
+  }
+
+}
+
+/* CONTACT */
+
+function toggleContact(){
+
+  const card=document.getElementById("contactCard");
+  const content=document.getElementById("contactContent");
+
+  const open=content.classList.contains("open");
+
+  if(open){
+
+    content.classList.remove("open");
+    card.classList.remove("open");
+
+  }else{
+
+    content.classList.add("open");
+    card.classList.add("open");
+
+    setTimeout(function(){
+
+      content.scrollIntoView({
+        behavior:"smooth",
+        block:"center"
+      });
+
+    },70);
+
+  }
+
+}
+
+/* CLOSE MENU OUTSIDE */
+
+document.getElementById("menuOverlay")
+  .addEventListener("click",function(e){
+
+    if(e.target===this){
+
+      closeMenu();
+
+    }
+
+  });
+
+
+/* =========================================================
+   GHF LUXURY BACKGROUND MUSIC
+   - No autoplay on page load
+   - First user touch/click starts one randomly selected track
+   - Same track continues while navigating inside the menu
+   - Very low, refined volume
+   - No visible music controls
+   ========================================================= */
+(function(){
+
+  const GHF_MUSIC_TRACKS = [
+    "audio/elegant-piano.mp3",
+    "audio/calm-piano.mp3"
+  ];
+
+  const audio = document.getElementById("ghfBackgroundMusic");
+  if(!audio) return;
+
+  audio.volume = 0.09; // 9% — subtle but audible
+  audio.loop = true;
+
+  let musicStarted = false;
+  let selectedTrack = null;
+
+  function startGHFMusic(){
+    if(musicStarted) return;
+
+    // Randomly choose one track for this visitor/session.
+    selectedTrack =
+      GHF_MUSIC_TRACKS[Math.floor(Math.random() * GHF_MUSIC_TRACKS.length)];
+
+    audio.src = selectedTrack;
+    audio.volume = 0.09;
+
+    const playPromise = audio.play();
+
+    if(playPromise && typeof playPromise.catch === "function"){
+      playPromise.then(function(){
+        musicStarted = true;
+      }).catch(function(){
+        // If the browser blocks this attempt, the next real user gesture
+        // gets another chance without showing any music button.
+        musicStarted = false;
+      });
+    }else{
+      musicStarted = true;
+    }
+  }
+
+  // pointerdown works well on Android and desktop and is triggered
+  // directly by the visitor's first interaction.
+  document.addEventListener("pointerdown", startGHFMusic, {
+    capture:true,
+    passive:true
+  });
+
+  // Extra fallback for browsers with unusual pointer handling.
+  document.addEventListener("touchstart", startGHFMusic, {
+    capture:true,
+    passive:true
+  });
+
+  document.addEventListener("click", startGHFMusic, {
+    capture:true
+  });
+
+  // The audio element is global, so opening/closing sections does not
+  // restart the music. Leaving the actual page naturally stops it.
+  window.addEventListener("pagehide", function(){
+    try{
+      audio.pause();
+      audio.currentTime = 0;
+    }catch(e){}
+  });
+
+})();
+
+</script>
+</body>
+</html>
