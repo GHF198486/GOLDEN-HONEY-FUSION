@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>GHF · Share Delivery Location</title>
+<style>
+:root{--gold:#d6a84b;--bg:#090909;--card:#111;--line:#3b2b12;--text:#f5f0e5}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at top,#211708 0,#090909 48%);color:var(--text);font-family:Arial,sans-serif;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:22px}
+.card{width:min(430px,100%);background:rgba(17,17,17,.97);border:1px solid var(--line);border-radius:22px;padding:28px 20px;box-shadow:0 20px 70px rgba(0,0,0,.65);text-align:center}
+.logo{width:72px;height:72px;object-fit:contain;border-radius:50%;background:#fff;padding:5px;margin-bottom:12px}.brand{letter-spacing:2px;font-weight:700;color:var(--gold);font-size:15px}.title{font-size:22px;margin:18px 0 8px}.sub{font-size:13px;line-height:1.55;opacity:.72;margin-bottom:20px}
+.pin{font-size:38px;color:var(--gold);margin:2px 0 12px}.btn{display:block;width:100%;border:0;border-radius:13px;padding:15px 14px;margin:10px 0;font-weight:700;font-size:15px;cursor:pointer}.share{background:var(--gold);color:#111}.wa{background:#171717;color:#fff;border:1px solid #4d3a18}.maps{background:#171717;color:var(--gold);border:1px solid #4d3a18}.status{min-height:20px;font-size:12px;opacity:.7;margin-top:14px}.coords{font-size:11px;opacity:.45;margin-top:16px;word-break:break-all}
+</style>
+</head>
+<body>
+<div class="card">
+  <img class="logo" src="ghf-invoice-logo.jpg" alt="Golden Honey Fusion">
+  <div class="brand">GOLDEN HONEY FUSION</div>
+  <div class="pin">⌖</div>
+  <div class="title">Delivery Location</div>
+  <div class="sub">Share the exact customer location with the delivery person.</div>
+  <button class="btn share" id="shareBtn">SHARE LOCATION</button>
+  <a class="btn wa" id="waBtn" href="#">SHARE VIA WHATSAPP</a>
+  <a class="btn maps" id="mapsBtn" href="#">OPEN IN GOOGLE MAPS</a>
+  <div class="status" id="status"></div>
+  <div class="coords" id="coords"></div>
+</div>
+<script>
+(function(){
+  const q=new URLSearchParams(location.search);
+  const lat=Number(q.get('lat')),lng=Number(q.get('lng'));
+  if(!Number.isFinite(lat)||!Number.isFinite(lng)){
+    document.getElementById('status').textContent='Location data is missing.';
+    document.getElementById('shareBtn').disabled=true;
+    return;
+  }
+  const maps='https://www.google.com/maps?q='+encodeURIComponent(lat+','+lng);
+  const text='GOLDEN HONEY FUSION · DELIVERY LOCATION\n'+maps;
+  document.getElementById('coords').textContent=lat.toFixed(6)+', '+lng.toFixed(6);
+  document.getElementById('mapsBtn').href=maps;
+  document.getElementById('waBtn').href='https://wa.me/?text='+encodeURIComponent(text);
+  document.getElementById('shareBtn').addEventListener('click',async function(){
+    try{
+      if(navigator.share){
+        await navigator.share({title:'GHF Delivery Location',text:'Exact delivery location',url:maps});
+        document.getElementById('status').textContent='Location shared.';
+      }else{
+        location.href='https://wa.me/?text='+encodeURIComponent(text);
+      }
+    }catch(e){
+      if(e && e.name==='AbortError') return;
+      document.getElementById('status').textContent='Use SHARE VIA WHATSAPP below.';
+    }
+  });
+})();
+</script>
+</body>
+</html>
