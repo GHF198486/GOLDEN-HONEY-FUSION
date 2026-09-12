@@ -2430,6 +2430,7 @@ footer{
 .ghf-invoice-total{display:flex;justify-content:space-between;border-top:2px solid #222;margin-top:12px;padding-top:13px;font-weight:700;font-size:14px;}
 .ghf-invoice-actions{display:flex;gap:8px;justify-content:center;margin-top:20px;}
 .ghf-invoice-actions button{padding:10px 16px;border:1px solid #8d6d24;background:#fff;cursor:pointer;font-size:10px;letter-spacing:1px;}
+.ghf-invoice-send-order{background:#f3ead4!important;border-color:#8d6d24!important;color:#5f4713!important;font-weight:700;}
 @media print{
   body>*:not(.ghf-invoice-overlay){display:none!important;}
   .ghf-invoice-overlay{position:static;display:block!important;background:#fff;padding:0;overflow:visible;}
@@ -4963,6 +4964,7 @@ window.openHomeBasket=function(e){
 <div class="ghf-invoice-scroll-note">Scroll to review all items when the order contains more than three products.</div>
 <div class="ghf-invoice-fees"><div><span>SUBTOTAL</span><span id="ghfInvoiceSubtotal">$0</span></div><div id="ghfInvoiceDiscountRow" style="display:none"><span>PRIVILEGE</span><span id="ghfInvoiceDiscount">-$0</span></div><div><span>DELIVERY</span><span id="ghfInvoiceDelivery">$5</span></div></div><div class="ghf-invoice-total"><span>TOTAL</span><span id="ghfInvoiceTotal">$0</span></div>
 <div class="ghf-invoice-actions">
+<button class="ghf-invoice-send-order" onclick="ghfPurchaseWhatsApp(event)" type="button">SEND ORDER TO WHATSAPP</button>
 <button onclick="ghfSavePdf(event)" type="button">SAVE PDF TO PHONE</button>
 <button onclick="ghfSharePdf(event)" type="button">SHARE PDF TO DELIVERY</button>
 <button onclick="ghfOpenDeliveryFile(event)" type="button">OPEN / SHARE DELIVERY FILE</button>
