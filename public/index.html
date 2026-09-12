@@ -2815,7 +2815,7 @@ button.menu-link{
   <div class="ghf-location-map-wrap">
     <div class="ghf-location-map-title">DELIVERY LOCATION · LEBANON · SATELLITE</div>
     <div id="ghfLebanonMap"></div>
-    <div class="ghf-map-actions"><button type="button" onclick="ghfUseMyLocation(event)">⌖ USE MY LOCATION</button><button type="button" onclick="ghfClearLocation(event)">CLEAR LOCATION</button></div>
+    <div class="ghf-map-actions"><button type="button" onclick="ghfUseMyLocation(event)"><span class="ghf-location-btn-pin" aria-hidden="true"><svg viewBox="0 0 64 76" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="ghfBtnGold" x1="10" y1="5" x2="54" y2="68"><stop offset="0" stop-color="#fff1ad"/><stop offset=".3" stop-color="#e0ad48"/><stop offset=".7" stop-color="#f4cf72"/><stop offset="1" stop-color="#754807"/></linearGradient></defs><path d="M32 3C16 3 5 14 5 29c0 18 16 30 27 44 11-14 27-26 27-44C59 14 48 3 32 3Z" fill="url(#ghfBtnGold)" stroke="#f9df8b" stroke-width="1.4"/><circle cx="32" cy="29" r="10" fill="#111" stroke="#69420a" stroke-width="2"/><circle cx="32" cy="29" r="5" fill="#fffdf5"/></svg></span> USE MY LOCATION</button><button type="button" onclick="ghfClearLocation(event)">CLEAR LOCATION</button></div>
     <div class="ghf-location-status" id="ghfLocationStatus">TAP THE MAP TO MARK YOUR HOME · DRAG THE PIN TO EDIT THE LOCATION.</div>
   </div>
   <div class="ghf-cart-actions"><button onclick="ghfContinueShopping(event)" type="button">CONTINUE SHOPPING</button><button class="ghf-primary" onclick="ghfOpenInvoice(event)" type="button">REVIEW ORDER</button><button class="ghf-primary" onclick="ghfPurchaseWhatsApp(event)" type="button">SEND ORDER TO WHATSAPP</button></div>
@@ -4677,48 +4677,59 @@ function ghfOpenCartWithMap(){
 }
 async function ghfPurchaseWhatsApp(event){
  if(isGHFDisplayOnly()) return;
- if(event)event.stopPropagation();
- if(!ghfCart.length)return;
- // Open immediately so mobile browsers do not block WhatsApp after async checks.
- let ghfWaWindow=null;
- try{ ghfWaWindow=window.open('about:blank','_blank'); }catch(_e){}
+ if(event){event.preventDefault();event.stopPropagation();}
+ if(!ghfCart.length){alert('Your cart is empty.');return;}
  const c=ghfCustomerData();
- if(!c.name || !c.phone || !c.province || !c.city || !c.address){alert('Please complete your name, phone, governorate, town/city and exact address.');return;}
+ if(!c.name || !c.phone || !c.province || !c.city || !c.address){
+   alert('Please complete your name, phone, governorate, town/city and exact address.');
+   return;
+ }
+ ghfSyncLocationState();
  ghfSaveCustomer();
  let subtotal=0;
- const items=ghfCart.map(function(i){const line=(Number(i.price)||0)*(i.qty||1);subtotal+=line;return {product:i.product,arabic:i.arabic||'',weight:i.weight,price:Number(i.price)||0,qty:i.qty||1,lineTotal:line};});
+ const items=ghfCart.map(function(i){
+   const line=(Number(i.price)||0)*(i.qty||1); subtotal+=line;
+   return {product:i.product,arabic:i.arabic||'',weight:i.weight,price:Number(i.price)||0,qty:i.qty||1,lineTotal:line};
+ });
  const code=ghfGetPrivilegeCode();
  if(code){
    const checked=await ghfCheckPrivilegeCode();
    if(!checked){alert('The privilege code could not be applied. Please check the code before sending the order.');return;}
  }
  const discount=ghfAppliedPrivilege.valid?Math.min(Number(ghfAppliedPrivilege.amount)||0,subtotal):0;
- const payload={customer:c,items:items,discountCode:ghfAppliedPrivilege.valid?ghfAppliedPrivilege.code:'',discountAmount:discount,deliveryFee:GHF_DELIVERY_FEE,subtotal:subtotal,total:Math.max(0,subtotal-discount)+GHF_DELIVERY_FEE,source:'GHF_WEB_MENU'};
+ const total=Math.max(0,subtotal-discount)+GHF_DELIVERY_FEE;
+
+ // Build the direct WhatsApp order link first. This is the reliable path on GitHub Pages,
+ // where /api/orders does not exist and opening about:blank would leave a white page.
+ const lines=['مرحباً Golden Honey Fusion','ORDER REQUEST','Customer Name: '+c.name,'Phone: '+c.phone,'Governorate: '+c.province,'Town / City: '+c.city,'Address: '+c.address];
+ if(c.floor)lines.push('Floor / Building: '+c.floor);
+ if(c.notes)lines.push('Notes: '+c.notes);
+ lines.push('','ORDER ITEMS');
+ items.forEach(function(i,index){
+   lines.push((index+1)+'. '+i.product+(i.arabic?' — '+i.arabic:''), '   SIZE: '+(i.weight||'—')+'   |   QTY: '+(i.qty||1)+'   |   PRICE: '+ghfFormatPrice(i.lineTotal));
+ });
+ if(code && discount>0)lines.push('','PRIVILEGE CODE: '+code,'PRIVILEGE: -'+ghfFormatPrice(discount));
+ if(c.location && c.location.lat && c.location.lng)lines.push('','DELIVERY LOCATION: https://www.google.com/maps?q='+c.location.lat+','+c.location.lng);
+ lines.push('','SUBTOTAL: '+ghfFormatPrice(subtotal),'DELIVERY: '+ghfFormatPrice(GHF_DELIVERY_FEE),'TOTAL: '+ghfFormatPrice(total));
+ const fallbackUrl='https://wa.me/96171127840?text='+encodeURIComponent(lines.join('\n'));
+
+ // GitHub Pages is static: send directly to the partner WhatsApp chat.
+ // Backend order storage is still used automatically when this same page is served by the GHF backend.
+ const isGitHubPages=/github\.io$/i.test(window.location.hostname||'');
+ if(isGitHubPages){
+   window.location.href=fallbackUrl;
+   return;
+ }
+
  try{
-   const r=await fetch('/api/orders',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
-   if(!r.ok){const er=await r.json().catch(function(){return {};});throw new Error(er.error||'API unavailable');}
+   const r=await fetch('/api/orders',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({customer:c,items:items,discountCode:ghfAppliedPrivilege.valid?ghfAppliedPrivilege.code:'',discountAmount:discount,deliveryFee:GHF_DELIVERY_FEE,subtotal:subtotal,total:total,source:'GHF_WEB_MENU'}),cache:'no-store'});
+   if(!r.ok) throw new Error('API unavailable');
    const data=await r.json();
-   if(data && data.partnerWhatsAppUrl){
-     if(ghfWaWindow && !ghfWaWindow.closed) ghfWaWindow.location.href=data.partnerWhatsAppUrl;
-     else window.location.href=data.partnerWhatsAppUrl;
-     return;
-   }
-   if(data && data.orderUrl){
-     if(ghfWaWindow && !ghfWaWindow.closed) ghfWaWindow.location.href=data.orderUrl;
-     else window.location.href=data.orderUrl;
-     return;
-   }
-   alert('ORDER CREATED — CUSTOMER ID: '+(data.customerId||'')+' / ORDER: '+(data.orderId||''));
+   if(data && data.partnerWhatsAppUrl){window.location.href=data.partnerWhatsAppUrl;return;}
+   // Never send the customer to an order webpage instead of WhatsApp.
+   window.location.href=fallbackUrl;
  }catch(e){
-   const lines=['مرحباً Golden Honey Fusion','ORDER REQUEST','Customer Name: '+c.name,'Phone: '+c.phone,'Governorate: '+c.province,'Town / City: '+c.city,'Address: '+c.address];
-   if(c.floor)lines.push('Floor / Building: '+c.floor); if(c.notes)lines.push('Notes: '+c.notes);
-   lines.push('','ORDER ITEMS'); items.forEach(function(i,index){lines.push((index+1)+'. '+i.product+(i.arabic?' — '+i.arabic:''),'   SIZE: '+(i.weight||'—')+'   |   QTY: '+(i.qty||1)+'   |   PRICE: '+ghfFormatPrice(i.lineTotal));});
-   if(code && discount>0)lines.push('','PRIVILEGE CODE: '+code,'PRIVILEGE: -'+ghfFormatPrice(discount));
-   if(c.location && c.location.lat && c.location.lng)lines.push('','DELIVERY LOCATION: https://www.google.com/maps?q='+c.location.lat+','+c.location.lng);
-   lines.push('','SUBTOTAL: '+ghfFormatPrice(subtotal),'DELIVERY: '+ghfFormatPrice(GHF_DELIVERY_FEE),'TOTAL: '+ghfFormatPrice(Math.max(0,subtotal-discount)+GHF_DELIVERY_FEE));
-   const fallbackUrl='https://wa.me/96171127840?text='+encodeURIComponent(lines.join('\n'));
-   if(ghfWaWindow && !ghfWaWindow.closed) ghfWaWindow.location.href=fallbackUrl;
-   else window.location.href=fallbackUrl;
+   window.location.href=fallbackUrl;
  }
 }
 
@@ -5502,8 +5513,7 @@ function init(){
  setTimeout(function(){map.invalidateSize(true);},250);
  setTimeout(function(){map.invalidateSize(true);},900);
 
- // Automatically request live location; manual button remains available.
- requestLive(true);
+ // Live location is user-initiated; do not request it automatically on page load.
 }
 
 window.ghfInitLebanonMap=init;
@@ -5519,6 +5529,10 @@ document.addEventListener("DOMContentLoaded",function(){
 });
 })();
 </script>
+<style id="ghf-location-button-pin-style">
+.ghf-location-btn-pin{display:inline-flex;vertical-align:middle;width:19px;height:23px;margin-right:7px;align-items:center;justify-content:center}
+.ghf-location-btn-pin svg{display:block;width:19px;height:23px;filter:drop-shadow(0 1px 2px rgba(0,0,0,.7))}
+</style>
 <style id="ghf-v15-live-style">
 #ghfLebanonMap{
  position:relative!important;overflow:hidden!important;
