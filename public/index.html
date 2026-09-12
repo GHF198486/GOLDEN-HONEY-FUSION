@@ -2457,7 +2457,6 @@ footer{
 .ghf-cart-close {position:relative!important; z-index:20!important;}
 .ghf-cart-close button {margin:0!important;}
 </style>
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIINfQ3Rr8W8fN4b2W9y5F3w6X6x6GQ5V4=" crossorigin=""/>
 <style id="ghf-location-map-css">
 .ghf-location-map-wrap{margin:14px 0 12px;border:1px solid rgba(218,181,85,.22);padding:12px;background:rgba(255,255,255,.02)}
 .ghf-location-map-title{color:#e8cf87;font:10px Georgia,serif;letter-spacing:2px;text-align:center;margin-bottom:8px}
@@ -2614,7 +2613,7 @@ footer{
 }
 .ghf-cart-panel.open{display:block!important;}
 #ghfInvoiceOverlay{display:none!important; visibility:hidden!important; pointer-events:none!important;}
-#ghfInvoiceOverlay.open{display:block!important; visibility:visible!important; pointer-events:auto!important;}
+#ghfInvoiceOverlay.open{display:block!important; visibility:visible!important; pointer-events:none!important;}
 .ghf-invoice-overlay{position:fixed!important; inset:0!important; z-index:20000!important;}
 /* Satellite map must remain visibly inside the basket form */
 .ghf-location-map-wrap{display:block!important; visibility:visible!important;}
@@ -5155,9 +5154,6 @@ async function ghfSharePdf(event){
   }
 }
 </script>
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-
-
 <script>
 (function(){
   function ghfEnsureInvoiceItems(){
@@ -5278,260 +5274,54 @@ async function ghfSharePdf(event){
 </script>
 
 
-<script id="ghf-v15-map-fix">
+<script id="ghf-v21-map-engine">
 (function(){
 "use strict";
-var map=null, marker=null, watchId=null, touchStart=null, touchMoved=false;
-var boxId="ghfLebanonMap";
-var lebanon=L.latLngBounds([33.05,35.05],[34.70,36.70]);
-
-function box(){return document.getElementById(boxId);}
-
-function pinIcon(){
- var svg=`<svg xmlns="http://www.w3.org/2000/svg" width="64" height="76" viewBox="0 0 64 76">
-  <defs>
-   <linearGradient id="gold" x1="10" y1="5" x2="54" y2="68" gradientUnits="userSpaceOnUse">
-    <stop offset="0" stop-color="#fff1ad"/>
-    <stop offset=".22" stop-color="#e0ad48"/>
-    <stop offset=".48" stop-color="#9b6515"/>
-    <stop offset=".70" stop-color="#f4cf72"/>
-    <stop offset="1" stop-color="#754807"/>
-   </linearGradient>
-   <radialGradient id="hole" cx="35%" cy="28%" r="82%">
-    <stop offset="0" stop-color="#fff9dc"/>
-    <stop offset=".42" stop-color="#c18a25"/>
-    <stop offset="1" stop-color="#4b2c05"/>
-   </radialGradient>
-   <filter id="shadow" x="-30%" y="-20%" width="160%" height="160%">
-    <feDropShadow dx="0" dy="3" stdDeviation="2.2" flood-opacity=".58"/>
-   </filter>
-  </defs>
-  <path filter="url(#shadow)" d="M32 3C16 3 5 14 5 29c0 18 16 30 27 44 11-14 27-26 27-44C59 14 48 3 32 3Z" fill="url(#gold)" stroke="#f9df8b" stroke-width="1.4"/>
-  <ellipse cx="32" cy="29" rx="13.2" ry="13.2" fill="url(#hole)" stroke="#69420a" stroke-width="1.6"/>
-  <ellipse cx="32" cy="29" rx="8.2" ry="8.2" fill="#fffdf5"/>
-  <ellipse cx="28.7" cy="25.5" rx="3" ry="2" fill="#fff9d8" opacity=".75"/>
- </svg>`;
- var url='data:image/svg+xml;charset=UTF-8,'+encodeURIComponent(svg);
- return L.icon({
-   iconUrl:url,
-   iconSize:[64,76],
-   iconAnchor:[32,74],
-   popupAnchor:[0,-72],
-   className:'ghf-location-pin-image'
- });
-}
-
-function setData(lat,lng){
- window.ghfSelectedLat=lat; window.ghfSelectedLng=lng;
- if(typeof ghfSelectedLocation!=="undefined"){
-  ghfSelectedLocation={lat:Number(lat),lng:Number(lng)};
- }
- if(typeof window.ghfReverseGeocode==="function"){
-  try{window.ghfReverseGeocode(lat,lng);}catch(e){}
- }
-}
-
-function bindMarker(){
- if(!marker) return;
- marker.off("dragend");
- marker.on("dragend",function(e){
-  var p=e.target.getLatLng();
-  if(lebanon.contains(p)){
-   setData(p.lat,p.lng);
-  }else{
-   marker.setLatLng(map.getCenter());
-  }
- });
-}
-
-function place(lat,lng,zoom,open){
- if(!map)return false;
- var p=L.latLng(Number(lat),Number(lng));
- if(!lebanon.contains(p))return false;
-
- if(marker){
-  marker.setLatLng(p);
- }else{
-  marker=L.marker(p,{
-   icon:pinIcon(),draggable:true,autoPan:true,
-   zIndexOffset:2000,keyboard:false
-  }).addTo(map);
-  bindMarker();
- }
- setData(p.lat,p.lng);
-
- if(open){
-  if(!marker.getPopup()) marker.bindPopup(
-   "<b>LOCATION SELECTED</b><br>Drag the pin to adjust your exact location."
-  );
-  marker.openPopup();
- }
- map.setView(p,zoom||17,{animate:true});
- setTimeout(function(){map.invalidateSize(true);},100);
- return true;
-}
-
-function requestLive(follow){
- if(!navigator.geolocation){
-  alert("Location is not available on this phone.");
-  return;
- }
- navigator.geolocation.getCurrentPosition(function(pos){
-   var lat=pos.coords.latitude,lng=pos.coords.longitude;
-   if(!lebanon.contains([lat,lng])){
-    alert("Your current location is outside Lebanon.");
-    return;
-   }
-   place(lat,lng,17,false);
-   if(follow && navigator.geolocation.watchPosition){
-    if(watchId!==null) navigator.geolocation.clearWatch(watchId);
-    watchId=navigator.geolocation.watchPosition(function(p){
-     var a=p.coords.latitude,b=p.coords.longitude;
-     if(lebanon.contains([a,b])) place(a,b,17,false);
-    },function(){},{
-     enableHighAccuracy:true,maximumAge:3000,timeout:15000
-    });
-   }
- },function(err){
-   if(err && err.code===1) alert("Please allow Location access for this site.");
-   else alert("Could not get your current location. You can tap the map to place the pin.");
- },{enableHighAccuracy:true,maximumAge:0,timeout:15000});
-}
-
-function shortTouch(e){
- if(!map || !touchStart || touchMoved)return;
- var t=e.changedTouches && e.changedTouches[0];
- if(!t)return;
- if(Date.now()-touchStart.time>650)return;
- var dx=t.clientX-touchStart.x, dy=t.clientY-touchStart.y;
- if((dx*dx+dy*dy)>225)return;
- var rect=box().getBoundingClientRect();
- var pt=L.point(t.clientX-rect.left,t.clientY-rect.top);
- var ll=map.containerPointToLatLng(pt);
- if(lebanon.contains(ll)){
-  L.DomEvent.stop(e);
-  place(ll.lat,ll.lng,17,true);
- }
-}
-
-function init(){
- if(document.body.classList.contains("ghf-display-only")) return;
- var b=box();
- if(!b||!window.L)return;
- if(map){setTimeout(function(){map.invalidateSize(true);},100);return;}
-
- map=L.map(b,{
-  center:[33.8547,35.8623],zoom:8,minZoom:8,maxZoom:18,
-  maxBounds:lebanon,maxBoundsViscosity:1,
-  zoomControl:true,attributionControl:true,
-  dragging:true,touchZoom:true,scrollWheelZoom:true,
-  doubleClickZoom:true,boxZoom:false,keyboard:true,inertia:true,
-  zoomAnimation:true,fadeAnimation:false,markerZoomAnimation:true,
-  tap:false
- });
-
- var ghfSatellite = L.tileLayer(
-  "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
-  {maxZoom:18,crossOrigin:true,keepBuffer:1,updateWhenZooming:false,updateWhenIdle:true}
- );
-
- var ghfLabels = L.tileLayer(
-  "https://services.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}",
-  {maxZoom:18,opacity:.95,crossOrigin:true,keepBuffer:1,updateWhenZooming:false,updateWhenIdle:true}
- );
-
- ghfSatellite.addTo(map);
- ghfLabels.addTo(map);
-
- map.on("click",function(e){
-  if(lebanon.contains(e.latlng)) place(e.latlng.lat,e.latlng.lng,17,true);
- });
-
- b.addEventListener("touchstart",function(e){
-  if(!e.touches || e.touches.length!==1)return;
-  var t=e.touches[0];
-  touchStart={time:Date.now(),x:t.clientX,y:t.clientY};
-  touchMoved=false;
- },{passive:true,capture:true});
-
- b.addEventListener("touchmove",function(e){
-  if(!touchStart || !e.touches || !e.touches[0])return;
-  var t=e.touches[0],dx=t.clientX-touchStart.x,dy=t.clientY-touchStart.y;
-  if((dx*dx+dy*dy)>225) touchMoved=true;
- },{passive:true,capture:true});
-
- b.addEventListener("touchend",shortTouch,{passive:false,capture:true});
- b.addEventListener("touchcancel",function(){touchStart=null;touchMoved=false;},{passive:true,capture:true});
-
- // Prevent Android Chrome's long-press "Save image / Share" menu on map imagery.
- ["contextmenu","selectstart","dragstart","mousedown"].forEach(function(ev){
-  b.addEventListener(ev,function(e){
-   if(ev!=="mousedown") e.preventDefault();
-   e.stopPropagation();
-  },true);
- });
-
- b.style.webkitTouchCallout="none";
- b.style.userSelect="none";
- b.style.webkitUserSelect="none";
- b.style.webkitUserDrag="none";
-
- // The tile <img> elements must never become the long-press target.
- var css=document.createElement("style");
- css.textContent=
-  "#"+boxId+" .leaflet-tile,"+
-  "#"+boxId+" .leaflet-tile-container img,"+
-  "#"+boxId+" img.leaflet-tile{"+
-  "-webkit-touch-callout:none!important;"+
-  "-webkit-user-select:none!important;"+
-  "user-select:none!important;"+
-  "-webkit-user-drag:none!important;"+
-  "user-drag:none!important;"+
-  "pointer-events:none!important;}";
- document.head.appendChild(css);
-
- map.on("moveend",function(){
-  if(marker && !lebanon.contains(marker.getLatLng())) map.fitBounds(lebanon);
- });
-
- window.ghfLebanonMap=map;
- window.ghfMapMarker=function(){return marker;};
- window.ghfClearMapPin=function(){
-  if(marker && map) map.removeLayer(marker);
-  marker=null;
-  window.ghfSelectedLat=null;
-  window.ghfSelectedLng=null;
-  if(typeof ghfSelectedLocation!=="undefined") ghfSelectedLocation=null;
- };
- window.ghfGetMapForPdf=function(){
-  try{
-   map.invalidateSize(true);
-   return window.html2canvas ? window.html2canvas(b,{
-    useCORS:true,allowTaint:false,backgroundColor:"#111",
-    scale:1.35,logging:false,imageTimeout:12000
-   }).then(function(c){return c.toDataURL("image/jpeg",.88);}).catch(function(){return null;}) : null;
-  }catch(e){return null;}
- };
-
- setTimeout(function(){map.invalidateSize(true);},250);
- setTimeout(function(){map.invalidateSize(true);},900);
-
- // Live location is user-initiated; do not request it automatically on page load.
-}
-
-window.ghfInitLebanonMap=init;
-window.ghfPlaceMapPin=function(lat,lng,zoom){place(Number(lat),Number(lng),zoom||17,false);};
-window.ghfUseMyLocation=function(){requestLive(true);};
-
-document.addEventListener("DOMContentLoaded",function(){
- init();
- var b=document.getElementById("ghfUseMyLocation");
- if(b)b.onclick=function(e){
-  e.preventDefault();e.stopPropagation();requestLive(true);
- };
-});
+var boxId="ghfLebanonMap",map=null,marker=null;
+var MIN_Z=9,MAX_Z=18,TILE=256;
+/* A comfortable pan area around Lebanon: no black wall, but still keeps the map focused on Lebanon. */
+var B={south:30.8,west:32.8,north:37.0,east:39.0};
+var LEB=[ [34.692,35.80],[34.67,35.92],[34.62,36.05],[34.53,36.20],[34.43,36.39],[34.30,36.61],[34.18,36.61],[34.10,36.50],[34.00,36.42],[33.90,36.37],[33.80,36.35],[33.70,36.30],[33.60,36.22],[33.52,36.12],[33.43,36.02],[33.35,35.92],[33.28,35.84],[33.20,35.74],[33.12,35.66],[33.08,35.54],[33.10,35.43],[33.16,35.37],[33.23,35.31],[33.31,35.25],[33.40,35.22],[33.49,35.18],[33.59,35.17],[33.69,35.20],[33.79,35.25],[33.89,35.27],[34.00,35.28],[34.11,35.31],[34.22,35.32],[34.33,35.34],[34.44,35.38],[34.55,35.43],[34.64,35.54],[34.69,35.67] ];
+var dragging=false,startX=0,startY=0,baseCX=0,baseCY=0,moved=false,downTime=0,lastX=0,lastY=0,raf=0;
+function box(){return document.getElementById(boxId)}
+function clamp(v,a,b){return Math.max(a,Math.min(b,v))}
+function lngX(lng,z){return (Number(lng)+180)/360*Math.pow(2,z)*TILE}
+function latY(lat,z){var r=Number(lat)*Math.PI/180;return (1-Math.log(Math.tan(r)+1/Math.cos(r))/Math.PI)/2*Math.pow(2,z)*TILE}
+function xLng(x,z){return x/(Math.pow(2,z)*TILE)*360-180}
+function yLat(y,z){var n=Math.PI-2*Math.PI*y/(Math.pow(2,z)*TILE);return 180/Math.PI*Math.atan(Math.sinh(n))}
+function inside(lat,lng){return lat>=33.05&&lat<=34.70&&lng>=35.05&&lng<=36.70}
+function pinSvg(){return 'data:image/svg+xml;charset=UTF-8,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="64" height="76" viewBox="0 0 64 76"><defs><linearGradient id="g" x1="10" y1="5" x2="54" y2="68"><stop offset="0" stop-color="#fff1ad"/><stop offset=".25" stop-color="#e0ad48"/><stop offset=".55" stop-color="#9b6515"/><stop offset=".78" stop-color="#f4cf72"/><stop offset="1" stop-color="#754807"/></linearGradient></defs><path d="M32 3C16 3 5 14 5 29c0 18 16 30 27 44 11-14 27-26 27-44C59 14 48 3 32 3Z" fill="url(#g)" stroke="#f9df8b" stroke-width="1.4"/><circle cx="32" cy="29" r="13" fill="#8b621b" stroke="#fff0b0" stroke-width="1.5"/><circle cx="32" cy="29" r="7" fill="#fffdf5"/></svg>')}
+function place(lat,lng,zoom){lat=Number(lat);lng=Number(lng);if(!map||!inside(lat,lng))return false;if(zoom)map.z=clamp(zoom,MIN_Z,MAX_Z);map.cx=lngX(lng,map.z);map.cy=latY(lat,map.z);clampPan();setMarker(lat,lng);render();window.ghfSelectedLat=lat;window.ghfSelectedLng=lng;if(typeof ghfSelectedLocation!=="undefined")ghfSelectedLocation={lat:lat,lng:lng};if(typeof window.ghfReverseGeocode==="function"){try{window.ghfReverseGeocode(lat,lng)}catch(e){}}return true}
+function setMarker(lat,lng){if(!map)return;if(!marker){marker=document.createElement('img');marker.className='ghf-map-pin-custom';marker.src=pinSvg();marker.draggable=false;marker.dataset.dragging='0';box().appendChild(marker);bindMarker()}marker.dataset.lat=lat;marker.dataset.lng=lng;positionMarker()}
+function positionMarker(extraX,extraY){if(!marker||!map)return;var lat=Number(marker.dataset.lat),lng=Number(marker.dataset.lng);var px=lngX(lng,map.z)-map.cx+map.w/2+(extraX||0),py=latY(lat,map.z)-map.cy+map.h/2+(extraY||0);marker.style.left=(px-32)+'px';marker.style.top=(py-74)+'px';marker.style.transform='translate3d(0,0,0)';marker.style.display='block'}
+function bindMarker(){marker.addEventListener('pointerdown',function(e){if(e.pointerType==='mouse'&&e.button!==0)return;e.stopPropagation();marker.dataset.dragging='1';try{marker.setPointerCapture(e.pointerId)}catch(_){}e.preventDefault()});marker.addEventListener('pointermove',function(e){if(marker.dataset.dragging!=='1')return;var r=box().getBoundingClientRect(),px=e.clientX-r.left,py=e.clientY-r.top,lng=xLng(map.cx+(px-map.w/2),map.z),lat=yLat(map.cy+(py-map.h/2),map.z);if(inside(lat,lng)){marker.dataset.lat=lat;marker.dataset.lng=lng;positionMarker()}e.stopPropagation();e.preventDefault()});marker.addEventListener('pointerup',function(e){if(marker.dataset.dragging!=='1')return;marker.dataset.dragging='0';try{marker.releasePointerCapture(e.pointerId)}catch(_){}var lat=Number(marker.dataset.lat),lng=Number(marker.dataset.lng);window.ghfSelectedLat=lat;window.ghfSelectedLng=lng;if(typeof ghfSelectedLocation!=="undefined")ghfSelectedLocation={lat:lat,lng:lng};if(typeof window.ghfReverseGeocode==='function'){try{window.ghfReverseGeocode(lat,lng)}catch(_){} }e.stopPropagation();e.preventDefault()})}
+function tileUrl(z,x,y,kind){var n=Math.pow(2,z);if(y<0||y>=n)return '';x=((x%n)+n)%n;return 'https://mt1.google.com/vt/lyrs='+(kind==='labels'?'h':'s')+'&x='+x+'&y='+y+'&z='+z}
+function addTile(z,x,y,left,top){var key=z+':'+x+':'+y,old=map.tiles[key];if(old){old.style.left=left+'px';old.style.top=top+'px';old.style.visibility='visible';return old}var wrap=document.createElement('div');wrap.className='ghf-map-tile-wrap';wrap.style.left=left+'px';wrap.style.top=top+'px';wrap.dataset.zoom=z;var img=document.createElement('img');img.className='ghf-map-tile ghf-imagery';img.alt='';img.draggable=false;img.src=tileUrl(z,x,y,'satellite');var lab=document.createElement('img');lab.className='ghf-map-tile ghf-places';lab.alt='';lab.draggable=false;lab.src=tileUrl(z,x,y,'labels');img.onerror=function(){img.classList.add('ghf-tile-failed')};lab.onerror=function(){lab.classList.add('ghf-tile-failed')};wrap.appendChild(img);wrap.appendChild(lab);map.layer.appendChild(wrap);map.tiles[key]=wrap;return wrap}
+function clampPan(){if(!map)return;var minX=lngX(B.west,map.z),maxX=lngX(B.east,map.z),minY=latY(B.north,map.z),maxY=latY(B.south,map.z),halfW=map.w/2,halfH=map.h/2,loX=minX+halfW,hiX=maxX-halfW,loY=minY+halfH,hiY=maxY-halfH;if(loX<=hiX)map.cx=clamp(map.cx,loX,hiX);else map.cx=(minX+maxX)/2;if(loY<=hiY)map.cy=clamp(map.cy,loY,hiY);else map.cy=(minY+maxY)/2}
+function render(){if(!map)return;var z=map.z,left=map.cx-map.w/2,right=map.cx+map.w/2,top=map.cy-map.h/2,bottom=map.cy+map.h/2,tx0=Math.floor(left/TILE)-3,tx1=Math.floor(right/TILE)+3,ty0=Math.floor(top/TILE)-3,ty1=Math.floor(bottom/TILE)+3,needed={};for(var ty=ty0;ty<=ty1;ty++)for(var tx=tx0;tx<=tx1;tx++){var n=Math.pow(2,z),x=((tx%n)+n)%n,y=ty;if(y<0||y>=n)continue;var key=z+':'+x+':'+y;needed[key]=1;addTile(z,x,y,tx*TILE-left,ty*TILE-top)}for(var key in map.tiles){var el=map.tiles[key];el.style.visibility='visible'}positionMarker()}
+function point(e){var r=box().getBoundingClientRect();return{x:e.clientX-r.left,y:e.clientY-r.top}}
+function onDown(e){if(e.target===marker||e.target.closest&&e.target.closest('.ghf-map-controls'))return;if(e.pointerType==='mouse'&&e.button!==0)return;var p=point(e);dragging=true;moved=false;startX=p.x;startY=p.y;baseCX=map.cx;baseCY=map.cy;lastX=p.x;lastY=p.y;downTime=Date.now();try{box().setPointerCapture(e.pointerId)}catch(_){}e.preventDefault()}
+function onMove(e){if(!dragging)return;var p=point(e),dx=p.x-startX,dy=p.y-startY;if(Math.abs(dx)>4||Math.abs(dy)>4)moved=true;lastX=p.x;lastY=p.y;/* Only transform already-loaded pixels while finger is moving: no redraw, no tile removal. */map.layer.style.transform='translate3d('+dx+'px,'+dy+'px,0)';if(marker)marker.style.transform='translate3d('+dx+'px,'+dy+'px,0)';e.preventDefault()}
+function onUp(e){if(!dragging)return;dragging=false;try{box().releasePointerCapture(e.pointerId)}catch(_){}var p=point(e),dx=p.x-startX,dy=p.y-startY;if(moved){map.cx=baseCX-dx;map.cy=baseCY-dy;clampPan();map.layer.style.transform='none';positionMarker();clearTimeout(map.panTimer);map.panTimer=setTimeout(render,60)}else if(Date.now()-downTime<800){var lng=xLng(map.cx+(p.x-map.w/2),map.z),lat=yLat(map.cy+(p.y-map.h/2),map.z);if(inside(lat,lng)){setMarker(lat,lng);window.ghfSelectedLat=lat;window.ghfSelectedLng=lng;if(typeof ghfSelectedLocation!=='undefined')ghfSelectedLocation={lat:lat,lng:lng};if(typeof window.ghfReverseGeocode==='function'){try{window.ghfReverseGeocode(lat,lng)}catch(_){} }}}e.preventDefault()}
+function zoomAt(dir){if(!map)return;var pLat=yLat(map.cy,map.z),pLng=xLng(map.cx,map.z),nz=clamp(map.z+(dir>0?1:-1),MIN_Z,MAX_Z);if(nz===map.z)return;map.z=nz;map.cx=lngX(pLng,nz);map.cy=latY(pLat,nz);clampPan();render()}
+function requestLive(){if(!navigator.geolocation){alert('Location is not available on this phone.');return}navigator.geolocation.getCurrentPosition(function(pos){var lat=pos.coords.latitude,lng=pos.coords.longitude;if(!inside(lat,lng)){alert('Your current location is outside Lebanon.');return}place(lat,lng,16)},function(err){if(err&&err.code===1)alert('Please allow Location access for this site.');else alert('Could not get your current location. You can tap the map to place the pin.')},{enableHighAccuracy:true,maximumAge:0,timeout:15000})}
+function init(){if(document.body.classList.contains('ghf-display-only'))return;var b=box();if(!b)return;var w=b.clientWidth,h=b.clientHeight;if(w<120||h<120){setTimeout(init,250);return}if(map){map.w=w;map.h=h;render();return}map={w:w,h:h,z:9,cx:lngX(35.8623,9),cy:latY(33.8547,9),tiles:{}};map.layer=document.createElement('div');map.layer.className='ghf-map-layer';b.innerHTML='';b.appendChild(map.layer);var controls=document.createElement('div');controls.className='ghf-map-controls';controls.innerHTML='<button type="button" class="ghf-map-zoom ghf-map-globe" aria-label="Lebanon map">🌐</button><button type="button" class="ghf-map-zoom" aria-label="Zoom in">+</button><button type="button" class="ghf-map-zoom" aria-label="Zoom out">−</button>';b.appendChild(controls);controls.children[0].onclick=function(e){e.stopPropagation();if(map){map.z=9;map.cx=lngX(35.8623,9);map.cy=latY(33.8547,9);clampPan();render()}};controls.children[1].onclick=function(e){e.stopPropagation();zoomAt(1)};controls.children[2].onclick=function(e){e.stopPropagation();zoomAt(-1)};b.addEventListener('pointerdown',onDown,{passive:false});b.addEventListener('pointermove',onMove,{passive:false});b.addEventListener('pointerup',onUp,{passive:false});b.addEventListener('pointercancel',onUp,{passive:false});window.ghfLebanonMap=map;window.ghfInitLebanonMap=init;window.ghfMapMarker=function(){return marker};window.ghfClearMapPin=function(){if(marker){marker.remove();marker=null}window.ghfSelectedLat=null;window.ghfSelectedLng=null;if(typeof ghfSelectedLocation!=='undefined')ghfSelectedLocation=null};window.ghfUseMyLocation=requestLive;clampPan();render()}
+window.ghfInitLebanonMap=init;window.ghfUseMyLocation=requestLive;setTimeout(init,350);window.addEventListener('resize',function(){if(map){map.w=box().clientWidth;map.h=box().clientHeight;render()}})
 })();
 </script>
+<style id="ghf-v18-map-engine-style">
+#ghfLebanonMap{position:relative!important;overflow:hidden!important;touch-action:none!important;background:#111!important;cursor:grab!important;isolation:isolate!important}
+#ghfLebanonMap:active{cursor:grabbing!important}
+.ghf-map-layer{position:absolute;inset:0;overflow:visible;z-index:1;transform:translate3d(0,0,0);will-change:transform;backface-visibility:hidden;-webkit-backface-visibility:hidden}.ghf-lebanon-mask{position:absolute;inset:0;z-index:8;overflow:hidden;pointer-events:none}
+.ghf-map-tile-wrap{position:absolute;width:256px!important;height:256px!important;overflow:visible!important;transform:translate3d(0,0,0);backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.ghf-map-tile{position:absolute;width:256px!important;height:256px!important;max-width:none!important;border:0!important;margin:0!important;padding:0!important;display:block!important;pointer-events:none!important;user-select:none!important;-webkit-user-drag:none!important;background:transparent!important}.ghf-tile-failed{display:none!important}
+.ghf-places{z-index:3;pointer-events:none!important}.ghf-imagery{z-index:1;pointer-events:none!important}.ghf-map-tile-wrap{pointer-events:none!important}
+.ghf-map-pin-custom{position:absolute!important;width:64px!important;height:76px!important;max-width:none!important;z-index:20!important;pointer-events:auto!important;user-select:none!important;-webkit-user-drag:none!important;filter:drop-shadow(0 2px 3px rgba(0,0,0,.65));cursor:grab!important}
+.ghf-map-controls{position:absolute;right:10px;top:10px;z-index:30;display:flex;flex-direction:column;gap:4px}
+.ghf-map-zoom{width:34px;height:34px;padding:0;border:1px solid rgba(212,175,55,.75);background:rgba(8,8,8,.86);color:#e6c56a;font:26px/30px Arial,sans-serif;cursor:pointer;border-radius:4px}
+.ghf-map-zoom:active{background:rgba(212,175,55,.18)}
+.ghf-map-globe{font-size:20px!important;line-height:32px!important}
+</style>
 <style id="ghf-location-button-pin-style">
 .ghf-location-btn-pin{display:inline-flex;vertical-align:middle;width:19px;height:23px;margin-right:7px;align-items:center;justify-content:center}
 .ghf-location-btn-pin svg{display:block;width:19px;height:23px;filter:drop-shadow(0 1px 2px rgba(0,0,0,.7))}
@@ -5569,5 +5359,25 @@ document.addEventListener("DOMContentLoaded",function(){
 })();
 </script>
 
+
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+ var b=document.getElementById('ghfGlobeMapButton'),m=document.getElementById('ghfLebanonMap');
+ if(!b||!m)return;
+ b.addEventListener('click',function(e){
+  e.preventDefault();e.stopPropagation();
+  m.scrollIntoView({behavior:'smooth',block:'center'});
+  setTimeout(function(){if(window.ghfInitLebanonMap)window.ghfInitLebanonMap();},120);
+ });
+});
+</script>
+
+<style id="ghf-v21-smooth-pan">
+#ghfLebanonMap{touch-action:none!important;overscroll-behavior:none!important;position:relative!important;overflow:hidden!important;background:#111!important;}
+#ghfLebanonMap .ghf-map-layer{position:absolute;inset:0;will-change:transform;transform:translate3d(0,0,0);backface-visibility:hidden;-webkit-backface-visibility:hidden;}
+#ghfLebanonMap .ghf-map-tile-wrap{position:absolute;width:256px;height:256px;will-change:transform;backface-visibility:hidden;-webkit-backface-visibility:hidden;}
+#ghfLebanonMap .ghf-map-tile{position:absolute;left:0;top:0;width:256px;height:256px;display:block;max-width:none!important;pointer-events:none;user-select:none;-webkit-user-select:none;}
+#ghfLebanonMap .ghf-map-pin-custom{position:absolute;width:64px;height:76px;z-index:50;pointer-events:auto;will-change:transform;touch-action:none;}
+</style>
 </body>
 </html>
