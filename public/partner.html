@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#050505">
+<title>GHF Partner Dashboard</title>
+<style>
+:root{--bg:#050505;--panel:#0c0c0c;--gold:#e8cf87;--gold2:#b58b36;--muted:#a69e8f;--line:#2a2417;--green:#86c98a;--red:#d77b6d}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at top,#17130b 0,#050505 48%,#020202 100%);color:#eee8da;font-family:Arial,sans-serif;min-height:100vh}
+header{position:sticky;top:0;z-index:10;background:rgba(5,5,5,.96);border-bottom:1px solid #4d3b17;padding:18px 16px;backdrop-filter:blur(8px)}
+.brand{color:var(--gold);letter-spacing:3px;font:700 13px Georgia,serif}.title{margin-top:7px;font:700 25px Georgia,serif;color:#fff}
+.wrap{width:min(1000px,94%);margin:24px auto 50px}.panel{background:linear-gradient(180deg,#101010,#090909);border:1px solid #4b3916;border-radius:14px;box-shadow:0 16px 50px #000;padding:20px}
+.login{max-width:430px;margin:10vh auto}.sub{color:var(--muted);font-size:13px;line-height:1.7}
+label{display:block;color:var(--gold);font-size:11px;letter-spacing:1.5px;margin:16px 0 7px}input{width:100%;padding:13px 12px;border-radius:9px;border:1px solid #4a3a1c;background:#070707;color:#fff;outline:none}input:focus{border-color:var(--gold2)}
+button,.btn{border:1px solid #806329;background:#15110a;color:var(--gold);padding:11px 14px;border-radius:9px;cursor:pointer;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:7px}
+button:hover,.btn:hover{background:#211a0d}.primary{background:linear-gradient(180deg,#d9b95f,#9d7626);color:#080808;border-color:#e8cf87}.danger{border-color:#754138;color:#f0a99e}.success{border-color:#3e6943;color:#9ee2a2}
+.topline{display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap}.stats{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px}.stat{border:1px solid var(--line);padding:9px 12px;border-radius:8px;color:var(--muted);font-size:12px}.stat b{color:var(--gold);font-size:16px;margin-right:5px}
+.order{border:1px solid #332a19;border-radius:13px;background:#090909;margin-top:14px;overflow:hidden}.order-head{padding:15px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;border-bottom:1px solid #252016}.oid{color:var(--gold);font:700 18px Georgia,serif}.date{color:#8f887a;font-size:12px}.badge{font-size:10px;letter-spacing:1.3px;padding:6px 8px;border-radius:99px;border:1px solid #5a461c;color:var(--gold);background:#151006}.body{padding:15px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.field{border-bottom:1px solid #211d16;padding:8px 0}.field small{display:block;color:#827b6e;font-size:10px;letter-spacing:1px;margin-bottom:4px}.field span{color:#eee;font-size:13px;word-break:break-word}.items{margin-top:14px;border-top:1px solid #2a2417}.item{display:flex;justify-content:space-between;gap:10px;padding:9px 0;border-bottom:1px solid #1e1b15;font-size:12px}.total{display:flex;justify-content:space-between;margin-top:12px;color:var(--gold);font-weight:700;font-size:17px}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px}.empty{text-align:center;padding:45px 15px;color:#8e877a}.error{margin-top:12px;color:#ef9e92;font-size:12px}.hidden{display:none!important}
+@media(max-width:600px){.grid{grid-template-columns:1fr}.wrap{width:94%}.panel{padding:15px}.actions button,.actions .btn{flex:1 1 45%}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap" style="margin:0 auto">
+    <div class="topline">
+      <div><div class="brand">GOLDEN HONEY FUSION</div><div class="title">PARTNER DASHBOARD</div></div>
+      <button id="logoutBtn" class="hidden" onclick="logout()">LOG OUT</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section id="loginPanel" class="panel login">
+    <div class="brand">PARTNER ACCESS</div>
+    <h2 style="font-family:Georgia,serif;margin:9px 0 4px">Sign in</h2>
+    <div class="sub">This page is for the authorized GHF delivery partner only.</div>
+    <label>USERNAME</label><input id="username" autocomplete="username">
+    <label>PASSWORD</label><input id="password" type="password" autocomplete="current-password">
+    <button class="primary" style="width:100%;margin-top:18px" onclick="login()">SIGN IN</button>
+    <div id="loginError" class="error"></div>
+  </section>
+
+  <section id="dashboard" class="hidden">
+    <div class="panel">
+      <div class="topline">
+        <div><div class="brand">ORDERS</div><div class="sub">Manage received orders and delivery status.</div></div>
+        <button onclick="loadOrders()">REFRESH</button>
+      </div>
+      <div class="stats">
+        <div class="stat"><b id="newCount">0</b> NEW</div>
+        <div class="stat"><b id="confirmedCount">0</b> CONFIRMED</div>
+        <div class="stat"><b id="shippedCount">0</b> OUT FOR DELIVERY</div>
+        <div class="stat"><b id="deliveredCount">0</b> DELIVERED</div>
+      </div>
+      <div id="orders"></div>
+    </div>
+  </section>
+</main>
+
+<script>
+/* If partner.html is hosted on the same backend domain, leave this empty.
+   If it is hosted on GitHub Pages, set it to your backend URL, e.g.
+   const GHF_API_BASE='https://your-backend.example.com'; */
+const GHF_API_BASE='';
+
+let token=sessionStorage.getItem('ghf_partner_token')||'';
+const $=id=>document.getElementById(id);
+const api=(path,opts={})=>fetch(GHF_API_BASE+path,{...opts,headers:{'Content-Type':'application/json',...(opts.headers||{}),...(token?{'Authorization':'Bearer '+token}:{})},cache:'no-store'});
+
+function esc(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function money(v){return '$'+(Number(v||0)).toFixed(2);}
+function date(v){try{return new Date(v).toLocaleString();}catch(e){return v||'';}}
+function phone(v){return String(v||'').replace(/\D/g,'').replace(/^00/,'');}
+
+function showDashboard(){
+  $('loginPanel').classList.add('hidden');$('dashboard').classList.remove('hidden');$('logoutBtn').classList.remove('hidden');loadOrders();
+}
+async function login(){
+  $('loginError').textContent='';
+  try{
+    const r=await api('/api/partner/login',{method:'POST',body:JSON.stringify({username:$('username').value.trim(),password:$('password').value})});
+    const d=await r.json(); if(!r.ok) throw new Error(d.error||'Login failed');
+    token=d.token;sessionStorage.setItem('ghf_partner_token',token);showDashboard();
+  }catch(e){$('loginError').textContent=e.message;}
+}
+function logout(){sessionStorage.removeItem('ghf_partner_token');token='';location.reload();}
+function statusClass(s){return s==='DELIVERED'?'success':s==='CONFIRMED'?'':'danger';}
+function statusLabel(s){return s==='SHIPPED'?'OUT FOR DELIVERY':s==='NEW'?'NEW ORDER':s;}
+
+async function loadOrders(){
+  try{
+    const r=await api('/api/partner/orders'); if(r.status===401){logout();return;}
+    const d=await r.json(); if(!r.ok) throw new Error(d.error||'Could not load orders');
+    const orders=d.orders||[];
+    $('newCount').textContent=orders.filter(o=>o.status==='NEW').length;
+    $('confirmedCount').textContent=orders.filter(o=>o.status==='CONFIRMED').length;
+    $('shippedCount').textContent=orders.filter(o=>o.status==='SHIPPED').length;
+    $('deliveredCount').textContent=orders.filter(o=>o.status==='DELIVERED').length;
+    $('orders').innerHTML=orders.length?orders.map(renderOrder).join(''):'<div class="empty">NO ORDERS YET</div>';
+  }catch(e){$('orders').innerHTML='<div class="empty">'+esc(e.message)+'</div>';}
+}
+function renderOrder(o){
+  const items=(o.items||[]).map(i=>`<div class="item"><span>${esc(i.product)} · ${esc(i.weight||'—')} × ${esc(i.qty||1)}</span><b>${money(i.lineTotal)}</b></div>`).join('');
+  let actions='';
+  if(o.status==='NEW') actions+=`<button class="primary" onclick="changeStatus('${esc(o.id)}','CONFIRMED')">CONFIRM ORDER</button>`;
+  if(o.status==='CONFIRMED') actions+=`<button class="primary" onclick="changeStatus('${esc(o.id)}','SHIPPED')">SHIP ORDER</button>`;
+  if(o.status==='SHIPPED') actions+=`<button class="success" onclick="changeStatus('${esc(o.id)}','DELIVERED')">DELIVERED</button>`;
+  if(o.status==='SHIPPED') actions+=`<button onclick="sendStatus('${esc(o.id)}','${esc(o.customer.phone)}')">SEND STATUS VIA WHATSAPP</button>`;
+  return `<article class="order"><div class="order-head"><div><div class="oid">${esc(o.id)}</div><div class="date">${date(o.createdAt)}</div></div><div class="badge">${esc(statusLabel(o.status))}</div></div><div class="body"><div class="grid">
+  <div class="field"><small>CUSTOMER</small><span>${esc(o.customer.name)}</span></div>
+  <div class="field"><small>PHONE</small><span>${esc(o.customer.phone)}</span></div>
+  <div class="field"><small>GOVERNORATE</small><span>${esc(o.customer.province)}</span></div>
+  <div class="field"><small>TOWN / CITY</small><span>${esc(o.customer.city)}</span></div>
+  <div class="field"><small>EXACT ADDRESS</small><span>${esc(o.customer.address)}</span></div>
+  <div class="field"><small>FLOOR / BUILDING</small><span>${esc(o.customer.floor||'—')}</span></div>
+  <div class="field"><small>DELIVERY NOTES</small><span>${esc(o.customer.notes||'—')}</span></div>
+  <div class="field"><small>ORDER ID</small><span>${esc(o.id)}</span></div>
+  </div><div class="items">${items}</div><div class="total"><span>TOTAL</span><span>${money(o.total)}</span></div><div class="actions">${actions}</div></div></article>`;
+}
+async function changeStatus(id,status){
+  try{
+    const r=await api('/api/partner/orders/'+encodeURIComponent(id)+'/status',{method:'POST',body:JSON.stringify({status})});
+    const d=await r.json();if(!r.ok)throw new Error(d.error||'Status update failed');
+    await loadOrders();
+  }catch(e){alert(e.message);}
+}
+async function sendStatus(id,customerPhone){
+  try{
+    const r=await api('/api/partner/orders/'+encodeURIComponent(id)+'/status-message');
+    const d=await r.json();if(!r.ok)throw new Error(d.error||'Could not prepare message');
+    window.open('https://wa.me/'+phone(customerPhone)+'?text='+encodeURIComponent(d.message),'_blank','noopener,noreferrer');
+  }catch(e){alert(e.message);}
+}
+$('password').addEventListener('keydown',e=>{if(e.key==='Enter')login();});
+if(token)showDashboard();
+</script>
+</body>
+</html>

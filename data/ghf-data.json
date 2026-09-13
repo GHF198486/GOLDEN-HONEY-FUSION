@@ -1,0 +1,1066 @@
+{
+  "customers": [
+    {
+      "id": "GHF-C-E9E16B8A4D",
+      "phone": "96176839195",
+      "name": "Rabee3",
+      "privilegeCode": "107034",
+      "purchases": 0,
+      "consecutivePurchases": 0,
+      "benefitRate": 0,
+      "benefitBalance": 0,
+      "benefitExpiresAt": null,
+      "benefitUsedOrderId": null,
+      "createdAt": "2026-09-12T20:02:59.209Z",
+      "updatedAt": "2026-09-13T18:37:21.311Z"
+    },
+    {
+      "id": "GHF-C-719EA2ACF3",
+      "phone": "76839195",
+      "name": "Rabee3",
+      "privilegeCode": "969406",
+      "purchases": 0,
+      "consecutivePurchases": 0,
+      "benefitRate": 0,
+      "benefitBalance": 0,
+      "benefitExpiresAt": null,
+      "benefitUsedOrderId": null,
+      "createdAt": "2026-09-13T17:25:03.410Z",
+      "updatedAt": "2026-09-13T17:28:40.522Z"
+    }
+  ],
+  "orders": [
+    {
+      "id": "GHF-O-16D4178D3F",
+      "customerId": "GHF-C-E9E16B8A4D",
+      "customer": {
+        "name": "Rabee3",
+        "phone": "96176839195",
+        "province": "North Lebanon",
+        "city": "Nabatie",
+        "address": "Nabatye street",
+        "floor": "2",
+        "notes": "",
+        "privilegeCode": "",
+        "location": null
+      },
+      "items": [
+        {
+          "product": "عسل جبلي بري",
+          "arabic": "عسل جبلي بري",
+          "weight": "1000 G",
+          "price": 75,
+          "qty": 1,
+          "lineTotal": 75
+        },
+        {
+          "product": "عسل جبلي بري",
+          "arabic": "عسل جبلي بري",
+          "weight": "30 G",
+          "price": 3,
+          "qty": 1,
+          "lineTotal": 3
+        },
+        {
+          "product": "عسل جبلي بري",
+          "arabic": "عسل جبلي بري",
+          "weight": "500 G",
+          "price": 38,
+          "qty": 1,
+          "lineTotal": 38
+        }
+      ],
+      "subtotal": 116,
+      "discountCode": null,
+      "discountAmount": 0,
+      "discountedSubtotal": 116,
+      "deliveryFee": 5,
+      "total": 121,
+      "status": "NEW",
+      "createdAt": "2026-09-12T20:02:59.210Z",
+      "confirmedAt": null,
+      "shippedAt": null,
+      "deliveredAt": null,
+      "confirmToken": "56a60231b0032e16087ff9f201e12417819b",
+      "shipToken": "6cf8dc83aeb5f909e4a5477391d2e4c97879",
+      "confirmUrl": "http://localhost:3000/api/orders/GHF-O-16D4178D3F/confirm?token=56a60231b0032e16087ff9f201e12417819b",
+      "shipUrl": "http://localhost:3000/api/orders/GHF-O-16D4178D3F/ship?token=6cf8dc83aeb5f909e4a5477391d2e4c97879"
+    },
+    {
+      "id": "GHF-O-79D7D0B796",
+      "customerId": "GHF-C-E9E16B8A4D",
+      "customer": {
+        "name": "Rabee3",
+        "phone": "96176839195",
+        "province": "North Lebanon",
+        "city": "Nabatie",
+        "address": "Nabatye street",
+        "floor": "2",
+        "notes": "",
+        "privilegeCode": "",
+        "location": null
+      },
+      "items": [
+        {
+          "product": "عسل جبلي بري",
+          "arabic": "عسل جبلي بري",
+          "weight": "500 G",
+          "price": 38,
+          "qty": 1,
+          "lineTotal": 38
+        },
+        {
+          "product": "عسل الأشواك",
+          "arabic": "عسل الأشواك",
+          "weight": "500 G",
+          "price": 15,
+          "qty": 1,
+          "lineTotal": 15
+        }
+      ],
+      "subtotal": 53,
+      "discountCode": null,
+      "discountAmount": 0,
+      "discountedSubtotal": 53,
+      "deliveryFee": 5,
+      "total": 58,
+      "status": "NEW",
+      "createdAt": "2026-09-12T22:21:39.119Z",
+      "confirmedAt": null,
+      "shippedAt": null,
+      "deliveredAt": null,
+      "confirmToken": "3cba35e82c5c20e87491996b7ca6da236287",
+      "shipToken": "8b1b1faf6e616f25fbe1a236f715b427d450",
+      "confirmUrl": "http://localhost:3000/api/orders/GHF-O-79D7D0B796/confirm?token=3cba35e82c5c20e87491996b7ca6da236287",
+      "shipUrl": "http://localhost:3000/api/orders/GHF-O-79D7D0B796/ship?token=8b1b1faf6e616f25fbe1a236f715b427d450"
+    },
+    {
+      "id": "GHF-O-14284D9687",
+      "customerId": "GHF-C-E9E16B8A4D",
+      "customer": {
+        "name": "Rabee3",
+        "phone": "96176839195",
+        "province": "North Lebanon",
+        "city": "Nabatie",
+        "address": "Nabatye street",
+        "floor": "2",
+        "notes": "",
+        "privilegeCode": "",
+        "location": null
+      },
+      "items": [
+        {
+          "product": "عسل جبلي بري",
+          "arabic": "عسل جبلي بري",
+          "weight": "500 G",
+          "price": 38,
+          "qty": 1,
+          "lineTotal": 38
+        },
+        {
+          "product": "عسل الأشواك",
+          "arabic": "عسل الأشواك",
+          "weight": "500 G",
+          "price": 15,
+          "qty": 1,
+          "lineTotal": 15
+        }
+      ],
+      "subtotal": 53,
+      "discountCode": null,
+      "discountAmount": 0,
+      "discountedSubtotal": 53,
+      "deliveryFee": 5,
+      "total": 58,
+      "status": "NEW",
+      "createdAt": "2026-09-12T22:23:16.872Z",
+      "confirmedAt": null,
+      "shippedAt": null,
+      "deliveredAt": null,
+      "confirmToken": "04496ac5f448b6c43b4354f85dda3e2fb143",
+      "shipToken": "32c118a9754ef71342ce6adb76a0c81bc002",
+      "confirmUrl": "http://localhost:3000/api/orders/GHF-O-14284D9687/confirm?token=04496ac5f448b6c43b4354f85dda3e2fb143",
+      "shipUrl": "http://localhost:3000/api/orders/GHF-O-14284D9687/ship?token=32c118a9754ef71342ce6adb76a0c81bc002"
+    },
+    {
+      "id": "GHF-O-980D671E53",
+      "customerId": "GHF-C-E9E16B8A4D",
+      "customer": {
+        "name": "Rabee3",
+        "phone": "96176839195",
+        "province": "North Lebanon",
+        "city": "Nabatie",
+        "address": "Nabatye street",
+        "floor": "2",
+        "notes": "",
+        "privilegeCode": "",
+        "location": null
+      },
+      "items": [
+        {
+          "product": "عسل جبلي بري",
+          "arabic": "عسل جبلي بري",
+          "weight": "1000 G",
+          "price": 75,
+          "qty": 1,
+          "lineTotal": 75
+        },
+        {
+          "product": "عسل جبلي بري",
+          "arabic": "عسل جبلي بري",
+          "weight": "30 G",
+          "price": 3,
+          "qty": 1,
+          "lineTotal": 3
+        }
+      ],
+      "subtotal": 78,
+      "discountCode": null,
+      "discountAmount": 0,
+      "discountedSubtotal": 78,
+      "deliveryFee": 5,
+      "total": 83,
+      "status": "NEW",
+      "createdAt": "2026-09-12T22:26:47.639Z",
+      "confirmedAt": null,
+      "shippedAt": null,
+      "deliveredAt": null,
+      "confirmToken": "e228508a37e32c75d9086e2d25c27e852c1f",
+      "shipToken": "d3dddf6630ebdcfa2c51030aee8408f436c1",
+      "confirmUrl": "http://localhost:3000/api/orders/GHF-O-980D671E53/confirm?token=e228508a37e32c75d9086e2d25c27e852c1f",
+      "shipUrl": "http://localhost:3000/api/orders/GHF-O-980D671E53/ship?token=d3dddf6630ebdcfa2c51030aee8408f436c1"
+    },
+    {
+      "id": "GHF-O-92E11F286A",
+      "customerId": "GHF-C-E9E16B8A4D",
+      "customer": {
+        "name": "Rabee3",
+        "phone": "96176839195",
+        "province": "North Lebanon",
+        "city": "Nabatie",
+        "address": "Nabatye street",
+        "floor": "2",
+        "notes": "",
+        "privilegeCode": "",
+        "location": null
+      },
+      "items": [
+        {
+          "product": "عسل جبلي بري",
+          "arabic": "عسل جبلي بري",
+          "weight": "1000 G",
+          "price": 75,
+          "qty": 1,
+          "lineTotal": 75
+        },
+        {
+          "product": "عسل جبلي بري",
+          "arabic": "عسل جبلي بري",
+          "weight": "30 G",
+          "price": 3,
+          "qty": 1,
+          "lineTotal": 3
+        }
+      ],
+      "subtotal": 78,
+      "discountCode": null,
+      "discountAmount": 0,
+      "discountedSubtotal": 78,
+      "deliveryFee": 5,
+      "total": 83,
+      "status": "NEW",
+      "createdAt": "2026-09-12T22:44:00.624Z",
+      "confirmedAt": null,
+      "shippedAt": null,
+      "deliveredAt": null,
+      "confirmToken": "e718eb5d5ba524119d14e784e8659e6ad77f",
+      "shipToken": "55795aa754128f5db8ac42c0d44ad8295da0",
+      "confirmUrl": "http://localhost:3000/api/orders/GHF-O-92E11F286A/confirm?token=e718eb5d5ba524119d14e784e8659e6ad77f",
+      "shipUrl": "http://localhost:3000/api/orders/GHF-O-92E11F286A/ship?token=55795aa754128f5db8ac42c0d44ad8295da0"
+    },
+    {
+      "id": "GHF-O-52837C3C44",
+      "customerId": "GHF-C-E9E16B8A4D",
+      "customer": {
+        "name": "Rabee3",
+        "phone": "96176839195",
+        "province": "North Lebanon",
+        "city": "Nabatie",
+        "address": "Nabatye street",
+        "floor": "2",
+        "notes": "",
+        "privilegeCode": "",
+        "location": null
+      },
+      "items": [
+        {
+          "product": "عسل جبلي بري",
+          "arabic": "عسل جبلي بري",
+          "weight": "1000 G",
+          "price": 75,
+          "qty": 1,
+          "lineTotal": 75
+        },
+        {
+          "product": "عسل جبلي بري",
+          "arabic": "عسل جبلي بري",
+          "weight": "30 G",
+          "price": 3,
+          "qty": 1,
+          "lineTotal": 3
+        }
+      ],
+      "subtotal": 78,
+      "discountCode": null,
+      "discountAmount": 0,
+      "discountedSubtotal": 78,
+      "deliveryFee": 5,
+      "total": 83,
+      "status": "NEW",
+      "createdAt": "2026-09-12T22:44:48.135Z",
+      "confirmedAt": null,
+      "shippedAt": null,
+      "deliveredAt": null,
+      "confirmToken": "62de412b51667a54202900096cdf5972dcf5",
+      "shipToken": "893cf554a3788b0c7fe29918d99d08274936",
+      "confirmUrl": "http://localhost:3000/api/orders/GHF-O-52837C3C44/confirm?token=62de412b51667a54202900096cdf5972dcf5",
+      "shipUrl": "http://localhost:3000/api/orders/GHF-O-52837C3C44/ship?token=893cf554a3788b0c7fe29918d99d08274936"
+    },
+    {
+      "id": "GHF-O-4BA7892CA3",
+      "customerId": "GHF-C-E9E16B8A4D",
+      "customer": {
+        "name": "Rabee3",
+        "phone": "96176839195",
+        "province": "North Lebanon",
+        "city": "Nabatie",
+        "address": "Nabatye street",
+        "floor": "2",
+        "notes": "",
+        "privilegeCode": "",
+        "location": null
+      },
+      "items": [
+        {
+          "product": "عسل جبلي بري",
+          "arabic": "عسل جبلي بري",
+          "weight": "1000 G",
+          "price": 75,
+          "qty": 1,
+          "lineTotal": 75
+        },
+        {
+          "product": "عسل جبلي بري",
+          "arabic": "عسل جبلي بري",
+          "weight": "30 G",
+          "price": 3,
+          "qty": 1,
+          "lineTotal": 3
+        }
+      ],
+      "subtotal": 78,
+      "discountCode": null,
+      "discountAmount": 0,
+      "discountedSubtotal": 78,
+      "deliveryFee": 5,
+      "total": 83,
+      "status": "NEW",
+      "createdAt": "2026-09-13T06:38:17.607Z",
+      "confirmedAt": null,
+      "shippedAt": null,
+      "deliveredAt": null,
+      "confirmToken": "3d9eab155899e36c4c1ab54b572d748acc30",
+      "shipToken": "7ffba5921640a2246c231081ec6568785284",
+      "confirmUrl": "http://localhost:3000/api/orders/GHF-O-4BA7892CA3/confirm?token=3d9eab155899e36c4c1ab54b572d748acc30",
+      "shipUrl": "http://localhost:3000/api/orders/GHF-O-4BA7892CA3/ship?token=7ffba5921640a2246c231081ec6568785284"
+    },
+    {
+      "id": "GHF-O-7B1DD6DCE9",
+      "customerId": "GHF-C-E9E16B8A4D",
+      "customer": {
+        "name": "Rabee3",
+        "phone": "96176839195",
+        "province": "North Lebanon",
+        "city": "Nabatie",
+        "address": "Nabatye street",
+        "floor": "2",
+        "notes": "",
+        "privilegeCode": "",
+        "location": null
+      },
+      "items": [
+        {
+          "product": "عسل جبلي بري",
+          "arabic": "عسل جبلي بري",
+          "weight": "1000 G",
+          "price": 75,
+          "qty": 1,
+          "lineTotal": 75
+        },
+        {
+          "product": "عسل جبلي بري",
+          "arabic": "عسل جبلي بري",
+          "weight": "30 G",
+          "price": 3,
+          "qty": 1,
+          "lineTotal": 3
+        }
+      ],
+      "subtotal": 78,
+      "discountCode": null,
+      "discountAmount": 0,
+      "discountedSubtotal": 78,
+      "deliveryFee": 5,
+      "total": 83,
+      "status": "NEW",
+      "createdAt": "2026-09-13T06:39:00.746Z",
+      "confirmedAt": null,
+      "shippedAt": null,
+      "deliveredAt": null,
+      "confirmToken": "1ea00e9126a833a47c1df1cf6bbdd87a5fef",
+      "shipToken": "0e408022aaeee501398e251919b1f7b19850",
+      "confirmUrl": "http://localhost:3000/api/orders/GHF-O-7B1DD6DCE9/confirm?token=1ea00e9126a833a47c1df1cf6bbdd87a5fef",
+      "shipUrl": "http://localhost:3000/api/orders/GHF-O-7B1DD6DCE9/ship?token=0e408022aaeee501398e251919b1f7b19850"
+    },
+    {
+      "id": "GHF-O-CD3CD9630B",
+      "customerId": "GHF-C-E9E16B8A4D",
+      "customer": {
+        "name": "Rabee3",
+        "phone": "96176839195",
+        "province": "North Lebanon",
+        "city": "Nabatie",
+        "address": "Nabatye street",
+        "floor": "2",
+        "notes": "",
+        "privilegeCode": "",
+        "location": null
+      },
+      "items": [
+        {
+          "product": "عسل جبلي بري",
+          "arabic": "عسل جبلي بري",
+          "weight": "1000 G",
+          "price": 75,
+          "qty": 1,
+          "lineTotal": 75
+        }
+      ],
+      "subtotal": 75,
+      "discountCode": null,
+      "discountAmount": 0,
+      "discountedSubtotal": 75,
+      "deliveryFee": 5,
+      "total": 80,
+      "status": "NEW",
+      "createdAt": "2026-09-13T07:02:16.831Z",
+      "confirmedAt": null,
+      "shippedAt": null,
+      "deliveredAt": null,
+      "confirmToken": "29f0ff1642146455edab1d6e7a93843b53f6",
+      "shipToken": "ed134c18249bd6bd513cece55e0ff8eefc0f",
+      "confirmUrl": "http://localhost:3000/api/orders/GHF-O-CD3CD9630B/confirm?token=29f0ff1642146455edab1d6e7a93843b53f6",
+      "shipUrl": "http://localhost:3000/api/orders/GHF-O-CD3CD9630B/ship?token=ed134c18249bd6bd513cece55e0ff8eefc0f"
+    },
+    {
+      "id": "GHF-O-29CED236E4",
+      "customerId": "GHF-C-E9E16B8A4D",
+      "customer": {
+        "name": "Rabee3",
+        "phone": "96176839195",
+        "province": "North Lebanon",
+        "city": "Nabatie",
+        "address": "Nabatye street",
+        "floor": "2",
+        "notes": "",
+        "privilegeCode": "",
+        "location": null
+      },
+      "items": [
+        {
+          "product": "عسل جبلي بري",
+          "arabic": "عسل جبلي بري",
+          "weight": "1000 G",
+          "price": 75,
+          "qty": 1,
+          "lineTotal": 75
+        }
+      ],
+      "subtotal": 75,
+      "discountCode": null,
+      "discountAmount": 0,
+      "discountedSubtotal": 75,
+      "deliveryFee": 5,
+      "total": 80,
+      "status": "NEW",
+      "createdAt": "2026-09-13T07:03:45.787Z",
+      "confirmedAt": null,
+      "shippedAt": null,
+      "deliveredAt": null,
+      "confirmToken": "913315718457dcce44d4c4bc49564082f90f",
+      "shipToken": "b2038e2a78c94eb99ed60b2327f029cf95e5",
+      "confirmUrl": "http://localhost:3000/api/orders/GHF-O-29CED236E4/confirm?token=913315718457dcce44d4c4bc49564082f90f",
+      "shipUrl": "http://localhost:3000/api/orders/GHF-O-29CED236E4/ship?token=b2038e2a78c94eb99ed60b2327f029cf95e5"
+    },
+    {
+      "id": "GHF-O-7910BAF358",
+      "customerId": "GHF-C-E9E16B8A4D",
+      "customer": {
+        "name": "Rabee3",
+        "phone": "96176839195",
+        "province": "North Lebanon",
+        "city": "Nabatie",
+        "address": "Nabatye street",
+        "floor": "2",
+        "notes": "",
+        "privilegeCode": "",
+        "location": null
+      },
+      "items": [
+        {
+          "product": "عسل جبلي بري",
+          "arabic": "عسل جبلي بري",
+          "weight": "1000 G",
+          "price": 75,
+          "qty": 1,
+          "lineTotal": 75
+        }
+      ],
+      "subtotal": 75,
+      "discountCode": null,
+      "discountAmount": 0,
+      "discountedSubtotal": 75,
+      "deliveryFee": 5,
+      "total": 80,
+      "status": "NEW",
+      "createdAt": "2026-09-13T07:04:02.401Z",
+      "confirmedAt": null,
+      "shippedAt": null,
+      "deliveredAt": null,
+      "confirmToken": "409f5a3f5ff2818b9745a5c0ed82cfe5062a",
+      "shipToken": "fafd781bd4b83731fe04db708f4ff6fe538a",
+      "confirmUrl": "http://localhost:3000/api/orders/GHF-O-7910BAF358/confirm?token=409f5a3f5ff2818b9745a5c0ed82cfe5062a",
+      "shipUrl": "http://localhost:3000/api/orders/GHF-O-7910BAF358/ship?token=fafd781bd4b83731fe04db708f4ff6fe538a"
+    },
+    {
+      "id": "GHF-O-88E4130D5C",
+      "customerId": "GHF-C-E9E16B8A4D",
+      "customer": {
+        "name": "Rabee3",
+        "phone": "96176839195",
+        "province": "North Lebanon",
+        "city": "Nabatie",
+        "address": "Nabatye street",
+        "floor": "2",
+        "notes": "",
+        "privilegeCode": "",
+        "location": null
+      },
+      "items": [
+        {
+          "product": "عسل جبلي بري",
+          "arabic": "عسل جبلي بري",
+          "weight": "1000 G",
+          "price": 75,
+          "qty": 1,
+          "lineTotal": 75
+        }
+      ],
+      "subtotal": 75,
+      "discountCode": null,
+      "discountAmount": 0,
+      "discountedSubtotal": 75,
+      "deliveryFee": 5,
+      "total": 80,
+      "status": "NEW",
+      "createdAt": "2026-09-13T07:04:23.951Z",
+      "confirmedAt": null,
+      "shippedAt": null,
+      "deliveredAt": null,
+      "confirmToken": "837f3d86f8713ad7e1f6d688c8e1bd8d6c22",
+      "shipToken": "add87d5617e8ec4d623a275a825228307ca5",
+      "confirmUrl": "http://localhost:3000/api/orders/GHF-O-88E4130D5C/confirm?token=837f3d86f8713ad7e1f6d688c8e1bd8d6c22",
+      "shipUrl": "http://localhost:3000/api/orders/GHF-O-88E4130D5C/ship?token=add87d5617e8ec4d623a275a825228307ca5"
+    },
+    {
+      "id": "GHF-O-333C51BB43",
+      "customerId": "GHF-C-E9E16B8A4D",
+      "customer": {
+        "name": "Rabee3",
+        "phone": "96176839195",
+        "province": "North Lebanon",
+        "city": "Nabatie",
+        "address": "Nabatye street",
+        "floor": "2",
+        "notes": "",
+        "privilegeCode": "",
+        "location": null
+      },
+      "items": [
+        {
+          "product": "عسل جبلي بري",
+          "arabic": "عسل جبلي بري",
+          "weight": "1000 G",
+          "price": 75,
+          "qty": 1,
+          "lineTotal": 75
+        }
+      ],
+      "subtotal": 75,
+      "discountCode": null,
+      "discountAmount": 0,
+      "discountedSubtotal": 75,
+      "deliveryFee": 5,
+      "total": 80,
+      "status": "NEW",
+      "createdAt": "2026-09-13T07:31:38.681Z",
+      "confirmedAt": null,
+      "shippedAt": null,
+      "deliveredAt": null,
+      "confirmToken": "650bf6ae8092d8d5f10199bd09f5e5ab15a4",
+      "shipToken": "cc44793e82dbc446f033bc1daaf821a6f251",
+      "confirmUrl": "http://localhost:3000/api/orders/GHF-O-333C51BB43/confirm?token=650bf6ae8092d8d5f10199bd09f5e5ab15a4",
+      "shipUrl": "http://localhost:3000/api/orders/GHF-O-333C51BB43/ship?token=cc44793e82dbc446f033bc1daaf821a6f251"
+    },
+    {
+      "id": "GHF-O-0BC7710EF9",
+      "customerId": "GHF-C-E9E16B8A4D",
+      "customer": {
+        "name": "Rabee3",
+        "phone": "96176839195",
+        "province": "North Lebanon",
+        "city": "Nabatie",
+        "address": "Nabatye street",
+        "floor": "2",
+        "notes": "",
+        "privilegeCode": "",
+        "location": null
+      },
+      "items": [
+        {
+          "product": "عسل جبلي بري",
+          "arabic": "عسل جبلي بري",
+          "weight": "1000 G",
+          "price": 75,
+          "qty": 1,
+          "lineTotal": 75
+        }
+      ],
+      "subtotal": 75,
+      "discountCode": null,
+      "discountAmount": 0,
+      "discountedSubtotal": 75,
+      "deliveryFee": 5,
+      "total": 80,
+      "status": "NEW",
+      "createdAt": "2026-09-13T07:33:28.505Z",
+      "confirmedAt": null,
+      "shippedAt": null,
+      "deliveredAt": null,
+      "confirmToken": "5cf86ac41a34a223c6ed8b3a1234277ca305",
+      "shipToken": "5d3dac3437d293972a2ad0338b58f1dd6bc6",
+      "confirmUrl": "http://localhost:3000/api/orders/GHF-O-0BC7710EF9/confirm?token=5cf86ac41a34a223c6ed8b3a1234277ca305",
+      "shipUrl": "http://localhost:3000/api/orders/GHF-O-0BC7710EF9/ship?token=5d3dac3437d293972a2ad0338b58f1dd6bc6"
+    },
+    {
+      "id": "GHF-O-F4A30BAC94",
+      "customerId": "GHF-C-719EA2ACF3",
+      "customer": {
+        "name": "Rabee3",
+        "phone": "76839195",
+        "province": "North Lebanon",
+        "city": "Nabatie",
+        "address": "Nabatye street",
+        "floor": "",
+        "notes": "",
+        "privilegeCode": "",
+        "location": null
+      },
+      "items": [
+        {
+          "product": "عسل الزعتر",
+          "arabic": "عسل الزعتر",
+          "weight": "30 G",
+          "price": 2,
+          "qty": 1,
+          "lineTotal": 2
+        }
+      ],
+      "subtotal": 2,
+      "discountCode": null,
+      "discountAmount": 0,
+      "discountedSubtotal": 2,
+      "deliveryFee": 5,
+      "total": 7,
+      "status": "NEW",
+      "createdAt": "2026-09-13T17:25:03.411Z",
+      "confirmedAt": null,
+      "shippedAt": null,
+      "deliveredAt": null,
+      "confirmToken": "b0809682b97dc2fb94587a98d6bd7be37a2a",
+      "shipToken": "c68df2ee64418175a4f0e02f9091f2397c2c",
+      "confirmUrl": "http://localhost:3000/api/orders/GHF-O-F4A30BAC94/confirm?token=b0809682b97dc2fb94587a98d6bd7be37a2a",
+      "shipUrl": "http://localhost:3000/api/orders/GHF-O-F4A30BAC94/ship?token=c68df2ee64418175a4f0e02f9091f2397c2c"
+    },
+    {
+      "id": "GHF-O-126B664142",
+      "customerId": "GHF-C-719EA2ACF3",
+      "customer": {
+        "name": "Rabee3",
+        "phone": "76839195",
+        "province": "North Lebanon",
+        "city": "Nabatie",
+        "address": "Nabatye street",
+        "floor": "",
+        "notes": "",
+        "privilegeCode": "",
+        "location": null
+      },
+      "items": [
+        {
+          "product": "عسل الزعتر",
+          "arabic": "عسل الزعتر",
+          "weight": "30 G",
+          "price": 2,
+          "qty": 1,
+          "lineTotal": 2
+        }
+      ],
+      "subtotal": 2,
+      "discountCode": null,
+      "discountAmount": 0,
+      "discountedSubtotal": 2,
+      "deliveryFee": 5,
+      "total": 7,
+      "status": "NEW",
+      "createdAt": "2026-09-13T17:28:40.545Z",
+      "confirmedAt": null,
+      "shippedAt": null,
+      "deliveredAt": null,
+      "confirmToken": "4b34fe1103d523e65f33e305360b9122c7f0",
+      "shipToken": "f9edb299e146cbdc64c43510e14f2f784960",
+      "confirmUrl": "http://localhost:3000/api/orders/GHF-O-126B664142/confirm?token=4b34fe1103d523e65f33e305360b9122c7f0",
+      "shipUrl": "http://localhost:3000/api/orders/GHF-O-126B664142/ship?token=f9edb299e146cbdc64c43510e14f2f784960"
+    },
+    {
+      "id": "GHF-O-510C59A00B",
+      "customerId": "GHF-C-E9E16B8A4D",
+      "customer": {
+        "name": "Rabee3",
+        "phone": "96176839195",
+        "province": "North Lebanon",
+        "city": "Nabatie",
+        "address": "Nabatye street",
+        "floor": "2",
+        "notes": "",
+        "privilegeCode": "",
+        "location": null
+      },
+      "items": [
+        {
+          "product": "عسل جبلي بري",
+          "arabic": "عسل جبلي بري",
+          "weight": "1000 G",
+          "price": 75,
+          "qty": 1,
+          "lineTotal": 75
+        }
+      ],
+      "subtotal": 75,
+      "discountCode": null,
+      "discountAmount": 0,
+      "discountedSubtotal": 75,
+      "deliveryFee": 5,
+      "total": 80,
+      "status": "NEW",
+      "createdAt": "2026-09-13T17:47:01.632Z",
+      "confirmedAt": null,
+      "shippedAt": null,
+      "deliveredAt": null,
+      "confirmToken": "1d769d8b22449914eb6365a4f72a480650af",
+      "shipToken": "1b709091b7310a17a55eea220f885649d644",
+      "confirmUrl": "http://localhost:3000/api/orders/GHF-O-510C59A00B/confirm?token=1d769d8b22449914eb6365a4f72a480650af",
+      "shipUrl": "http://localhost:3000/api/orders/GHF-O-510C59A00B/ship?token=1b709091b7310a17a55eea220f885649d644"
+    },
+    {
+      "id": "GHF-O-ABE6AB6DC1",
+      "customerId": "GHF-C-E9E16B8A4D",
+      "customer": {
+        "name": "Rabee3",
+        "phone": "96176839195",
+        "province": "North Lebanon",
+        "city": "Nabatie",
+        "address": "Nabatye street",
+        "floor": "2",
+        "notes": "",
+        "privilegeCode": "",
+        "location": null
+      },
+      "items": [
+        {
+          "product": "عسل جبلي بري",
+          "arabic": "عسل جبلي بري",
+          "weight": "1000 G",
+          "price": 75,
+          "qty": 2,
+          "lineTotal": 150
+        }
+      ],
+      "subtotal": 150,
+      "discountCode": null,
+      "discountAmount": 0,
+      "discountedSubtotal": 150,
+      "deliveryFee": 5,
+      "total": 155,
+      "status": "NEW",
+      "createdAt": "2026-09-13T17:52:50.565Z",
+      "confirmedAt": null,
+      "shippedAt": null,
+      "deliveredAt": null,
+      "confirmToken": "5f3980c3244646a863b1f104239ecaaafb7d",
+      "shipToken": "fd12d9b0954eb220f6df815439f9a0880002",
+      "confirmUrl": "http://localhost:3000/api/orders/GHF-O-ABE6AB6DC1/confirm?token=5f3980c3244646a863b1f104239ecaaafb7d",
+      "shipUrl": "http://localhost:3000/api/orders/GHF-O-ABE6AB6DC1/ship?token=fd12d9b0954eb220f6df815439f9a0880002"
+    },
+    {
+      "id": "GHF-O-88153B05CE",
+      "customerId": "GHF-C-E9E16B8A4D",
+      "customer": {
+        "name": "Rabee3",
+        "phone": "96176839195",
+        "province": "North Lebanon",
+        "city": "Nabatie",
+        "address": "Nabatye street",
+        "floor": "2",
+        "notes": "",
+        "privilegeCode": "",
+        "location": null
+      },
+      "items": [
+        {
+          "product": "عسل جبلي بري",
+          "arabic": "عسل جبلي بري",
+          "weight": "1000 G",
+          "price": 75,
+          "qty": 2,
+          "lineTotal": 150
+        }
+      ],
+      "subtotal": 150,
+      "discountCode": null,
+      "discountAmount": 0,
+      "discountedSubtotal": 150,
+      "deliveryFee": 5,
+      "total": 155,
+      "status": "NEW",
+      "createdAt": "2026-09-13T18:14:09.357Z",
+      "confirmedAt": null,
+      "shippedAt": null,
+      "deliveredAt": null,
+      "confirmToken": "93c6d20b04677551e564aaf8ab58a2727a5f",
+      "shipToken": "dea06dd3d42c9ec9c2f5f3154c9ce1e4fcb3",
+      "confirmUrl": "http://localhost:3000/api/orders/GHF-O-88153B05CE/confirm?token=93c6d20b04677551e564aaf8ab58a2727a5f",
+      "shipUrl": "http://localhost:3000/api/orders/GHF-O-88153B05CE/ship?token=dea06dd3d42c9ec9c2f5f3154c9ce1e4fcb3"
+    },
+    {
+      "id": "GHF-O-36D0CFA6B4",
+      "customerId": "GHF-C-E9E16B8A4D",
+      "customer": {
+        "name": "Rabee3",
+        "phone": "96176839195",
+        "province": "North Lebanon",
+        "city": "Nabatie",
+        "address": "Nabatye street",
+        "floor": "2",
+        "notes": "",
+        "privilegeCode": "",
+        "location": null
+      },
+      "items": [
+        {
+          "product": "عسل جبلي بري",
+          "arabic": "عسل جبلي بري",
+          "weight": "1000 G",
+          "price": 75,
+          "qty": 2,
+          "lineTotal": 150
+        }
+      ],
+      "subtotal": 150,
+      "discountCode": null,
+      "discountAmount": 0,
+      "discountedSubtotal": 150,
+      "deliveryFee": 5,
+      "total": 155,
+      "status": "NEW",
+      "createdAt": "2026-09-13T18:14:30.909Z",
+      "confirmedAt": null,
+      "shippedAt": null,
+      "deliveredAt": null,
+      "confirmToken": "5f4023050807542a4e0838d8d390e7020167",
+      "shipToken": "03b2d381445405e7d975b300474d682b2e4c",
+      "confirmUrl": "http://localhost:3000/api/orders/GHF-O-36D0CFA6B4/confirm?token=5f4023050807542a4e0838d8d390e7020167",
+      "shipUrl": "http://localhost:3000/api/orders/GHF-O-36D0CFA6B4/ship?token=03b2d381445405e7d975b300474d682b2e4c"
+    },
+    {
+      "id": "GHF-O-AB6395AFD3",
+      "customerId": "GHF-C-E9E16B8A4D",
+      "customer": {
+        "name": "Rabee3",
+        "phone": "96176839195",
+        "province": "North Lebanon",
+        "city": "Nabatie",
+        "address": "Nabatye street",
+        "floor": "2",
+        "notes": "",
+        "privilegeCode": "",
+        "location": null
+      },
+      "items": [
+        {
+          "product": "عسل جبلي بري",
+          "arabic": "عسل جبلي بري",
+          "weight": "1000 G",
+          "price": 75,
+          "qty": 2,
+          "lineTotal": 150
+        }
+      ],
+      "subtotal": 150,
+      "discountCode": null,
+      "discountAmount": 0,
+      "discountedSubtotal": 150,
+      "deliveryFee": 5,
+      "total": 155,
+      "status": "NEW",
+      "createdAt": "2026-09-13T18:18:59.443Z",
+      "confirmedAt": null,
+      "shippedAt": null,
+      "deliveredAt": null,
+      "confirmToken": "32a23d918790329b37c29bd0d495e84c6f44",
+      "shipToken": "630175f909a09f101c34d5713dbd247f6ae9",
+      "confirmUrl": "http://localhost:3000/api/orders/GHF-O-AB6395AFD3/confirm?token=32a23d918790329b37c29bd0d495e84c6f44",
+      "shipUrl": "http://localhost:3000/api/orders/GHF-O-AB6395AFD3/ship?token=630175f909a09f101c34d5713dbd247f6ae9"
+    },
+    {
+      "id": "GHF-O-1CFBC33DDE",
+      "customerId": "GHF-C-E9E16B8A4D",
+      "customer": {
+        "name": "Rabee3",
+        "phone": "96176839195",
+        "province": "North Lebanon",
+        "city": "Nabatie",
+        "address": "Nabatye street",
+        "floor": "2",
+        "notes": "",
+        "privilegeCode": "",
+        "location": null
+      },
+      "items": [
+        {
+          "product": "عسل جبلي بري",
+          "arabic": "عسل جبلي بري",
+          "weight": "1000 G",
+          "price": 75,
+          "qty": 2,
+          "lineTotal": 150
+        }
+      ],
+      "subtotal": 150,
+      "discountCode": null,
+      "discountAmount": 0,
+      "discountedSubtotal": 150,
+      "deliveryFee": 5,
+      "total": 155,
+      "status": "NEW",
+      "createdAt": "2026-09-13T18:35:27.902Z",
+      "confirmedAt": null,
+      "shippedAt": null,
+      "deliveredAt": null,
+      "confirmToken": "702fb530df45a8b8364f3a5fd41aa93e3ee4",
+      "shipToken": "1e78f9490ace6699ff2ad550fc511e9dbd07",
+      "confirmUrl": "http://localhost:3000/api/orders/GHF-O-1CFBC33DDE/confirm?token=702fb530df45a8b8364f3a5fd41aa93e3ee4",
+      "shipUrl": "http://localhost:3000/api/orders/GHF-O-1CFBC33DDE/ship?token=1e78f9490ace6699ff2ad550fc511e9dbd07"
+    },
+    {
+      "id": "GHF-O-5B4C78894F",
+      "customerId": "GHF-C-E9E16B8A4D",
+      "customer": {
+        "name": "Rabee3",
+        "phone": "96176839195",
+        "province": "North Lebanon",
+        "city": "Nabatie",
+        "address": "Nabatye street",
+        "floor": "2",
+        "notes": "",
+        "privilegeCode": "",
+        "location": null
+      },
+      "items": [
+        {
+          "product": "عسل جبلي بري",
+          "arabic": "عسل جبلي بري",
+          "weight": "1000 G",
+          "price": 75,
+          "qty": 2,
+          "lineTotal": 150
+        }
+      ],
+      "subtotal": 150,
+      "discountCode": null,
+      "discountAmount": 0,
+      "discountedSubtotal": 150,
+      "deliveryFee": 5,
+      "total": 155,
+      "status": "NEW",
+      "createdAt": "2026-09-13T18:36:51.802Z",
+      "confirmedAt": null,
+      "shippedAt": null,
+      "deliveredAt": null,
+      "confirmToken": "7a9b1decd17bcd9940c97a6a0ef34bbc53b6",
+      "shipToken": "6cbf2a97efe551a1d41fcdcc57a07f9853a6",
+      "confirmUrl": "http://localhost:3000/api/orders/GHF-O-5B4C78894F/confirm?token=7a9b1decd17bcd9940c97a6a0ef34bbc53b6",
+      "shipUrl": "http://localhost:3000/api/orders/GHF-O-5B4C78894F/ship?token=6cbf2a97efe551a1d41fcdcc57a07f9853a6"
+    },
+    {
+      "id": "GHF-O-5DC0E88CD5",
+      "customerId": "GHF-C-E9E16B8A4D",
+      "customer": {
+        "name": "Rabee3",
+        "phone": "96176839195",
+        "province": "North Lebanon",
+        "city": "Nabatie",
+        "address": "Nabatye street",
+        "floor": "2",
+        "notes": "",
+        "privilegeCode": "",
+        "location": null
+      },
+      "items": [
+        {
+          "product": "عسل جبلي بري",
+          "arabic": "عسل جبلي بري",
+          "weight": "1000 G",
+          "price": 75,
+          "qty": 2,
+          "lineTotal": 150
+        }
+      ],
+      "subtotal": 150,
+      "discountCode": null,
+      "discountAmount": 0,
+      "discountedSubtotal": 150,
+      "deliveryFee": 5,
+      "total": 155,
+      "status": "NEW",
+      "createdAt": "2026-09-13T18:37:21.312Z",
+      "confirmedAt": null,
+      "shippedAt": null,
+      "deliveredAt": null,
+      "confirmToken": "004b3264e19ab16409f1c1897a9cbde19130",
+      "shipToken": "6ed19cfd0f6fecbc23c7f017a76c15704736",
+      "confirmUrl": "http://localhost:3000/api/orders/GHF-O-5DC0E88CD5/confirm?token=004b3264e19ab16409f1c1897a9cbde19130",
+      "shipUrl": "http://localhost:3000/api/orders/GHF-O-5DC0E88CD5/ship?token=6ed19cfd0f6fecbc23c7f017a76c15704736"
+    }
+  ]
+}
