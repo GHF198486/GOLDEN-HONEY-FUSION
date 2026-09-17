@@ -4719,8 +4719,22 @@ async function ghfPurchaseWhatsApp(event){
  try{
    const r=await fetch(GHF_API_BASE+'/api/orders',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({customer:c,items:items,discountCode:ghfAppliedPrivilege.valid?ghfAppliedPrivilege.code:'',discountAmount:discount,deliveryFee:GHF_DELIVERY_FEE,subtotal:subtotal,total:total,source:'GHF_WEB_MENU'}),cache:'no-store'});
    if(!r.ok) throw new Error('API unavailable');
-   const data=await r.json();
-   if(data && data.partnerWhatsAppUrl){window.location.href=data.partnerWhatsAppUrl;return;}
+const data=await r.json();
+
+if(data && data.orderId){
+  alert(
+    "GOLDEN HONEY FUSION\n\n" +
+    "ORDER RECEIVED ✅\n\n" +
+    "Your order has been sent successfully.\n\n" +
+    "ORDER ID:\n" + data.orderId + "\n\n" +
+    "STATUS:\nWAITING FOR CONFIRMATION"
+  );
+}
+
+if(data && data.partnerWhatsAppUrl){
+  window.location.href=data.partnerWhatsAppUrl;
+  return;
+}
    // Never send the customer to an order webpage instead of WhatsApp.
    window.location.href=fallbackUrl;
  }catch(e){

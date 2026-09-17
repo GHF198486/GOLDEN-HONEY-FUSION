@@ -18,9 +18,17 @@ const OWNER_WA = String(process.env.OWNER_WHATSAPP || '').replace(/\D/g,'');
 const DATA_DIR = path.join(__dirname,'data');
 const DATA_FILE = path.join(DATA_DIR,'ghf-data.json');
 fs.mkdirSync(DATA_DIR,{recursive:true});
-if(!fs.existsSync(DATA_FILE)) fs.writeFileSync(DATA_FILE,JSON.stringify({customers:[],orders:[]},null,2));
-function db(){return JSON.parse(fs.readFileSync(DATA_FILE,'utf8'));}
-function save(d){fs.writeFileSync(DATA_FILE,JSON.stringify(d,null,2));}
+if(!fs.existsSync(DATA_FILE)) fs.writeFileSync(DATA_FILE,JSON.stringify({customers:[],orders:[],privileges:[]},null,2));
+
+function db(){
+ const d=JSON.parse(fs.readFileSync(DATA_FILE,'utf8'));
+ if(!d.privileges) d.privileges=[];
+ return d;
+}
+
+function save(d){
+ fs.writeFileSync(DATA_FILE,JSON.stringify(d,null,2));
+}
 function id(prefix){return prefix+'-'+crypto.randomBytes(5).toString('hex').toUpperCase();}
 function phone(v){return String(v||'').replace(/\D/g,'').replace(/^00/,'');}
 function money(n){return Math.round(Number(n||0)*100)/100;}
@@ -53,14 +61,101 @@ async function sendCloud(to,text){const token=process.env.WHATSAPP_ACCESS_TOKEN,
 
 app.get('/health',(req,res)=>res.json({ok:true,service:'GHF backend',time:new Date().toISOString()}));
 app.use(express.static(path.join(__dirname,'public')));
+app.get('/admin',(req,res)=>{
+  res.sendFile(path.join(__dirname,'public','admin.html'));
+});
+const ADMIN_USERNAME = "GHF198486";
+const ADMIN_PASSWORD = "GHM198486";
+const adminSessions = new Map();
+
+function adminAuth(req,res,next)
+{
+   next();
+}
+app.post('/api/admin/login',(req,res)=>{
+ const username=String(req.body?.username||'');
+ const password=String(req.body?.password||'');
+
+ if(username!==ADMIN_USERNAME || password!==ADMIN_PASSWORD){
+   return res.status(401).json({error:"Invalid admin login"});
+ }
+
+ const token=crypto.randomBytes(32).toString('hex');
+
+ adminSessions.set(token,{
+   expiresAt:Date.now()+24*60*60*1000
+ });
+
+ res.json({ok:true,token});
+});
 
 
-app.post('/api/orders',async(req,res)=>{ console.log("NEW ORDER RECEIVED", req.body);try{const b=req.body||{},c=b.customer||{},items=Array.isArray(b.items)?b.items:[];if(!c.name||!c.phone||!c.province||!c.city||!c.address||!items.length)return res.status(400).json({error:'Missing required order fields'});const d=db(),customer=customerFor(d,c);const subtotal=money(b.subtotal),deliveryFee=money(b.deliveryFee||5),submittedCode=String(b.discountCode||'').trim();let discountAmount=0;if(submittedCode){if(submittedCode!==String(customer.privilegeCode||''))return res.status(400).json({error:'Invalid privilege code'});const benefit=activeBenefit(customer);if(!benefit)return res.status(400).json({error:'Privilege expired or already used'});discountAmount=Math.min(benefit.amount,subtotal);}const discountedSubtotal=money(Math.max(0,subtotal-discountAmount)),total=money(discountedSubtotal+deliveryFee);const order={id:id('GHF-O'),customerId:customer.id,customer:{...c,phone:phone(c.phone)},items,subtotal,discountCode:submittedCode||null,discountAmount,discountedSubtotal,deliveryFee,total,status:'NEW',createdAt:new Date().toISOString(),confirmedAt:null,shippedAt:null,deliveredAt:null,confirmToken:crypto.randomBytes(18).toString('hex'),shipToken:crypto.randomBytes(18).toString('hex')};if(submittedCode)customer.benefitUsedOrderId=order.id;order.confirmUrl=`${BASE_URL}/api/orders/${order.id}/confirm?token=${order.confirmToken}`;order.shipUrl=`${BASE_URL}/api/orders/${order.id}/ship?token=${order.shipToken}`;d.orders.push(order);save(d);const partnerText=orderText(order,true),partnerWhatsAppUrl=waUrl(PARTNER_WA,partnerText);let partnerApi={sent:false};if(process.env.WHATSAPP_ACCESS_TOKEN&&process.env.WHATSAPP_PHONE_NUMBER_ID)partnerApi=await sendCloud(PARTNER_WA,partnerText);res.json({ok:true,orderId:order.id,customerId:customer.id,orderUrl:`${BASE_URL}/api/orders/${order.id}`,partnerWhatsAppUrl,partnerApi});}catch(e){console.error(e);res.status(500).json({error:'Could not create order'});}});
-app.get('/api/orders/:id',(req,res)=>{const d=db(),o=d.orders.find(x=>x.id===req.params.id);if(!o)return res.status(404).send('Order not found');res.type('html').send(orderHtml(o));});
-app.get('/api/orders/:id/confirm',async(req,res)=>{try{const d=db(),o=d.orders.find(x=>x.id===req.params.id);if(!o||req.query.token!==o.confirmToken)return res.status(403).send('Invalid confirmation link');if(o.status==='NEW'){o.status='CONFIRMED';o.confirmedAt=new Date().toISOString();const c=d.customers.find(x=>x.id===o.customerId);if(c){c.purchases++;c.consecutivePurchases++;const earnedBase=money(o.discountedSubtotal!=null?o.discountedSubtotal:o.subtotal),b=computeBenefit(c,earnedBase);c.benefitRate=b.rate;c.benefitBalance=b.amount;c.benefitExpiresAt=b.expiresAt;c.benefitUsedOrderId=null;}}save(d);const c=d.customers.find(x=>x.id===o.customerId);const customerMsg=`Golden Honey Fusion\n\nYour order ${o.id} has been accepted.\nCustomer ID: ${c.id}\nWe will update you when your order is shipped.`;const ownerMsg=`GHF ORDER CONFIRMED\nOrder: ${o.id}\nCustomer ID: ${c.id}\nCustomer: ${o.customer.name}\nPhone: ${o.customer.phone}\nPrivilege for next purchase: ${(c.benefitRate*100).toFixed(1)}% = $${c.benefitBalance.toFixed(2)}\nPrivilege Code: ${c.privilegeCode}\nValid until: ${new Date(c.benefitExpiresAt).toLocaleDateString()}`;let results=[];if(process.env.WHATSAPP_ACCESS_TOKEN&&process.env.WHATSAPP_PHONE_NUMBER_ID){results.push(await sendCloud(o.customer.phone,customerMsg));if(OWNER_WA)results.push(await sendCloud(OWNER_WA,ownerMsg));}res.type('html').send(actionHtml('ORDER CONFIRMED',o,results));}catch(e){console.error(e);res.status(500).send('Confirmation failed');}});
-app.get('/api/orders/:id/ship',async(req,res)=>{try{const d=db(),o=d.orders.find(x=>x.id===req.params.id);if(!o||req.query.token!==o.shipToken)return res.status(403).send('Invalid shipping link');if(o.status==='CONFIRMED'){o.status='SHIPPED';o.shippedAt=new Date().toISOString();save(d);}else if(o.status!=='SHIPPED'&&o.status!=='DELIVERED')return res.status(400).send('Order is not ready to ship');else save(d);const c=d.customers.find(x=>x.id===o.customerId);const customerMsg=`Golden Honey Fusion\n\nYour order ${o.id} has been shipped.\nThank you for choosing Golden Honey Fusion.`;const ownerMsg=`GHF ORDER SHIPPED\nOrder: ${o.id}\nCustomer ID: ${c.id}\nCustomer: ${o.customer.name}\nPhone: ${o.customer.phone}\nBenefit balance: $${c.benefitBalance.toFixed(2)} at ${(c.benefitRate*100).toFixed(1)}%`;let results=[];if(process.env.WHATSAPP_ACCESS_TOKEN&&process.env.WHATSAPP_PHONE_NUMBER_ID){results.push(await sendCloud(o.customer.phone,customerMsg));if(OWNER_WA)results.push(await sendCloud(OWNER_WA,ownerMsg));}res.type('html').send(actionHtml('ORDER SHIPPED',o,results));}catch(e){console.error(e);res.status(500).send('Shipping update failed');}});
+app.get('/api/admin/orders',(req,res)=>{
+ try{
+   const d=db();
+   const orders=[...d.orders].sort(
+    (a,b)=>new Date(b.createdAt)-new Date(a.createdAt)
+   );
 
-// Partner dashboard: one authorized partner account, 12-hour in-memory sessions.
+   res.json({ok:true,orders});
+
+ }catch(e){
+   res.status(500).json({error:"Cannot load admin orders"});
+ }
+});
+app.post('/api/orders',async(req,res)=>{ console.log("NEW ORDER RECEIVED", req.body);try{const b=req.body||{},c=b.customer||{},items=Array.isArray(b.items)?b.items:[];if(!c.name||!c.phone||!c.province||!c.city||!c.address||!items.length)return res.status(400).json({error:'Missing required order fields'});const d=db();
+c.phone=phone(c.phone);
+const customer=customerFor(d,c);const subtotal=money(b.subtotal),deliveryFee=money(b.deliveryFee||5),submittedCode=String(b.discountCode||'').trim();let discountAmount=0;if(submittedCode){if(submittedCode!==String(customer.privilegeCode||''))return res.status(400).json({error:'Invalid privilege code'});const benefit=activeBenefit(customer);if(!benefit)return res.status(400).json({error:'Privilege expired or already used'});discountAmount=Math.min(benefit.amount,subtotal);}const discountedSubtotal=money(Math.max(0,subtotal-discountAmount)),total=money(discountedSubtotal+deliveryFee);const order={id:id('GHF-O'),customerId:customer.id,customer:{...c,phone:phone(c.phone)},items,subtotal,discountCode:submittedCode||null,discountAmount,discountedSubtotal,deliveryFee,total,status:'NEW',createdAt:new Date().toISOString(),confirmedAt:null,shippedAt:null,deliveredAt:null,confirmToken:crypto.randomBytes(18).toString('hex'),shipToken:crypto.randomBytes(18).toString('hex')};if(submittedCode)customer.benefitUsedOrderId=order.id;order.confirmUrl=`${BASE_URL}/api/orders/${order.id}/confirm?token=${order.confirmToken}`;order.shipUrl=`${BASE_URL}/api/orders/${order.id}/ship?token=${order.shipToken}`;d.orders.push(order);save(d);const partnerText=orderText(order,true),partnerWhatsAppUrl=waUrl(PARTNER_WA,partnerText);let partnerApi={sent:false};if(process.env.WHATSAPP_ACCESS_TOKEN&&process.env.WHATSAPP_PHONE_NUMBER_ID)partnerApi=await sendCloud(PARTNER_WA,partnerText);res.json({ok:true,orderId:order.id,customerId:customer.id,orderUrl:`${BASE_URL}/api/orders/${order.id}`,partnerWhatsAppUrl,partnerApi});}catch(e){console.error(e);res.status(500).json({error:'Could not create order'});}});
+
+app.get('/api/orders',(req,res)=>{
+  try{
+    const d=db();
+
+    res.json({
+      orders:d.orders || [],
+      privileges:d.privileges || []
+    });
+
+  }catch(e){
+    res.status(500).json({error:'Cannot load orders'});
+  }
+});
+
+app.get('/api/orders/:id',(req,res)=>{
+  const d=db();
+  const o=d.orders.find(x=>x.id===req.params.id);
+  if(!o)return res.status(404).send('Order not found');
+  res.type('html').send(orderHtml(o));
+});
+app.get('/api/orders/:id/confirm', async (req,res)=>{
+  try {
+    const d=db();
+    const o=d.orders.find(x=>x.id===req.params.id);
+
+    if(!o || req.query.token!==o.confirmToken){
+      return res.status(403).send('Invalid confirmation link');
+    }
+
+    if(o.status==='NEW'){
+      o.status='CONFIRMED';
+      o.confirmedAt=new Date().toISOString();
+
+      const c=d.customers.find(x=>x.id===o.customerId);
+
+      if(c){
+        
+      }
+
+      save(d);
+    }
+
+    res.type('html').send(actionHtml('ORDER CONFIRMED',o,[]));
+
+  } catch(e) {
+    console.error(e);
+    res.status(500).send('Confirmation failed');
+  }
+});
 const PARTNER_USERNAME=String(process.env.PARTNER_USERNAME||'partner');
 const PARTNER_PASSWORD=String(process.env.PARTNER_PASSWORD||'CHANGE-ME');
 const partnerSessions=new Map();
@@ -68,13 +163,116 @@ function partnerAuth(req,res,next){const h=String(req.headers.authorization||'')
 app.post('/api/partner/login',(req,res)=>{const username=String(req.body?.username||''),password=String(req.body?.password||'');if(username!==PARTNER_USERNAME||password!==PARTNER_PASSWORD)return res.status(401).json({error:'Invalid partner credentials'});const token=crypto.randomBytes(32).toString('hex'),expiresAt=Date.now()+12*60*60*1000;partnerSessions.set(token,{createdAt:Date.now(),expiresAt});res.json({ok:true,token,expiresAt:new Date(expiresAt).toISOString()});});
 app.post('/api/partner/logout',partnerAuth,(req,res)=>{const h=String(req.headers.authorization||''),token=h.startsWith('Bearer ')?h.slice(7).trim():'';partnerSessions.delete(token);res.json({ok:true});});
 app.get('/api/partner/orders',partnerAuth,(req,res)=>{try{const d=db();const orders=[...d.orders].sort((a,b)=>new Date(b.createdAt)-new Date(a.createdAt));res.json({ok:true,orders});}catch(e){console.error(e);res.status(500).json({error:'Could not load partner orders'});}});
-app.post('/api/partner/orders/:id/status',partnerAuth,async(req,res)=>{try{const d=db(),o=d.orders.find(x=>x.id===req.params.id);if(!o)return res.status(404).json({error:'Order not found'});const requested=String(req.body?.status||'').toUpperCase(),allowed={NEW:'CONFIRMED',CONFIRMED:'SHIPPED',SHIPPED:'DELIVERED'};if(allowed[o.status]!==requested){if(o.status===requested)return res.json({ok:true,order:o});return res.status(400).json({error:'Invalid status transition'});}if(requested==='CONFIRMED'){o.status='CONFIRMED';o.confirmedAt=new Date().toISOString();const c=d.customers.find(x=>x.id===o.customerId);if(c){c.purchases++;c.consecutivePurchases++;const earnedBase=money(o.discountedSubtotal!=null?o.discountedSubtotal:o.subtotal),b=computeBenefit(c,earnedBase);c.benefitRate=b.rate;c.benefitBalance=b.amount;c.benefitExpiresAt=b.expiresAt;c.benefitUsedOrderId=null;c.updatedAt=new Date().toISOString();}}if(requested==='SHIPPED'){o.status='SHIPPED';o.shippedAt=new Date().toISOString();}if(requested==='DELIVERED'){o.status='DELIVERED';o.deliveredAt=new Date().toISOString();}save(d);res.json({ok:true,order:o});}catch(e){console.error(e);res.status(500).json({error:'Could not update order status'});}});
+app.post('/api/partner/orders/:id/status',partnerAuth,async(req,res)=>{
+try{
+const d=db();
+const o=d.orders.find(x=>x.id===req.params.id);
+
+if(!o){
+return res.status(404).json({error:'Order not found'});
+}
+
+const requested=String(req.body?.status||'').toUpperCase();
+
+const allowed={
+NEW:'CONFIRMED',
+CONFIRMED:'SHIPPED',
+SHIPPED:'DELIVERED'
+};
+
+if(allowed[o.status]!==requested){
+return res.status(400).json({error:'Invalid status transition'});
+}
+
+
+if(requested==='CONFIRMED'){
+o.status='CONFIRMED';
+o.confirmedAt=new Date().toISOString();
+}
+
+
+if(requested==='SHIPPED'){
+o.status='SHIPPED';
+o.shippedAt=new Date().toISOString();
+}
+
+
+if(requested==='DELIVERED'){
+
+o.status='DELIVERED';
+o.deliveredAt=new Date().toISOString();
+
+const c=d.customers.find(x=>x.id===o.customerId);
+
+if(c){
+
+c.purchases++;
+c.consecutivePurchases++;
+
+const earnedBase=money(
+o.discountedSubtotal!=null?
+o.discountedSubtotal:
+o.subtotal
+);
+
+const b=computeBenefit(c,earnedBase);
+
+c.benefitRate=b.rate;
+c.benefitBalance=b.amount;
+c.benefitExpiresAt=b.expiresAt;
+c.benefitUsedOrderId=null;
+
+if(!d.privileges)d.privileges=[];
+
+d.privileges.push({
+id:id('PRV'),
+customerId:c.id,
+orderId:o.id,
+customer:c.name,
+amount:earnedBase,
+rate:b.rate,
+earned:b.amount,
+expiresAt:b.expiresAt,
+createdAt:new Date().toISOString()
+});
+
+}
+
+}
+
+
+save(d);
+
+res.json({ok:true,order:o});
+
+
+}catch(e){
+
+console.error(e);
+
+res.status(500).json({
+error:'Could not update order status'
+});
+
+}
+
+});
 app.get('/api/partner/orders/:id/status-message',partnerAuth,(req,res)=>{try{const d=db(),o=d.orders.find(x=>x.id===req.params.id);if(!o)return res.status(404).json({error:'Order not found'});const statusText={NEW:'Your order has been received.',CONFIRMED:'Your order has been confirmed.',SHIPPED:'Your order has been shipped and is out for delivery.',DELIVERED:'Your order has been delivered. Thank you for choosing Golden Honey Fusion.'}[o.status]||('Your order status is '+o.status+'.');res.json({ok:true,message:`Golden Honey Fusion\n\nOrder ${o.id}\n${statusText}`});}catch(e){console.error(e);res.status(500).json({error:'Could not prepare status message'});}});
 
 function actionHtml(title,o,results){return `<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>GHF</title><style>body{margin:0;background:#050505;color:#e8cf87;font-family:Georgia,serif;display:grid;place-items:center;min-height:100vh;text-align:center}.box{max-width:560px;width:88%;padding:38px;border:1px solid #6f5620;background:#0a0a0a;box-shadow:0 20px 70px #000}.sub{color:#aaa08f;font:13px Arial;line-height:1.8;margin-top:14px}</style></head><body><div class="box"><div style="font-size:12px;letter-spacing:4px">GOLDEN HONEY FUSION</div><h1>${title}</h1><div class="sub">Order ${o.id}<br>Customer ID ${o.customerId}<br>The status has been recorded.</div></div></body></html>`;}
 function orderHtml(o){return `<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>GHF Order ${o.id}</title><style>body{background:#050505;color:#e7dfd2;font-family:Arial;padding:20px}.card{max-width:760px;margin:auto;background:#0a0a0a;border:1px solid #5d471b;padding:28px}.gold{color:#e8cf87}.row{padding:8px 0;border-bottom:1px solid #222}a{color:#e8cf87}</style></head><body><div class="card"><div class="gold" style="letter-spacing:4px">GOLDEN HONEY FUSION</div><h1 class="gold">ORDER ${o.id}</h1><div class="row">Customer ID: ${o.customerId}</div><div class="row">Status: ${o.status}</div><div class="row">Customer: ${escapeHtml(o.customer.name)}</div><div class="row">Phone: ${escapeHtml(o.customer.phone)}</div><div class="row">Governorate: ${escapeHtml(o.customer.province)}</div><div class="row">Town / City: ${escapeHtml(o.customer.city)}</div><div class="row">Address: ${escapeHtml(o.customer.address)}</div><h3 class="gold">ORDER ITEMS</h3>${o.items.map(i=>`<div class="row">${escapeHtml(i.product)} — ${escapeHtml(i.weight)} × ${i.qty} — $${money(i.lineTotal).toFixed(2)}</div>`).join('')}<p>SUBTOTAL $${money(o.subtotal).toFixed(2)}${o.discountAmount?`<br>PRIVILEGE -$${money(o.discountAmount).toFixed(2)}`:''}<br>DELIVERY $${money(o.deliveryFee).toFixed(2)}</p><p class="gold">TOTAL $${money(o.total).toFixed(2)}</p><p><a href="${o.confirmUrl}">CONFIRM ORDER</a> &nbsp; | &nbsp; <a href="${o.shipUrl}">SHIP / SEND ORDER</a></p></div></body></html>`;}
-function escapeHtml(x){return String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function escapeHtml(x){return String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));} 
+app.get('/api/admin/privileges',(req,res)=>{
+  try{
+    const d=db();
+    res.json({
+      privileges:d.privileges || []
+    });
+  }catch(e){
+    console.error(e);
+    res.status(500).json({error:'Cannot load privileges'});
+  }
+});
+
+
 app.listen(PORT,()=>console.log(`GHF backend listening on ${PORT}`));
-
-
-

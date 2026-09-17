@@ -18,9 +18,63 @@ button:hover,.btn:hover{background:#211a0d}.primary{background:linear-gradient(1
 .topline{display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap}.stats{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px}.stat{border:1px solid var(--line);padding:9px 12px;border-radius:8px;color:var(--muted);font-size:12px}.stat b{color:var(--gold);font-size:16px;margin-right:5px}
 .order{border:1px solid #332a19;border-radius:13px;background:#090909;margin-top:14px;overflow:hidden}.order-head{padding:15px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;border-bottom:1px solid #252016}.oid{color:var(--gold);font:700 18px Georgia,serif}.date{color:#8f887a;font-size:12px}.badge{font-size:10px;letter-spacing:1.3px;padding:6px 8px;border-radius:99px;border:1px solid #5a461c;color:var(--gold);background:#151006}.body{padding:15px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.field{border-bottom:1px solid #211d16;padding:8px 0}.field small{display:block;color:#827b6e;font-size:10px;letter-spacing:1px;margin-bottom:4px}.field span{color:#eee;font-size:13px;word-break:break-word}.items{margin-top:14px;border-top:1px solid #2a2417}.item{display:flex;justify-content:space-between;gap:10px;padding:9px 0;border-bottom:1px solid #1e1b15;font-size:12px}.total{display:flex;justify-content:space-between;margin-top:12px;color:var(--gold);font-weight:700;font-size:17px}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px}.empty{text-align:center;padding:45px 15px;color:#8e877a}.error{margin-top:12px;color:#ef9e92;font-size:12px}.hidden{display:none!important}
 @media(max-width:600px){.grid{grid-template-columns:1fr}.wrap{width:94%}.panel{padding:15px}.actions button,.actions .btn{flex:1 1 45%}}
+.ghf-brand{
+ text-align:center;
+ margin:15px 0;
+}
+
+.ghf-logo{
+ width:130px;
+ display:block;
+ margin:auto;
+ filter:drop-shadow(0 0 8px rgba(212,170,70,.5));
+}
+padding:12px;
+border-radius:10px;
+text-align:center;
+min-width:100px;
+font-size:13px;
+}
+
+.stat span{
+font-size:22px;
+font-weight:bold;
+}
+.ghf-brand{
+ text-align:center;
+ margin:15px 0;
+}
+
+.ghf-logo{
+ width:180px;
+ height:auto;
+ display:block;
+ margin:auto;
+ filter:drop-shadow(0 0 8px rgba(212,170,70,.5));
+}
+.order-section h3{
+color:#e8cf87;
+border:1px solid #4b3916;
+padding:15px;
+border-radius:12px;
+cursor:pointer;
+background:#090909;
+font-size:18px;
+margin-top:15px;
+}
+
+.order-section h3:hover{
+background:#151006;
+}
+.order-section{
+margin-top:12px;
+}
 </style>
 </head>
 <body>
+<div class="ghf-brand">
+  <img src="ghf-logo.png" class="ghf-logo">
+</div>
 <header>
   <div class="wrap" style="margin:0 auto">
     <div class="topline">
@@ -46,12 +100,6 @@ button:hover,.btn:hover{background:#211a0d}.primary{background:linear-gradient(1
       <div class="topline">
         <div><div class="brand">ORDERS</div><div class="sub">Manage received orders and delivery status.</div></div>
         <button onclick="loadOrders()">REFRESH</button>
-      </div>
-      <div class="stats">
-        <div class="stat"><b id="newCount">0</b> NEW</div>
-        <div class="stat"><b id="confirmedCount">0</b> CONFIRMED</div>
-        <div class="stat"><b id="shippedCount">0</b> OUT FOR DELIVERY</div>
-        <div class="stat"><b id="deliveredCount">0</b> DELIVERED</div>
       </div>
       <div id="orders"></div>
     </div>
@@ -93,12 +141,51 @@ async function loadOrders(){
     const r=await api('/api/partner/orders'); if(r.status===401){logout();return;}
     const d=await r.json(); if(!r.ok) throw new Error(d.error||'Could not load orders');
     const orders=d.orders||[];
-    $('newCount').textContent=orders.filter(o=>o.status==='NEW').length;
-    $('confirmedCount').textContent=orders.filter(o=>o.status==='CONFIRMED').length;
-    $('shippedCount').textContent=orders.filter(o=>o.status==='SHIPPED').length;
-    $('deliveredCount').textContent=orders.filter(o=>o.status==='DELIVERED').length;
-    $('orders').innerHTML=orders.length?orders.map(renderOrder).join(''):'<div class="empty">NO ORDERS YET</div>';
+    
+$('orders').innerHTML = `
+
+<div class="order-section">
+<h3 onclick="toggleSection('newBox',this)">
+NEW (${orders.filter(o=>o.status==='NEW').length})
+</h3>
+<div id="newBox">
+${orders.filter(o=>o.status==='NEW').map(renderOrder).join('')}
+</div>
+</div>
+
+<div class="order-section">
+<h3 onclick="toggleSection('confirmedBox',this)">
+CONFIRMED (${orders.filter(o=>o.status==='CONFIRMED').length})
+</h3>
+<div id="confirmedBox">
+${orders.filter(o=>o.status==='CONFIRMED').map(renderOrder).join('')}
+</div>
+</div>
+
+<div class="order-section">
+<h3 onclick="toggleSection('shippedBox',this)">
+OUT FOR DELIVERY (${orders.filter(o=>o.status==='SHIPPED').length})
+</h3>
+<div id="shippedBox">
+${orders.filter(o=>o.status==='SHIPPED').map(renderOrder).join('')}
+</div>
+</div>
+
+<div class="order-section">
+<h3 onclick="toggleSection('deliveredBox',this)">
+DELIVERED (${orders.filter(o=>o.status==='DELIVERED').length})
+</h3>
+<div id="deliveredBox" style="display:none">
+${orders.filter(o=>o.status==='DELIVERED').map(renderOrder).join('')}
+</div>
+</div>
+
+`;
   }catch(e){$('orders').innerHTML='<div class="empty">'+esc(e.message)+'</div>';}
+}
+function toggleSection(id){
+const box=document.getElementById(id);
+box.style.display = box.style.display==='none' ? 'block' : 'none';
 }
 function renderOrder(o){
   const items=(o.items||[]).map(i=>`<div class="item"><span>${esc(i.product)} · ${esc(i.weight||'—')} × ${esc(i.qty||1)}</span><b>${money(i.lineTotal)}</b></div>`).join('');

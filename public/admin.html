@@ -1,0 +1,341 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>GHF ADMIN</title>
+<style>
+html,body{
+    background:radial-gradient(circle at top,#17130b 0,#050505 55%,#020202 100%) !important;
+    color:#eee8da;
+    min-height:100%;
+    font-family:Arial,sans-serif;
+    padding:20px;
+}
+
+h1{
+text-align:center;
+font-family:Georgia,serif;
+color:#fff;
+letter-spacing:1px;
+}
+.card{
+border:1px solid #4b3916;
+padding:25px;
+margin:25px 0;
+border-radius:16px;
+background:#090909;
+box-shadow:0 10px 30px #000;
+font-size:22px;
+line-height:1.9;
+}
+.card h3{
+font-size:26px;
+color:#e8cf87;
+}
+
+.card b{
+font-size:24px;
+color:#e8cf87;
+}
+
+.card p{
+font-size:26px;
+margin:8px 0 18px;
+}
+button{
+background:linear-gradient(180deg,#d9b95f,#9d7626);
+color:#080808;
+border:1px solid #e8cf87;
+padding:11px 22px;
+border-radius:9px;
+cursor:pointer;
+font-weight:bold;
+}
+.ghf-brand{
+ text-align:center;
+ margin:20px 0;
+ background:#050505;
+}
+
+.ghf-brand{
+ text-align:center;
+ margin:15px 0;
+}
+
+.ghf-logo{
+ width:350px !important;
+ max-width:90%;
+ height:auto;
+ display:block;
+ margin:20px auto;
+ filter:drop-shadow(0 0 12px rgba(212,170,70,.6));
+}
+.stat{
+background:#090909;
+border:1px solid #4b3916;
+border-radius:12px;
+padding:15px;
+color:#e8cf87;
+font-size:15px;
+min-width:90px;
+text-align:center;
+}
+
+.stat b{
+display:block;
+font-size:24px;
+margin-top:8px;
+}
+.privilege-box{
+cursor:pointer;
+min-width:220px;
+}
+
+.gold-stars{
+margin-top:12px;
+font-size:28px;
+color:#e8cf87;
+text-shadow:0 0 12px #d4aa46;
+letter-spacing:5px;
+}
+</style>
+</head>
+
+<body>
+
+<div id="loginBox" class="card" style="display:none;max-width:400px;margin:40px auto;text-align:center;">
+
+<h3>GHF ADMIN LOGIN</h3>
+
+<input id="adminUser" placeholder="Username" style="padding:12px;width:90%;margin:8px;"><br>
+
+<input id="adminPass" type="password" placeholder="Password" style="padding:12px;width:90%;margin:8px;"><br>
+
+<button onclick="adminLogin()">LOGIN</button>
+
+<p id="loginMsg"></p>
+
+</div>
+
+<div id="dashboard" style="display:block;">
+<div class="ghf-brand">
+  <img src="ghf-logo.png" class="ghf-logo">
+</div>
+<h1>GOLDEN HONEY FUSION<br>ADMIN DASHBOARD</h1>
+
+<button onclick="loadOrders()">REFRESH</button>
+<div id="stats" style="
+display:flex;
+gap:10px;
+flex-wrap:wrap;
+margin:20px 0;
+">
+
+<div class="stat">TOTAL <b id="totalCount">0</b></div>
+<div class="stat">SALES <b id="salesTotal">$0</b></div>
+<div class="stat">NEW <b id="newCount">0</b></div>
+<div class="stat">CONFIRMED <b id="confirmedCount">0</b></div>
+<div class="stat">SHIPPED <b id="shippedCount">0</b></div>
+<div class="stat">DELIVERED <b id="deliveredCount">0</b></div>
+<div class="stat privilege-box" onclick="openPrivileges()">
+
+GHF PURCHASE PRIVILEGES
+
+<div class="gold-stars">
+✦ ✦ ✦ ✦ ✦
+</div>
+
+</div>
+</div>
+
+<div id="privilegePanel" class="card" style="display:none;">
+
+<h3>GHF PURCHASE PRIVILEGES</h3>
+
+<p style="color:#e8cf87">
+✦ ✦ ✦ ✦ ✦
+</p>
+
+<p>
+<div id="privilegeList">
+  Privilege movements will appear here.
+</div>
+
+</div>
+
+<div id="orders"></div>
+<script>
+let adminToken = localStorage.getItem("ghfAdminToken");
+async function adminLogin(){
+document.getElementById("loginBox").style.display="none";
+document.getElementById("dashboard").style.display="block";
+loadOrders();
+}
+
+document.getElementById("loginBox").style.display="none";
+document.getElementById("dashboard").style.display="block";
+
+loadOrders();
+
+
+async function loadOrders(){
+alert("LOAD ORDERS START");
+const box=document.getElementById("orders");
+
+try{
+
+const r=await fetch('http://127.0.0.1:3000/api/orders');
+const data=await r.json();
+const p=await fetch('http://127.0.0.1:3000/api/admin/privileges');
+const privilegesData=await p.json();
+
+const privilegeList=document.getElementById("privilegeList");
+
+if(privilegesData.privileges && privilegesData.privileges.length){
+
+  privilegeList.innerHTML="";
+
+  privilegesData.privileges.slice().reverse().forEach(p=>{
+
+    privilegeList.innerHTML += `
+    <div style="border-bottom:1px solid #4b3916;padding:12px 0">
+      <b>${p.customer}</b><br>
+      Order: ${p.orderId}<br>
+      Purchase: $${p.amount}<br>
+      Privilege: ${(p.rate*100).toFixed(1)}%<br>
+      Earned: $${p.earned}<br>
+      Valid until: ${new Date(p.expiresAt).toLocaleDateString()}
+<a href="https://wa.me/${p.phone}?text=${encodeURIComponent(`GOLDEN HONEY FUSION
+
+Dear Valued Customer,
+
+Your GHF Purchase Privilege has been updated successfully.
+
+Privilege Earned: $${p.earned}
+Valid Until: ${new Date(p.expiresAt).toLocaleDateString()}
+
+Thank you for your trust and for choosing Golden Honey Fusion.
+
+With appreciation,
+Golden Honey Fusion`)}" target="_blank">
+<button style="margin-top:8px">SEND WHATSAPP</button>
+</a>
+ </div>`;
+  });
+
+}else{
+  privilegeList.innerHTML="No privilege movements yet.";
+}
+
+document.getElementById("totalCount").textContent=data.orders.length;
+document.getElementById("salesTotal").textContent="$"+data.orders.reduce((sum,o)=>sum+Number(o.subtotal||0),0).toFixed(2);
+document.getElementById("newCount").textContent=data.orders.filter(o=>o.status==="NEW").length;
+document.getElementById("confirmedCount").textContent=data.orders.filter(o=>o.status==="CONFIRMED").length;
+document.getElementById("shippedCount").textContent=data.orders.filter(o=>o.status==="SHIPPED").length;
+document.getElementById("deliveredCount").textContent=data.orders.filter(o=>o.status==="DELIVERED").length;
+data.orders.sort((a,b)=>new Date(b.createdAt)-new Date(a.createdAt));
+
+box.innerHTML="";
+
+data.orders.forEach(o=>{
+
+box.innerHTML += `
+<div class="card" onclick="toggleOrder('${o.id}')" style="cursor:pointer;">
+
+<div style="display:flex;justify-content:space-between;align-items:center">
+
+<div>
+<h3 style="margin:0">${o.id}</h3>
+<div style="font-size:14px;color:#aaa08f;margin-top:8px">
+${new Date(o.createdAt).toLocaleString()}
+</div>
+
+<div style="color:#e8cf87;margin-top:8px">
+${o.customer?.name || ''}
+</div>
+
+<div style="color:#e8cf87">
+${o.status} — $${o.total}
+</div>
+
+</div>
+
+<span id="arrow-${o.id}" style="font-size:22px;color:#e8cf87">
+▼
+</span>
+
+</div>
+
+<div id="order-${o.id}" style="display:none;margin-top:20px;">
+
+<hr style="border-color:#4b3916">
+
+<div class="info">
+
+<b>CUSTOMER</b>
+<p>${o.customer?.name || ''}</p>
+
+<b>PHONE</b>
+<p>${o.customer?.phone || ''}</p>
+
+<b>ADDRESS</b>
+<p>${o.customer?.address || ''}</p>
+
+<b>ITEMS</b>
+<p>
+${(o.items||[]).map(i=>`
+${i.product} - ${i.weight||''} × ${i.qty||1}<br>
+`).join('')}
+</p>
+
+<b>TOTAL</b>
+<p style="font-size:22px">
+$${o.total}
+</p>
+
+</div>
+
+</div>
+`;
+
+});
+
+}catch(e){
+
+box.innerHTML="ERROR: "+e.message;
+
+}
+
+}
+function toggleOrder(id){
+
+const box=document.getElementById("order-"+id);
+const arrow=document.getElementById("arrow-"+id);
+
+if(box.style.display==="none"){
+box.style.display="block";
+arrow.innerHTML="▲";
+}else{
+box.style.display="none";
+arrow.innerHTML="▼";
+}
+
+}
+function openPrivileges(){
+
+const box=document.getElementById("privilegePanel");
+
+if(box.style.display==="none"){
+box.style.display="block";
+}else{
+box.style.display="none";
+}
+
+}
+loadOrders();
+alert("LOGIN SUCCESS");
+</script>
+</body>
+</html>
+
