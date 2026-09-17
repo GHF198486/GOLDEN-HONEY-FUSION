@@ -4706,7 +4706,7 @@ async function ghfPurchaseWhatsApp(event){
  if(c.location && c.location.lat && c.location.lng)lines.push('','DELIVERY LOCATION: https://www.google.com/maps?q='+c.location.lat+','+c.location.lng);
  lines.push('','SUBTOTAL: '+ghfFormatPrice(subtotal),'DELIVERY: '+ghfFormatPrice(GHF_DELIVERY_FEE),'TOTAL: '+ghfFormatPrice(total));
  const fallbackUrl='https://wa.me/96171127840?text='+encodeURIComponent(lines.join('\n'));
- const GHF_API_BASE=(document.querySelector('meta[name="ghf-api-base"]')?.content||window.GHF_API_BASE||'http://localhost:3000').replace(/\/$/,'');
+ const GHF_API_BASE=(document.querySelector('meta[name="ghf-api-base"]')?.content||window.GHF_API_BASE||'https://golden-honey-fusion-1.onrender.com').replace(/\/$/,'');
 
  // GitHub Pages is static: send directly to the partner WhatsApp chat.
  // Backend order storage is still used automatically when this same page is served by the GHF backend.
