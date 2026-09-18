@@ -165,11 +165,6 @@ GHF PURCHASE PRIVILEGES
 
 <div id="orders"></div>
 <script>
-window.privilegesData = {privileges:[]};
-if(p.ok){
-   privilegesData=await p.json();
-   window.privilegesData = privilegesData;
-}
 let adminToken = localStorage.getItem("ghfAdminToken");
 async function adminLogin(){
 document.getElementById("loginBox").style.display="none";
