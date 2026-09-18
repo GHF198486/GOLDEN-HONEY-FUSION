@@ -167,17 +167,7 @@ GHF PURCHASE PRIVILEGES
 <script>
 let privilegesData = {privileges:[]};
 
-async function loadPrivileges(){
-  try{
-    const p = await fetch('/api/admin/privileges');
-    if(p.ok){
-      privilegesData = await p.json();
-      window.privilegesData = privilegesData;
-    }
-  }catch(e){
-    console.log(e);
-  }
-}
+
 let adminToken = localStorage.getItem("ghfAdminToken");
 async function adminLogin(){
 document.getElementById("loginBox").style.display="none";
@@ -185,7 +175,6 @@ document.getElementById("dashboard").style.display="block";
 loadOrders();
 loadPrivileges();
 }
-
 document.getElementById("loginBox").style.display="none";
 document.getElementById("dashboard").style.display="block";
 
@@ -390,7 +379,6 @@ box.style.display="none";
 
 }
 loadOrders();
-loadPrivileges();
 
 </script>
 </body>
