@@ -185,9 +185,9 @@ const box=document.getElementById("orders");
 
 try{
 
-const r=await fetch('http://127.0.0.1:3000/api/orders');
+const r=await fetch('/api/orders');
 const data=await r.json();
-const p=await fetch('http://127.0.0.1:3000/api/admin/privileges');
+const p=await fetch('/api/admin/privileges');
 const privilegesData=await p.json();
 
 const privilegeList=document.getElementById("privilegeList");
