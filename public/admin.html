@@ -201,7 +201,6 @@ try{
 const r=await fetch('/api/orders');
 const data=await r.json();
 data.orders = data.orders || [];
-let privilegesData = {privileges:[]};
 window.privilegesData = {privileges:[]};;
 try{
  const p=await fetch('/api/admin/privileges');
@@ -391,6 +390,8 @@ box.style.display="none";
 
 }
 loadOrders();
+loadPrivileges();
+
 </script>
 </body>
 </html>
