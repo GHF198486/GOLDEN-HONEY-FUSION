@@ -3,7 +3,7 @@
     {
       "id": "GHF-C-2EF87C2BBF",
       "phone": "96176839195",
-      "name": "حسين حسن علي محمد",
+      "name": "حسان",
       "privilegeCode": "888911",
       "purchases": 17,
       "consecutivePurchases": 17,
@@ -12,7 +12,7 @@
       "benefitExpiresAt": "2026-11-01T12:16:06.885Z",
       "benefitUsedOrderId": null,
       "createdAt": "2026-09-13T22:52:40.832Z",
-      "updatedAt": "2026-09-17T12:15:48.075Z"
+      "updatedAt": "2026-09-17T21:14:26.043Z"
     },
     {
       "id": "GHF-C-21E482838B",
@@ -41,6 +41,20 @@
       "benefitUsedOrderId": null,
       "createdAt": "2026-09-16T19:34:34.627Z",
       "updatedAt": "2026-09-17T12:14:05.647Z"
+    },
+    {
+      "id": "GHF-C-BE1919C15A",
+      "phone": "76839195",
+      "name": "حسام حسا",
+      "privilegeCode": "242948",
+      "purchases": 4,
+      "consecutivePurchases": 4,
+      "benefitRate": 0.04,
+      "benefitBalance": 3,
+      "benefitExpiresAt": "2026-11-01T20:52:41.336Z",
+      "benefitUsedOrderId": null,
+      "createdAt": "2026-09-17T16:55:40.766Z",
+      "updatedAt": "2026-09-17T17:58:34.402Z"
     }
   ],
   "orders": [
@@ -1363,6 +1377,206 @@
       "shipToken": "fe20a49d7f3125605bae480ff2d4cc76c63e",
       "confirmUrl": "http://localhost:3000/api/orders/GHF-O-9BEAC6FC52/confirm?token=242660c9eb4811231c2dcc57d48acb5fbdc5",
       "shipUrl": "http://localhost:3000/api/orders/GHF-O-9BEAC6FC52/ship?token=fe20a49d7f3125605bae480ff2d4cc76c63e"
+    },
+    {
+      "id": "GHF-O-9AE18FAD18",
+      "customerId": "GHF-C-BE1919C15A",
+      "customer": {
+        "name": "حسام",
+        "phone": "76839195",
+        "province": "North Lebanon",
+        "city": "Nabatie",
+        "address": "Nabatye street",
+        "floor": "",
+        "notes": "",
+        "privilegeCode": "",
+        "location": null
+      },
+      "items": [
+        {
+          "product": "عسل جبلي بري",
+          "arabic": "عسل جبلي بري",
+          "weight": "1000 G",
+          "price": 75,
+          "qty": 1,
+          "lineTotal": 75
+        }
+      ],
+      "subtotal": 75,
+      "discountCode": null,
+      "discountAmount": 0,
+      "discountedSubtotal": 75,
+      "deliveryFee": 5,
+      "total": 80,
+      "status": "DELIVERED",
+      "createdAt": "2026-09-17T16:55:40.766Z",
+      "confirmedAt": "2026-09-17T20:52:29.322Z",
+      "shippedAt": "2026-09-17T20:52:31.425Z",
+      "deliveredAt": "2026-09-17T20:52:41.336Z",
+      "confirmToken": "d35e3356c3da4c886f2933beeb774d1c756f",
+      "shipToken": "e869b144626485ad6ce549092c234fe91574",
+      "confirmUrl": "http://localhost:3000/api/orders/GHF-O-9AE18FAD18/confirm?token=d35e3356c3da4c886f2933beeb774d1c756f",
+      "shipUrl": "http://localhost:3000/api/orders/GHF-O-9AE18FAD18/ship?token=e869b144626485ad6ce549092c234fe91574"
+    },
+    {
+      "id": "GHF-O-7ECE8D5DBA",
+      "customerId": "GHF-C-BE1919C15A",
+      "customer": {
+        "name": "حسام",
+        "phone": "76839195",
+        "province": "North Lebanon",
+        "city": "Nabatie",
+        "address": "Nabatye street",
+        "floor": "",
+        "notes": "",
+        "privilegeCode": "",
+        "location": null
+      },
+      "items": [
+        {
+          "product": "عسل جبلي بري",
+          "arabic": "عسل جبلي بري",
+          "weight": "1000 G",
+          "price": 75,
+          "qty": 1,
+          "lineTotal": 75
+        }
+      ],
+      "subtotal": 75,
+      "discountCode": null,
+      "discountAmount": 0,
+      "discountedSubtotal": 75,
+      "deliveryFee": 5,
+      "total": 80,
+      "status": "DELIVERED",
+      "createdAt": "2026-09-17T16:57:11.184Z",
+      "confirmedAt": "2026-09-17T20:52:28.484Z",
+      "shippedAt": "2026-09-17T20:52:30.923Z",
+      "deliveredAt": "2026-09-17T20:52:40.543Z",
+      "confirmToken": "905e58d654723e24581d792c3f7f9f29ae68",
+      "shipToken": "8b8bc0bb55954ded2b65f84d9d2224ff482b",
+      "confirmUrl": "http://localhost:3000/api/orders/GHF-O-7ECE8D5DBA/confirm?token=905e58d654723e24581d792c3f7f9f29ae68",
+      "shipUrl": "http://localhost:3000/api/orders/GHF-O-7ECE8D5DBA/ship?token=8b8bc0bb55954ded2b65f84d9d2224ff482b"
+    },
+    {
+      "id": "GHF-O-5E64CCBCA0",
+      "customerId": "GHF-C-BE1919C15A",
+      "customer": {
+        "name": "حسام",
+        "phone": "76839195",
+        "province": "North Lebanon",
+        "city": "Nabatie",
+        "address": "Nabatye street",
+        "floor": "",
+        "notes": "",
+        "privilegeCode": "",
+        "location": null
+      },
+      "items": [
+        {
+          "product": "عسل جبلي بري",
+          "arabic": "عسل جبلي بري",
+          "weight": "1000 G",
+          "price": 75,
+          "qty": 1,
+          "lineTotal": 75
+        }
+      ],
+      "subtotal": 75,
+      "discountCode": null,
+      "discountAmount": 0,
+      "discountedSubtotal": 75,
+      "deliveryFee": 5,
+      "total": 80,
+      "status": "DELIVERED",
+      "createdAt": "2026-09-17T17:37:12.260Z",
+      "confirmedAt": "2026-09-17T20:52:28.015Z",
+      "shippedAt": "2026-09-17T20:52:30.551Z",
+      "deliveredAt": "2026-09-17T20:52:40.129Z",
+      "confirmToken": "1d7ee24fa9cf1b2ec0c01b68ce32217cfc49",
+      "shipToken": "79b37d691e4279eae29564f877acc4ab185c",
+      "confirmUrl": "http://localhost:3000/api/orders/GHF-O-5E64CCBCA0/confirm?token=1d7ee24fa9cf1b2ec0c01b68ce32217cfc49",
+      "shipUrl": "http://localhost:3000/api/orders/GHF-O-5E64CCBCA0/ship?token=79b37d691e4279eae29564f877acc4ab185c"
+    },
+    {
+      "id": "GHF-O-BBB170B0E3",
+      "customerId": "GHF-C-BE1919C15A",
+      "customer": {
+        "name": "حسام حسا",
+        "phone": "76839195",
+        "province": "Baalbek-Hermel",
+        "city": "Nabatie",
+        "address": "Nabatye street",
+        "floor": "",
+        "notes": "",
+        "privilegeCode": "",
+        "location": null
+      },
+      "items": [
+        {
+          "product": "عسل جبلي بري",
+          "arabic": "عسل جبلي بري",
+          "weight": "1000 G",
+          "price": 75,
+          "qty": 1,
+          "lineTotal": 75
+        }
+      ],
+      "subtotal": 75,
+      "discountCode": null,
+      "discountAmount": 0,
+      "discountedSubtotal": 75,
+      "deliveryFee": 5,
+      "total": 80,
+      "status": "DELIVERED",
+      "createdAt": "2026-09-17T17:58:34.423Z",
+      "confirmedAt": "2026-09-17T20:52:27.539Z",
+      "shippedAt": "2026-09-17T20:52:29.987Z",
+      "deliveredAt": "2026-09-17T20:52:39.644Z",
+      "confirmToken": "1bfa3538f57851f5e4a6645a64804af4db5b",
+      "shipToken": "4f098eb3e8bf809248880c0f7de4d1fbd6f0",
+      "confirmUrl": "http://localhost:3000/api/orders/GHF-O-BBB170B0E3/confirm?token=1bfa3538f57851f5e4a6645a64804af4db5b",
+      "shipUrl": "http://localhost:3000/api/orders/GHF-O-BBB170B0E3/ship?token=4f098eb3e8bf809248880c0f7de4d1fbd6f0"
+    },
+    {
+      "id": "GHF-O-E3BD66D898",
+      "customerId": "GHF-C-2EF87C2BBF",
+      "customer": {
+        "name": "حسان",
+        "phone": "96176839195",
+        "province": "North Lebanon",
+        "city": "باريس",
+        "address": "Nabatye street",
+        "floor": "2",
+        "notes": "",
+        "privilegeCode": "",
+        "location": null
+      },
+      "items": [
+        {
+          "product": "عسل الزعتر",
+          "arabic": "عسل الزعتر",
+          "weight": "1000 G",
+          "price": 30,
+          "qty": 1,
+          "lineTotal": 30
+        }
+      ],
+      "subtotal": 30,
+      "discountCode": null,
+      "discountAmount": 0,
+      "discountedSubtotal": 30,
+      "deliveryFee": 5,
+      "total": 35,
+      "status": "NEW",
+      "createdAt": "2026-09-17T21:14:26.064Z",
+      "confirmedAt": null,
+      "shippedAt": null,
+      "deliveredAt": null,
+      "confirmToken": "712846c420312cbd808660283f53834e5f93",
+      "shipToken": "3dc77e870906530e2175dc4e396383fbe82b",
+      "confirmUrl": "http://localhost:3000/api/orders/GHF-O-E3BD66D898/confirm?token=712846c420312cbd808660283f53834e5f93",
+      "shipUrl": "http://localhost:3000/api/orders/GHF-O-E3BD66D898/ship?token=3dc77e870906530e2175dc4e396383fbe82b"
     }
   ],
   "privileges": [
@@ -1601,6 +1815,50 @@
       "earned": 1.5,
       "expiresAt": "2026-11-01T12:16:06.885Z",
       "createdAt": "2026-09-17T12:16:06.886Z"
+    },
+    {
+      "id": "PRV-1CDB044597",
+      "customerId": "GHF-C-BE1919C15A",
+      "orderId": "GHF-O-BBB170B0E3",
+      "customer": "حسام حسا",
+      "amount": 75,
+      "rate": 0.033,
+      "earned": 2.48,
+      "expiresAt": "2026-11-01T20:52:39.646Z",
+      "createdAt": "2026-09-17T20:52:39.647Z"
+    },
+    {
+      "id": "PRV-1943484AB5",
+      "customerId": "GHF-C-BE1919C15A",
+      "orderId": "GHF-O-5E64CCBCA0",
+      "customer": "حسام حسا",
+      "amount": 75,
+      "rate": 0.033,
+      "earned": 2.48,
+      "expiresAt": "2026-11-01T20:52:40.129Z",
+      "createdAt": "2026-09-17T20:52:40.129Z"
+    },
+    {
+      "id": "PRV-D13B32EB06",
+      "customerId": "GHF-C-BE1919C15A",
+      "orderId": "GHF-O-7ECE8D5DBA",
+      "customer": "حسام حسا",
+      "amount": 75,
+      "rate": 0.033,
+      "earned": 2.48,
+      "expiresAt": "2026-11-01T20:52:40.543Z",
+      "createdAt": "2026-09-17T20:52:40.543Z"
+    },
+    {
+      "id": "PRV-2855C62089",
+      "customerId": "GHF-C-BE1919C15A",
+      "orderId": "GHF-O-9AE18FAD18",
+      "customer": "حسام حسا",
+      "amount": 75,
+      "rate": 0.04,
+      "earned": 3,
+      "expiresAt": "2026-11-01T20:52:41.336Z",
+      "createdAt": "2026-09-17T20:52:41.336Z"
     }
   ]
 }

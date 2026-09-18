@@ -188,7 +188,7 @@ try{
 const r=await fetch('/api/orders');
 const data=await r.json();
 const p=await fetch('/api/admin/privileges');
-const privilegesData=await p.json();
+window.privilegesData=await p.json();
 
 const privilegeList=document.getElementById("privilegeList");
 
@@ -206,21 +206,13 @@ if(privilegesData.privileges && privilegesData.privileges.length){
       Privilege: ${(p.rate*100).toFixed(1)}%<br>
       Earned: $${p.earned}<br>
       Valid until: ${new Date(p.expiresAt).toLocaleDateString()}
-<a href="https://wa.me/${p.phone}?text=${encodeURIComponent(`GOLDEN HONEY FUSION
-
-Dear Valued Customer,
-
-Your GHF Purchase Privilege has been updated successfully.
-
-Privilege Earned: $${p.earned}
-Valid Until: ${new Date(p.expiresAt).toLocaleDateString()}
-
-Thank you for your trust and for choosing Golden Honey Fusion.
-
-With appreciation,
-Golden Honey Fusion`)}" target="_blank">
-<button style="margin-top:8px">SEND WHATSAPP</button>
-</a>
+${p.sent ? 
+`<button disabled style="margin-top:8px;opacity:.5">PRIVILEGE SENT</button>`
+:
+`<button onclick="sendPrivilege('${p.id}','${p.phone}')" style="margin-top:8px">
+SEND WHATSAPP
+</button>`
+}
  </div>`;
   });
 
@@ -321,6 +313,40 @@ box.style.display="none";
 arrow.innerHTML="▼";
 }
 
+}
+function formatDate(x){
+ const d=new Date(x);
+ return String(d.getDate()).padStart(2,'0')+'/'+
+ String(d.getMonth()+1).padStart(2,'0')+'/'+
+ d.getFullYear();
+}
+
+async function sendPrivilege(id,phone){
+
+const item = window.privilegesData.privileges.find(x=>x.id===id);
+
+ const text=`GOLDEN HONEY FUSION
+
+Dear Valued Customer,
+
+Your GHF Purchase Privilege has been updated successfully.
+
+Privilege Earned: $${item.earned}
+Valid Until: ${formatDate(item.expiresAt)}
+
+Thank you for your trust and for choosing Golden Honey Fusion.
+
+With appreciation,
+Golden Honey Fusion`;
+
+ window.open("https://wa.me/"+phone+"?text="+encodeURIComponent(text),"_blank");
+
+ await fetch('/api/admin/privileges/'+id+'/sent',{
+   method:'POST'
+ });
+
+ loadOrders();
+}
 }
 function openPrivileges(){
 

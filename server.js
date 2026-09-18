@@ -233,6 +233,7 @@ amount:earnedBase,
 rate:b.rate,
 earned:b.amount,
 expiresAt:b.expiresAt,
+sent:false,
 createdAt:new Date().toISOString()
 });
 
@@ -274,5 +275,21 @@ app.get('/api/admin/privileges',(req,res)=>{
   }
 });
 
+app.post('/api/admin/privileges/:id/sent',(req,res)=>{
+  try{
+    const d=db();
+    const p=d.privileges.find(x=>x.id===req.params.id);
+    if(!p)return res.status(404).json({error:'Privilege not found'});
 
+    p.sent=true;
+    p.sentAt=new Date().toISOString();
+
+    save(d);
+
+    res.json({ok:true});
+  }catch(e){
+    console.error(e);
+    res.status(500).json({error:'Could not update privilege'});
+  }
+});
 app.listen(PORT,()=>console.log(`GHF backend listening on ${PORT}`));
