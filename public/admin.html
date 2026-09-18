@@ -188,7 +188,7 @@ try{
 const r=await fetch('/api/orders');
 const data=await r.json();
 const p=await fetch('/api/admin/privileges');
-window.privilegesData=await p.json();
+const privilegesData=await p.json();
 
 const privilegeList=document.getElementById("privilegeList");
 
