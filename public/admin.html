@@ -157,7 +157,6 @@ GHF PURCHASE PRIVILEGES
 ✦ ✦ ✦ ✦ ✦
 </p>
 
-<p>
 <div id="privilegeList">
   Privilege movements will appear here.
 </div>
@@ -166,6 +165,11 @@ GHF PURCHASE PRIVILEGES
 
 <div id="orders"></div>
 <script>
+window.privilegesData = {privileges:[]};
+if(p.ok){
+   privilegesData=await p.json();
+   window.privilegesData = privilegesData;
+}
 let adminToken = localStorage.getItem("ghfAdminToken");
 async function adminLogin(){
 document.getElementById("loginBox").style.display="none";
@@ -180,7 +184,6 @@ loadOrders();
 
 
 async function loadOrders(){
-alert("LOAD START");
 
 const box=document.getElementById("orders");
 
@@ -188,8 +191,18 @@ try{
 
 const r=await fetch('/api/orders');
 const data=await r.json();
-const p=await fetch('/api/admin/privileges');
-const privilegesData=await p.json();
+data.orders = data.orders || [];
+let privilegesData = {privileges:[]};
+window.privilegesData = {privileges:[]};;
+try{
+ const p=await fetch('/api/admin/privileges');
+ if(p.ok){
+   privilegesData=await p.json();
+   window.privilegesData = privilegesData;
+ }
+}catch(e){
+ console.log("Privileges load skipped");
+}
 
 const privilegeList=document.getElementById("privilegeList");
 
@@ -325,7 +338,12 @@ function formatDate(x){
 
 async function sendPrivilege(id,phone){
 
-const item = window.privilegesData.privileges.find(x=>x.id===id);
+const item = (window.privilegesData?.privileges || []).find(x=>x.id===id);
+
+if(!item){
+  alert("Privilege data not found");
+  return;
+}
 
  const text=`GOLDEN HONEY FUSION
 
