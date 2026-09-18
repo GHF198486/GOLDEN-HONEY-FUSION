@@ -219,7 +219,7 @@ if(privilegesData.privileges && privilegesData.privileges.length){
       Purchase: $${p.amount}<br>
       Privilege: ${(p.rate*100).toFixed(1)}%<br>
       Earned: $${p.earned}<br>
-      Valid until: ${new Date(p.expiresAt).toLocaleDateString()}
+      Valid until: ${formatDate(p.expiresAt)}
 ${p.sent ? 
 `<button disabled style="margin-top:8px;opacity:.5">PRIVILEGE SENT</button>`
 :
@@ -340,9 +340,9 @@ async function sendPrivilege(id,phone){
 
 const item = (window.privilegesData?.privileges || []).find(x=>x.id===id);
 
-if(!item){
-  alert("Privilege data not found");
-  return;
+if(!item || !phone){
+ alert("Customer WhatsApp number missing");
+ return;
 }
 
  const text=`GOLDEN HONEY FUSION
@@ -350,6 +350,8 @@ if(!item){
 Dear Valued Customer,
 
 Your GHF Purchase Privilege has been updated successfully.
+
+Privilege Code: ${item.code}
 
 Privilege Earned: $${item.earned}
 Valid Until: ${formatDate(item.expiresAt)}
