@@ -190,7 +190,6 @@ try{
 const r=await fetch('/api/orders');
 const data=await r.json();
 data.orders = data.orders || [];
-window.privilegesData = {privileges:[]};;
 try{
  const p=await fetch('/api/admin/privileges');
  if(p.ok){
